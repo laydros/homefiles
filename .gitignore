@@ -2,7 +2,7 @@
 !.Xdefaults
 !.gitignore
 !.Xresources
-!.config/*
+!.config/
 !.zshrc
 !.zsh_history
 !.muttrc
