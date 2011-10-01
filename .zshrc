@@ -8,7 +8,9 @@ compinit
 autoload -U promptinit
 promptinit
 
+if [ $(hostname) == 'line-6' ]; then
 command cowsay -f tux $(fortune -slo)
+fi
 
 if [ -n "$DISPLAY" ]; then
     BROWSER=firefox
