@@ -1,0 +1,28 @@
+set from = "laydros@gmail.com"
+set realname = "Jason Hamilton"
+
+set imap_user = "laydros@gmail.com"
+set imap_pass = "kD8zr8uaj/68"
+
+set folder = "imaps://imap.gmail.com:993"
+set spoolfile = "+INBOX"
+set postponed = "+[Gmail]/Drafts"
+set trash = "imaps://imap.gmail.com/[Gmail]/Trash"
+
+set header_cache = ~/.mutt/cache/headers
+set message_cachedir = ~/.mutt/cache/bodies
+set certificate_file = ~/.mutt/certificates
+
+set smtp_url = "smtp://laydros@smtp.gmail.com:587/"
+set smtp_pass = "kD8zr8uaj/68"
+
+bind editor <space> noop
+macro index gi "<change-folder>=INBOX<enter>" "Go to inbox"
+macro index ga "<change-folder>=[Gmail]/All Mail<enter>" "Go to all mail"
+macro index gs "<change-folder>=[Gmail]/Sent Mail<enter>" "Go to Sent Mail"
+macro index gd "<change-folder>=[Gmail]/Drafts<enter>" "Go to drafts"
+
+set move = no 
+set imap_keepalive = 900
+
+

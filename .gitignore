@@ -3,3 +3,6 @@
 !.gitignore
 !.Xresources
 !.config/*
+!.zshrc
+!.zsh_history
+!.muttrc
