@@ -1,8 +1,10 @@
-*
+/*
 !.Xdefaults
 !.gitignore
 !.Xresources
 !.config/
+!.vimrc
 !.zshrc
 !.zsh_history
 !.muttrc
+!/.emacs.d/
