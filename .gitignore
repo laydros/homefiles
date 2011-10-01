@@ -7,7 +7,7 @@
 !.zshrc
 !.zsh_history
 !.muttrc
-!.emacs.d/*
+!.emacs.d/
 
 .config/chromium/
 .config/banshee-1/
