@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE xbel PUBLIC "+//IDN python.org//DTD XML Bookmark Exchange Language 1.0//EN//XML" "http://www.python.org/topics/xml/dtds/xbel-1.0.dtd">
+<xbel version="1.0" xmlns:midori="http://www.twotoasts.de">
+<info>
+<metadata midori:current="1" owner="http://www.twotoasts.de"/>
+</info>
+<bookmark href="http://slickdeals.net/">
+<title>‪Slickdeals: The Best Deals, Coupons &amp; Discounts on Laptops, Computers, LCDs, TVs, Dell, HP, Apple, Amazon</title>
+<info>
+<metadata midori:icon="text-html" midori:history-step="2" owner="http://www.twotoasts.de"/>
+</info>
+</bookmark>
+<bookmark href="https://duckduckgo.com/?q=openbox%20suspend">
+<title>‪openbox suspend at DuckDuckGo</title>
+<info>
+<metadata midori:history-step="2" owner="http://www.twotoasts.de"/>
+</info>
+</bookmark>
+</xbel>

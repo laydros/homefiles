@@ -1,0 +1,11 @@
+
+[roxterm profile]
+font=DejaVu Sans Mono 12
+width=85
+height=28
+audible_bell=0
+visible_bell=1
+background_type=2
+saturation=0.208585
+scrollback_lines=1539
+scrollbar_pos=0

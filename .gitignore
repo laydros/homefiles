@@ -7,4 +7,10 @@
 !.zshrc
 !.zsh_history
 !.muttrc
-!/.emacs.d/
+!.emacs.d/*
+
+.config/chromium/
+.config/banshee-1/
+.config/xfce4/
+.config/evolution/
+.config/scribes/

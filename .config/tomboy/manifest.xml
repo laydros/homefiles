@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns="http://beatniksoftware.com/tomboy">
+  <last-sync-date>2011-08-09T22:10:32.2952180-04:00</last-sync-date>
+  <last-sync-rev>0</last-sync-rev>
+  <server-id>0</server-id>
+  <note-revisions>
+    <note guid="e072fbc0-be0a-495d-8b48-dc308efaed1b" latest-revision="0" />
+    <note guid="0b512bad-7f8b-4833-8435-e518eed99a88" latest-revision="0" />
+    <note guid="c821ed3f-a23d-4e2e-aebb-4440e169e793" latest-revision="0" />
+  </note-revisions>
+  <note-deletions />
+</manifest>
