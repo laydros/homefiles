@@ -22,9 +22,9 @@ URxvt*urgentOnBell: true
 !URxvt.font:         6x13
 URxvt.font:         xft:inconsolata:size=11
 !URxvt*fading:	    25
-!URxvt*fadeColor:    rgb:ee/ee/ee
-!URxvt*foreground:   rgb:ee/ee/ee
-!URxvt*background:   rgb:22/22/22
+URxvt*fadeColor:    rgb:ee/ee/ee
+URxvt*foreground:   rgb:ee/ee/ee
+URxvt*background:   rgb:22/22/22
 URxvt*cursorColor:  rgb:00/f6/3f
 
 URxvt.perl-ext-common:  default,matcher
