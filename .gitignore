@@ -3,10 +3,7 @@
 !.gitignore
 !.Xresources
 !.config/
-!.vimrc
-!.zshrc
 !.zsh_history
-!.muttrc
 !.emacs.d/
 
 .config/chromium/
