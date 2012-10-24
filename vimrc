@@ -80,9 +80,15 @@ set ruler
 " Key remaps {
     nnoremap ; :       
     inoremap jk <Esc>   " use jk to get out of insert
+    " Yank test to the OS X clipboard
+    noremap <leader>y "*y
+    noremap <leader>yy "*Y
 
     let mapleader = "," " remap leader to comma
 " }
+
+" Preserve indendation when pasting text from OS X clipboard
+noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
 
 " Save when losing focus
 au FocusLost * :wa

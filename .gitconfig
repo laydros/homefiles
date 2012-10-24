@@ -1,0 +1,22 @@
+[color]
+    diff = auto
+    status = auto
+    branch = auto
+[user]
+	name = Jason Hamilton
+	email = jhamilton@bandwidth.com
+[core]
+	excludesfile = /Users/jhamilton/.gitignore_global
+[status]
+    relativePaths = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[merge]
+	tool = diffmerge
+[mergetool "diffmerge"]
+	cmd = ~/bin/diffmerge.sh --merge --result=$MERGED $LOCAL $BASE $REMOTE
+	trustExitCode = true

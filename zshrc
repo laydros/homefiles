@@ -66,6 +66,13 @@ source $ZSH/oh-my-zsh.sh
 
 # set vim as default editor
 export EDITOR='vim'
+bindkey -v
+
+# use vi style incremental search
+bindkey '^R' history-incremental-search-backward
+bindkey '^S' history-incremental-search-forward
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward
 
 # Customize to your needs...
 export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:

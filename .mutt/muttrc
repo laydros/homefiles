@@ -111,4 +111,32 @@ bind pager R group-reply
 # View attachments properly
 bind attach <return> view-mailcap
 
+source ~/.mutt/colors/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttrc
+
+# Compose View Options -------------------------------
+set realname = "Jason Hamilton"      # who am i?
+set envelope_from                    # which from?
+set sig_dashes                       # dashes before sig
+set edit_headers                     # show headers when composing
+set fast_reply                       # skip to compose when replying
+set askcc                            # ask for CC:
+set fcc_attach                       # save attachments with the body
+unset mime_forward                   # forward attachments as part of body
+set forward_format = "Fwd: %s"       # format of subject when forwarding
+set forward_decode                   # decode when forwarding
+set attribution = "On %d, %n wrote:" # format of quoting header
+set reply_to                         # reply to Reply to: field
+set reverse_name                     # reply as whomever it was to
+set include                          # include message in replies
+set forward_quote                    # include message in forwards
+
+set editor = "vim"        # Use terminal Vim to compose email.
+# set editor = "mvim -f"    # Use MacVim to compose email.
+# set editor = "subl -w"    # Use Sublime Text 2 to compose email.
+
+
+set from        = "jhamilton@bandwidth.com"
+set sendmail    = "/usr/local/bin/msmtp -a jhamilton"
+set sendmail_wait = 0
+unset record
 
