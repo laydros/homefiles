@@ -20,3 +20,10 @@
 [mergetool "diffmerge"]
 	cmd = ~/bin/diffmerge.sh --merge --result=$MERGED $LOCAL $BASE $REMOTE
 	trustExitCode = true
+[alias]
+    d  = diff
+    dc = diff --cached
+    lc = log ORIG_HEAD.. --stat --no-merges
+    gl = log --oneline --decorate --stat --graph
+    st = status -sb
+    
