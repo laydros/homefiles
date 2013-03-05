@@ -1,32 +1,19 @@
-
 set nocompatible
 
-call pathogen#infect()
-call pathogen#helptags()
-
+execute pathogen#infect()
 syntax on
-let g:solarized_termtrans=1
-set background=dark     
-colorscheme solarized
-call togglebg#map("<F5>")
+filetype plugin indent on
 
-" let g:Powerline_symbols = 'fancy'
-
-set hidden                  " useable buffers
-set autoread                " autoreload files changed externally
-
+set autoread			" autoreload files changed externally
+set hidden              " usable buffers
 set encoding=utf-8
-
-if has ("gui_running")
-    set guioptions-=T
-endif
 
 set wildmenu
 set ruler
 
-" Vim UI {
+" VIM UI {
     " ignore some formats
-"    set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.obj,*.bak,*.exe,*.jpg,*.png,*,.gif 
+" set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.o,*.obj,*.bak,*.exe,*.jpg,*.png,*,.gif 
     set splitbelow          " split below
     set splitright          " split right
     set cmdheight=1         " command bar is 1 high
@@ -36,31 +23,15 @@ set ruler
     set number              " show line numbers
 "    set lazyredraw          " do not redraw while running macros (much faster)
     set laststatus=2        " show status line
-"    set statusline=%t       " tail of the filename
-"    set statusline+=%m      " modified flag
-"    set statusline+=%r      " readonly flag
-"    set statusline+=%y      " filetype
-"    set statusline+=%=      " left/right seperator
-"    set statusline+=%c,     " cursor column
-"    set statusline+=%l/%L   " cursor line/total lines
-"    set statusline+=\ %P    " percent through file
-" }
-
-" Visual Cues {
-    set colorcolumn=85
-    if exists('+colorcolumn')
-        set colorcolumn=+1      " show a colored column one column from &tw
-    endif
-
-    set showmatch   " show matching brackets
-    set hlsearch    " highlight searched phrases
-    set incsearch   " highlight as you type 
-    set report=0    " always report the number of lines changed
-"    set list        " show whitespace characters
- 
-    " map leader-space to clear search highlighting
-    nnoremap <leader><space> :noh<cr> 
-" }
+    set statusline=%t       " tail of the filename
+    set statusline+=%m      " modified flag
+    set statusline+=%r      " readonly flag
+    set statusline+=%y      " filetype
+    set statusline+=%=      " left/right seperator
+    set statusline+=%c,     " cursor column
+    set statusline+=%l/%L   " cursor line/total lines
+    set statusline+=\ %P    " percent through file
+" )
 
 " Indentation {
     set autoindent
@@ -77,6 +48,21 @@ set ruler
     filetype indent on  " load filetype indents
 " }
 
+" Visual Cues {
+    set colorcolumn=85
+    if exists('+colorcolumn')
+        set colorcolumn=+1      " show a colored column one column from &tw
+    endif
+
+    set showmatch   " show matching brackets
+    set hlsearch    " highlight searched phrases
+    set incsearch   " highlight as you type 
+    set report=0    " always report the number of lines changed
+"    set list        " show whitespace characters     
+    " map leader-space to clear search highlighting
+    nnoremap <leader><space> :noh<cr> 
+" }
+
 " Key remaps {
     nnoremap ; :       
     inoremap jk <Esc>   " use jk to get out of insert
@@ -86,12 +72,6 @@ set ruler
 
     let mapleader = "," " remap leader to comma
 " }
-
-" Preserve indendation when pasting text from OS X clipboard
-noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
-
-" Save when losing focus
-au FocusLost * :wa
 
 " filetypes
 au BufNewFile,BufRead *.cljs setfiletype clojure
@@ -103,6 +83,14 @@ autocmd Filetype ruby setlocal ts=2 sw=2 expandtab
 " better completion
 set wildmode=list:longest
 
+
+" Preserve indendation when pasting text from OS X clipboard
+noremap <leader>p :set paste<CR>:put  *<CR>:set nopaste<CR>
+
+" Save when losing focus
+au FocusLost * :wa
+
+
 " scroll by three lines when cursor moves off screen
 set scrolloff=3
 
@@ -113,5 +101,10 @@ set backspace=indent,eol,start
 set ignorecase
 set smartcase
 
+if has ("gui_running")
+    set guioptions-=T
+endif
+
 " copy to os x pasteboard
 vmap <C-c> :w !pbcopy<CR>
+
