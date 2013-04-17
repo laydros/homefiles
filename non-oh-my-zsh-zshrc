@@ -20,6 +20,8 @@ fi
 
 export BROWSER
 
+export TERM=xterm
+
 # set default prompt to walters theme
 prompt walters
 
