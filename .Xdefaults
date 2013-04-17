@@ -14,13 +14,21 @@ Xcursor.theme: 		Vanilla-DMZ
 
 ! URxvt
 ! -----
-URxvt*scrollBar:    false
-URxvt.scrollstyle:  plain
-URxvt*saveLines:    10000
-URxvt*urgentOnBell: true
+! --[Title]--!
+URxvt*title:        urxvt	
+URxvt*termName:     rxvt-256color
+
+!--[URL Select]--!
+URxvt.perl-ext-common:  default,matcher
+URxvt.url-launcher:      /usr/bin/firefox
+URxvt.matcher.button:   1 
+URxvt.underlineURLs:    true
+
+!--[Fonts]--!
 !URxvt*font:	    -*-terminus-medium-*-*-*-14-*-*-*-*-*-*-*
 !URxvt.font:         6x13
 URxvt.font:         xft:Deja Vu Sans Mono:pixelsize=12:antialias=true:hinting=true
+URxvt.boldFont:     xft:Deja Vu Sans Mono:pixelsize=12:antialias=true:hinting=true
 !URxvt*fading:	    25
 URxvt*letterSpace:  -1
 URxvt*fadeColor:    rgb:ee/ee/ee
@@ -28,9 +36,19 @@ URxvt*foreground:   rgb:ee/ee/ee
 URxvt*background:   rgb:22/22/22
 URxvt*cursorColor:  rgb:00/f6/3f
 
-URxvt.perl-ext-common:  default,matcher
-URxvt.urlLauncher:      /usr/bin/firefox
-URxvt.matcher.button:   1 
+!--[URxvt Options]--!
+URxvt*scrollBar:    false
+URxvt.scrollstyle:  plain
+URxvt*saveLines:    10000
+URxvt*urgentOnBell: true
+URxvt.loginShell:   true
+URxvt.saveLines:    5000
+URxvt.underlineColor:   #4682B4
+
+
+
+! show urls in blue
+!URxvt.colorUL:	    #4682B4
 
 ! black
 URxvt*color0:          rgb:00/00/00
