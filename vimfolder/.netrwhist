@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/Users/jhamilton/.oh-my-zsh/custom/example'
+let g:netrw_dirhist_2='/usr/local/Cellar/mcabber/0.10.1/share/mcabber'
+let g:netrw_dirhist_3='/Users/jhamilton/.offlineimap'
+let g:netrw_dirhist_4='/home/jhamilton'
+let g:netrw_dirhist_5='/home/jhamilton/Dropbox/todo'
+let g:netrw_dirhist_6='/home/jwh/Downloads/solarized/xresources-colors-solarized'
