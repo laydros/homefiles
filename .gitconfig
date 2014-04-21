@@ -1,29 +1,37 @@
+[user]
+	name = Jason Hamilton
+	email = jwh@laydros.net
+[core]
+	excludesfile = ~/.gitignore_global
+	editor = /usr/bin/vim
 [color]
+    ui = false
+    interactive = auto
     diff = auto
     status = auto
     branch = auto
-[user]
-	name = Jason Hamilton
-	email = jhamilton@bandwidth.com
-[core]
-	excludesfile = /Users/jhamilton/.gitignore_global
+[color "interactive"]
+    prompt = bold normal
+    help = black
+#[push]
+#    default = simple
 [status]
     relativePaths = false
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+[diff]
+    external=/home/jwh/bin/git-meld.sh
 [merge]
-	tool = diffmerge
-[mergetool "diffmerge"]
-	cmd = ~/bin/diffmerge.sh --merge --result=$MERGED $LOCAL $BASE $REMOTE
-	trustExitCode = true
+    log = true
 [alias]
+    st = status -s -uno
+    ix = diff --cached
+    tree = log --oneline --decorate --graph
+    news = log -p @{1}..
+    lg = log --date=short --pretty='%cd %h%d %s'
+    co = checkout
     d  = diff
     dc = diff --cached
     lc = log ORIG_HEAD.. --stat --no-merges
     gl = log --oneline --decorate --stat --graph
     st = status -sb
-    
+[push]
+	default = simple

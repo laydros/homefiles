@@ -1,23 +1,28 @@
-Host worker01
-    HostName 192.168.101.79
+Host smoke
+    HostName 206.212.236.45
+    User root
+    Port 15000
+
+Host fyre
+    HostName 10.1.0.159
+    User root
     Port 22
-    User jhamilton
 
-Host worker02
-    HostName 192.168.101.80
+Host dagr
+    HostName 10.1.0.240
+    User root
     Port 22
-    User jhamilton
-
-Host tomcat01
-    HostName 192.168.101.75
-
-Host tomcat02
-    HostName 192.168.101.76
 
 Host devio.us
     HostName devio.us
     User laydros
 
 Host qatest
-    HostName 10.1.41.156
+    HostName 10.3.65.9
 
+Host gibson
+    HostName 10.3.64.246
+
+Host linode
+    HostName 74.207.237.64
+    User jhamilton
