@@ -1,16 +1,5 @@
 
 
-(setq visible-bell t)
-
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
-(blink-cursor-mode 0)
-(setq standard-indent 4)
-(setq-default indent-tabs-mode nil)
-(setq scroll-step 1)
-
-(setq transient-mark-mode t) ; visually show region
-(setq global-font-lock-mode 1) ; everything should use fonts
 
 (require 'package)
 (require 'json)
@@ -18,7 +7,21 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 ; Initialize package mode along with all the installed packages
 (package-initialize)
-(load-theme 'zenburn t)
+(load-theme 'monokai t)
+
+(setq visible-bell t)
+
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
+(blink-cursor-mode 0)
+(display-time-mode 1)
+(setq standard-indent 4)
+(setq-default indent-tabs-mode nil)
+(setq scroll-step 1)
+
+(setq transient-mark-mode t) ; visually show region
+(setq global-font-lock-mode 1) ; everything should use fonts
+
 (elpy-enable)
 ;; Fixing a key binding bug in elpy
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
@@ -91,7 +94,6 @@
 ;;                 ''     ''
 
 ")
-
 
 
 ;; -------- things i might want ---------
@@ -198,16 +200,3 @@
 (add-hook 'markdown-mode-hook (lambda () (visual-line-mode t)))
 ;(setq markdown-command "pandoc --smart -f markdown -t html")
 ;(setq markdown-css-path (expand-file-name "markdown.css" abedra/vendor-dir))
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(custom-safe-themes (quote ("60f04e478dedc16397353fb9f33f0d895ea3dab4f581307fbf0aa2f07e658a40" "cd70962b469931807533f5ab78293e901253f5eeb133a46c2965359f23bfb2ea" default))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
