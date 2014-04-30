@@ -1,6 +1,5 @@
 
 
-
 (require 'package)
 (require 'json)
 
@@ -189,6 +188,12 @@
 (setq user-mail-address "jwh@laydros.net")
 
 (setq display-time-mode t)
+
+;;;;;;;;;;;;;
+;; ERC stuff
+;;;;;;;;;;;;
+(setq erc-fill-function 'erc-fill-static)
+(setq erc-fill-static-center 22)
 
 
 ;; Enable Markdown mode and setup additional file extensions.
