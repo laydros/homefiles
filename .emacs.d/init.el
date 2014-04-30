@@ -1,12 +1,41 @@
 
+;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 
 (require 'package)
 (require 'json)
 
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
-; Initialize package mode along with all the installed packages
+(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
+(add-to-list 'package-archives '("Tromey" . "http://tromey.com/elpa/") t)
+
+;;Initialize package mode along with all the installed packages
 (package-initialize)
+
+(defun jwh-require-package (name)
+  (unless (package-installed-p name)
+    (package-install name)))
+
+
+;; (setq jwh-required-packages
+;;       (list 'undo-tree 'magit 'gh 'monokai-theme 'elpy 'bar-cursor 'back-button 'auto-complete))
+;; (dolist (package jwh-required-packages)
+;;   (when (not (package-installed-p package))
+;;     (package-refresh-contents)
+;;     (package-install package))))
+
+;; (setq jwh-init-dir (expand-file-name "init.d"))
+
+
+(jwh-require-package 'monokai-theme)
 (load-theme 'monokai t)
+
+;; load all lisp files in ./init.d
+;; (if (file-exists-p jwh-init-dir)
+;;     (dolist (file (directory-files jwh-init-dir t "\\.el$"))
+;;       (load-file)))
+
 
 (setq visible-bell t)
 
@@ -20,6 +49,8 @@
 
 (setq transient-mark-mode t) ; visually show region
 (setq global-font-lock-mode 1) ; everything should use fonts
+
+(jwh-require-package 'elpy)
 
 (elpy-enable)
 ;; Fixing a key binding bug in elpy
@@ -39,15 +70,18 @@
 (show-paren-mode t)
 (require 'autopair)
 
+(jwh-require-package 'auto-complete)
 (require 'auto-complete-config)
 (ac-config-default)
 
 (require 'bar-cursor)
 (bar-cursor-mode t)
 
+(jwh-require-package 'undo-tree)
 (require 'undo-tree)
 (global-undo-tree-mode)
 
+(jwh-require-package 'back-button)
 (require 'back-button)
 (back-button-mode 1)
 
@@ -195,6 +229,11 @@
 (setq erc-fill-function 'erc-fill-static)
 (setq erc-fill-static-center 22)
 
+;;;;;;;;;
+;; SQL ;;
+;;;;;;;;;
+(set 'sql-ms-program "sqsh")
+(set 'sql-sybase-program "sqsh")
 
 ;; Enable Markdown mode and setup additional file extensions.
 ;; Use pandoc to generate HTML previews from within the mode.
@@ -205,3 +244,17 @@
 (add-hook 'markdown-mode-hook (lambda () (visual-line-mode t)))
 ;(setq markdown-command "pandoc --smart -f markdown -t html")
 ;(setq markdown-css-path (expand-file-name "markdown.css" abedra/vendor-dir))
+
+
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
