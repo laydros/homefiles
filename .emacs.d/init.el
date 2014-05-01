@@ -142,17 +142,29 @@
 ;; y and n instead of yes and no
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(defun comment-or-uncomment-region-or-line ()
+  "Like comment-or-uncomment-region, but if there's no mark \(that means no
+region\) apply comment-or-uncomment to the current line"
+  (interactive)
+  (if (not mark-active)
+      (comment-or-uncomment-region
+       (line-beginning-position) (line-end-position))
+    (if (< (point) (mark))
+        (comment-or-uncomment-region (point) (mark))
+      (comment-or-uncomment-region (mark) (point)))))
+
 ;; ----------------------------------
 ;; ---------- Key Bindings ----------
 ;; ----------------------------------
 
 (global-set-key (kbd "RET") 'newline-and-indent)
-(global-set-key (kbd "C-;") 'comment-or-uncomment-region)
+;; (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key "\C-x\C-b" 'electric-buffer-list)
-
+(global-set-key "\C-c\C-r" 'comment-or-uncomment-region-or-line)
+(global-set-key (kbd "C-;") 'comment-or-uncomment-region-or-line)
 
 ;; ----------------------------------
 ;; ------------ Org-mode ------------
@@ -175,6 +187,10 @@
 ;; makes temporary files go away
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
 (setq auto-save-file-name-transforms `((".*" ,temporary-file-directory t)))
+
+;; track recently-opened files
+(recentf-mode 1)
+(setq recentf-max-menu-items 100)
 
 ;; uniquify for buffer names
 (require 'uniquify)
@@ -228,6 +244,17 @@
 ;;;;;;;;;;;;
 (setq erc-fill-function 'erc-fill-static)
 (setq erc-fill-static-center 22)
+
+
+(erc :server "irc.freenode.net" :port 6667 :nick "laydros")
+
+(add-hook 'erc-after-connect '(lambda ("freenode.net")
+               (erc-message "PRIVMSG" "NickServ identify mypassword")))
+
+(setq erc-autojoin-channels-alist
+  '(("freenode.net" "#emacs" "#cm6-snap" "#nethack")))
+
+(setq erc-hide-list '("JOIN" "PART" "QUIT"))
 
 ;;;;;;;;;
 ;; SQL ;;
