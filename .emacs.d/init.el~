@@ -74,11 +74,11 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
-(require 'bar-cursor)
-(bar-cursor-mode t)
+;(require 'bar-cursor)
+;(bar-cursor-mode t)
 
 (jwh-require-package 'undo-tree)
-q(require 'undo-tree)
+(require 'undo-tree)
 (global-undo-tree-mode)
 
 (jwh-require-package 'back-button)

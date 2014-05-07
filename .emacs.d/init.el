@@ -9,6 +9,8 @@
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
 (add-to-list 'package-archives '("Tromey" . "http://tromey.com/elpa/") t)
+(add-to-list 'package-archives
+             '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 
 ;;Initialize package mode along with all the installed packages
 (package-initialize)
@@ -51,8 +53,10 @@
 (setq global-font-lock-mode 1) ; everything should use fonts
 
 (jwh-require-package 'elpy)
+(jwh-require-package 'flymake-cursor)
 
 (elpy-enable)
+(elpy-clean-modeline)
 ;; Fixing a key binding bug in elpy
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
 ; Fixing another key binding bug in iedit mode
@@ -74,8 +78,8 @@
 (require 'auto-complete-config)
 (ac-config-default)
 
-(require 'bar-cursor)
-(bar-cursor-mode t)
+;(require 'bar-cursor)
+;(bar-cursor-mode t)
 
 (jwh-require-package 'undo-tree)
 (require 'undo-tree)
@@ -98,6 +102,7 @@
 ;; same thing inline
 (global-set-key (kbd "<f8>") (lambda () (interactive) (message (buffer-file-name))))
 
+(jwh-require-package 'markdown-mode)
 (require 'markdown-mode)
 ;; only in markdown mode, f9 will spell check
 (define-key markdown-mode-map (kbd "<f9>") 'ispell-buffer)
@@ -245,14 +250,13 @@ region\) apply comment-or-uncomment to the current line"
 (setq erc-fill-function 'erc-fill-static)
 (setq erc-fill-static-center 22)
 
-
 (erc :server "irc.freenode.net" :port 6667 :nick "laydros")
 
 (add-hook 'erc-after-connect '(lambda ("freenode.net")
                (erc-message "PRIVMSG" "NickServ identify mypassword")))
 
-(setq erc-autojoin-channels-alist
-  '(("freenode.net" "#emacs" "#cm6-snap" "#nethack")))
+;; (setq erc-autojoin-channels-alist
+;;   '(("freenode.net" "#emacs" "#cm6-snap" "#nethack")))
 
 (setq erc-hide-list '("JOIN" "PART" "QUIT"))
 
