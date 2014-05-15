@@ -247,18 +247,29 @@ region\) apply comment-or-uncomment to the current line"
 ;;;;;;;;;;;;;
 ;; ERC stuff
 ;;;;;;;;;;;;
-(setq erc-fill-function 'erc-fill-static)
-(setq erc-fill-static-center 22)
+;(setq erc-fill-function 'erc-fill-static)
+;(setq erc-fill-static-center 22)
 
-(erc :server "irc.freenode.net" :port 6667 :nick "laydros")
+;(erc :server "irc.freenode.net" :port 6667 :nick "laydros")
 
-(add-hook 'erc-after-connect '(lambda ("freenode.net")
+;(add-hook 'erc-after-connect '(lambda ("freenode.net")
                (erc-message "PRIVMSG" "NickServ identify mypassword")))
 
 ;; (setq erc-autojoin-channels-alist
 ;;   '(("freenode.net" "#emacs" "#cm6-snap" "#nethack")))
 
-(setq erc-hide-list '("JOIN" "PART" "QUIT"))
+;(setq erc-hide-list '("JOIN" "PART" "QUIT"))
+
+;;;;;;;;;;;;;;;;;;;
+;; Beautify JSON ;;
+;;;;;;;;;;;;;;;;;;;
+
+(defun beautify-json ()
+  (interactive)
+  (let ((b (if mark-active (min (point) (mark)) (point-min)))
+        (e (if mark-active (max (point) (mark)) (point-max))))
+    (shell-command-on-region b e
+      "python -mjson.tool" (current-buffer) t)))
 
 ;;;;;;;;;
 ;; SQL ;;
