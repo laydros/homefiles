@@ -1,0 +1,72 @@
+[general]
+ui = ttyui
+accounts = Factor500, WycomSystems
+#accounts = FastMail, factor500
+metadata = ~/mail/.offlineimap
+maxsyncaccounts = 2
+#pythonfile = ~/.offlineimap.py
+
+# FastMail
+
+[Account FastMail]
+#localrepository = LocalFM
+#remoterepository = RemoteFM
+# autorefresh = 5
+
+[Account Factor500]
+localrepository = LocalF500
+remoterepository = RemoteF500
+
+[Account WycomSystems]
+localrepository = LocalWycom
+remoterepository = RemoteWycom
+
+[Repository LocalFM]
+type = Maildir
+localfolders = ~/mail/fastmail
+#subscribedonly = no
+#sep = /
+
+[Repository RemoteFM]
+type = IMAP
+remotehost = mail.messagingengine.com
+remoteport = 993
+cert_fingerprint = 09:C9:BF:C1:AB:C7:A4:E1:EC:8E:6D:F6:D2:06:FB:E6
+holdconnectionopen = yes
+remoteuser = jhamilton@fastmail.us
+remotepassfile = ~/.config/offlineimap/jhamilton.fastmail.us
+ssl = yes
+expunge = no
+folderfilter = lambda foldername: foldername not in ['INBOX.Trash']
+#folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam','[Gmail]/Trash']
+maxconnections = 3
+
+# Factor500
+
+[Repository LocalF500]
+type = Maildir
+localfolders = ~/mail/factor500
+
+[Repository RemoteF500]
+type = Gmail
+remotehost = imap.googlemail.com
+remoteuser = jasonh@factor500.com
+#remotepassfile = ~/.config/offlineimap/jasonh.factor500.com
+ssl = yes
+realdelete = no
+folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam','[Gmail]/Trash']
+
+# WycomSystems
+
+[Repository LocalWycom]
+type = Maildir
+localfolders = ~/mail/wycomsystems
+
+[Repository RemoteWycom]
+type = Gmail
+remotehost = imap.googlemail.com
+remoteuser = jasonh@wycomsystems.com
+#remotepassfile = ~/.config/offlineimap/jasonh.wycomsystems.com
+ssl = yes
+realdelete = no
+folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam','[Gmail]/Trash']
