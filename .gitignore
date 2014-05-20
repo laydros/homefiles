@@ -3,10 +3,17 @@
 !.Xresources
 !.config/
 !.zsh_history
-!.emacs.d/
+#!.emacs.d/
 
 .config/chromium/
 .config/banshee-1/
 .config/xfce4/
 .config/evolution/
 .config/scribes/
+
+.emacs.d/.python-environments
+.emacs.d/elpa
+.emacs.d/var
+.emacs.d/auto-save-list
+.emacs.d/projectile-bookmarks.eld
+.emacs.d/ac-comphist.dat
