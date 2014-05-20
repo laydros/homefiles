@@ -153,7 +153,7 @@ May be necessary for some GUI environments (e.g., Mac OS X)")
 (setq transient-mark-mode t) ; visually show region
 (setq global-font-lock-mode 1) ; everything should use fonts
 
-(jwh-require-package 'ipython)
+;(jwh-require-package 'ipython)
 
 (jwh-require-package 'elpy)
 (jwh-require-package 'flymake-cursor)
@@ -176,15 +176,15 @@ May be necessary for some GUI environments (e.g., Mac OS X)")
 (defvar python--ipdb-breakpoint-string "import ipdb; ipdb.set_trace() ## DEBUG ##"
   "Python breakpoint string used by `python-insert-breakpoint'")
 
-(defun python-insert-breakpoint ()
-  "Inserts a python breakpoint using `pdb'"
-  (interactive)
-  (back-to-indentation)
-  ;; this preserves the correct indentation in case the line above
-  ;; point is a nested block
-  (split-line)
-  (insert python--ipdb-breakpoint-string))
-(define-key python-mode-map (kbd "<f6>") 'python-insert-breakpoint)
+;; (defun python-insert-breakpoint ()
+;;   "Inserts a python breakpoint using `pdb'"
+;;   (interactive)
+;;   (back-to-indentation)
+;;   ;; this preserves the correct indentation in case the line above
+;;   ;; point is a nested block
+;;   (split-line)
+;;   (insert python--ipdb-breakpoint-string))
+;(define-key python-mode-map (kbd "<f6>") 'python-insert-breakpoint)
 
 
 (highlight-indentation-mode -1)
