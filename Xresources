@@ -1,8 +1,6 @@
 Xft.lcdfilter: lcddefault
 
-
-!URxvt.font:         -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-
+Xft*dpi:		96
 emacs.font: Inconsolata-13
 Rxvt*scrollBar: False
 urxvt.font: xft:inconsolata:pixelsize=17,xft:Anonymous Pro for Powerline:pixelsize=17
@@ -14,7 +12,6 @@ urxvt*letterSpace:-1.0
 URxvt.searchable-scrollback: false
 dmenu.font: xft:inconsolata:pixelsize=17
 
-Xft*dpi:		96
 
 ! wheat is too dark at #F5DEB3
 !urxvt.background: #F5EED3
