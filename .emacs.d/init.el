@@ -54,6 +54,7 @@
 
 (jwh-require-package 'elpy)
 (jwh-require-package 'flymake-cursor)
+(jwh-require-package 'magit)
 
 (elpy-enable)
 (elpy-clean-modeline)
@@ -72,6 +73,7 @@
 (setq-default fill-column 79)
 
 (show-paren-mode t)
+(jwh-require-package 'autopair)
 (require 'autopair)
 
 (jwh-require-package 'auto-complete)
@@ -253,7 +255,7 @@ region\) apply comment-or-uncomment to the current line"
 ;(erc :server "irc.freenode.net" :port 6667 :nick "laydros")
 
 ;(add-hook 'erc-after-connect '(lambda ("freenode.net")
-               (erc-message "PRIVMSG" "NickServ identify mypassword")))
+;               (erc-message "PRIVMSG" "NickServ identify mypassword")))
 
 ;; (setq erc-autojoin-channels-alist
 ;;   '(("freenode.net" "#emacs" "#cm6-snap" "#nethack")))
