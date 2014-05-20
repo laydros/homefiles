@@ -41,8 +41,6 @@
 
 (setq visible-bell t)
 
-(tool-bar-mode 0)
-(scroll-bar-mode 0)
 (blink-cursor-mode 0)
 (display-time-mode 1)
 (setq standard-indent 4)
@@ -56,8 +54,8 @@
 (jwh-require-package 'flymake-cursor)
 (jwh-require-package 'magit)
 
-(elpy-enable)
-(elpy-clean-modeline)
+;;(elpy-enable)
+;;(elpy-clean-modeline)
 ;; Fixing a key binding bug in elpy
 (define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
 ; Fixing another key binding bug in iedit mode
@@ -83,13 +81,13 @@
 ;(require 'bar-cursor)
 ;(bar-cursor-mode t)
 
-(jwh-require-package 'undo-tree)
-(require 'undo-tree)
-(global-undo-tree-mode)
+;;(jwh-require-package 'undo-tree)
+;;(require 'undo-tree)
+;;(global-undo-tree-mode)
 
-(jwh-require-package 'back-button)
-(require 'back-button)
-(back-button-mode 1)
+;;(jwh-require-package 'back-button)
+;;(require 'back-button)
+;;(back-button-mode 1)
 
 ;; resize window
 (global-set-key (kbd "M-<up>") 'enlarge-window)
@@ -110,7 +108,7 @@
 (define-key markdown-mode-map (kbd "<f9>") 'ispell-buffer)
 (add-hook 'markdown-mode-hook 'flyspell-mode)
 
-(define-key elpy-mode-map (kbd "<f5>") 'flymake-display-err-menu-for-current-line)
+;(define-key elpy-mode-map (kbd "<f5>") 'flymake-display-err-menu-for-current-line)
 
 ;; C-h f - get function help
 ;; C-h v - get variable help
@@ -276,8 +274,8 @@ region\) apply comment-or-uncomment to the current line"
 ;;;;;;;;;
 ;; SQL ;;
 ;;;;;;;;;
-(set 'sql-ms-program "sqsh")
-(set 'sql-sybase-program "sqsh")
+; (set 'sql-ms-program "sqsh")
+; (set 'sql-sybase-program "sqsh")
 
 ;; Enable Markdown mode and setup additional file extensions.
 ;; Use pandoc to generate HTML previews from within the mode.
