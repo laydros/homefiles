@@ -32,6 +32,7 @@
 (jwh-require-package 'projectile)
 (require 'projectile)
 (projectile-global-mode)
+(setq projectile-completion-system 'ido)
 
 ;;;;;;;;;;;;;;;;;;;;;;;;
 ;; auto-complete
@@ -286,6 +287,7 @@ region\) apply comment-or-uncomment to the current line"
 (ido-mode t)
 (setq ido-enable-flex-matching t
       ido-use-virtual-buffers t)
+(ido-vertical-mode t)
 
 ;; makes temporary files go away
 (setq backup-directory-alist `((".*" . ,temporary-file-directory)))
