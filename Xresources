@@ -1,4 +1,4 @@
-Xft.lcdfilter: lcddefault
+!Xft.lcdfilter: lcddefault
 
 Xft*dpi:		96
 emacs.font: Inconsolata-13
