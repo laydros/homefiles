@@ -14,7 +14,7 @@
 
 ;;Initialize package mode along with all the installed packages
 (package-initialize)
-(package-refresh-contents)
+;(package-refresh-contents)
 
 ;; (defvar jwh-local-packages '(projectile auto-complete epc jedi))
 
@@ -153,6 +153,8 @@ May be necessary for some GUI environments (e.g., Mac OS X)")
 (setq transient-mark-mode t) ; visually show region
 (setq global-font-lock-mode 1) ; everything should use fonts
 
+(jwh-require-package 'ipython)
+
 (jwh-require-package 'elpy)
 (jwh-require-package 'flymake-cursor)
 (jwh-require-package 'magit)
@@ -163,6 +165,27 @@ May be necessary for some GUI environments (e.g., Mac OS X)")
 ;(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
 ; Fixing another key binding bug in iedit mode
 (define-key global-map (kbd "C-c o") 'iedit-mode)
+(global-unset-key (kbd "C-;"))
+
+(defun python--add-debug-highlight ()
+  "Adds a highlighter for use by `python--ipdb-breakpoint-string'"
+  (highlight-lines-matching-regexp "## DEBUG ##\\s-*$" 'hi-red-b))
+
+(add-hook 'python-mode-hook 'python--add-debug-highlight)
+
+(defvar python--ipdb-breakpoint-string "import ipdb; ipdb.set_trace() ## DEBUG ##"
+  "Python breakpoint string used by `python-insert-breakpoint'")
+
+(defun python-insert-breakpoint ()
+  "Inserts a python breakpoint using `pdb'"
+  (interactive)
+  (back-to-indentation)
+  ;; this preserves the correct indentation in case the line above
+  ;; point is a nested block
+  (split-line)
+  (insert python--ipdb-breakpoint-string))
+(define-key python-mode-map (kbd "<f6>") 'python-insert-breakpoint)
+
 
 (highlight-indentation-mode -1)
 
@@ -177,16 +200,29 @@ May be necessary for some GUI environments (e.g., Mac OS X)")
 (jwh-require-package 'autopair)
 (require 'autopair)
 
-;(require 'bar-cursor)
-;(bar-cursor-mode t)
+(jwh-require-package 'auto-complete)
+(require 'auto-complete-config)
+(ac-config-default)
 
 ;;(jwh-require-package 'undo-tree)
 ;;(require 'undo-tree)
 ;;(global-undo-tree-mode)
 
-;;(jwh-require-package 'back-button)
-;;(require 'back-button)
-;;(back-button-mode 1)
+;(jwh-require-package 'back-button)
+;(require 'back-button)
+;(back-button-mode 1)
+
+(jwh-require-package 'fill-column-indicator)
+(require 'fill-column-indicator)
+(define-globalized-minor-mode
+ global-fci-mode fci-mode (lambda () (fci-mode 1)))
+(global-fci-mode t)
+
+(jwh-require-package 'popwin)
+(require 'popwin)
+(popwin-mode 1)
+
+(highlight-indentation-mode -1)
 
 ;; resize window
 (global-set-key (kbd "M-<up>") 'enlarge-window)
@@ -277,7 +313,7 @@ region\) apply comment-or-uncomment to the current line"
 (global-set-key (kbd "C-c a") 'org-agenda)
 (setq org-log-done t)
 (setq org-todo-keywords
-      '((sequence "TODO" "INPROGRESS" "DONE")))
+      '((sequence "TODO" "INPROGRESS" "WAITING" "DONE")))
 (setq org-todo-keyword-faces
       '(("INPROGRESS" . (:foreground "blue" :weight bold))))
 (setq org-agenda-files (list "~/Dropbox/org-mode/personal.org"))
@@ -287,6 +323,7 @@ region\) apply comment-or-uncomment to the current line"
 (ido-mode t)
 (setq ido-enable-flex-matching t
       ido-use-virtual-buffers t)
+(jwh-require-package 'ido-vertical-mode)
 (ido-vertical-mode t)
 
 ;; makes temporary files go away
@@ -344,6 +381,9 @@ region\) apply comment-or-uncomment to the current line"
 
 (setq display-time-mode t)
 
+(global-linum-mode 1)
+
+
 ;;;;;;;;;;;;;
 ;; ERC stuff
 ;;;;;;;;;;;;
@@ -386,6 +426,27 @@ region\) apply comment-or-uncomment to the current line"
 (add-hook 'markdown-mode-hook (lambda () (visual-line-mode t)))
 ;(setq markdown-command "pandoc --smart -f markdown -t html")
 ;(setq markdown-css-path (expand-file-name "markdown.css" abedra/vendor-dir))
+
+(defun totd ()
+  (interactive)
+  (random t) ;; seed with time-of-day
+  (with-output-to-temp-buffer "*Tip of the day*"
+    (let* ((commands (loop for s being the symbols
+                           when (commandp s) collect s))
+           (command (nth (random (length commands)) commands)))
+      (princ
+       (concat "Your tip for the day is:\\n"
+               "========================\\n\\n"
+               (describe-function command)
+               "\\n\\nInvoke with:\\n\\n"
+               (with-temp-buffer
+                 (where-is command t)
+                 (buffer-string)))))))
+
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+(when (require 'em-term)
+  (dolist (i '("kop" "ledger" "mc" "htop"))
+    (add-to-list 'eshell-visual-commands i)))
 
 
 (custom-set-variables
