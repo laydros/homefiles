@@ -8,15 +8,9 @@
 
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/") t)
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/") t)
-;(add-to-list 'package-archives '("Tromey" . "http://tromey.com/elpa/") t)
-;(add-to-list 'package-archives
-;             '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 
 ;;Initialize package mode along with all the installed packages
 (package-initialize)
-;(package-refresh-contents)
-
-;; (defvar jwh-local-packages '(projectile auto-complete epc jedi))
 
 (defun jwh-require-package (name)
   (unless (package-installed-p name)
@@ -43,107 +37,22 @@
 ;; show menu very quickly - may need to turn back off
 (setq ac-show-menu-immediately-on-auto-complete t)
 
-;; EPC - hooks together jedi and emacs
-(jwh-require-package 'epc)
-
-;;;;;;;;;;;;;
-;; jedi
-;; ---------------
-;; current setup is for python, similar setup could be used with:
-;; robe - ruby
-;; irony-mode - C/C++
-;; gocode - goloan
-;; CEDET - various
-;;     - jwh 2014-05-20
-;;;;;;;;;;;;;
-(jwh-require-package 'jedi)
-(require 'jedi)
-;; Hook up autocomplete
-(add-to-list 'ac-sources 'ac-source-jedi-direct)
-;; Enable for python-mode
-(add-hook 'python-mode-hook 'jedi:setup)
-(defvar jedi-config:use-system-python nil
-  "Will use system python and active environment for Jedi server.
-May be necessary for some GUI environments (e.g., Mac OS X)")
-(defvar jedi-config:with-virtualenv nil
-  "Set to non-nil to point to a particular virtualenv.")
-;; Variables to help jedi find project root
-(defvar jedi-config:vcs-root-sentinel ".git")
-(defvar jedi-config:python-module-sentinel "__init__.py")
-
-;; Helper functions
-
-;; Small helper to scrape text from shell output
-(defun get-shell-output (cmd)
-  (replace-regexp-in-string "[ \t\n]*$" "" (shell-command-to-string cmd)))
-
-;; Function to find the project root given a buffer
-(defun get-project-root (buf repo-type init-file)
-  (vc-find-root (expand-file-name (buffer-file-name buf)) repo-type))
-
-(defvar jedi-config:find-root-function 'get-project-root)
-
-;; And call this on initialization
-(defun current-buffer-project-root ()
-  (funcall jedi-config:find-root-function
-           (current-buffer)
-           jedi-config:vcs-root-sentinel
-           jedi-config:python-module-sentinel))
-
-(defun jedi-config:setup-server-args ()
-  ;; little helper macro for building the arglist
-  (defmacro add-args (arg-list arg-name arg-value)
-    `(setq ,arg-list (append ,arg-list (list ,arg-name ,arg-value))))
-  ;; and now define the args
-  (let ((project-root (current-buffer-project-root)))
-    ;; variable for this buffer only
-    (make-local-variable 'jedi:server-args)
-
-    ;; And set our variables
-    (when project-root
-      (add-args jedi:server-args "--sys-path" project-root))
-    (when jedi-config:with-virtualenv
-      (add-args jedi:server-args "--virtual-env"
-                jedi-config:with-virtualenv))))
-
-(add-hook 'python-mode-hook
-          'jedi-config:setup-server-args)
-
-;; this would be needed for OS X
-;; (when jedi-config:use-system-python
-;;   (add-hook 'python-mode-hook
-;;             'jedi-config:set-python-executable))
-
-;; Jedi custom keybindings
-;; --------------------------------------------------------
-;; description                             | default | new
-;; go to def of symbol at point            | C-c .   | M-.
-;; go to previous location of point        | C-c ,   | M-,
-;; show docstring for symbol at point      | C-c ?   | M-?
-;; pop up signature for function at point  | None    | M-/
-(defun jedi-config:setup-keys ()
-  (local-set-key (kbd "M-.") 'jedi:goto-definition)
-  (local-set-key (kbd "M-,") 'jedi:goto-definition-pop-marker)
-  (local-set-key (kbd "M-?") 'jedi:show-doc)
-  (local-set-key (kbd "M-/") 'jedi:get-in-function-call))
-
-;; Don't let tooltip show up automatically
-(setq jedi:get-in-function-call-delay 10000000)
-;; Start completion at method dot
-(setq jedi:complete-on-dot t)
-;; Use custom keybinds
-(add-hook 'python-mode-hook 'jedi-config:setup-keys)
-
-;;;;;;;;;;;;;;;;;;;;;
-;; end jedi config ;;
-;;;;;;;;;;;;;;;;;;;;;
+;; (setq jwh-init-dir (expand-file-name "init.d"))
 
 
 (jwh-require-package 'monokai-theme)
 (load-theme 'monokai t)
 
+;; load all lisp files in ./init.d
+;; (if (file-exists-p jwh-init-dir)
+;;     (dolist (file (directory-files jwh-init-dir t "\\.el$"))
+;;       (load-file)))
+
+
 (setq visible-bell t)
 
+(tool-bar-mode 0)
+(scroll-bar-mode 0)
 (blink-cursor-mode 0)
 (display-time-mode 1)
 (setq standard-indent 4)
@@ -165,7 +74,6 @@ May be necessary for some GUI environments (e.g., Mac OS X)")
 ;(define-key yas-minor-mode-map (kbd "C-c k") 'yas-expand)
 ; Fixing another key binding bug in iedit mode
 (define-key global-map (kbd "C-c o") 'iedit-mode)
-(global-unset-key (kbd "C-;"))
 
 (defun python--add-debug-highlight ()
   "Adds a highlighter for use by `python--ipdb-breakpoint-string'"
@@ -243,7 +151,7 @@ May be necessary for some GUI environments (e.g., Mac OS X)")
 (define-key markdown-mode-map (kbd "<f9>") 'ispell-buffer)
 (add-hook 'markdown-mode-hook 'flyspell-mode)
 
-;(define-key elpy-mode-map (kbd "<f5>") 'flymake-display-err-menu-for-current-line)
+(define-key elpy-mode-map (kbd "<f5>") 'flymake-display-err-menu-for-current-line)
 
 ;; C-h f - get function help
 ;; C-h v - get variable help
@@ -387,23 +295,22 @@ region\) apply comment-or-uncomment to the current line"
 ;;;;;;;;;;;;;
 ;; ERC stuff
 ;;;;;;;;;;;;
-;(setq erc-fill-function 'erc-fill-static)
-;(setq erc-fill-static-center 22)
+(setq erc-fill-function 'erc-fill-static)
+(setq erc-fill-static-center 22)
 
-;(erc :server "irc.freenode.net" :port 6667 :nick "laydros")
+(erc :server "irc.freenode.net" :port 6667 :nick "laydros")
 
-;(add-hook 'erc-after-connect '(lambda ("freenode.net")
-;               (erc-message "PRIVMSG" "NickServ identify mypassword")))
+(add-hook 'erc-after-connect '(lambda ("freenode.net")
+               (erc-message "PRIVMSG" "NickServ identify mypassword")))
 
-;; (setq erc-autojoin-channels-alist
-;;   '(("freenode.net" "#emacs" "#cm6-snap" "#nethack")))
+(setq erc-autojoin-channels-alist
+  '(("freenode.net" "#emacs" "#cm6-snap" "#nethack")))
 
-;(setq erc-hide-list '("JOIN" "PART" "QUIT"))
+(setq erc-hide-list '("JOIN" "PART" "QUIT"))
 
 ;;;;;;;;;;;;;;;;;;;
 ;; Beautify JSON ;;
 ;;;;;;;;;;;;;;;;;;;
-
 (defun beautify-json ()
   (interactive)
   (let ((b (if mark-active (min (point) (mark)) (point-min)))
@@ -411,11 +318,7 @@ region\) apply comment-or-uncomment to the current line"
     (shell-command-on-region b e
       "python -mjson.tool" (current-buffer) t)))
 
-;;;;;;;;;
-;; SQL ;;
-;;;;;;;;;
-; (set 'sql-ms-program "sqsh")
-; (set 'sql-sybase-program "sqsh")
+
 
 ;; Enable Markdown mode and setup additional file extensions.
 ;; Use pandoc to generate HTML previews from within the mode.

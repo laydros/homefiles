@@ -5,8 +5,8 @@ ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-#ZSH_THEME="jasontheme"
 ZSH_THEME="bira"
+#ZSH_THEME="af-magic"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -15,10 +15,12 @@ alias l="clear && pwd && ls -FGl"
 alias u="cd .. && l"
 alias ..="cd .."
 alias ...="cd ..."
-alias dt="cd ~/Desktop/"
-alias dev="cd ~/dev/"
-alias lock="/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend"
-
+# the "kp" alias ("que pasa")
+alias kp="ps auxwww"
+#alias dt="cd ~/Desktop/"
+#alias e=emacsclient -t
+#alias ec=emacsclient -c
+#alias vim=emacsclient -t
 
 # Auto extension
 alias -s html=$BROWSER
@@ -31,8 +33,11 @@ alias -s java=$EDITOR
 alias -s txt=$EDITOR
 alias -s PKGBUILD=$EDITOR
 
-
-
+# junk for st terminal
+function zle-line-init () { echoti smkx }
+function zle-line-finish () { echoti rmkx }
+zle -N zle-line-init
+zle -N zle-line-finish
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -45,6 +50,9 @@ mc() {
     mkdir -p "$1" && cd "$1"
 }
 
+idata() {
+    (head -n 5; tail -n 5) < "$1" | column -t
+}
 
 # Comment this out to disable weekly auto-update checks
 # DISABLE_AUTO_UPDATE="true"
@@ -65,9 +73,19 @@ plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
-# set vim as default editor
-export EDITOR='vim'
-bindkey -v
+# set emacs as default editor
+export EDITOR='ec'
+#bindkey -v
+
+# set Sublime Text as default editor
+#export EDITOR='subl'
+#bindkey -v
+
+# set term type that will work most places
+export TERM=xterm
+
+# for tmux: export 256color
+#[ -n "$TMUX" ] && export TERM=screen-256color
 
 # use vi style incremental search
 bindkey '^R' history-incremental-search-backward
@@ -76,4 +94,4 @@ bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 
 # Customize to your needs...
-export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:
+export PATH=~/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin:/usr/X11/bin:/usr/games:/home/m3db/data/linux/bin

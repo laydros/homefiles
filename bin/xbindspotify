@@ -1,0 +1,5 @@
+#! /bin/sh
+
+cp /home/laydros/.xbindkeysrc-spotify /home/laydros/.xbindkeysrc
+
+/home/laydros/bin/xbindk-wonky

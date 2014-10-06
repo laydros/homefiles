@@ -2,6 +2,17 @@ Host smoke
     HostName 206.212.236.45
     User root
     Port 15000
+    IdentityFile ~/.ssh/old_id_rsa
+
+Host connect1
+     HostName 10.0.0.127
+     User root
+     IdentityFile ~/.ssh/old_id_rsa
+
+Host burn3
+     HostName 10.0.0.125
+     User root
+     IdentityFile ~/.ssh/old_id_rsa
 
 Host fyre
     HostName 10.1.0.159
@@ -12,6 +23,19 @@ Host dagr
     HostName 10.1.0.240
     User root
     Port 22
+
+Host nott
+    HostName 10.1.0.242
+    User jasonh
+    Port 22
+
+Host odoo
+    Hostname 10.1.0.74
+    user laydros
+    
+Host marshall
+    User laydros
+    HostName laydros.org
 
 Host devio.us
     HostName devio.us
