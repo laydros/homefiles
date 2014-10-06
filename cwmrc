@@ -1,0 +1,32 @@
+command term /usr/bin/urxvt
+command lock "xscreensaver-command --lock"
+
+borderwidth 2
+
+color activeborder blue
+color inactiveborder grey50
+
+# 180 px gap on right for clock
+gap 0 0 0 180
+
+# reload config
+bind CM-r reload
+
+autogroup 0 Cclock
+autogroup 0 XLoad
+autogroup 0 Wmsmixer
+
+autogroup 1 URxvt
+autogroup 2 Emacs
+autogroup 3 Firefox
+autogroup 3 Chrome
+autogroup 4 Pidgin
+
+command urxvt /usr/bin/urxvt
+command emacs /usr/bin/emacs
+command firefox /home/jwh/bin/firefox
+command '' 'true'
+command pidgin /usr/bin/pidgin
+command xpdf /usr/local/bin/xpdf
+command OOo /usr/local/bin/soffice
+command dmenu /usr/bin/dmenu_run
