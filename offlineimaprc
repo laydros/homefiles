@@ -1,7 +1,7 @@
 [general]
 ui = ttyui
 accounts = FastMail, Factor500, WycomSystems
-metadata = ~/mail/.offlineimap
+metadata = ~/Maildir/.offlineimap
 maxsyncaccounts = 2
 #pythonfile = ~/.offlineimap.py
 
@@ -22,7 +22,7 @@ remoterepository = RemoteWycom
 
 [Repository LocalFM]
 type = Maildir
-localfolders = ~/mail/fastmail
+localfolders = ~/Maildir/fastmail
 #subscribedonly = no
 #sep = /
 
@@ -36,7 +36,7 @@ remoteuser = jhamilton@fastmail.us
 #remotepassfile = ~/.config/offlineimap/jhamilton.fastmail.us
 ssl = yes
 expunge = no
-folderfilter = lambda foldername: foldername not in ['INBOX.Trash','INBOX.Archives.2012','INBOX.Archives.2013']
+folderfilter = lambda foldername: foldername not in ['INBOX.Trash','INBOX.Archive.2012','INBOX.Archive.2013','INBOX.Archive.2014','INBOX.Archive']
 #folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam','[Gmail]/Trash']
 maxconnections = 3
 
@@ -44,7 +44,7 @@ maxconnections = 3
 
 [Repository LocalF500]
 type = Maildir
-localfolders = ~/mail/factor500
+localfolders = ~/Maildir/factor500
 
 [Repository RemoteF500]
 type = Gmail
@@ -59,7 +59,7 @@ folderfilter = lambda foldername: foldername not in ['[Gmail]/Spam','[Gmail]/Tra
 
 [Repository LocalWycom]
 type = Maildir
-localfolders = ~/mail/wycomsystems
+localfolders = ~/Maildir/wycomsystems
 
 [Repository RemoteWycom]
 type = Gmail
