@@ -1,5 +1,19 @@
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# ME's personal .muttrc (Mutt 0.92.5)
+#
+# The format of this file is one command per line.  Everything after a pound
+# sign (#) is a comment, unless a backward slash (\) precedes it.  Note: In
+# folder-hook and send-hook you need to account for two levels of dequoting
+# (see manual).
+#
+
 # Paths ----------------------------------------------
-set folder           = ~/.mail               # mailbox location
+# Note: $folder should be set _before_ any other path vars where `+' or `='
+# is used because paths are expanded when parsed
+#
+set folder=~/Maildir		# where i keep my mailboxes
 set alias_file       = ~/.mutt/alias         # where to store aliases
 set header_cache     = ~/.mutt/cache/headers # where to store headers
 set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
@@ -12,7 +26,7 @@ set signature        = ~/.mutt/sig           # my signature file
 set wait_key = no        # shut up, mutt
 set mbox_type = Maildir  # mailbox type
 set timeout = 3          # idle time before scanning
-set mail_check = 0       # minimum time between scans
+set mail_check = 10      # minimum time between scans
 unset move               # gmail does that
 set delete               # don't ask, just do
 unset confirmappend      # don't ask, just do!
@@ -31,6 +45,7 @@ color sidebar_new color221 color233
 # Status Bar -----------------------------------------
 set status_chars  = " *%A"
 set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
+#set status_format="-%r-Mutt: %f [Msgs:%?M?%M/?%m%?n? New:%n?%?d? Del:%d?%?F? Flag:%F?%?t? Tag:%t?%?p? Post:%p?%?b? Inc:%b?  %l]---(%s)-%>-(%P)---"
 
 # Header Options -------------------------------------
 ignore *                                # ignore all headers
@@ -39,7 +54,6 @@ unhdr_order *                           # some distros order things by default
 hdr_order from: to: cc: date: subject:  # and in this order
 
 # Account Settings -----------------------------------
-
 # Default inbox.
 set spoolfile = "+jhamilton-bandwidth.com/INBOX"
 
@@ -59,11 +73,13 @@ set postponed = "+jhamilton-bandwidth.com/drafts"
 # Index View Options ---------------------------------
 set date_format = "%m-%d"
 set index_format = "[%Z]  %D  %-20.20F  %s"
+#set index_format="%4C %Z %{%m/%d} [%2N] %-15.15F (%4c) %s"
 set sort = threads                         # like gmail
 set sort_aux = reverse-last-date-received  # like gmail
 set uncollapse_jump                        # don't collapse on an unread message
 set sort_re                                # thread based on regex
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
+#set reply_regexp="^(re:[ \t]*)+"# how to identify replies in the subject:
 
 # Index Key Bindings ---------------------------------
 bind index gg       first-entry
@@ -98,6 +114,7 @@ set tilde                       # show tildes like in vim
 unset markers                   # no ugly plus sign
 
 set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
+#set quote_regexp="^ *[a-zA-Z]*[>:#}]"	# how to catch quoted text
 alternative_order text/plain text/enriched text/html
 
 # Pager Key Bindings ---------------------------------
@@ -117,26 +134,332 @@ source ~/.mutt/colors/mutt-colors-solarized/mutt-colors-solarized-dark-256.muttr
 set realname = "Jason Hamilton"      # who am i?
 set envelope_from                    # which from?
 set sig_dashes                       # dashes before sig
-set edit_headers                     # show headers when composing
+set edit_headers                     # let me edit the message header when composing
 set fast_reply                       # skip to compose when replying
 set askcc                            # ask for CC:
 set fcc_attach                       # save attachments with the body
 unset mime_forward                   # forward attachments as part of body
+#set mime_forward                    # use message/rfc822 type to forward messages
 set forward_format = "Fwd: %s"       # format of subject when forwarding
-set forward_decode                   # decode when forwarding
+set forward_decode                   # weed and MIME decode forwaded messages
 set attribution = "On %d, %n wrote:" # format of quoting header
 set reply_to                         # reply to Reply to: field
 set reverse_name                     # reply as whomever it was to
 set include                          # include message in replies
-set forward_quote                    # include message in forwards
+set forward_quote		             # quote the header and body of forward msgs
 
-set editor = "vim"        # Use terminal Vim to compose email.
+set editor="emacs -nw"		# editor to use when composing messages
+#set editor = "vim"        # Use terminal Vim to compose email.
 # set editor = "mvim -f"    # Use MacVim to compose email.
 # set editor = "subl -w"    # Use Sublime Text 2 to compose email.
 
+# Bunch of stuff from the sample rc that ships with mutt
+#set abort_unmodified=yes	# automatically abort replies if I don't
+				# change the message
+#set allow_8bit			# never do Q-P encoding on legal 8-bit chars
+set arrow_cursor		# use -> instead of hiliting the whole line
+#set ascii_chars		# use ASCII instead of ACS chars for threads
+#set askbcc
 
 set from        = "jhamilton@bandwidth.com"
 set sendmail    = "/usr/local/bin/msmtp -a jhamilton"
 set sendmail_wait = 0
-unset record
+# unset record
+set record=+sent		# default location to save outgoing mail
 
+set autoedit			# go to the editor right away when composing
+#set auto_tag			# always operate on tagged messages
+#set charset="iso-8859-1"	# character set for your terminal
+#set confirmcreate		# prompt when creating new files
+set copy=yes			# always save a copy of outgoing messages
+set edit_headers		# let me edit the message header when composing
+#set bounce=yes			# don't ask about bouncing messages, just do it
+#set force_name			# fcc by recipient, create if mailbox doesn't exist
+
+#set hdrs			# include `my_hdr' lines in outgoing messages
+#set header			# include message header when replying
+set help			# show the help lines
+#set history=20			# number of lines of history to remember
+#set hostname="mutt.org"	# my DNS domain
+
+#set indent_string="> "		# how to quote replied text
+#set locale="C"			# locale to use for printing time
+set mbox=+mbox			# where to store read messages
+#set menu_scroll		# no implicit next-page/prev-page
+#set metoo			# remove my address when replying
+
+#set pager=less			# some people prefer an external pager
+
+#set pager_format="-%S- %-20.20f %s"	# format of the pager status bar
+
+
+#set pgp_strict_enc		# use Q-P encoding when needed for PGP
+set postponed=+drafts   	# mailbox to store postponed messages in
+#set post_indent_string='---end quoted text---'
+#set print=ask-yes		# ask me if I really want to print messages
+set print_command=/bin/false	# how to print things (I like to save trees)
+set noprompt_after	# ask me for a command after the external pager exits
+
+set read_inc=25			# show progress when reading a mailbox
+#set recall			# prompt to recall postponed messages
+
+
+
+#set resolve		# move to the next message when an action is performed
+#set reverse_alias		# attempt to look up my names for people
+
+set nosave_empty		# remove files when no messages are left
+#set save_name			# save outgoing messages by recipient, if the
+
+#set shell="/bin/zsh"		# program to use for shell escapes
+
+# I subscribe to a lot of mailing lists, so this is _very_ useful.  This
+# groups messages on the same subject to make it easier to follow a
+# discussion.  Mutt will draw a nice tree showing how the discussion flows.
+
+#set sort_aux=last-date		# date of the last message in thread
+set sort_browser=reverse-date	# how to sort files in the dir browser
+set spoolfile=+inbox    	# where my new mail is located
+
+
+#set strict_threads		# don't thread by subject
+
+#set to_chars=" +TCF"
+#set use_8bitmime		# enable the -B8BITMIME sendmail flag
+set nouse_domain		# don't qualify local addresses with $domain
+#set use_from			# always generate the `From:' header field
+set implicit_autoview=yes	# pager shows parts having a mailcap viewer
+set pgp_verify_sig=no		# don't automatically verify message signatures
+#set visual=vim			# editor invoked by ~v in the builtin editor
+set write_inc=25		# show progress while writing mailboxes
+
+# only enable the following IFF you have sendmail 8.8.x or you will not
+# be able to send mail!!!
+#set dsn_notify='failure,delay'	# when to return an error message
+#set dsn_return=hdrs		# what to return in the error message
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Header fields I don't normally want to see
+#
+ignore *		# this means "ignore all lines by default"
+
+# I do want to see these fields, though!
+unignore	from: subject to cc mail-followup-to \
+		date x-mailer x-url # this shows how nicely wrap long lines
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Color definitions
+#
+
+#color normal white default
+color hdrdefault red default
+color quoted brightblue default
+color signature red default
+color indicator brightyellow red
+color error brightred default
+color status yellow blue
+color tree magenta default	# the thread tree in the index menu
+color tilde magenta default
+color message brightcyan default
+color markers brightcyan default
+color attachment brightmagenta default
+color search default green	# how to hilite search patterns in the pager
+
+color header brightred default ^(From|Subject):
+color body magenta default "(ftp|http|https)://[^ ]+"	# point out URLs
+color body magenta default [-a-z_0-9.]+@[-a-z_0-9.]+	# e-mail addresses
+color underline brightgreen default
+
+# attributes when using a mono terminal
+#mono header underline ^(From|Subject):
+mono quoted bold
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Key bindings
+#
+#	maps:
+#		alias		alias menu
+#		attach		attachment menu
+#		browser		directory browser
+#		compose		compose menu
+#		index		message index
+#		pgp		pgp menu
+#		postpone	postponed message recall menu
+#		generic		generic keymap for all of the above
+#		editor		line editor
+#		pager		text viewer
+#		
+
+bind generic "\e<" first-entry	# emacs-like bindings for moving to top/bottom
+bind generic \e> last-entry
+bind generic { top-page
+bind generic } bottom-page
+bind generic \177 last-entry
+
+macro index \cb "<pipe-message> urlview<Enter>"	# simulate the old browse-url function
+
+macro index S "<save-message>+spam<Enter>"
+macro pager S "<save-message>+spam<Enter>"
+
+#macro index \#	"<search>bug<Enter>"	# search for bugs
+#macro index "\""	"<enter-command> set realname=\"real hairy macro\" ?realname<Enter>" # and a comment to boot!
+#macro index f1	"<enter-command>woohoo!"
+
+bind pager G bottom	# just like vi and less
+#macro   pager   \Ck     "<pipe-message> pgp -kaf<Enter>"   # a comment is valid here
+#macro pager X "<pipe-message> morepgp<Enter>"	# pipe PGP message to a script
+
+#bind editor \cy eol	# make ^Y jump to the end of the line
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# User Defined Headers
+#
+
+#my_hdr X-Useless-Header: Look ma, it's a \# sign! # real comment
+#my_hdr X-Operating-System: `uname -a`
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Specify default filename when saving messages
+#
+#	save-hook [!]<pattern> <mailbox>
+#
+# <mailbox> is provided as default when saving messages from <pattern>
+
+#save-hook mutt- =mutt-mail
+#save-hook aol\\.com$ +spam
+save-hook ^judge +diplomacy
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Multiple spool mailboxes
+#
+#	mbox-hook [!]<pattern> <mbox-mailbox>
+#
+# Read mail in <pattern> is moved to <mbox-mailbox> when <pattern> is
+# closed.
+
+#mbox-hook =mutt-users.in =mutt-users
+#mbox-hook +TEST +inbox
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Change settings based upon message recipient
+#
+#	send-hook [!]<pattern> <command>
+#
+# <command> is executed when sending mail to an address matching <pattern>
+
+#send-hook mutt- 'set signature=~/.sigmutt; my_hdr From: Mutt User <user@example.com>'
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Specify where to save composed messages
+#
+#	fcc-hook [!]<pattern> <mailbox>
+#
+# <pattern> is recipient(s), <mailbox> is where to save a copy
+
+#fcc-hook joe +joe
+#fcc-hook bob +bob
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Change settings based on mailbox
+#
+#	folder-hook [!]<pattern> <command>
+#
+# <command> is executed when opening a mailbox matching <pattern>
+
+#folder-hook .		'set sort=date-sent'
+#folder-hook mutt	'set index_format="%4C %Z %02m/%02N %-20.20F (%4l) %s"'
+#folder-hook =mutt	my_hdr Revolution: \#9 # real comment
+
+#folder-hook .		'set reply_regexp="^re:[ \t]*"'
+
+# this mailing list prepends "[WM]" to all non reply subjects, so set
+# $reply_regexp to ignore it
+# Warning: May break threads for other people.
+#folder-hook +wmaker	'set reply_regexp="^(re:[ \t]*)?\[WM\][ \t]*"'
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Aliases
+#
+#	alias <name> <address> [ , <address> ... ]
+
+#alias exam "\# to annoy michael" <user@host>
+#alias me Michael Elkins <me@mutt.org> # me!
+alias mutt-dev Mutt Development List <mutt-dev@mutt.org> # power users
+alias mutt-users Mutt User List <mutt-users@mutt.org>
+alias mutt-announce Mutt Announcement List <mutt-announce@mutt.org>
+alias wmaker WindowMaker Mailing List <wmaker@eosys.com>
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Mailboxes to watch for new mail
+#
+#	mailboxes <path1> [ <path2> ... ]
+#
+
+# mailboxes ! +mutt-dev +mutt-users +open-pgp +wmaker +hurricane +vim +ietf \
+	# +drums
+#mailboxes `echo $HOME/Mail/*`
+
+mailboxes +inbox
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Specify the order of the headers to appear when displaying a message
+#
+#	hdr_order <hdr1> [ <hdr2> ... ]
+#
+
+unhdr_order *				# forget the previous settings
+hdr_order date from subject to cc
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Identify mailing lists I subscribe to
+#
+#	lists <list-name> [ <list-name> ... ]
+
+lists ^mutt-dev@mutt\\.org$ ^mutt-users@mutt\\.org$
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Automatically use entries from ~/.mailcap to view these MIME types
+#
+#	auto_view <type> [ <type> ... ]
+
+auto_view application/x-gunzip
+auto_view application/x-gzip
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Scoring
+#
+#	score <pattern> <value>
+#
+# 9999 and -9999 are special values which cause processing of hooks to stop
+# at that entry.  If you prefix the score with an equal sign (=), the score
+# is assigned to the message and processing stops.
+
+#score '~f ^me@cs\.hmc\.edu$' 1000
+#score '~t mutt | ~c mutt' =500
+#score '~f aol\.com$' -9999
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# I use Mutt on several different machines, so I put local config commands
+# in a separate file so I can have the rest of the settings the same on all
+# machines.
+#
+
+source ~/.muttrc-local	# config commands local to this site
+
+# EOF
