@@ -179,9 +179,6 @@ region\) apply comment-or-uncomment to the current line"
 ;; load images as images
 (auto-image-file-mode 1)
 
-;; Recent files
-(recentf-mode 1)
-
 ;; ************************************************************************
 ;; * - UTF-8 -
 ;; ************************************************************************
