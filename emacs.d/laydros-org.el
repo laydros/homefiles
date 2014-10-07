@@ -35,12 +35,13 @@
  '(org-agenda-show-all-dates t)
  '(org-tags-column -78))
 
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode)) ; not needed since 22.2
+(add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed with global-font-lock
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
-(setq org-directory "/home/laydros/Dropbox/Documents/org")
+(setq org-directory "/home/laydros/Dropbox/Documents/org-mode")
 
 
 (provide 'laydros-org)
