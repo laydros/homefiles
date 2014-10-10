@@ -30,19 +30,33 @@
  '(calendar-week-start-day 1)
  '(case-fold-search t)
  '(make-backup-files nil)
- '(org-agenda-files (quote ("/home/laydros/Documents/org/personal.org"
-                            "/home/laydros/Documents/org/work.org")))
+ '(org-agenda-files (quote ("/home/laydros/Dropbox/Documents/org/personal.org"
+                            "/home/laydros/Dropbox/Documents/org/work.org")))
  '(org-agenda-show-all-dates t)
  '(org-tags-column -78))
 
-(add-to-list 'auto-mode-alist '("\\.org$" . org-mode)) ; not needed since 22.2
-(add-hook 'org-mode-hook 'turn-on-font-lock) ; not needed with global-font-lock
-(global-set-key "\C-cl" 'org-store-link)
-(global-set-key "\C-ca" 'org-agenda)
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+(define-key global-map "\C-cl" 'org-store-link)
+(define-key global-map "\C-ca" 'org-agenda)
 (global-set-key "\C-cb" 'org-iswitchb)
 
-(setq org-directory "/home/laydros/Dropbox/Documents/org-mode")
+(setq org-directory "/home/laydros/Dropbox/Documents/org")
 
+(setq org-default-notes-file (concat org-directory "/notes.org"))
+(define-key global-map "\C-cc" 'org-capture)
+
+;; **************************************************************
+;; * TODO states - can be multiple flows, but won't for now
+;;      statuses after pipe are done statuses.
+;; **************************************************************
+(setq org-todo-keywords
+      '((sequence "TODO" "INPROGRESS" "WAITING" "|" "DONE" "DELEGATED")))
+
+;; log when marked done
+(setq org-log-done 'time)
+
+;; to make org mode ask for note when set done
+;; (setq org-log-done 'note)
 
 (provide 'laydros-org)
 ;;; laydros-org.el ends here
