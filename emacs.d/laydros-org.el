@@ -27,7 +27,7 @@
 (custom-set-variables
  '(auto-raise-tool-bar-buttons t t)
  '(auto-resize-tool-bars t t)
- '(calendar-week-start-day 1)
+ '(calendar-week-start-day 0)
  '(case-fold-search t)
  '(make-backup-files nil)
  '(org-agenda-files (quote ("/home/laydros/Dropbox/Documents/org/personal.org"
