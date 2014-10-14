@@ -22,6 +22,9 @@ alias kp="ps auxwww"
 #alias ec=emacsclient -c
 #alias vim=emacsclient -t
 
+alias todo="emacs -batch -l ~/.emacs.d/init.el -eval '(org-batch-agenda \"t\")' 2> /dev/null "
+alias today="emacs -batch -l ~/.emacs.d/init.el -eval '(org-batch-agenda \"a\")' 2> /dev/null "
+
 # Auto extension
 alias -s html=$BROWSER
 alias -s com=$BROWSER

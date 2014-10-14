@@ -208,3 +208,22 @@ region\) apply comment-or-uncomment to the current line"
 
 ;; load org-mode stuff
 (require 'laydros-org)
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(auto-raise-tool-bar-buttons t t)
+ '(auto-resize-tool-bars t t)
+ '(calendar-week-start-day 0)
+ '(case-fold-search t)
+ '(make-backup-files nil)
+ '(org-agenda-files (quote ("/home/laydros/Dropbox/Documents/org/work.org" "~/Dropbox/Documents/org/organizer.org" "/home/laydros/Dropbox/Documents/org/personal.org")))
+ '(org-agenda-show-all-dates t)
+ '(org-tags-column -78))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
