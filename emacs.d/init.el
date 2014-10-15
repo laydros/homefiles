@@ -19,7 +19,7 @@
 
 ;;(set-default-font "Terminus-10")
 ;; (set-default-font "Inconsolata-10")
-
+(set-default-font "DejaVu Sans Mono-9")
 ;; ************************************************************************
 ;; *  package manager
 ;; ************************************************************************

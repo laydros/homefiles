@@ -31,8 +31,8 @@
  '(case-fold-search t)
  '(make-backup-files nil)
  '(org-agenda-files (quote ("~/Dropbox/Documents/org/notes.org"
-                            "/home/laydros/Dropbox/Documents/org/personal.org"
-                            "/home/laydros/Dropbox/Documents/org/work.org")))
+                            "~/Dropbox/Documents/org/personal.org"
+                            "~/Dropbox/Documents/org/work.org")))
  '(org-agenda-show-all-dates t)
  '(org-tags-column -78))
 
