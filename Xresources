@@ -1,19 +1,62 @@
-!Xft.lcdfilter: lcddefault
-
-Xft*dpi:		96
-emacs.font: Inconsolata-13
+! emacs.font:	Inconsolata-10
+emacs.font:	Deja Vu Sans Mono-9
 Rxvt*scrollBar: False
-urxvt.font: xft:inconsolata:pixelsize=17,xft:Anonymous Pro for Powerline:pixelsize=17
-urxvt*letterSpace:-1.0
-!URxvt.perl-lib: /home/phil/src/urxvt-perls
-!URxvt.perl-ext-common: url-select,keyboard-select
-!URxvt.keysym.M-u: perl:url-select:select_next
-!URxvt.url-select.launcher: /home/phil/bin/conkeror
-URxvt.searchable-scrollback: false
-dmenu.font: xft:inconsolata:pixelsize=17
+!urxvt.font:	xft:inconsolata:pixelsize=12
+!URxvt.font: xft:Monospace-10:antialias=true
+URxvt*font: -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-u
+URxvt.font: xft:DejaVu Sans Mono-9:antialias=true
 
+urxvt.background: 	#151E13
+!urxvt.foreground:	white
+urxvt.foreground:	#aaaaaa
 
-! wheat is too dark at #F5DEB3
-!urxvt.background: #F5EED3
-urxvt.background: black
-urxvt.foreground: white
+URxvt*saveLines:        50000
+
+URxvt.iconFile:         /usr/share/icons/Tango/32x32/apps/utilities-terminal.png
+
+! Tabs: gray background, ~white text
+! and the opposite for the currently focused tab
+URxvt.tabbed.tabbar-fg: 7
+URxvt.tabbed.tabbar-bg: 8
+URxvt.tabbed.tab-fg: 8
+URxvt.tabbed.tab-bg: 7
+
+URxvt.perl-ext-common:  default,matcher,tabbedex
+!URxvt.perl-ext:         tabbed
+URxvt.tabbed.new-button:    false
+URxvt.url-launcher:     /usr/bin/x-www-browser
+URxvt.colorUL:          #4682B4
+URxvt.matcher.button:   1
+
+URxvt.keysym.Control-t:         perl:tabbedex:new_tab
+URxvt.keysym.Control-Tab:       perl:tabbedex:next_tab
+URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
+
+!black
+*.color0:                       #333333
+*.color8:                       #444444
+!red
+*.color1:       #d45e68
+*.color9:       #ed6975
+!green
+*.color2:         #a4d45e
+*.color10:        #b8ed69
+!yellow
+*.color3:         #d4c95e
+*.color11:        #ede169
+!blue
+*.color4:         #2ea4e4
+*.color12:        #69b8ed
+!magenta
+*.color5:       #d45ea4
+*.color13:      #ed69b8
+!cyan
+*.color6:       #5ed4c9
+*.color14:      #69ede1
+!white
+*.color7:       #AAAAAA
+*.color15:      #cccccc
+
+! Fade terminal by 40% when it loses focus
+URxvt*fading: 40
+

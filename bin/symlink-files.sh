@@ -27,5 +27,8 @@ mkdir ~/Maildir
 echo "...offlineimaprc"
 ln -s ~/code/homefiles/offlineimaprc ~/.offlineimaprc
 
-echo "...and vimrc"
+echo "...vimrc"
 ln -s ~/code/homefiles/vimrc ~/.vimrc
+
+echo "...Xresources"
+ln -s ~/code/homefiles/Xresources ~/.Xresources
