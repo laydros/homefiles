@@ -41,6 +41,7 @@
 (laydros-require-package 'naquadah-theme)
 (require 'naquadah-theme)
 
+;; (require 'molokai-theme)
 ;; (laydros-require-package 'monokai-theme)
 ;; (require 'monokai-theme)
 
@@ -110,10 +111,6 @@
 
 ;; run in server mode
 (server-start)        
-
-
-
-;; (require 'molokai-theme)
 
 (laydros-require-package 'autopair)
 (require 'autopair)

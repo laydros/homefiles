@@ -1,4 +1,5 @@
 ! emacs.font:	Inconsolata-10
+Emacs*geometry: 230x54
 emacs.font:	Deja Vu Sans Mono-9
 Rxvt*scrollBar: False
 !urxvt.font:	xft:inconsolata:pixelsize=12
