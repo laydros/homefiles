@@ -101,7 +101,7 @@
 ;; * - projectile -
 ;; ************************************************************************
 (laydros-require-package 'projectile)
-(laydros-require-package 'fix-ido)
+(projectile-global-mode)
 
 ;; ************************************************************************
 ;; * - General -
