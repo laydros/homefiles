@@ -15,7 +15,7 @@
 (blink-cursor-mode -1)
 	
 ;;(set-default-font "Terminus-10")
-(set-default-font "Inconsolata-10")
+;; (set-default-font "Inconsolata-10")
 
 ;; ************************************************************************
 ;; *  package manager
@@ -27,12 +27,15 @@
              '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 (package-initialize)
 
-(require 'zenburn-theme)
+;; (require 'zenburn-theme)
 
 (defun laydros-require-package (name)
   (unless (package-installed-p name)
     (package-install name)))
 
+(laydros-require-package 'monokai-theme)
+(require 'monokai-theme)
+;;(require 'zenburn-theme)
 ;; ************************************************************************
 ;; * - Elpy -
 ;; ************************************************************************

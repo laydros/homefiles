@@ -39,6 +39,8 @@
 ;; startup
 (find-file "~/Dropbox/Documents/org/organizer.org")
 (org-agenda nil "a")
+
+(laydros-require-package 'google-contacts)
 (require 'org-contacts)
 
 (setq org-agenda-include-diary t)
