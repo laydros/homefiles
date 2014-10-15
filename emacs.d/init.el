@@ -13,7 +13,10 @@
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (blink-cursor-mode -1)
-	
+
+;; in order to load init other init files
+(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+
 ;;(set-default-font "Terminus-10")
 ;; (set-default-font "Inconsolata-10")
 
@@ -27,15 +30,23 @@
              '("elpy" . "http://jorgenschaefer.github.io/packages/"))
 (package-initialize)
 
-;; (require 'zenburn-theme)
-
 (defun laydros-require-package (name)
   (unless (package-installed-p name)
     (package-install name)))
 
-(laydros-require-package 'monokai-theme)
-(require 'monokai-theme)
-;;(require 'zenburn-theme)
+;; ************************************************************************
+;; * Themes
+;; * - the first step is admitting you have a problem
+;; ************************************************************************
+(laydros-require-package 'naquadah-theme)
+(require 'naquadah-theme)
+
+;; (laydros-require-package 'monokai-theme)
+;; (require 'monokai-theme)
+
+;; (laydros-require-package 'zenburn-theme)
+;; (require 'zenburn-theme)
+
 ;; ************************************************************************
 ;; * - Elpy -
 ;; ************************************************************************
@@ -69,9 +80,15 @@
 ;; * Ido mode provides a nice way to navigate the filesystem. This is mostly
 ;; * just turning it on.
 ;; ************************************************************************
-
+(laydros-require-package 'ido)
+(laydros-require-package 'flx-ido)
 (require 'ido)
+(require 'flx-ido)
 (ido-mode t)
+(ido-everywhere t)
+(flx-ido-mode t)
+;; hide ido faces to see flx-ido highlights
+(setq ido-use-faces nil)
 (setq ido-enable-flex-matching t
       ibuffer-shrink-to-minimum-size t
       ibuffer-sorting-mode 'recency
@@ -81,6 +98,12 @@
 
 
 ;; ************************************************************************
+;; * - projectile -
+;; ************************************************************************
+(laydros-require-package 'projectile)
+(laydros-require-package 'fix-ido)
+
+;; ************************************************************************
 ;; * - General -
 ;; ************************************************************************
 (setq user-mail-address "jwh@laydros.net")
@@ -88,8 +111,7 @@
 ;; run in server mode
 (server-start)        
 
-;; in order to load init other init files
-(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+
 
 ;; (require 'molokai-theme)
 
