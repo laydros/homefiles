@@ -46,7 +46,7 @@ def main():
     Notify.init('Check Tasks')
 
     notify_body = "eventually this will pull from org agenda"
-    Hello = Notify.Notification.new('Task Check', notify_body, 'task-due')
+    Hello = Notify.Notification.new('Task Check', notify_body, 'alert.xpm')
     # show for 5 minutes
     Hello.set_timeout(100000)
     while True:
