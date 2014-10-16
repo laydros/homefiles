@@ -1,0 +1,28 @@
+#!/usr/bin/wish
+# cclock - a simple digital clock that locks screen when you click on it
+proc every {ms body} {eval $body; after $ms [info level 0]}
+
+
+set width 350
+set height 250
+#set x [expr { ( [winfo vrootwidth  .] - $width  ) / 3 }]
+#set y [expr { ( [winfo vrootheight .] - $height ) / 2 }]
+set x 20
+set y 30
+
+label .taskcheck -text "Task Check" -font {Helvetica 24}
+pack .taskcheck
+
+label .digital -textvar ::time -font {Helvetica 20}
+pack .digital
+button .quit -text "Quit" -command { exit }
+pack .quit
+
+wm title . "Center" 
+wm geometry . ${width}x${height}+${x}+${y}
+
+every 1000 {
+      set ::time [string tolower \
+                         [clock format [clock sec] -format "%H:%M:%S"]]
+}
+
