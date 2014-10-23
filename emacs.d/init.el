@@ -15,7 +15,7 @@
 (blink-cursor-mode -1)
 
 ;; in order to load init other init files
-(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
 
 ;;(set-default-font "Terminus-10")
 ;; (set-default-font "Inconsolata-10")

@@ -2,10 +2,12 @@
 
 echo "Creating symlinks for dotfiles:"
 
+echo "...create emacs dirs"
+mkdir -p ~/.emacs.d/lisp
+
 echo "...emacs.d/init.el, laydros-org.el, org-contacts.el"
 ln -s ~/code/homefiles/emacs.d/init.el ~/.emacs.d/init.el
-ln -s ~/code/homefiles/emacs.d/laydros-org.el ~/.emacs.d/laydros-org.el
-ln -s ~/code/homefiles/emacs.d/org-contacts.el ~/.emacs.d/org-contacts.el
+ln -s ~/code/homefiles/emacs.d/laydros-lisp ~/.emacs.d/laydros-lisp
 
 echo "...bin directory"
 ln -s ~/code/homefiles/bin ~/bin
