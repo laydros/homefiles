@@ -15,7 +15,7 @@
 (blink-cursor-mode -1)
 
 ;; in order to load init other init files
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/lisp"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/laydros-lisp"))
 
 ;;(set-default-font "Terminus-10")
 ;; (set-default-font "Inconsolata-10")
@@ -97,6 +97,11 @@
 (laydros-require-package 'ido-vertical-mode)
 (ido-vertical-mode t)
 
+;; ************************************************************************
+;; * - iedit -
+;; ************************************************************************
+(laydros-require-package 'iedit)
+(require 'iedit)
 
 ;; ************************************************************************
 ;; * - projectile -

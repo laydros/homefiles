@@ -20,10 +20,13 @@ alias kp="ps auxwww"
 #alias dt="cd ~/Desktop/"
 #alias e=emacsclient -t
 #alias ec=emacsclient -c
-#alias vim=emacsclient -t
+alias vim=mg 
 
 alias todo="emacs -batch -l ~/.emacs.d/init.el -eval '(org-batch-agenda \"t\")' 2> /dev/null "
 alias today="emacs -batch -l ~/.emacs.d/init.el -eval '(org-batch-agenda \"a\")' 2> /dev/null "
+
+# global alias
+alias -g gp=' | grep -i'
 
 # Auto extension
 alias -s html=$BROWSER
