@@ -233,6 +233,8 @@ region\) apply comment-or-uncomment to the current line"
 ;; * stuff in external init files
 ;; ************************************************************************
 
+;; mu4e config
+;; (require 'laydros-mu4e)
 ;; load org-mode stuff
 (require 'laydros-org)
 (custom-set-variables

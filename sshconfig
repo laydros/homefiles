@@ -23,6 +23,7 @@ Host dagr
     HostName 10.1.0.240
     User root
     Port 22
+    IdentityFile ~/.ssh/old_id_rsa
 
 Host nott
     HostName 10.1.0.242

@@ -69,6 +69,9 @@
 (setq org-todo-keywords
       '((sequence "TODO" "INPROGRESS" "WAITING" "APPT" "|" "DONE" "DELEGATED")))
 
+(setq org-todo-keywords-for-agenda
+      '((sequence "TODO" "INPROGRESS" "WAITING" "APPT" "|" "DONE" "DELEGATED")))
+
 (setq org-use-fast-todo-selection t)
 
 ;; log when marked done
@@ -77,14 +80,17 @@
 ;; to make org mode ask for note when set done
 ;; (setq org-log-done 'note)
 
+
+;; leaving out :QUANTIFIED: %^{Quantified Awesome category}
+
 ;; templates
 (defvar laydros/org-basic-task-template "* TODO %^{Task}
 SCHEDULED: %^t
 %?
 :PROPERTIES:
 :Effort: %^{effort|1:00|0:05|0:15|0:30|2:00|4:00}
-;; :QUANTIFIED: %^{Quantified Awesome category}
 :END:" "Basic task data")
+
 (setq org-capture-templates
       `(("t" "Tasks-remember" entry
          (file+headline "~/Dropbox/Documents/org/organizer.org" "Tasks")
