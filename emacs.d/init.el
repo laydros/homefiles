@@ -224,7 +224,8 @@ region\) apply comment-or-uncomment to the current line"
 (global-set-key (kbd "M-/") 'hippie-expand)
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
-(global-set-key "\C-x\C-b" 'electric-buffer-list)
+;; (global-set-key "\C-x\C-b" 'electric-buffer-list)
+(global-set-key "\C-x\C-b" 'ibuffer)
 (global-set-key "\C-c\C-r" 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region-or-line)
 
@@ -234,7 +235,7 @@ region\) apply comment-or-uncomment to the current line"
 ;; ************************************************************************
 
 ;; mu4e config
-;; (require 'laydros-mu4e)
+(require 'laydros-mu4e)
 ;; load org-mode stuff
 (require 'laydros-org)
 (custom-set-variables

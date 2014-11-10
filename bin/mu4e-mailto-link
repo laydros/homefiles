@@ -1,0 +1,7 @@
+#!/bin/bash
+to=$(echo -n "${1#mailto:}" | cut -d'?' -f1)
+subject=$(echo -n "${1##*subject=}" | cut -d'&' -f1)
+if [ "$subject" = "$1" ]; then subject=""; fi
+body=$(echo -n "${1##*body=}" | cut -d'&' -f1)
+if [ "$body" = "$1" ]; then body=""; fi
+emacsclient -c -n --eval '(progn (mu4e-compose-new) (message-goto-to) (insert (url-unhex-string "'$to'")) (message-goto-subject) (insert (url-unhex-string "'$subject'")) (message-goto-body) (insert (url-unhex-string "'$body'")))'

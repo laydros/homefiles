@@ -36,9 +36,17 @@
  '(org-agenda-show-all-dates t)
  '(org-tags-column -78))
 
-;; startup
-(find-file "~/Dropbox/Documents/org/organizer.org")
-(org-agenda nil "a")
+
+
+;; **************************************************************
+;; * TODO states - can be multiple flows, but won't for now
+;;      statuses after pipe are done statuses.
+;; **************************************************************
+(setq org-todo-keywords
+      '((sequence "TODO" "INPROGRESS" "WAITING" "APPT" "|" "DONE" "DELEGATED")))
+
+(setq org-todo-keywords-for-agenda
+      '((sequence "TODO" "INPROGRESS" "WAITING" "APPT" "|" "DONE" "DELEGATED")))
 
 (laydros-require-package 'google-contacts)
 (require 'org-contacts)
@@ -62,15 +70,11 @@
 (setq org-directory "/home/laydros/Dropbox/Documents/org")
 (setq org-default-notes-file (concat org-directory "/organizer.org"))
 
-;; **************************************************************
-;; * TODO states - can be multiple flows, but won't for now
-;;      statuses after pipe are done statuses.
-;; **************************************************************
-(setq org-todo-keywords
-      '((sequence "TODO" "INPROGRESS" "WAITING" "APPT" "|" "DONE" "DELEGATED")))
 
-(setq org-todo-keywords-for-agenda
-      '((sequence "TODO" "INPROGRESS" "WAITING" "APPT" "|" "DONE" "DELEGATED")))
+;; startup
+(find-file "~/Dropbox/Documents/org/organizer.org")
+(org-agenda nil "a")
+
 
 (setq org-use-fast-todo-selection t)
 
