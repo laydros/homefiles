@@ -58,9 +58,9 @@
 ;; ************************************************************************
 ;; * - Auto-complete -
 ;; ************************************************************************
-(laydros-require-package 'auto-complete)
-(require 'auto-complete-config)
-(ac-config-default)
+; (laydros-require-package 'auto-complete)
+; (require 'auto-complete-config)
+; (ac-config-default)
 
 ;; company is supposed to be better, but it is getting on my nerves
 ;; jwh-2014-10-06
@@ -115,7 +115,7 @@
 (setq user-mail-address "jwh@laydros.net")
 
 ;; run in server mode
-(server-start)        
+(server-start)
 
 (laydros-require-package 'autopair)
 (require 'autopair)

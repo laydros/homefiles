@@ -4,12 +4,14 @@ emacs.font:	Deja Vu Sans Mono-9
 Rxvt*scrollBar: False
 !urxvt.font:	xft:inconsolata:pixelsize=12
 !URxvt.font: xft:Monospace-10:antialias=true
-URxvt*font: -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-u
-URxvt.font: xft:DejaVu Sans Mono-9:antialias=true
+!URxvt*font: -*-terminus-medium-r-*-*-12-*-*-*-*-*-*-u
+!URxvt.font: xft:DejaVu Sans Mono-9:antialias=true
+URxvt.font: 7x14
 
 urxvt.background: 	#151E13
 !urxvt.foreground:	white
 urxvt.foreground:	#aaaaaa
+URxvt*geometry:		80x25
 
 URxvt*saveLines:        50000
 
