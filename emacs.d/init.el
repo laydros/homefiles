@@ -76,6 +76,15 @@
 
 ;; (global-company-mode 1)
 
+
+;; ************************************************************************
+;; * - undo-tree -
+;; ************************************************************************
+(laydros-require-package 'undo-tree)
+(require 'undo-tree)
+(global-undo-tree-mode)
+
+
 ;; ************************************************************************
 ;; * - ido -
 ;; * Ido mode provides a nice way to navigate the filesystem. This is mostly
@@ -108,6 +117,28 @@
 ;; ************************************************************************
 (laydros-require-package 'projectile)
 (projectile-global-mode)
+
+;; ************************************************************************
+;; * - magit -
+;; ************************************************************************
+(laydros-require-package 'magit)
+(require 'magit)
+
+;; ************************************************************************
+;; * - git-gutter-fringe - 
+;; ************************************************************************
+(laydros-require-package 'git-gutter-fringe)
+(when (window-system)
+  (require 'git-gutter-fringe))
+
+(global-git-gutter-mode +1)
+(setq-default indicate-buffer-boundaries 'left)
+(setq-default indicate-empty-lines +1)
+
+;; ************************************************************************
+;; * - powerline -
+;; ************************************************************************
+(require 'powerline)
 
 ;; ************************************************************************
 ;; * - General -
@@ -247,8 +278,13 @@ region\) apply comment-or-uncomment to the current line"
  '(auto-resize-tool-bars t t)
  '(calendar-week-start-day 0)
  '(case-fold-search t)
+ '(custom-safe-themes
+   (quote
+    ("1c6c7d5e4beaec0a54d814454106d180de7b90f8961d3edd2f6567f7c08da97e" "ef43b291f7e96826d3d9bae61434a93020d0f529d609bc8be5b331980e8448d7" default)))
  '(make-backup-files nil)
- '(org-agenda-files (quote ("/home/laydros/Dropbox/Documents/org/work.org" "~/Dropbox/Documents/org/organizer.org" "/home/laydros/Dropbox/Documents/org/personal.org")))
+ '(org-agenda-files
+   (quote
+    ("/home/laydros/Dropbox/Documents/org/work.org" "~/Dropbox/Documents/org/organizer.org" "/home/laydros/Dropbox/Documents/org/personal.org")))
  '(org-agenda-show-all-dates t)
  '(org-tags-column -78))
 (custom-set-faces
