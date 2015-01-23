@@ -106,22 +106,15 @@ alias today="emacs -batch -l ~/.emacs.d/init.el -eval '(org-batch-agenda \"a\")'
 alias -g gp=' | grep -i'
 
 # Auto extension
-alias -s html=$BROWSER
-alias -s com=$BROWSER
-alias -s net=$BROWSER
-alias -s png=feh
-alias -s jpg=feh
-alias -s gif=feh
-alias -s java=$EDITOR
-alias -s txt=$EDITOR
-alias -s PKGBUILD=$EDITOR
-
-# junk for st terminal
-function zle-line-init () { echoti smkx }
-function zle-line-finish () { echoti rmkx }
-zle -N zle-line-init
-zle -N zle-line-finish
-
+#alias -s html=$BROWSER
+#alias -s com=$BROWSER
+#alias -s net=$BROWSER
+#alias -s png=feh
+#alias -s jpg=feh
+#alias -s gif=feh
+#alias -s java=$EDITOR
+#alias -s txt=$EDITOR
+#alias -s PKGBUILD=$EDITOR
 
 cl() {
     cd "$1" && ls

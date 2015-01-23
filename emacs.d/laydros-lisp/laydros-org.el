@@ -30,12 +30,10 @@
  '(calendar-week-start-day 0)
  '(case-fold-search t)
  '(make-backup-files nil)
- '(org-agenda-files (quote ("~/Dropbox/Documents/org/notes.org"
-                            "~/Dropbox/Documents/org/personal.org"
+ '(org-agenda-files (quote ("~/Dropbox/Documents/org/personal.org"
                             "~/Dropbox/Documents/org/work.org")))
  '(org-agenda-show-all-dates t)
  '(org-tags-column -78))
-
 
 
 ;; **************************************************************
@@ -123,8 +121,6 @@
 ;; (ie. dropbox bugs)
 (run-with-timer 0 (* 10 60) 'org-mobile-pull)
 
-
-
 (setq org-use-fast-todo-selection t)
 
 ;; log when marked done
@@ -132,9 +128,6 @@
 
 ;; to make org mode ask for note when set done
 ;; (setq org-log-done 'note)
-
-
-;; leaving out :QUANTIFIED: %^{Quantified Awesome category}
 
 ;; templates
 (defvar laydros/org-basic-task-template "* TODO %^{Task}
