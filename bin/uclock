@@ -18,7 +18,7 @@ pack .digital
 button .quit -text "Quit" -command { exit }
 pack .quit
 
-wm title . "Center" 
+wm title . "Task Check" 
 wm geometry . ${width}x${height}+${x}+${y}
 
 every 1000 {

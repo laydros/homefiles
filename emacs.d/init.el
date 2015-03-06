@@ -19,7 +19,8 @@
 
 ;;(set-default-font "Terminus-10")
 ;; (set-default-font "Inconsolata-10")
-(set-default-font "DejaVu Sans Mono-9")
+;; (set-default-font "DejaVu Sans Mono-9")
+(set-default-font "Source Code Pro-10")
 ;; ************************************************************************
 ;; *  package manager
 ;; ************************************************************************
@@ -141,6 +142,19 @@
 (require 'powerline)
 
 ;; ************************************************************************
+;; * - nlinum -
+;; ************************************************************************
+(laydros-require-package 'nlinum)
+(global-nlinum-mode t)
+
+;; Preset width nlinum - should prevent horizontal jumps when scrolling
+(add-hook 'nlinum-mode-hook
+          (lambda ()
+            (setq nlinum--width
+              (length (number-to-string
+                       (count-lines (point-min) (point-max)))))))
+
+;; ************************************************************************
 ;; * - General -
 ;; ************************************************************************
 (setq user-mail-address "jwh@laydros.net")
@@ -158,12 +172,12 @@
 (setq standard-indent 4)
 (setq-default indent-tabs-mode nil)
 
-(setq transient-mark-mode t)
+;; transient should be on by default as of emacs 23.2
+;; (setq transient-mark-mode t)
 (setq global-font-lock-mode 1)
 
 (line-number-mode t)
 (column-number-mode t)
-(global-linum-mode t)
 (size-indication-mode t)
 
 ;; fill column tells me where to stop. PEP-8 calls for 80 columns or less, and

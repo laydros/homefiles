@@ -5,8 +5,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="robbyrussell"
-#ZSH_THEME="bira"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="bira"
 #ZSH_THEME="af-magic"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -97,7 +97,7 @@ alias kp="ps auxwww"
 #alias dt="cd ~/Desktop/"
 #alias e=emacsclient -t
 #alias ec=emacsclient -c
-alias vim=mg 
+#alias vim=mg 
 
 alias todo="emacs -batch -l ~/.emacs.d/init.el -eval '(org-batch-agenda \"t\")' 2> /dev/null "
 alias today="emacs -batch -l ~/.emacs.d/init.el -eval '(org-batch-agenda \"a\")' 2> /dev/null "

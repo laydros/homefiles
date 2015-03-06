@@ -42,12 +42,6 @@ Host devio.us
     HostName devio.us
     User laydros
 
-Host qatest
-    HostName 10.3.65.9
-
-Host gibson
-    HostName 10.3.64.246
-
 Host linode
-    HostName 74.207.237.64
-    User jhamilton
+    HostName 45.56.115.197
+    User laydros
