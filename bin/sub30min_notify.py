@@ -25,7 +25,7 @@ def time_str():
 def main():
     setup_logging()
 
-    logging.info('Starting 30 min notifier')
+    logging.info('Starting 60 min notifier')
     Notify.init('Check Tasks')
 
     notify_body = "eventually this will pull from org agenda"
@@ -34,7 +34,7 @@ def main():
     # Hello.set_timeout(100000)
     while True:
         logging.info('Start of while true loop')
-        to_sleep = 1800 - time.time() % 1800
+        to_sleep = 3600 - time.time() % 3600
         logging.debug('Sleep time is ' + str(to_sleep))
         # sleep for the remaining seconds until the half hour
         time.sleep(to_sleep)

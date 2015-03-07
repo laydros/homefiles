@@ -19,7 +19,8 @@
 
 ;;(set-default-font "Terminus-10")
 ;; (set-default-font "Inconsolata-10")
-(set-default-font "DejaVu Sans Mono-9")
+;; (set-default-font "DejaVu Sans Mono-9")
+(set-default-font "Source Code Pro-10")
 ;; ************************************************************************
 ;; *  package manager
 ;; ************************************************************************
@@ -76,6 +77,15 @@
 
 ;; (global-company-mode 1)
 
+
+;; ************************************************************************
+;; * - undo-tree -
+;; ************************************************************************
+(laydros-require-package 'undo-tree)
+(require 'undo-tree)
+(global-undo-tree-mode)
+
+
 ;; ************************************************************************
 ;; * - ido -
 ;; * Ido mode provides a nice way to navigate the filesystem. This is mostly
@@ -110,6 +120,41 @@
 (projectile-global-mode)
 
 ;; ************************************************************************
+;; * - magit -
+;; ************************************************************************
+(laydros-require-package 'magit)
+(require 'magit)
+
+;; ************************************************************************
+;; * - git-gutter-fringe - 
+;; ************************************************************************
+(laydros-require-package 'git-gutter-fringe)
+(when (window-system)
+  (require 'git-gutter-fringe))
+
+(global-git-gutter-mode +1)
+(setq-default indicate-buffer-boundaries 'left)
+(setq-default indicate-empty-lines +1)
+
+;; ************************************************************************
+;; * - powerline -
+;; ************************************************************************
+(require 'powerline)
+
+;; ************************************************************************
+;; * - nlinum -
+;; ************************************************************************
+(laydros-require-package 'nlinum)
+(global-nlinum-mode t)
+
+;; Preset width nlinum - should prevent horizontal jumps when scrolling
+(add-hook 'nlinum-mode-hook
+          (lambda ()
+            (setq nlinum--width
+              (length (number-to-string
+                       (count-lines (point-min) (point-max)))))))
+
+;; ************************************************************************
 ;; * - General -
 ;; ************************************************************************
 (setq user-mail-address "jwh@laydros.net")
@@ -127,12 +172,12 @@
 (setq standard-indent 4)
 (setq-default indent-tabs-mode nil)
 
-(setq transient-mark-mode t)
+;; transient should be on by default as of emacs 23.2
+;; (setq transient-mark-mode t)
 (setq global-font-lock-mode 1)
 
 (line-number-mode t)
 (column-number-mode t)
-(global-linum-mode t)
 (size-indication-mode t)
 
 ;; fill column tells me where to stop. PEP-8 calls for 80 columns or less, and
@@ -247,8 +292,13 @@ region\) apply comment-or-uncomment to the current line"
  '(auto-resize-tool-bars t t)
  '(calendar-week-start-day 0)
  '(case-fold-search t)
+ '(custom-safe-themes
+   (quote
+    ("1c6c7d5e4beaec0a54d814454106d180de7b90f8961d3edd2f6567f7c08da97e" "ef43b291f7e96826d3d9bae61434a93020d0f529d609bc8be5b331980e8448d7" default)))
  '(make-backup-files nil)
- '(org-agenda-files (quote ("/home/laydros/Dropbox/Documents/org/work.org" "~/Dropbox/Documents/org/organizer.org" "/home/laydros/Dropbox/Documents/org/personal.org")))
+ '(org-agenda-files
+   (quote
+    ("/home/laydros/Dropbox/Documents/org/work.org" "~/Dropbox/Documents/org/organizer.org" "/home/laydros/Dropbox/Documents/org/personal.org")))
  '(org-agenda-show-all-dates t)
  '(org-tags-column -78))
 (custom-set-faces

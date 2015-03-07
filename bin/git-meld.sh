@@ -6,4 +6,4 @@
 # [diff]
 # external = /home/bdill/bin/git-meld.sh
 
-meld $2 $5
+diffuse $2 $5

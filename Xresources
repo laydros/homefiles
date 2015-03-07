@@ -11,7 +11,7 @@ URxvt.font: 7x14
 urxvt.background: 	#151E13
 !urxvt.foreground:	white
 urxvt.foreground:	#aaaaaa
-URxvt*geometry:		80x25
+URxvt*geometry:		90x27
 
 URxvt*saveLines:        50000
 
@@ -62,4 +62,3 @@ URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
 
 ! Fade terminal by 40% when it loses focus
 URxvt*fading: 40
-
