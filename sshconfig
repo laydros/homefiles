@@ -38,6 +38,12 @@ Host marshall
     User laydros
     HostName laydros.org
 
+Host ibanez
+    User laydros
+    Hostname 10.1.0.70
+    Port 22
+    IdentityFile ~/.ssh/id_rsa
+
 Host devio.us
     HostName devio.us
     User laydros
