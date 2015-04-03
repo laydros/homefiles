@@ -15,8 +15,8 @@ URxvt*geometry:		90x27
 
 URxvt*saveLines:        50000
 
-URxvt.iconFile:         /usr/share/icons/Tango/32x32/apps/utilities-terminal.png
-
+!URxvt.iconFile:         /usr/share/icons/Tango/32x32/apps/utilities-terminal.png
+URxvt.iconFile:         /home/laydros/.local/share/Terminal_by_willBook.png
 ! Tabs: gray background, ~white text
 ! and the opposite for the currently focused tab
 URxvt.tabbed.tabbar-fg: 7

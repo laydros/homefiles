@@ -19,10 +19,10 @@ LIST=$LIST" flashplugin-nonfree"
 LIST=$LIST" curl wget git vim"
 
 # common dev tools
-LIST=$LIST" geany meld gitk"
+LIST=$LIST" geany meld gitk diffuse"
 
 # python
-LIST=$LIST" python-pip idle-python2.7 python-rope"
+LIST=$LIST" python-pip idle-python2.7 python-rope python-dev"
 
 # shell stuff
 LIST=$LIST" rxvt-unicode zsh tmux"
