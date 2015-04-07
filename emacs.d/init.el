@@ -39,8 +39,10 @@
 ;; * Themes
 ;; * - the first step is admitting you have a problem
 ;; ************************************************************************
-(laydros-require-package 'naquadah-theme)
-(require 'naquadah-theme)
+;; (laydros-require-package 'naquadah-theme)
+;; (require 'naquadah-theme)
+
+(load-theme 'plan9)
 
 ;; (require 'molokai-theme)
 ;; (laydros-require-package 'monokai-theme)

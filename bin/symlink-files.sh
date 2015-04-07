@@ -38,3 +38,8 @@ ln -s ~/code/homefiles/Xresources ~/.Xresources
 
 echo "...zshrc"
 ln -s ~/code/homefiles/zshrc ~/.zshrc
+
+echo "...xbindkeys config files"
+ln -s ~/code/homefiles/xbindkeysrc ~/.xbindkeysrc
+ln -s ~/code/homefiles/xbindkeysrc-mpd ~/.xbindkeysrc-mpd
+ln -s ~/code/homefiles/xbindkeysrc-spotify ~/.xbindkeysrc-spotify
