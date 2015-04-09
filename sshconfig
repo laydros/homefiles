@@ -14,6 +14,11 @@ Host burn3
      User root
      IdentityFile ~/.ssh/old_id_rsa
 
+Host ibanez
+    HostName 10.1.0.70
+    User laydros
+    Port 22
+
 Host fyre
     HostName 10.1.0.159
     User root
