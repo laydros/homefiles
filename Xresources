@@ -8,6 +8,12 @@ Rxvt*scrollBar: False
 !URxvt.font: xft:DejaVu Sans Mono-9:antialias=true
 URxvt.font: 7x14
 
+Xft.dpi:            96
+Xft.antialias:      true
+Xft.hinting:        true
+Xft.hintstyle:      hintfull
+Xft.rgba:           rgb
+
 urxvt.background: 	#151E13
 !urxvt.foreground:	white
 urxvt.foreground:	#aaaaaa

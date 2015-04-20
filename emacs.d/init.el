@@ -42,7 +42,7 @@
 ;; (laydros-require-package 'naquadah-theme)
 ;; (require 'naquadah-theme)
 
-(load-theme 'plan9)
+;; (load-theme 'plan9)
 
 ;; (require 'molokai-theme)
 ;; (laydros-require-package 'monokai-theme)
@@ -61,14 +61,14 @@
 ;; ************************************************************************
 ;; * - Auto-complete -
 ;; ************************************************************************
-; (laydros-require-package 'auto-complete)
-; (require 'auto-complete-config)
-; (ac-config-default)
+;(laydros-require-package 'auto-complete)
+;(require 'auto-complete-config)
+;(ac-config-default)
 
 ;; company is supposed to be better, but it is getting on my nerves
 ;; jwh-2014-10-06
-; (laydros-require-package 'company)
-; (require 'company)
+(laydros-require-package 'company)
+(require 'company)
 
 ;; (setq company-idle-delay 0.5)
 ;; (setq company-tooltip-limit 10)
@@ -77,7 +77,7 @@
 ;; ;; is displayed on top (happens near the bottom of the windows)
 ;; (setq company-tooltip-flip-when-above 1)
 
-;; (global-company-mode 1)
+(global-company-mode 1)
 
 
 ;; ************************************************************************
@@ -118,14 +118,15 @@
 ;; ************************************************************************
 ;; * - projectile -
 ;; ************************************************************************
-(laydros-require-package 'projectile)
-(projectile-global-mode)
+;(laydros-require-package 'projectile)
+;(projectile-global-mode)
 
 ;; ************************************************************************
 ;; * - magit -
 ;; ************************************************************************
 (laydros-require-package 'magit)
 (require 'magit)
+(setq magit-last-seen-setup-instructions "1.4.0")
 
 ;; ************************************************************************
 ;; * - git-gutter-fringe - 
@@ -141,7 +142,7 @@
 ;; ************************************************************************
 ;; * - powerline -
 ;; ************************************************************************
-(require 'powerline)
+;(require 'powerline)
 
 ;; ************************************************************************
 ;; * - nlinum -
@@ -162,7 +163,7 @@
 (setq user-mail-address "jwh@laydros.net")
 
 ;; run in server mode
-(server-start)
+;(server-start)
 
 (laydros-require-package 'autopair)
 (require 'autopair)
@@ -173,6 +174,7 @@
 ;; I always use 4 tabs as spaces. this is PEP-8 and feels right for other stuff
 (setq standard-indent 4)
 (setq-default indent-tabs-mode nil)
+(setq-default tab-width 4)
 
 ;; transient should be on by default as of emacs 23.2
 ;; (setq transient-mark-mode t)
@@ -291,6 +293,8 @@ region\) apply comment-or-uncomment to the current line"
 (require 'laydros-mu4e)
 ;; load org-mode stuff
 (require 'laydros-org)
+;; load some custom functions
+(require 'laydros-functions)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

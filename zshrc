@@ -51,7 +51,7 @@ plugins=(git)
 
 # User configuration
 
-export PATH="$HOME/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/m3db/data/linux/bin"
+export PATH="$HOME/bin:$HOME/code/venvs/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/m3db/data/linux/bin:$HOME/.local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -97,7 +97,7 @@ alias kp="ps auxwww"
 #alias dt="cd ~/Desktop/"
 #alias e=emacsclient -t
 #alias ec=emacsclient -c
-#alias vim=mg 
+#alias vim=mg
 
 alias todo="emacs -batch -l ~/.emacs.d/init.el -eval '(org-batch-agenda \"t\")' 2> /dev/null "
 alias today="emacs -batch -l ~/.emacs.d/init.el -eval '(org-batch-agenda \"a\")' 2> /dev/null "
@@ -142,3 +142,4 @@ bindkey '^N' history-search-forward
 
 # lastpass config directory
 export LPASS_HOME=~/.config/lpass
+export XDG_CONFIG_HOME=~/.config

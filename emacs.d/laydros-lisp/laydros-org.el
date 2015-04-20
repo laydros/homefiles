@@ -46,8 +46,13 @@
 (setq org-todo-keywords-for-agenda
       '((sequence "TODO" "INPROGRESS" "WAITING" "APPT" "|" "DONE" "DELEGATED")))
 
-(laydros-require-package 'google-contacts)
-(require 'org-contacts)
+;; (laydros-require-package 'google-contacts)
+;; (require 'org-contacts)
+
+;; Set org-keyword colors
+;; (setq org-todo-keyword-faces
+      ;; '((“TODO” . org-warning) (“ON HOLD” . “yellow”)
+        ;; (“CANCELED” . (:foreground “blue” :weight bold))))
 
 (setq org-agenda-include-diary t)
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
