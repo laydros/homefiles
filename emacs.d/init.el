@@ -45,8 +45,8 @@
 ;; (load-theme 'plan9)
 
 ;; (require 'molokai-theme)
-;; (laydros-require-package 'monokai-theme)
-;; (require 'monokai-theme)
+(laydros-require-package 'monokai-theme)
+(require 'monokai-theme)
 
 ;; (laydros-require-package 'zenburn-theme)
 ;; (require 'zenburn-theme)
@@ -164,6 +164,18 @@
 
 ;; run in server mode
 ;(server-start)
+
+;; jwh 2015-04-22
+;; From emacs wiki to fix scrolling jumping
+;; FINALLY, after many years of cuffrsing, the suggestion of setting
+;; auto-window-vscroll to nil, below on this page, worked - even though Emacs
+;; documentation only says it applies to tall lines with large images, which I
+;; don’t use. In fact it seems to apply to any scrolling with too-slow terminal
+;; and too-fast keyboard repeat rate. So, here’s my tested recipe for civilized
+;; scrolling, which works regardless of your screen speed and keyboard speed:
+(setq scroll-step 1)
+(setq scroll-conservatively 10000)
+(setq auto-window-vscroll nil)
 
 (laydros-require-package 'autopair)
 (require 'autopair)
@@ -307,7 +319,9 @@ region\) apply comment-or-uncomment to the current line"
  '(custom-safe-themes
    (quote
     ("e3378d36c11449a4ad5361af6144036478265c53af00fb23400e674bb91ca33f" "1c6c7d5e4beaec0a54d814454106d180de7b90f8961d3edd2f6567f7c08da97e" "ef43b291f7e96826d3d9bae61434a93020d0f529d609bc8be5b331980e8448d7" default)))
+ '(magit-use-overlays nil)
  '(make-backup-files nil)
+ '(nxml-child-indent 4)
  '(org-agenda-files
    (quote
     ("/home/laydros/Dropbox/Documents/org/work.org" "~/Dropbox/Documents/org/organizer.org" "/home/laydros/Dropbox/Documents/org/personal.org")))
