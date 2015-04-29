@@ -23,6 +23,7 @@
 
 ;; this is where the install procedure above puts your mu4e
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
+(add-to-list 'load-path "/usr/share/emacs24/site-lisp/mu4e")
 
 (require 'mu4e)
 
