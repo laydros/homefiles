@@ -54,5 +54,5 @@ Host devio.us
     User laydros
 
 Host linode
-    HostName 45.56.115.197
+    HostName 45.56.114.14
     User laydros
