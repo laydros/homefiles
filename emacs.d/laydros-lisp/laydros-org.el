@@ -103,33 +103,33 @@
            (org-mobile-push-with-delay 60)))
    )))
 
-(run-at-time "00:05" 86400 '(lambda () (org-mobile-push-with-delay 1))) ;; refreshes agenda file each day
+;; (run-at-time "00:05" 86400 '(lambda () (org-mobile-push-with-delay 1))) ;; refreshes agenda file each day
 
 ;; Automate org-mobile-pull
-(org-mobile-pull) ;; run org-mobile-pull at startup
+;; (org-mobile-pull) ;; run org-mobile-pull at startup
 
-(defun install-monitor (file secs)
-  (run-with-timer
-   0 secs
-   (lambda (f p)
-     (unless (< p (second (time-since (elt (file-attributes f) 5))))
-       (org-mobile-pull)))
-   file secs))
+;; (defun install-monitor (file secs)
+;;   (run-with-timer
+;;    0 secs
+;;    (lambda (f p)
+;;      (unless (< p (second (time-since (elt (file-attributes f) 5))))
+;;        (org-mobile-pull)))
+;;    file secs))
 
-(install-monitor (file-truename
-                  (concat
-                   (file-name-as-directory org-mobile-directory)
-                          org-mobile-capture-file))
-                 5)
+;; (install-monitor (file-truename
+;;                   (concat
+;;                    (file-name-as-directory org-mobile-directory)
+;;                           org-mobile-capture-file))
+;;                  5)
 
-;; Do a pull every 5 minutes to circumvent problems with timestamping
-;; (ie. dropbox bugs)
-(run-with-timer 0 (* 10 60) 'org-mobile-pull)
+;; ;; Do a pull every 5 minutes to circumvent problems with timestamping
+;; ;; (ie. dropbox bugs)
+;; (run-with-timer 0 (* 10 60) 'org-mobile-pull)
 
-(setq org-use-fast-todo-selection t)
+;; (setq org-use-fast-todo-selection t)
 
-;; log when marked done
-(setq org-log-done 'time)
+;; ;; log when marked done
+;; (setq org-log-done 'time)
 
 ;; to make org mode ask for note when set done
 ;; (setq org-log-done 'note)
