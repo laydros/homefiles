@@ -163,7 +163,7 @@
 (setq user-mail-address "jwh@laydros.net")
 
 ;; run in server mode
-;(server-start)
+(server-start)
 
 ;; jwh 2015-04-22
 ;; From emacs wiki to fix scrolling jumping
