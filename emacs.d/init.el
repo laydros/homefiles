@@ -324,7 +324,7 @@ region\) apply comment-or-uncomment to the current line"
  '(nxml-child-indent 4)
  '(org-agenda-files
    (quote
-    ("/home/laydros/Dropbox/Documents/org/work.org" "~/Dropbox/Documents/org/organizer.org" "/home/laydros/Dropbox/Documents/org/personal.org")))
+    ("/home/laydros/Dropbox/Documents/org/work.org" "~/Dropbox/Documents/org/organizer.org")))
  '(org-agenda-show-all-dates t)
  '(org-tags-column -78))
 (custom-set-faces

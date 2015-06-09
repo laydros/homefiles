@@ -5,14 +5,20 @@ Host smoke
     IdentityFile ~/.ssh/old_id_rsa
 
 Host connect1
-     HostName 10.0.0.127
-     User root
-     IdentityFile ~/.ssh/old_id_rsa
+    HostName 10.0.0.127
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
 
 Host burn3
-     HostName 10.0.0.125
-     User root
-     IdentityFile ~/.ssh/old_id_rsa
+    HostName 10.0.0.125
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
+
+Host eburn2
+    HostName 216.215.220.226
+    User root
+    Port 15000
+    IdentityFile ~/.ssh/id_rsa
 
 Host ibanez
     HostName 10.1.0.70
