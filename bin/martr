@@ -1,0 +1,3 @@
+#! /bin/bash
+#rdesktop -x l -a 32 -z -u "Jason Hamilton" -k en-us -g 1600x990 -T "martin" 10.1.0.76:3389
+rdesktop -x l -a 32 -z -u "Jason Hamilton" -k en-us -g 95% -T "martin" 10.1.0.76:3389
