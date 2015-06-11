@@ -9,16 +9,16 @@ LIST=""
 LIST=$LIST" vlc spotify-client"
 
 # media codecs
-#LIST=$LIST" gstreamer0.10-plugins-good gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly libavcodec-extra "
+LIST=$LIST" gstreamer0.10-plugins-good gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly libavcodec-extra "
 
 # browser plugins
-#LIST=$LIST" flashplugin-nonfree"
+LIST=$LIST" flashplugin-nonfree"
 
 # cli utils
-LIST=$LIST" curl wget git vim ncdu"
+LIST=$LIST" curl wget git vim ncdu rdesktop"
 
 # common dev tools
-LIST=$LIST" geany gitk xbindkeys diffuse"
+LIST=$LIST" geany gitk xbindkeys diffuse autokey-gtk"
 
 # python
 LIST=$LIST" python-pip idle-python2.7 python-rope python-dev"
