@@ -316,15 +316,9 @@ region\) apply comment-or-uncomment to the current line"
  '(auto-resize-tool-bars t t)
  '(calendar-week-start-day 0)
  '(case-fold-search t)
- '(custom-safe-themes
-   (quote
-    ("e3378d36c11449a4ad5361af6144036478265c53af00fb23400e674bb91ca33f" "1c6c7d5e4beaec0a54d814454106d180de7b90f8961d3edd2f6567f7c08da97e" "ef43b291f7e96826d3d9bae61434a93020d0f529d609bc8be5b331980e8448d7" default)))
  '(magit-use-overlays nil)
  '(make-backup-files nil)
- '(nxml-child-indent 4)
- '(org-agenda-files
-   (quote
-    ("/home/laydros/Dropbox/Documents/org/work.org" "~/Dropbox/Documents/org/organizer.org")))
+ '(org-agenda-files (quote ("~/Dropbox/Documents/org/work.org")))
  '(org-agenda-show-all-dates t)
  '(org-tags-column -78))
 (custom-set-faces
