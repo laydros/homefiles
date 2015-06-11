@@ -145,6 +145,12 @@
 ;(require 'powerline)
 
 ;; ************************************************************************
+;; * - jinja2-mode -
+;; ************************************************************************
+(require 'jinja2-mode)
+(setq-default sgml-basic-offset 4)
+
+;; ************************************************************************
 ;; * - nlinum -
 ;; ************************************************************************
 (laydros-require-package 'nlinum)
@@ -187,6 +193,8 @@
 (setq standard-indent 4)
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
+;; possibly the nuclear option to fix tabs                                     |         |
+;; (setq indent-line-function 'insert-tab)
 
 ;; transient should be on by default as of emacs 23.2
 ;; (setq transient-mark-mode t)

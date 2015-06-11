@@ -30,7 +30,7 @@
  '(calendar-week-start-day 0)
  '(case-fold-search t)
  '(make-backup-files nil)
- '(org-agenda-files (quote ("~/Dropbox/Documents/org/personal.org"
+ '(org-agenda-files (quote ("~/Dropbox/Documents/org/organizer.org"
                             "~/Dropbox/Documents/org/work.org")))
  '(org-agenda-show-all-dates t)
  '(org-tags-column -78))
@@ -72,36 +72,38 @@
 ;; *****************************************
 (setq org-directory "/home/laydros/Dropbox/Documents/org")
 (setq org-default-notes-file (concat org-directory "/organizer.org"))
-(setq org-mobile-directory "~/Dropbox/MobileOrg")
-(setq org-mobile-inbox-for-pull "~/Dropbox/Documents/org/from-mobile.org")
+;; (setq org-mobile-directory "~/Dropbox/MobileOrg")
+;; (setq org-mobile-inbox-for-pull "~/Dropbox/Documents/org/from-mobile.org")
 
 ;; startup
 (find-file "~/Dropbox/Documents/org/organizer.org")
 (org-agenda nil "a")
 
+;; 2015-06-05 jwh
+;; currently giving up on mobile org and trying orgzly
 ;; ***************************************
 ;; - org-mobile -
 ;; ***************************************
 
 ;; Automate org-mobile-push
-(defvar org-mobile-push-timer nil
-  "Timer that `org-mobile-push-timer' used to reschedule itself, or nil.")
+;; (defvar org-mobile-push-timer nil
+;;   "Timer that `org-mobile-push-timer' used to reschedule itself, or nil.")
 
-(defun org-mobile-push-with-delay (secs)
-  (when org-mobile-push-timer
-    (cancel-timer org-mobile-push-timer))
-  (setq org-mobile-push-timer
-        (run-with-idle-timer
-         (* 1 secs) nil 'org-mobile-push)))
+;; (defun org-mobile-push-with-delay (secs)
+;;   (when org-mobile-push-timer
+;;     (cancel-timer org-mobile-push-timer))
+;;   (setq org-mobile-push-timer
+;;         (run-with-idle-timer
+;;          (* 1 secs) nil 'org-mobile-push)))
 
-(add-hook 'after-save-hook 
- (lambda () 
-   (when (eq major-mode 'org-mode)
-     (dolist (file (org-mobile-files-alist))
-      (if (string= (file-truename (expand-file-name (car file)))
-		   (file-truename (buffer-file-name)))
-           (org-mobile-push-with-delay 60)))
-   )))
+;; (add-hook 'after-save-hook 
+;;  (lambda () 
+;;    (when (eq major-mode 'org-mode)
+;;      (dolist (file (org-mobile-files-alist))
+;;       (if (string= (file-truename (expand-file-name (car file)))
+;; 		   (file-truename (buffer-file-name)))
+;;            (org-mobile-push-with-delay 60)))
+;;    )))
 
 ;; (run-at-time "00:05" 86400 '(lambda () (org-mobile-push-with-delay 1))) ;; refreshes agenda file each day
 

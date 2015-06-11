@@ -67,7 +67,7 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 # set emacs as default editor
-export EDITOR='ec'
+export EDITOR='vim'
 #bindkey -v
 
 # set Sublime Text as default editor
