@@ -5,6 +5,7 @@
 !.zsh_history
 #!.emacs.d/
 
+autokey.pid
 .config/chromium/
 .config/banshee-1/
 .config/xfce4/
