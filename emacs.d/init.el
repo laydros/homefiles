@@ -1,15 +1,10 @@
 ;;; init.el
-
-;; Author: Jason Hamilton
-
-;;; Commentary:
-
+;;; Author: Jason Hamilton
 ;;; Code:
 
 ;; ************************************************************************
 ;; * initial display stuff so things don't flash all funky
 ;; ************************************************************************
-;; (if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 (if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
 (if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
 (blink-cursor-mode -1)
@@ -21,152 +16,177 @@
 ;; (set-default-font "Inconsolata-10")
 ;; (set-default-font "DejaVu Sans Mono-9")
 (set-default-font "Source Code Pro-10")
+
+;; use dired-extra, included with emacs. still learning about this
+(add-hook 'dired-load-hook
+          (function (lambda () (load "dired-x"))))
+
+(setq c-default-style "linux"
+          c-basic-offset 4)
+
+;; require soft should let things happen in spite of missing packages
+(defmacro require-soft (name &rest body)
+  `(if (require ,name nil t)
+       (progn ,@body)
+     (message "Could not load \"%s\", skipping..." ,name)))
+
 ;; ************************************************************************
 ;; *  package manager
 ;; ************************************************************************
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.milkbox.net/packages/") t)
-(add-to-list 'package-archives
-             '("elpy" . "http://jorgenschaefer.github.io/packages/"))
-(package-initialize)
 
-(defun laydros-require-package (name)
+;; (require 'package)
+;; (add-to-list 'package-archives
+;;              '("elpy" . "http://jorgenschaefer.github.io/packages/"))
+;; (add-to-list 'package-archives
+;;              '("melpa" . "http://melpa.milkbox.net/packages/"))
+;; (package-initialize)
+
+(require-soft 'package
+      (package-initialize)
+      (add-to-list 'package-archives
+                   '("melpa" . "http://melpa.milkbox.net/packages/") t)
+      (add-to-list 'package-archives
+                   '("elpy" . "http://jorgenschaefer.github.io/packages/") t))
+
+(defun jwh-add-missing-package (name)
   (unless (package-installed-p name)
     (package-install name)))
+
+;; ************************************************************************
+;; *  custom key mode
+;; *  based on chris n.
+;; ************************************************************************
+;; (define-minor-mode jason2-keys-mode
+;;   "Global minor mode for Jason's custom key bindings
+
+;; This ensures no major mode overrides the keybindings, while still
+;; making them easy to toggle. Also, all defined keybindings can be listed here:"
+;;   :init-value t
+;;   :keymap (make-sparse-keymap))
+
+;; (defun jason2-define-key (key def)
+;;   (define-key jason2-keys-mode-map (kbd key) def))
 
 ;; ************************************************************************
 ;; * Themes
 ;; * - the first step is admitting you have a problem
 ;; ************************************************************************
-;; (laydros-require-package 'naquadah-theme)
+;; (jwh-add-missing-package 'naquadah-theme)
 ;; (require 'naquadah-theme)
 
 ;; (load-theme 'plan9)
 
-;; (require 'molokai-theme)
-(laydros-require-package 'monokai-theme)
-(require 'monokai-theme)
-
-;; (laydros-require-package 'zenburn-theme)
+(require-soft 'monokai-theme)
+;; (jwh-add-missing-package 'zenburn-theme)
 ;; (require 'zenburn-theme)
 
 ;; ************************************************************************
 ;; * - Elpy -
 ;; ************************************************************************
-(laydros-require-package 'elpy)
-(elpy-enable)
-(elpy-use-ipython)
+(jwh-add-missing-package 'elpy)
+(require-soft 'elpy
+              (elpy-enable)
+              (elpy-use-ipython))
+
+;; use nXML for XML, XHTML, and XSL.
+;; 2015-07-01 +jwh+
+;; (require 'nxml-mode)
+;; (setq auto-mode-alist
+;;       (cons '("\\.\\(xml\\|xsl\\|rng\\|xhtml\\)\\'" . nxml-mode)
 
 ;; ************************************************************************
 ;; * - Auto-complete -
 ;; ************************************************************************
-;(laydros-require-package 'auto-complete)
-;(require 'auto-complete-config)
-;(ac-config-default)
-
-;; company is supposed to be better, but it is getting on my nerves
-;; jwh-2014-10-06
-(laydros-require-package 'company)
-(require 'company)
-
-;; (setq company-idle-delay 0.5)
-;; (setq company-tooltip-limit 10)
-;; (setq company-minimum-prefix-length 2)
-;; ;; invert the navigation direction if the completion popup-isearch-match
-;; ;; is displayed on top (happens near the bottom of the windows)
-;; (setq company-tooltip-flip-when-above 1)
-
-(global-company-mode 1)
+;; jwh 2015-07-10
+;; tooltip-flip-when-above will invert if the completion popup-isearch-match
+;; is displayed on top (happens near the bottom of the windows)
+(jwh-add-missing-package 'company)
+(require-soft 'company
+              (setq company-tooltip-flip-when-above 1)
+              (setq company-idle-delay 0.3)
+              (setq company-minimum-prefix-length 2)
+              (global-company-mode 1))
 
 
 ;; ************************************************************************
 ;; * - undo-tree -
 ;; ************************************************************************
-(laydros-require-package 'undo-tree)
-(require 'undo-tree)
-(global-undo-tree-mode)
-
+(jwh-add-missing-package 'undo-tree)
+(require-soft 'undo-tree
+              (global-undo-tree-mode))
 
 ;; ************************************************************************
 ;; * - ido -
 ;; * Ido mode provides a nice way to navigate the filesystem. This is mostly
 ;; * just turning it on.
 ;; ************************************************************************
-(laydros-require-package 'ido)
-(laydros-require-package 'flx-ido)
-(require 'ido)
-(require 'flx-ido)
-(ido-mode t)
-(ido-everywhere t)
-(flx-ido-mode t)
+(jwh-add-missing-package 'ido)
+(jwh-add-missing-package 'flx-ido)
+(require-soft 'ido
+              (ido-mode t)
+              (ido-everywhere t))
 ;; hide ido faces to see flx-ido highlights
-(setq ido-use-faces nil)
-(setq ido-enable-flex-matching t
-      ibuffer-shrink-to-minimum-size t
-      ibuffer-sorting-mode 'recency
-      ido-use-virtual-buffers t)
-(laydros-require-package 'ido-vertical-mode)
-(ido-vertical-mode t)
+(require-soft 'flx-ido
+              (setq ido-use-faces nil
+                    ido-enable-flex-matching t
+                    ibuffer-shrink-to-minimum-size t
+                    ibuffer-sorting-mode 'recency
+                    ido-use-virtual-buffers t))
+
+(jwh-add-missing-package 'ido-vertical-mode)
+(require-soft 'ido-vertical-mode
+              (ido-vertical-mode t))
 
 ;; ************************************************************************
 ;; * - iedit -
 ;; ************************************************************************
-(laydros-require-package 'iedit)
-(require 'iedit)
-
-;; ************************************************************************
-;; * - projectile -
-;; ************************************************************************
-;(laydros-require-package 'projectile)
-;(projectile-global-mode)
+(jwh-add-missing-package 'iedit)
+(require-soft 'iedit)
 
 ;; ************************************************************************
 ;; * - magit -
 ;; ************************************************************************
-(laydros-require-package 'magit)
-(require 'magit)
-(setq magit-last-seen-setup-instructions "1.4.0")
+(jwh-add-missing-package 'magit)
+(require-soft 'magit
+              (setq magit-last-seen-setup-instructions "1.4.0"))
 
 ;; ************************************************************************
 ;; * - git-gutter-fringe - 
 ;; ************************************************************************
-(laydros-require-package 'git-gutter-fringe)
+(jwh-add-missing-package 'git-gutter-fringe)
 (when (window-system)
-  (require 'git-gutter-fringe))
-
-(global-git-gutter-mode +1)
-(setq-default indicate-buffer-boundaries 'left)
-(setq-default indicate-empty-lines +1)
-
-;; ************************************************************************
-;; * - powerline -
-;; ************************************************************************
-;(require 'powerline)
+  (require-soft 'git-gutter-fringe
+                (global-git-gutter-mode +1)
+                (setq-default indicate-buffer-boundaries 'left)
+                (setq-default indicate-empty-lines +1)))
 
 ;; ************************************************************************
 ;; * - jinja2-mode -
 ;; ************************************************************************
-(require 'jinja2-mode)
-(setq-default sgml-basic-offset 4)
+(require-soft 'jinja2-mode
+              (setq-default sgml-basic-offset 4))
 
 ;; ************************************************************************
 ;; * - nlinum -
 ;; ************************************************************************
-(laydros-require-package 'nlinum)
-(global-nlinum-mode t)
+;; something with linum or faces is breaking opening new frames or emacsclient
+;; (jwh-add-missing-package 'nlinum)
+;; (require-soft 'nlinum
+              ;; (global-nlinum-mode t))
 
 ;; Preset width nlinum - should prevent horizontal jumps when scrolling
-(add-hook 'nlinum-mode-hook
-          (lambda ()
-            (setq nlinum--width
-              (length (number-to-string
-                       (count-lines (point-min) (point-max)))))))
+;; (add-hook 'nlinum-mode-hook
+;;           (lambda ()
+;;             (setq nlinum--width
+;;               (length (number-to-string
+;;                        (count-lines (point-min) (point-max)))))))
 
 ;; ************************************************************************
 ;; * - General -
 ;; ************************************************************************
 (setq user-mail-address "jwh@laydros.net")
+
+;; (setenv "SSH_ASKPASS" "/home/chris/bin/gnome-ssh-askpass")
 
 ;; run in server mode
 (server-start)
@@ -179,15 +199,13 @@
 ;; don’t use. In fact it seems to apply to any scrolling with too-slow terminal
 ;; and too-fast keyboard repeat rate. So, here’s my tested recipe for civilized
 ;; scrolling, which works regardless of your screen speed and keyboard speed:
-(setq scroll-step 1)
-(setq scroll-conservatively 10000)
-(setq auto-window-vscroll nil)
+(setq scroll-step 1
+      scroll-conservatively 10000
+      auto-window-vscroll nil)
 
-(laydros-require-package 'autopair)
-(require 'autopair)
+(jwh-add-missing-package 'autopair)
+(require-soft 'autopair)
 
-(setq visible-bell t)
-(display-time-mode 1)
 
 ;; I always use 4 tabs as spaces. this is PEP-8 and feels right for other stuff
 (setq standard-indent 4)
@@ -196,27 +214,25 @@
 ;; possibly the nuclear option to fix tabs                                     |         |
 ;; (setq indent-line-function 'insert-tab)
 
-;; transient should be on by default as of emacs 23.2
-;; (setq transient-mark-mode t)
 (setq global-font-lock-mode 1)
 
+(setq visible-bell t)
+(display-time-mode t)
 (line-number-mode t)
 (column-number-mode t)
 (size-indication-mode t)
+(show-paren-mode t)
 
 ;; fill column tells me where to stop. PEP-8 calls for 80 columns or less, and
 ;; I just let this carry into all of my text editing
-(laydros-require-package 'fill-column-indicator)
+(jwh-add-missing-package 'fill-column-indicator)
 (define-globalized-minor-mode
  global-fci-mode fci-mode (lambda () (fci-mode 1)))
 (global-fci-mode t)
 (setq-default fill-column 79)
 
-(show-paren-mode t)
-
 ;; for tramp
 (setq tramp-default-method "ssh")
-
 (auto-compression-mode 1)
 
 ;; watch visited files for changes and reload if needed
@@ -265,8 +281,8 @@ region\) apply comment-or-uncomment to the current line"
 (setq recentf-max-menu-items 100)
 
 ;; uniquify for buffer names
-(require 'uniquify)
-(setq uniquify-buffer-name-style 'forward)
+(require-soft 'uniquify
+              (setq uniquify-buffer-name-style 'forward))
 
 ;; function to hide ^M characters in mixed line ending files
 (defun hide-ctrl-M ()
@@ -281,19 +297,37 @@ region\) apply comment-or-uncomment to the current line"
 ;; load images as images
 (auto-image-file-mode 1)
 
+(setq dired-auto-revert-buffer t)
+(setq display-time-24hr-format t)
+
+;; (setq 'select-active-regions nil)
+;; (setq 'shift-select-mode nil)
+;; (setq 'transient-mark-mode nil)
+
 ;; ************************************************************************
 ;; * - UTF-8 -
 ;; ************************************************************************
-
 (prefer-coding-system 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-keyboard-coding-system 'utf-8)
 
-
 ;; ************************************************************************
 ;; * - Key Bindings -
 ;; ************************************************************************
+
+;; ;; buffer-menu stuff from chris n
+;; (jason2-define-key "<f6>" 'buffer-menu)
+;; ;;(jason2-define-key "<S-f6>" #'(lambda () (interactive) (dired "~")))
+
+;; ;; Emacs21 changes these.
+;; ;; 28aug2002  +chris+
+;; (jason2-define-key "<home>" 'beginning-of-buffer)
+;; (jason2-define-key "<end>" 'end-of-buffer)
+
+;; ;; Make F12 work like 'M-x goto-line'
+;; (jason2-define-key "<f12>" 'goto-line)
+
 (global-set-key (kbd "RET") 'newline-and-indent)
 ;; (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-/") 'hippie-expand)
@@ -303,6 +337,21 @@ region\) apply comment-or-uncomment to the current line"
 (global-set-key "\C-x\C-b" 'ibuffer)
 (global-set-key "\C-c\C-r" 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region-or-line)
+(global-set-key (kbd "C-S-r") 'revert-buffer)
+
+;; jwh 2015-07-01 - function to add permanent macro
+(defun save-macro (name)                  
+    "save a macro. Take a name as argument
+     and save the last defined macro under 
+     this name at the end of your .emacs"
+     (interactive "SName of the macro :")  ; ask for the name of the macro    
+     (name-last-kbd-macro name)            ; use this name for the macro    
+     (find-file user-init-file)            ; open ~/.emacs or other user init file 
+     (goto-char (point-max))               ; go to the end of the .emacs
+     (newline)                             ; insert a newline
+     (insert-kbd-macro name)               ; copy the macro 
+     (newline)                             ; insert a newline
+     (switch-to-buffer nil))               ; return to the initial buffer
 
 ;; ************************************************************************
 ;; * - External loads -

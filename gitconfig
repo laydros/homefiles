@@ -20,6 +20,7 @@
 [diff]
     external=/home/laydros/bin/git-meld.sh
 [merge]
+    external=/home/laydros/bin/git-meld.sh
     log = true
 [alias]
     st = status -s -uno
