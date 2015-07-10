@@ -163,8 +163,14 @@
 ;; ************************************************************************
 ;; * - jinja2-mode -
 ;; ************************************************************************
+<<<<<<< HEAD
 (require-soft 'jinja2-mode
               (setq-default sgml-basic-offset 4))
+=======
+(laydros-require-package 'jinja2-mode)
+(require 'jinja2-mode)
+(setq-default sgml-basic-offset 4)
+>>>>>>> be926baf0dd57e9d538d6969800e4c14fe8dbc56
 
 ;; ************************************************************************
 ;; * - nlinum -
