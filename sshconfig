@@ -62,3 +62,9 @@ Host devio.us
 Host linode
     HostName 45.56.114.14
     User laydros
+
+Host shiva
+    User root
+
+Host shivado
+    User root

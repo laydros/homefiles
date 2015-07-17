@@ -6,6 +6,7 @@
 #!.emacs.d/
 
 autokey.pid
+autokey.log.[0-9]
 .config/chromium/
 .config/banshee-1/
 .config/xfce4/
