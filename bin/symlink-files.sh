@@ -25,12 +25,16 @@ ln -s ~/code/homefiles/i3 ~/.i3
 
 echo "...mutt folder and create Maildir folder"
 ln -s ~/code/homefiles/mutt ~/.mutt
-mkdir ~/Maildir
+if [ ! -d ~/Maildir ]; then
+    mkdir ~/Maildir
+fi
 
 echo "...offlineimaprc"
 ln -s ~/code/homefiles/offlineimaprc ~/.offlineimaprc
 
 echo "...vimrc"
+if [ -f ~/.vimrc ]; then
+    echo ".vimrc exists, skipping"
 ln -s ~/code/homefiles/vimrc ~/.vimrc
 
 echo "...Xresources"
@@ -46,3 +50,11 @@ echo "...xbindkeys config files"
 ln -s ~/code/homefiles/xbindkeysrc ~/.xbindkeysrc
 ln -s ~/code/homefiles/xbindkeysrc-mpd ~/.xbindkeysrc-mpd
 ln -s ~/code/homefiles/xbindkeysrc-spotify ~/.xbindkeysrc-spotify
+
+function add_file file {
+    if [ -e $1 ]; then
+        echo "file/dir $1 already exists, skipping..."
+    else
+        return 1
+    fi
+}
