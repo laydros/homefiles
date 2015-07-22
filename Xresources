@@ -4,15 +4,18 @@ emacs.font:	Deja Vu Sans Mono-9
 Rxvt*scrollBar: False
 !urxvt.font:	xft:inconsolata:pixelsize=12
 !URxvt.font: xft:Monospace-10:antialias=true
-URxvt.font: xft:Terminus:pixelsize=16:antialias=true
+! URxvt.font: xft:Terminus:pixelsize=16:antialias=true
 !URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-u
-!URxvt.font: xft:DejaVu Sans Mono-9:antialias=true
+URxvt.font: xft:DejaVu Sans Mono:pixelsize=11:style=Book:antialias=true:hinting=medium
 !URxvt.font: 7x14
 
+! xterm*faceName: Dejavu Sans Mono:style=Book:antialias=true:hinting=medium
+! xterm*faceSize: 10
+
 Xft.dpi:            96
-Xft.antialias:      true
-Xft.hinting:        true
-Xft.hintstyle:      hintfull
+! Xft.antialias:      true
+! Xft.hinting:        true
+! Xft.hintstyle:      hintfull
 Xft.rgba:           rgb
 
 !urxvt.background: 	#151E13
@@ -80,45 +83,82 @@ URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
 #define S_cyan          #2aa198
 #define S_green         #859900
 
-*background:            S_base03
-*foreground:            S_base00
-*fading:                40
-*fadeColor:             S_base03
-*cursorColor:           S_base1
-*pointerColorBackground:S_base01
-*pointerColorForeground:S_base1
+! *background:            S_base03
+! *foreground:            S_base00
+! *fading:                40
+! *fadeColor:             S_base03
+! *cursorColor:           S_base1
+! *pointerColorBackground:S_base01
+! *pointerColorForeground:S_base1
 
-!! black dark/light
-*color0:                S_base02
-*color8:                S_base03
+! !! black dark/light
+! *color0:                S_base02
+! *color8:                S_base03
 
-!! red dark/light
-*color1:                S_red
-*color9:                S_orange
+! !! red dark/light
+! *color1:                S_red
+! *color9:                S_orange
 
-!! green dark/light
-*color2:                S_green
-*color10:               S_base01
+! !! green dark/light
+! *color2:                S_green
+! *color10:               S_base01
 
-!! yellow dark/light
-*color3:                S_yellow
-*color11:               S_base00
+! !! yellow dark/light
+! *color3:                S_yellow
+! *color11:               S_base00
 
-!! blue dark/light
-*color4:                S_blue
-*color12:               S_base0
+! !! blue dark/light
+! *color4:                S_blue
+! *color12:               S_base0
 
-!! magenta dark/light
-*color5:                S_magenta
-*color13:               S_violet
+! !! magenta dark/light
+! *color5:                S_magenta
+! *color13:               S_violet
 
-!! cyan dark/light
-*color6:                S_cyan
-*color14:               S_base1
+! !! cyan dark/light
+! *color6:                S_cyan
+! *color14:               S_base1
 
-!! white dark/light
-*color7:                S_base2
-*color15:               S_base3
+! !! white dark/light
+! *color7:                S_base2
+! *color15:               S_base3
+
+
+
+*foreground: #DDCCBB
+
+! Brown BG
+!*background: #30251D
+
+! Grey BG
+*background: #151515
+!
+!
+!black
+*color0:     #393939
+*color8:     #AF875F
+!red
+*color1:     #BF1E2D
+*color9:     #E7212A
+!green
+*color2:     #9DBA3A
+*color10:    #A9C938
+!yellow
+*color3:     #F5B915
+*color11:    #F7D325
+!blue
+*color4:     #1CA1DB
+*color12:    #00AFDA
+!magenta
+*color5:     #652F90
+*color13:    #894E9F
+!cyan
+*color6:     #EA7D24
+*color14:    #F79321
+!white
+*color7:     #E7E8E9
+*color15:    #F3F3F4
+
 
 !black
 !*.color0:                       #333333
