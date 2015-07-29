@@ -116,26 +116,41 @@
               (global-undo-tree-mode))
 
 ;; ************************************************************************
+;; * - helm -
+;; I've been resistant to add helm, but going to try it
+;; ************************************************************************
+(require-soft 'helm
+              (helm-mode t)
+              (eval-after-load 'company
+                '(progn
+                   (define-key company-mode-map (kbd "C-:") 'helm-company)
+                   (define-key company-active-map (kbd "C-:") 'helm-company))))
+
+(require-soft 'helm-config)
+(helm-mode 1)
+
+;; ************************************************************************
 ;; * - ido -
 ;; * Ido mode provides a nice way to navigate the filesystem. This is mostly
 ;; * just turning it on.
+;; disable ido for now, i think it may conflict with helm
 ;; ************************************************************************
 (jwh-add-missing-package 'ido)
 (jwh-add-missing-package 'flx-ido)
-(require-soft 'ido
-              (ido-mode t)
-              (ido-everywhere t))
+;; (require-soft 'ido
+;;               (ido-mode t)
+;;               (ido-everywhere t))
 ;; hide ido faces to see flx-ido highlights
-(require-soft 'flx-ido
-              (setq ido-use-faces nil
-                    ido-enable-flex-matching t
-                    ibuffer-shrink-to-minimum-size t
-                    ibuffer-sorting-mode 'recency
-                    ido-use-virtual-buffers t))
+;; (require-soft 'flx-ido
+;;               (setq ido-use-faces nil
+;;                     ido-enable-flex-matching t
+;;                     ibuffer-shrink-to-minimum-size t
+;;                     ibuffer-sorting-mode 'recency
+;;                     ido-use-virtual-buffers t))
 
-(jwh-add-missing-package 'ido-vertical-mode)
-(require-soft 'ido-vertical-mode
-              (ido-vertical-mode t))
+;; (jwh-add-missing-package 'ido-vertical-mode)
+;; (require-soft 'ido-vertical-mode
+;;               (ido-vertical-mode t))
 
 ;; ************************************************************************
 ;; * - iedit -
@@ -332,11 +347,15 @@ region\) apply comment-or-uncomment to the current line"
 (global-set-key (kbd "RET") 'newline-and-indent)
 ;; (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-/") 'hippie-expand)
+(global-set-key (kbd "<f10>") 'magit-status)
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
-;; (global-set-key "\C-x\C-b" 'electric-buffer-list)
-(global-set-key "\C-x\C-b" 'ibuffer)
-(global-set-key "\C-c\C-r" 'comment-or-uncomment-region-or-line)
+(global-set-key (kbd "C-h a") 'helm-apropos)
+(global-set-key (kbd "C-h i") 'helm-info)
+(global-set-key (kbd "C-h b") 'helm-descbinds)
+(global-set-key (kbd "C-x C-b") 'helm-buffers-list)
+(global-set-key (kbd "C-x b") 'helm-mini)
+(global-set-key (kbd "C-c C-r") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "C-c ;") 'comment-or-uncomment-region-or-line)
 (global-set-key (kbd "C-S-r") 'revert-buffer)
 
