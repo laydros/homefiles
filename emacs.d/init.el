@@ -124,7 +124,11 @@
               (eval-after-load 'company
                 '(progn
                    (define-key company-mode-map (kbd "C-:") 'helm-company)
-                   (define-key company-active-map (kbd "C-:") 'helm-company))))
+                   (define-key company-active-map (kbd "C-:") 'helm-company)))
+              (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
+              (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
+              (define-key helm-map (kbd "C-z") 'helm-select-action)
+              (setq helm-ff-file-name-history-use-recentf t))
 
 (require-soft 'helm-config)
 (helm-mode 1)
