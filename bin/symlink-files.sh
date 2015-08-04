@@ -1,110 +1,51 @@
 #!/bin/bash
 
 EMACS_INIT=~/.emacs.d/init.el
+LAYDROS_LISP=~/.emacs.d/laydros-lisp
 BIN_DIR=~/bin
 GITCONFIG=~/.gitconfig
-
+GITIGNORE=~/.gitignore_global
 VIMRC=~/.vimrc
-OFFLINEIMAP=~/.offlineimaprc
+OFFLINEIMAPRC=~/.offlineimaprc
 I3DIR=~/.i3
 I3STATUS=~/.i3status
 MUTTDIR=~/.mutt
 AUTOKEYDIR=~/.config/autokey
+NANORC=~/.nanorc
+XRESOURCES=~/.Xresources
+ZSHRC=~/.zshrc
+XBINDRC=~/.xbindkeysrc
+XBINDMPD=~/.xbindkeysrc-mpd
+XBINDSPOT=~/.xbindkeysrc-spotify
 
-function check_file_not_exist {
-    return_code=1
+function symlink_file () {
     if [ -e $1 ]; then
         echo "file/dir $1 already exists, skipping..."
-	    return_code=0
+    else
+        echo "...symlink $1"
+        ln -s $2 $1
     fi
-    return $return_code
 }
 
+echo "Create a couple of directories if they don't exist"
+mkdir -p ~/Maildir
+mkdir -p ~/.emacs.d
 echo "Creating symlinks for dotfiles:"
-
-echo "...create emacs dirs"
-mkdir -p ~/.emacs.d/laydros-lisp
-
-
-check_file_not_exist $EMACS_INIT
-
-if [ $? -eq 1 ]
-then
-    echo "...emacs.d/init.el, laydros-org.el, org-contacts.el, etc."
-    ln -s ~/code/homefiles/emacs.d/init.el $EMACS_INIT
-    ln -s ~/code/homefiles/emacs.d/laydros-lisp ~/.emacs.d/laydros-lisp
-fi
-
-check_file_not_exist $BIN_DIR
-
-if [ $? -eq 1 ]
-then
-    echo "...bin directory"
-    ln -s ~/code/homefiles/bin $BIN_DIR
-fi
-
-check_file_not_exist $GITCONFIG
-
-if [ $? -eq 1 ]
-then
-    echo "...gitconfig and gitignore"
-    ln -s ~/code/homefiles/gitconfig $GITCONFIG
-    ln -s ~/code/homefiles/gitignore_global ~/.gitignore_global
-fi
-
-
-check_file_not_exist $I3DIR
-
-if [ $? -eq 1 ]
-then
-    echo "...i3 dir and i3status.conf"
-    ln -s ~/code/homefiles/i3status.conf $I3STATUS
-    ln -s ~/code/homefiles/i3 $I3DIR
-fi
-
-
-#echo "...msmtprc"
-#ln -s ~/code/homefiles/msmtprc ~/.msmtprc
-
-check_file_not_exist $MUTTDIR
-
-if [ $? -eq 1 ]
-then
-    echo "...mutt folder and create Maildir folder"
-    ln -s ~/code/homefiles/mutt $MUTTDIR
-
-    if [ ! -d ~/Maildir ]; then
-        mkdir ~/Maildir
-    fi
-fi
-
-echo "...offlineimaprc"
-ln -s ~/code/homefiles/offlineimaprc ~/.offlineimaprc
-
-check_file_not_exist $VIMRC
-
-if [ $? -eq 1 ]
-then
-    echo "...vimrc"
-    ln -s ~/code/homefiles/vimrc $VIMRC
-fi
-
-echo "...Xresources"
-ln -s ~/code/homefiles/Xresources ~/.Xresources
-
-echo "...zshrc"
-ln -s ~/code/homefiles/zshrc ~/.zshrc
-
-check_file_not_exist $AUTOKEYDIR
-
-if [ $? -eq 1 ]
-then
-    echo "...autokey config"
-    ln -s ~/code/homefiles/autokey ~/.config/autokey
-fi
-
-echo "...xbindkeys config files"
-ln -s ~/code/homefiles/xbindkeysrc ~/.xbindkeysrc
-ln -s ~/code/homefiles/xbindkeysrc-mpd ~/.xbindkeysrc-mpd
-ln -s ~/code/homefiles/xbindkeysrc-spotify ~/.xbindkeysrc-spotify
+symlink_file $LAYDROS_LISP ~/code/homefiles/emacs.d/laydros-lisp
+symlink_file $EMACS_INIT ~/code/homefiles/emacs.d/init.el
+symlink_file $BIN_DIR ~/code/homefiles/bin
+symlink_file $NANORC ~/code/homefiles/nanorc
+symlink_file $GITCONFIG ~/code/homefiles/gitconfig
+symlink_file $GITIGNORE ~/code/homefiles/gitignore_lobal
+symlink_file $I3STATUS ~/code/homefiles/i3status.conf
+symlink_file $I3DIR ~/code/homefiles/i3 
+symlink_file $MUTTDIR ~/code/homefiles/mutt
+symlink_file $OFFLINEIMAPRC ~/code/homefiles/offlineimaprc
+symlink_file $VIMRC ~/code/homefiles/vimrc
+symlink_file $XRESOURCES ~/code/homefiles/Xresources
+symlink_file $ZSHRC ~/code/homefiles/zshrc
+symlink_file $XBINDRC ~/code/homefiles/xbindkeysrc 
+symlink_file $XBINDMPD ~/code/homefiles/xbindkeysrc-mpd 
+symlink_file $XBINDSPOT ~/code/homefiles/xbindkeysrc-spotify 
+symlink_file $AUTOKEYDIR ~/.config/autokey
 
