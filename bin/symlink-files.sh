@@ -2,12 +2,20 @@
 
 EMACS_INIT=~/.emacs.d/init.el
 BIN_DIR=~/bin
+GITCONFIG=~/.gitconfig
+
+VIMRC=~/.vimrc
+OFFLINEIMAP=~/.offlineimaprc
+I3DIR=~/.i3
+I3STATUS=~/.i3status
+MUTTDIR=~/.mutt
+AUTOKEYDIR=~/.config/autokey
 
 function check_file_not_exist {
     return_code=1
     if [ -e $1 ]; then
         echo "file/dir $1 already exists, skipping..."
-	return_code=0
+	    return_code=0
     fi
     return $return_code
 }
@@ -17,44 +25,69 @@ echo "Creating symlinks for dotfiles:"
 echo "...create emacs dirs"
 mkdir -p ~/.emacs.d/laydros-lisp
 
-echo "...emacs.d/init.el, laydros-org.el, org-contacts.el"
 
 check_file_not_exist $EMACS_INIT
-return_val=$?
 
-if [ $return_val ]
+if [ $? -eq 1 ]
 then
+    echo "...emacs.d/init.el, laydros-org.el, org-contacts.el, etc."
     ln -s ~/code/homefiles/emacs.d/init.el $EMACS_INIT
     ln -s ~/code/homefiles/emacs.d/laydros-lisp ~/.emacs.d/laydros-lisp
 fi
 
-echo "...bin directory"
-ln -s ~/code/homefiles/bin ~/bin
+check_file_not_exist $BIN_DIR
 
-echo "...gitconfig and gitignore"
-ln -s ~/code/homefiles/gitconfig ~/.gitconfig
-ln -s ~/code/homefiles/gitignore_global ~/.gitignore_global
+if [ $? -eq 1 ]
+then
+    echo "...bin directory"
+    ln -s ~/code/homefiles/bin $BIN_DIR
+fi
 
-echo "...i3 dir and i3status.conf"
-ln -s ~/code/homefiles/i3status.conf ~/.i3status.conf
-ln -s ~/code/homefiles/i3 ~/.i3
+check_file_not_exist $GITCONFIG
+
+if [ $? -eq 1 ]
+then
+    echo "...gitconfig and gitignore"
+    ln -s ~/code/homefiles/gitconfig $GITCONFIG
+    ln -s ~/code/homefiles/gitignore_global ~/.gitignore_global
+fi
+
+
+check_file_not_exist $I3DIR
+
+if [ $? -eq 1 ]
+then
+    echo "...i3 dir and i3status.conf"
+    ln -s ~/code/homefiles/i3status.conf $I3STATUS
+    ln -s ~/code/homefiles/i3 $I3DIR
+fi
+
 
 #echo "...msmtprc"
 #ln -s ~/code/homefiles/msmtprc ~/.msmtprc
 
-echo "...mutt folder and create Maildir folder"
-ln -s ~/code/homefiles/mutt ~/.mutt
-if [ ! -d ~/Maildir ]; then
-    mkdir ~/Maildir
+check_file_not_exist $MUTTDIR
+
+if [ $? -eq 1 ]
+then
+    echo "...mutt folder and create Maildir folder"
+    ln -s ~/code/homefiles/mutt $MUTTDIR
+
+    if [ ! -d ~/Maildir ]; then
+        mkdir ~/Maildir
+    fi
 fi
 
 echo "...offlineimaprc"
 ln -s ~/code/homefiles/offlineimaprc ~/.offlineimaprc
 
-echo "...vimrc"
-if [ -f ~/.vimrc ]; then
-    echo ".vimrc exists, skipping"
-ln -s ~/code/homefiles/vimrc ~/.vimrc
+check_file_not_exist $VIMRC
+
+if [ $? -eq 1 ]
+then
+    echo "...vimrc"
+    ln -s ~/code/homefiles/vimrc $VIMRC
+fi
 
 echo "...Xresources"
 ln -s ~/code/homefiles/Xresources ~/.Xresources
@@ -62,8 +95,13 @@ ln -s ~/code/homefiles/Xresources ~/.Xresources
 echo "...zshrc"
 ln -s ~/code/homefiles/zshrc ~/.zshrc
 
-echo "...autokey config"
-ln -s ~/code/homefiles/autokey ~/.config/autokey
+check_file_not_exist $AUTOKEYDIR
+
+if [ $? -eq 1 ]
+then
+    echo "...autokey config"
+    ln -s ~/code/homefiles/autokey ~/.config/autokey
+fi
 
 echo "...xbindkeys config files"
 ln -s ~/code/homefiles/xbindkeysrc ~/.xbindkeysrc
