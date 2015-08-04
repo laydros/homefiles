@@ -1,4 +1,16 @@
-#!/bin/sh
+#!/bin/bash
+
+EMACS_INIT=~/.emacs.d/init.el
+BIN_DIR=~/bin
+
+function check_file_not_exist {
+    return_code=1
+    if [ -e $1 ]; then
+        echo "file/dir $1 already exists, skipping..."
+	return_code=0
+    fi
+    return $return_code
+}
 
 echo "Creating symlinks for dotfiles:"
 
@@ -6,8 +18,15 @@ echo "...create emacs dirs"
 mkdir -p ~/.emacs.d/laydros-lisp
 
 echo "...emacs.d/init.el, laydros-org.el, org-contacts.el"
-ln -s ~/code/homefiles/emacs.d/init.el ~/.emacs.d/init.el
-ln -s ~/code/homefiles/emacs.d/laydros-lisp ~/.emacs.d/laydros-lisp
+
+check_file_not_exist $EMACS_INIT
+return_val=$?
+
+if [ $return_val ]
+then
+    ln -s ~/code/homefiles/emacs.d/init.el $EMACS_INIT
+    ln -s ~/code/homefiles/emacs.d/laydros-lisp ~/.emacs.d/laydros-lisp
+fi
 
 echo "...bin directory"
 ln -s ~/code/homefiles/bin ~/bin
@@ -51,10 +70,3 @@ ln -s ~/code/homefiles/xbindkeysrc ~/.xbindkeysrc
 ln -s ~/code/homefiles/xbindkeysrc-mpd ~/.xbindkeysrc-mpd
 ln -s ~/code/homefiles/xbindkeysrc-spotify ~/.xbindkeysrc-spotify
 
-function add_file file {
-    if [ -e $1 ]; then
-        echo "file/dir $1 already exists, skipping..."
-    else
-        return 1
-    fi
-}
