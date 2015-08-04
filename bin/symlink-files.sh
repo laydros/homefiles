@@ -49,3 +49,4 @@ symlink_file $XBINDMPD ~/code/homefiles/xbindkeysrc-mpd
 symlink_file $XBINDSPOT ~/code/homefiles/xbindkeysrc-spotify 
 symlink_file $AUTOKEYDIR ~/.config/autokey
 
+echo "you may want to run bin/lappy.sh to setup fstab"
