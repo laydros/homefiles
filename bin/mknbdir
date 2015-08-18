@@ -1,0 +1,61 @@
+#!/bin/sh
+# mknbdir: make notebook directory for the day.
+# should be run just after midnight.
+# make symbolic links for today, tomorrow, etc.
+
+PATH=/usr/local/bin:/bin:/sbin:/usr/sbin:/usr/bin
+export PATH
+
+die () {
+    echo "$@" &gt;& 2
+    exit 1
+}
+
+cd $HOME
+top='notebook'
+test -d "$top" || die "$top: dir not found"
+
+#
+# Handle pages for today and yesterday.
+#
+
+cur="`date +%Y/%m%d`"
+test -d "$top/$cur" || mkdir -p "$top/$cur"
+test -d "$top/$cur" || die "unable to make $cur"
+test -L yesterday && rm yesterday
+test -L today && rm today
+ln -s $top/$cur today
+
+#
+# Handle pages for other dates.
+# NOTE: "date" must have "-d" option for this to work.
+#
+
+other='yesterday tomorrow sunday monday tuesday wednesday
+       thursday friday saturday'
+
+for day in $other
+do
+    cur=`date -d "$day 03:00" +%Y/%m%d`
+    test -d "$top/$cur" || mkdir -p "$top/$cur"
+    test -d "$top/$cur" || die "unable to make $cur"
+    test -L $day && rm $day
+    ln -s $top/$cur $day
+done
+
+#
+# Keep a year's worth in advance.
+# NOTE: must have "remind" installed for this to work.
+#
+
+cd $HOME/$top
+
+echo 'REM MSG daily' |
+    remind -s+53 - |
+    sed -e 's!^\(....\)/\(..\)/\(..\).*!\1/\2\3!' |
+while read dir
+do
+    test -d $dir || mkdir -p $dir
+done
+
+exit 0
