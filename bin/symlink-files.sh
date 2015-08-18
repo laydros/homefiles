@@ -1,60 +1,52 @@
-#!/bin/sh
+#!/bin/bash
 
-echo "Creating symlinks for dotfiles:"
+EMACS_INIT=~/.emacs.d/init.el
+LAYDROS_LISP=~/.emacs.d/laydros-lisp
+BIN_DIR=~/bin
+GITCONFIG=~/.gitconfig
+GITIGNORE=~/.gitignore_global
+VIMRC=~/.vimrc
+OFFLINEIMAPRC=~/.offlineimaprc
+I3DIR=~/.i3
+I3STATUS=~/.i3status
+MUTTDIR=~/.mutt
+AUTOKEYDIR=~/.config/autokey
+NANORC=~/.nanorc
+XRESOURCES=~/.Xresources
+ZSHRC=~/.zshrc
+XBINDRC=~/.xbindkeysrc
+XBINDMPD=~/.xbindkeysrc-mpd
+XBINDSPOT=~/.xbindkeysrc-spotify
 
-echo "...create emacs dirs"
-mkdir -p ~/.emacs.d/laydros-lisp
-
-echo "...emacs.d/init.el, laydros-org.el, org-contacts.el"
-ln -s ~/code/homefiles/emacs.d/init.el ~/.emacs.d/init.el
-ln -s ~/code/homefiles/emacs.d/laydros-lisp ~/.emacs.d/laydros-lisp
-
-echo "...bin directory"
-ln -s ~/code/homefiles/bin ~/bin
-
-echo "...gitconfig and gitignore"
-ln -s ~/code/homefiles/gitconfig ~/.gitconfig
-ln -s ~/code/homefiles/gitignore_global ~/.gitignore_global
-
-echo "...i3 dir and i3status.conf"
-ln -s ~/code/homefiles/i3status.conf ~/.i3status.conf
-ln -s ~/code/homefiles/i3 ~/.i3
-
-#echo "...msmtprc"
-#ln -s ~/code/homefiles/msmtprc ~/.msmtprc
-
-echo "...mutt folder and create Maildir folder"
-ln -s ~/code/homefiles/mutt ~/.mutt
-if [ ! -d ~/Maildir ]; then
-    mkdir ~/Maildir
-fi
-
-echo "...offlineimaprc"
-ln -s ~/code/homefiles/offlineimaprc ~/.offlineimaprc
-
-echo "...vimrc"
-if [ -f ~/.vimrc ]; then
-    echo ".vimrc exists, skipping"
-ln -s ~/code/homefiles/vimrc ~/.vimrc
-
-echo "...Xresources"
-ln -s ~/code/homefiles/Xresources ~/.Xresources
-
-echo "...zshrc"
-ln -s ~/code/homefiles/zshrc ~/.zshrc
-
-echo "...autokey config"
-ln -s ~/code/homefiles/autokey ~/.config/autokey
-
-echo "...xbindkeys config files"
-ln -s ~/code/homefiles/xbindkeysrc ~/.xbindkeysrc
-ln -s ~/code/homefiles/xbindkeysrc-mpd ~/.xbindkeysrc-mpd
-ln -s ~/code/homefiles/xbindkeysrc-spotify ~/.xbindkeysrc-spotify
-
-function add_file file {
+function symlink_file () {
     if [ -e $1 ]; then
         echo "file/dir $1 already exists, skipping..."
     else
-        return 1
+        echo "...symlink $1"
+        ln -s $2 $1
     fi
 }
+
+echo "Create a couple of directories if they don't exist"
+mkdir -p ~/Maildir
+mkdir -p ~/.emacs.d
+echo "Creating symlinks for dotfiles:"
+symlink_file $LAYDROS_LISP ~/code/homefiles/emacs.d/laydros-lisp
+symlink_file $EMACS_INIT ~/code/homefiles/emacs.d/init.el
+symlink_file $BIN_DIR ~/code/homefiles/bin
+symlink_file $NANORC ~/code/homefiles/nanorc
+symlink_file $GITCONFIG ~/code/homefiles/gitconfig
+symlink_file $GITIGNORE ~/code/homefiles/gitignore_lobal
+symlink_file $I3STATUS ~/code/homefiles/i3status.conf
+symlink_file $I3DIR ~/code/homefiles/i3 
+symlink_file $MUTTDIR ~/code/homefiles/mutt
+symlink_file $OFFLINEIMAPRC ~/code/homefiles/offlineimaprc
+symlink_file $VIMRC ~/code/homefiles/vimrc
+symlink_file $XRESOURCES ~/code/homefiles/Xresources
+symlink_file $ZSHRC ~/code/homefiles/zshrc
+symlink_file $XBINDRC ~/code/homefiles/xbindkeysrc 
+symlink_file $XBINDMPD ~/code/homefiles/xbindkeysrc-mpd 
+symlink_file $XBINDSPOT ~/code/homefiles/xbindkeysrc-spotify 
+symlink_file $AUTOKEYDIR ~/.config/autokey
+
+echo "you may want to run bin/lappy.sh to setup fstab"
