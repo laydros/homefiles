@@ -18,10 +18,12 @@
 [status]
     relativePaths = false
 [diff]
-    external=/home/laydros/bin/git-meld.sh
+    #external=/home/laydros/bin/git-meld.sh
+	tool = Kaleidoscope
 [merge]
     external=/home/laydros/bin/git-meld.sh
     log = true
+	tool = Kaleidoscope
 [alias]
     st = status -s -uno
     ix = diff --cached
@@ -36,3 +38,12 @@
     st = status -sb
 [push]
 	default = simple
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustexitcode = true
+[difftool "Kaleidoscope"]
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+	prompt = false
+[mergetool]
+	prompt = false

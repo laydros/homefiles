@@ -67,4 +67,6 @@ Host shiva
     User root
 
 Host shivado
+    HostName wycomsystems.com
+    IdentityFile ~/.ssh/old_id_rsa
     User root
