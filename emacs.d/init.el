@@ -15,7 +15,7 @@
 ;;(set-default-font "Terminus-10")
 ;; (set-default-font "Inconsolata-10")
 ;; (set-default-font "DejaVu Sans Mono-9")
-(set-default-font "Source Code Pro-10")
+(set-default-font "Source Code Pro-11")
 
 ;; use dired-extra, included with emacs. still learning about this
 (add-hook 'dired-load-hook
@@ -47,6 +47,7 @@
                    '("melpa" . "http://melpa.milkbox.net/packages/") t)
       (add-to-list 'package-archives
                    '("elpy" . "http://jorgenschaefer.github.io/packages/") t))
+(package-initialize)
 
 (defun jwh-add-missing-package (name)
   (unless (package-installed-p name)
@@ -76,6 +77,7 @@
 
 ;; (load-theme 'plan9)
 
+(jwh-add-missing-package 'monokai-theme)
 (require-soft 'monokai-theme)
 ;; (jwh-add-missing-package 'zenburn-theme)
 ;; (require 'zenburn-theme)
@@ -119,6 +121,7 @@
 ;; * - helm -
 ;; I've been resistant to add helm, but going to try it
 ;; ************************************************************************
+(jwh-add-missing-package 'helm)
 (require-soft 'helm
               (helm-mode t)
               (eval-after-load 'company
@@ -139,8 +142,8 @@
 ;; * just turning it on.
 ;; disable ido for now, i think it may conflict with helm
 ;; ************************************************************************
-(jwh-add-missing-package 'ido)
-(jwh-add-missing-package 'flx-ido)
+;; (jwh-add-missing-package 'ido)
+;; (jwh-add-missing-package 'flx-ido)
 ;; (require-soft 'ido
 ;;               (ido-mode t)
 ;;               (ido-everywhere t))
@@ -209,7 +212,7 @@
 ;; (setenv "SSH_ASKPASS" "/home/chris/bin/gnome-ssh-askpass")
 
 ;; run in server mode
-(server-start)
+;; (server-start)
 
 ;; jwh 2015-04-22
 ;; From emacs wiki to fix scrolling jumping
@@ -383,7 +386,7 @@ region\) apply comment-or-uncomment to the current line"
 ;; ************************************************************************
 
 ;; mu4e config
-(require 'laydros-mu4e)
+;; (require 'laydros-mu4e)
 ;; load org-mode stuff
 (require 'laydros-org)
 ;; load some custom functions
