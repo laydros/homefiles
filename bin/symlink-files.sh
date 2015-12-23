@@ -36,7 +36,7 @@ symlink_file $EMACS_INIT ~/code/homefiles/emacs.d/init.el
 symlink_file $BIN_DIR ~/code/homefiles/bin
 symlink_file $NANORC ~/code/homefiles/nanorc
 symlink_file $GITCONFIG ~/code/homefiles/gitconfig
-symlink_file $GITIGNORE ~/code/homefiles/gitignore_lobal
+symlink_file $GITIGNORE ~/code/homefiles/gitignore_global
 #symlink_file $I3STATUS ~/code/homefiles/i3status.conf
 #symlink_file $I3DIR ~/code/homefiles/i3 
 symlink_file $MUTTDIR ~/code/homefiles/mutt
