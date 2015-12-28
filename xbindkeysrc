@@ -76,34 +76,34 @@ XF86AudioRaiseVolume
 XF86AudioMute
 
 # Spotify friendly media controls
-"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-XF86AudioPlay
-"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
-XF86AudioStop
-"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-XF86AudioNext
-"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-XF86AudioPrev
+# "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+# XF86AudioPlay
+# "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
+# XF86AudioStop
+# "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+# XF86AudioNext
+# "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+# XF86AudioPrev
 
 # Mopidy friendly media controls
-# "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mopidy /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
-# XF86AudioPlay
-# "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mopidy /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
-# XF86AudioStop
-# "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mopidy /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
-# XF86AudioNext
-# "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mopidy /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
-# XF86AudioPrev
+#"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mopidy /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
+#XF86AudioPlay
+#"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mopidy /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"
+#XF86AudioStop
+#"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mopidy /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+#XF86AudioNext
+#"dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mopidy /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
+#XF86AudioPrev
 
 # MPD friendly controls
-# "mpc toggle"
-# XF86AudioPlay
-# "mpc stop"
-# XF86AudioStop
-# "mpc next"
-# XF86AudioNext
-# "mpc prev"
-# XF86AudioPrev
+"mpc toggle"
+XF86AudioPlay
+"mpc stop"
+XF86AudioStop
+"mpc next"
+XF86AudioNext
+"mpc prev"
+XF86AudioPrev
 
 "i3lock"
 Mod4 + l

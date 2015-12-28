@@ -1,0 +1,6 @@
+#!/bin/sh
+
+echo $HOME
+
+/usr/bin/ncmpcpp -c $HOME/.config/ncmpcpp/config
+

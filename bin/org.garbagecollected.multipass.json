@@ -1,0 +1,9 @@
+{
+  "name": "org.garbagecollected.multipass",
+  "description": "multipass",
+  "path": "%replace%",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://nogdingclealjiajkpbleapgdaakkpfl/"
+  ]
+}
