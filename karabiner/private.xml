@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<root>
+     <item>
+        <name>AEK II caps lock to command fix</name>
+        <identifier>private.aekcapslock_fix</identifier>
+        <block>
+          <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::VK_LOCK_CONTROL_L</autogen> 
+          <autogen>__KeyToKey__ KeyCode::ESCAPE, KeyCode::ESCAPE, KeyCode::VK_LOCK_ALL_FORCE_OFF</autogen>
+      </block>
+   </item>
+</root>
