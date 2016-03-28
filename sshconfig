@@ -31,15 +31,20 @@ Host fyre
     Port 22
 
 Host dagr
-    HostName 10.1.0.240
+    HostName 10.1.0.244
     User root
     Port 22
     IdentityFile ~/.ssh/old_id_rsa
 
 Host nott
     HostName 10.1.0.242
-    User jasonh
-    Port 22
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
+
+Host iris
+    HostName 10.1.0.240
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
 
 Host odoo
     Hostname 10.1.0.74
@@ -63,8 +68,6 @@ Host linode
     HostName 45.56.114.14
     User laydros
 
-Host shiva
-    User root
 
 Host shivado
     HostName wycomsystems.com
