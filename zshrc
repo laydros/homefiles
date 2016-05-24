@@ -7,7 +7,8 @@ export CVSROOT=:pserver:jasonh@dagr:/home/cvsroot/wycom
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 #ZSH_THEME="robbyrussell"
-ZSH_THEME="bira"
+ZSH_THEME="kphoen"
+#ZSH_THEME="bira"
 #ZSH_THEME="af-magic"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -52,12 +53,14 @@ ZSH_THEME="bira"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(brew colorize osx sublime zsh-syntax-highlighting colored-man git)
 
 # User configuration
 
-export PATH="$HOME/bin:$HOME/code/venvs/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/m3db/data/linux/bin:$HOME/.local/bin"
+export PATH="$HOME/bin:$HOME/code/venvs/bin:/usr/local/share/python:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/m3db/data/linux/bin:$HOME/.local/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
+
+COMPLETION_WAITING_DOTS="true"
 
 source $ZSH/oh-my-zsh.sh
 

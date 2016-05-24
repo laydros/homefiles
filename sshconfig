@@ -30,7 +30,7 @@ Host fyre
     User root
     Port 22
 
-Host dagr
+Host momus
     HostName 10.1.0.244
     User root
     Port 22

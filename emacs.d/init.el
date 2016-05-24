@@ -49,6 +49,12 @@
                    '("elpy" . "http://jorgenschaefer.github.io/packages/") t))
 (package-initialize)
 
+;; (when (memq window-system '(mac nc))
+;;  (exec-path-from-shell-initialize))
+
+(setenv "PATH" (concat (getenv "PATH") ":/usr/local/bin"))
+(setq exec-path (append exec-path '("/usr/local/bin")))
+
 (defun jwh-add-missing-package (name)
   (unless (package-installed-p name)
     (package-install name)))
