@@ -36,6 +36,13 @@ Host momus
     Port 22
     IdentityFile ~/.ssh/old_id_rsa
 
+
+Host styx
+    HostName 10.1.0.254
+    User root
+    Port 22
+    IdentityFile ~/.ssh/old_id_rsa
+
 Host nott
     HostName 10.1.0.242
     User root
@@ -65,7 +72,8 @@ Host devio.us
     User laydros
 
 Host linode
-    HostName 45.56.114.14
+#HostName 45.56.114.14
+    HostName 45.33.96.123
     User laydros
 
 

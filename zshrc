@@ -57,7 +57,7 @@ plugins=(brew colorize osx sublime zsh-syntax-highlighting colored-man git)
 
 # User configuration
 
-export PATH="$HOME/bin:$HOME/code/venvs/bin:/usr/local/share/python:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/m3db/data/linux/bin:$HOME/.local/bin"
+export PATH="$HOME/bin:$HOME/code/venvs/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/m3db/data/linux/bin:$HOME/.local/bin:/Library/Frameworks/Mono.framework/Versions/Current/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 COMPLETION_WAITING_DOTS="true"
@@ -73,6 +73,13 @@ source $ZSH/oh-my-zsh.sh
 # else
 #   export EDITOR='mvim'
 # fi
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# enable shims and autocompletion for pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # set emacs as default editor
 export EDITOR='vim'
@@ -151,3 +158,5 @@ bindkey '^N' history-search-forward
 # lastpass config directory
 export LPASS_HOME=~/.config/lpass
 export XDG_CONFIG_HOME=~/.config
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
