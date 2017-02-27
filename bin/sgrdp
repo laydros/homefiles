@@ -1,0 +1,3 @@
+#! /bin/bash
+# rdesktop -P -x 0x80 -a 24 -z -u "Jason Hamilton" -k en-us -K -g 1280x768 -T "SG" 10.1.0.71
+xfreerdp /size:1280x768 /bpp:24 +clipboard +fonts /t:"SG" /u:"Jason Hamilton" /v:10.1.0.71
