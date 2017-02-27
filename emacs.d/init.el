@@ -15,7 +15,9 @@
 ;;(set-default-font "Terminus-10")
 ;; (set-default-font "Inconsolata-10")
 ;; (set-default-font "DejaVu Sans Mono-9")
-(set-default-font "Source Code Pro-11")
+;; (set-default-font "Source Code Pro-11")
+;;(set-default-font "Hack-11")
+(set-default-font "Iosevka-12")
 
 ;; use dired-extra, included with emacs. still learning about this
 (add-hook 'dired-load-hook
