@@ -42,11 +42,11 @@ symlink_file $GITIGNORE ~/code/homefiles/gitignore_global
 #symlink_file $MUTTDIR ~/code/homefiles/mutt
 #symlink_file $OFFLINEIMAPRC ~/code/homefiles/offlineimaprc
 symlink_file $VIMRC ~/code/homefiles/vimrc
-#symlink_file $XRESOURCES ~/code/homefiles/Xresources
+symlink_file $XRESOURCES ~/code/homefiles/Xresources
 symlink_file $ZSHRC ~/code/homefiles/zshrc
-#symlink_file $XBINDRC ~/code/homefiles/xbindkeysrc 
-#symlink_file $XBINDMPD ~/code/homefiles/xbindkeysrc-mpd 
-#symlink_file $XBINDSPOT ~/code/homefiles/xbindkeysrc-spotify 
+symlink_file $XBINDRC ~/code/homefiles/xbindkeysrc 
+symlink_file $XBINDMPD ~/code/homefiles/xbindkeysrc-mpd 
+symlink_file $XBINDSPOT ~/code/homefiles/xbindkeysrc-spotify 
 #symlink_file $AUTOKEYDIR ~/.config/autokey
 
 echo "you may want to run bin/lappy.sh to setup fstab"

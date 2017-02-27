@@ -3,12 +3,15 @@ Emacs*geometry: 230x54
 emacs.font:	Deja Vu Sans Mono-9
 Rxvt*scrollBar: False
 !urxvt.font:	xft:inconsolata:pixelsize=12
-URxvt.font: xft:Source Code Pro-10:antialias=true
+!URxvt.font: xft:Source Code Pro-10:antialias=true
 !URxvt.font: xft:Hack-9:antialias=true
+!URxvt.font: xft:Iosevka Term-10:antialias=true
+!URxvt.font:   -misc-fixed-medium-r-semicondensed--0-0-75-75-c-0-iso10646-1
+!URxvt.font:   -misc-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*
 ! URxvt.font: xft:Terminus:pixelsize=16:antialias=true
 !URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-u
 !URxvt.font: xft:DejaVu Sans Mono:pixelsize=11:style=Book:antialias=true:hinting=medium
-!URxvt.font: 7x14
+URxvt.font: 7x14
 
 ! xterm*faceName: Dejavu Sans Mono:style=Book:antialias=true:hinting=medium
 ! xterm*faceSize: 10
@@ -27,7 +30,8 @@ URxvt*geometry:		90x27
 URxvt*saveLines:        50000
 
 !URxvt.iconFile:         /usr/share/icons/Tango/32x32/apps/utilities-terminal.png
-URxvt.iconFile:         /home/laydros/.local/share/Terminal_by_willBook.png
+!URxvt.iconFile:         /home/laydros/.local/share/Terminal_by_willBook.png
+!
 ! Tabs: gray background, ~white text
 ! and the opposite for the currently focused tab
 URxvt.tabbed.tabbar-fg: 7
@@ -36,11 +40,10 @@ URxvt.tabbed.tab-fg: 8
 URxvt.tabbed.tab-bg: 7
 
 URxvt.perl-ext-common:  default,matcher,tabbedex
-!URxvt.perl-ext:         tabbed
-URxvt.tabbed.new-button:    false
 URxvt.url-launcher:     /usr/bin/x-www-browser
 URxvt.colorUL:          #4682B4
 URxvt.matcher.button:   1
+URxvt.tabbed.reopen-on-close: yes
 
 URxvt.keysym.Control-t:         perl:tabbedex:new_tab
 URxvt.keysym.Control-Tab:       perl:tabbedex:next_tab
@@ -187,4 +190,4 @@ URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
 !*.color15:      #cccccc
 
 ! Fade terminal by 40% when it loses focus
-URxvt*fading: 40
+URxvt*fading: 20
