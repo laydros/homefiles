@@ -13,7 +13,6 @@
 ;; (require-soft 'jinja2-mode
 ;;               (setq-default sgml-basic-offset 4))
 
-
 (use-package ace-jump-mode
   :bind
   ("C-c SPC" . ace-jump-mode))
@@ -186,6 +185,11 @@
    undo-tree-auto-save-history nil
    undo-tree-history-directory-alist `(("." . ,(concat temp-dir "/undo/"))))
   (global-undo-tree-mode 1))
+
+;; uniquify to prevent buffer name conflict
+(use-package uniquify
+  :config
+  (setq uniquify-buffer-name-style 'forward))
 
 (use-package which-key
   :config
