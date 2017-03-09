@@ -22,16 +22,20 @@
     (buffer-string)))
 
 ;; this is where the install procedure above puts your mu4e
+(add-to-list 'load-path "/usr/share/emacs25/site-lisp/mu4e")
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
-(add-to-list 'load-path "/usr/share/emacs24/site-lisp/mu4e")
 
 (require 'mu4e)
 
 ;; path to Maildir
-(setq mu4e-maildir "/home/laydros/Maildir")
+(setq mu4e-maildir "/home/laydros/var/mail")
 
 ;; should mu4e use fancy utf characters
-;; (setq mu4e-use-fancy-chars 't)
+(setq mu4e-use-fancy-chars 't)
+
+;; by default mu4e does not rename files when moving them and this upsets
+;; mbsync.
+(setq mu4e-change-filenames-when-moving t)
 
 ;; give me ISO(ish) format date-time stamps in the header list
 (setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
@@ -45,6 +49,8 @@
 ;; toggle per name with M-RET
 (setq mu4e-view-show-addresses 't)
 
+;; fastmail and gmail automatically add sent messages, turn off saving
+(setq mu4e-sent-messages-behavior 'delete)
 
 ;; without this, "symbol's value as variable is void: mml2014-use" when signing
 ;; then found http://www.gnu.org/software/emacs/manual/html_node/gnus/Security.html
@@ -55,16 +61,16 @@
 ;; the next are relative to `mu4e-maildir'
 ;; instead of strings, they can be functions too, see
 ;; their docstring or the chapter 'Dynamic folders'
-(setq mu4e-sent-folder   "/Archives.2014"
-      mu4e-drafts-folder "/Drafts"
-      mu4e-trash-folder  "/Trash")
+(setq mu4e-sent-folder   "/fastmail/Sent Items"
+      mu4e-drafts-folder "/fastmail/Drafts"
+      mu4e-trash-folder  "/fastmail/Trash")
 
 ;; the maildirs you use frequently; access them with 'j' ('jump')
 (setq   mu4e-maildir-shortcuts
-    '(("/fastmail/Archives.2014"     . ?a)
+    '(("/factor500/inbox"     . ?f)
       ("/fastmail/INBOX"       . ?i)
-      ("/wycomsystems/INBOX"        . ?w)
-      ("/Archives.2014"        . ?s)))
+      ("/wycom/inbox"        . ?w)
+      ("/fastmail/bacon"        . ?b)))
 
 ;; list of my email addresses.
 (setq mu4e-user-mail-address-list '("jwh@laydros.net"
@@ -93,8 +99,8 @@
 ;; (better only use that for the last field.
 ;; These are the defaults:
 (setq mu4e-headers-fields
-    '( (:date          .  25)
-       (:flags         .   6)
+    '( (:date          .  15)
+       (:flags         .   5)
        (:from          .  22)
        (:subject       .  nil)))
 
@@ -104,7 +110,9 @@
 
 ;; If you get your mail without an explicit command,
 ;; use "true" for the command (this is the default)
-(setq mu4e-get-mail-command "offlineimap")
+(setq mu4e-get-mail-command "mbsync -a"
+      mu4e-update-interval 300)   ;; update every 5 minutes
+
 
 ;; setup default identity here:
 ;; general emacs mail settings; used when composing e-mail
@@ -184,7 +192,7 @@
 ;; don't keep message buffers around
 (setq message-kill-buffer-on-exit t)
 ;; attachments go here
-(setq mu4e-attachment-dir  "~/Downloads")
+(setq mu4e-attachment-dir  "~/dl")
 
 ;; when you reply to a message, use the identity that the mail was sent to
 ;; the cpbotha variation -- function that checks to, cc and bcc fields

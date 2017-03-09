@@ -5,19 +5,21 @@
 ;; ************************************************************************
 ;; * initial display stuff so things don't flash all funky
 ;; ************************************************************************
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(blink-cursor-mode -1)
+(package-initialize)
 
 ;; in order to load init other init files
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/laydros-lisp"))
+;; another way to do this
+;; (add-to-list 'load-path (concat user-emacs-directory "elisp"))
 
 ;;(set-default-font "Terminus-10")
 ;; (set-default-font "Inconsolata-10")
 ;; (set-default-font "DejaVu Sans Mono-9")
 ;; (set-default-font "Source Code Pro-11")
 ;;(set-default-font "Hack-11")
-(set-default-font "Iosevka-12")
+(set-default-font "Iosevka-11")
+
+(require 'jwh-base)
 
 ;; use dired-extra, included with emacs. still learning about this
 (add-hook 'dired-load-hook
@@ -32,24 +34,6 @@
        (progn ,@body)
      (message "Could not load \"%s\", skipping..." ,name)))
 
-;; ************************************************************************
-;; *  package manager
-;; ************************************************************************
-
-;; (require 'package)
-;; (add-to-list 'package-archives
-;;              '("elpy" . "http://jorgenschaefer.github.io/packages/"))
-;; (add-to-list 'package-archives
-;;              '("melpa" . "http://melpa.milkbox.net/packages/"))
-;; (package-initialize)
-
-(require-soft 'package
-      (package-initialize)
-      (add-to-list 'package-archives
-                   '("melpa" . "http://melpa.milkbox.net/packages/") t)
-      (add-to-list 'package-archives
-                   '("elpy" . "http://jorgenschaefer.github.io/packages/") t))
-(package-initialize)
 
 ;; (when (memq window-system '(mac nc))
 ;;  (exec-path-from-shell-initialize))
@@ -60,6 +44,8 @@
 (defun jwh-add-missing-package (name)
   (unless (package-installed-p name)
     (package-install name)))
+
+
 
 ;; ************************************************************************
 ;; *  custom key mode
@@ -82,13 +68,19 @@
 ;; ************************************************************************
 ;; (jwh-add-missing-package 'naquadah-theme)
 ;; (require 'naquadah-theme)
-
 ;; (load-theme 'plan9)
-
-(jwh-add-missing-package 'monokai-theme)
-(require-soft 'monokai-theme)
+;; (jwh-add-missing-package 'monokai-theme)
+;; (require-soft 'monokai-theme)
 ;; (jwh-add-missing-package 'zenburn-theme)
 ;; (require 'zenburn-theme)
+
+(use-package spacemacs-theme
+  :defer t
+  :init
+  (load-theme 'spacemacs-dark t))
+
+
+(require 'jwh-extensions)
 
 ;; ************************************************************************
 ;; * - Elpy -
@@ -105,114 +97,6 @@
 ;;       (cons '("\\.\\(xml\\|xsl\\|rng\\|xhtml\\)\\'" . nxml-mode)
 
 ;; ************************************************************************
-;; * - Auto-complete -
-;; ************************************************************************
-;; jwh 2015-07-10
-;; tooltip-flip-when-above will invert if the completion popup-isearch-match
-;; is displayed on top (happens near the bottom of the windows)
-(jwh-add-missing-package 'company)
-(require-soft 'company
-              (setq company-tooltip-flip-when-above 1)
-              (setq company-idle-delay 0.3)
-              (setq company-minimum-prefix-length 2)
-              (global-company-mode 1))
-
-
-;; ************************************************************************
-;; * - undo-tree -
-;; ************************************************************************
-(jwh-add-missing-package 'undo-tree)
-(require-soft 'undo-tree
-              (global-undo-tree-mode))
-
-;; ************************************************************************
-;; * - helm -
-;; I've been resistant to add helm, but going to try it
-;; ************************************************************************
-(jwh-add-missing-package 'helm)
-(require-soft 'helm
-              (helm-mode t)
-              (eval-after-load 'company
-                '(progn
-                   (define-key company-mode-map (kbd "C-:") 'helm-company)
-                   (define-key company-active-map (kbd "C-:") 'helm-company)))
-              (define-key helm-map (kbd "<tab>") 'helm-execute-persistent-action)
-              (define-key helm-map (kbd "C-i") 'helm-execute-persistent-action)
-              (define-key helm-map (kbd "C-z") 'helm-select-action)
-              (setq helm-ff-file-name-history-use-recentf t))
-
-(require-soft 'helm-config)
-(helm-mode 1)
-
-;; ************************************************************************
-;; * - ido -
-;; * Ido mode provides a nice way to navigate the filesystem. This is mostly
-;; * just turning it on.
-;; disable ido for now, i think it may conflict with helm
-;; ************************************************************************
-;; (jwh-add-missing-package 'ido)
-;; (jwh-add-missing-package 'flx-ido)
-;; (require-soft 'ido
-;;               (ido-mode t)
-;;               (ido-everywhere t))
-;; hide ido faces to see flx-ido highlights
-;; (require-soft 'flx-ido
-;;               (setq ido-use-faces nil
-;;                     ido-enable-flex-matching t
-;;                     ibuffer-shrink-to-minimum-size t
-;;                     ibuffer-sorting-mode 'recency
-;;                     ido-use-virtual-buffers t))
-
-;; (jwh-add-missing-package 'ido-vertical-mode)
-;; (require-soft 'ido-vertical-mode
-;;               (ido-vertical-mode t))
-
-;; ************************************************************************
-;; * - iedit -
-;; ************************************************************************
-(jwh-add-missing-package 'iedit)
-(require-soft 'iedit)
-
-;; ************************************************************************
-;; * - magit -
-;; ************************************************************************
-(jwh-add-missing-package 'magit)
-(require-soft 'magit
-              (setq magit-last-seen-setup-instructions "1.4.0"))
-
-;; ************************************************************************
-;; * - git-gutter-fringe - 
-;; ************************************************************************
-(jwh-add-missing-package 'git-gutter-fringe)
-(when (window-system)
-  (require-soft 'git-gutter-fringe
-                (global-git-gutter-mode +1)
-                (setq-default indicate-buffer-boundaries 'left)
-                (setq-default indicate-empty-lines +1)))
-
-;; ************************************************************************
-;; * - jinja2-mode -
-;; ************************************************************************
-(jwh-add-missing-package 'jinja2-mode)
-(require-soft 'jinja2-mode
-              (setq-default sgml-basic-offset 4))
-
-;; ************************************************************************
-;; * - nlinum -
-;; ************************************************************************
-;; something with linum or faces is breaking opening new frames or emacsclient
-;; (jwh-add-missing-package 'nlinum)
-;; (require-soft 'nlinum
-              ;; (global-nlinum-mode t))
-
-;; Preset width nlinum - should prevent horizontal jumps when scrolling
-;; (add-hook 'nlinum-mode-hook
-;;           (lambda ()
-;;             (setq nlinum--width
-;;               (length (number-to-string
-;;                        (count-lines (point-min) (point-max)))))))
-
-;; ************************************************************************
 ;; * - General -
 ;; ************************************************************************
 (setq user-mail-address "jwh@laydros.net")
@@ -224,7 +108,7 @@
 
 ;; jwh 2015-04-22
 ;; From emacs wiki to fix scrolling jumping
-;; FINALLY, after many years of cuffrsing, the suggestion of setting
+;; FINALLY, after many years of cursing, the suggestion of setting
 ;; auto-window-vscroll to nil, below on this page, worked - even though Emacs
 ;; documentation only says it applies to tall lines with large images, which I
 ;; don’t use. In fact it seems to apply to any scrolling with too-slow terminal
@@ -233,9 +117,6 @@
 (setq scroll-step 1
       scroll-conservatively 10000
       auto-window-vscroll nil)
-
-(jwh-add-missing-package 'autopair)
-(require-soft 'autopair)
 
 
 ;; I always use 4 tabs as spaces. this is PEP-8 and feels right for other stuff
@@ -247,12 +128,10 @@
 
 (setq global-font-lock-mode 1)
 
-(setq visible-bell t)
 (display-time-mode t)
 (line-number-mode t)
 (column-number-mode t)
 (size-indication-mode t)
-(show-paren-mode t)
 
 ;; fill column tells me where to stop. PEP-8 calls for 80 columns or less, and
 ;; I just let this carry into all of my text editing
@@ -322,9 +201,6 @@ region\) apply comment-or-uncomment to the current line"
   (setq buffer-display-table (make-display-table))
   (aset buffer-display-table ?\^M []))
 
-;; never quit accidentally
-(setq confirm-kill-emacs 'yes-or-no-p)
-
 ;; load images as images
 (auto-image-file-mode 1)
 
@@ -335,13 +211,6 @@ region\) apply comment-or-uncomment to the current line"
 ;; (setq 'shift-select-mode nil)
 ;; (setq 'transient-mark-mode nil)
 
-;; ************************************************************************
-;; * - UTF-8 -
-;; ************************************************************************
-(prefer-coding-system 'utf-8)
-(set-default-coding-systems 'utf-8)
-(set-terminal-coding-system 'utf-8)
-(set-keyboard-coding-system 'utf-8)
 
 ;; ************************************************************************
 ;; * - Key Bindings -
@@ -362,7 +231,7 @@ region\) apply comment-or-uncomment to the current line"
 (global-set-key (kbd "RET") 'newline-and-indent)
 ;; (global-set-key (kbd "C-;") 'comment-or-uncomment-region)
 (global-set-key (kbd "M-/") 'hippie-expand)
-(global-set-key (kbd "<f10>") 'magit-status)
+;; (global-set-key (kbd "<f10>") 'magit-status)
 (global-set-key (kbd "C-+") 'text-scale-increase)
 (global-set-key (kbd "C--") 'text-scale-decrease)
 (global-set-key (kbd "C-h a") 'helm-apropos)
@@ -375,16 +244,16 @@ region\) apply comment-or-uncomment to the current line"
 (global-set-key (kbd "C-S-r") 'revert-buffer)
 
 ;; jwh 2015-07-01 - function to add permanent macro
-(defun save-macro (name)                  
+(defun save-macro (name)
     "save a macro. Take a name as argument
-     and save the last defined macro under 
+     and save the last defined macro under
      this name at the end of your .emacs"
-     (interactive "SName of the macro :")  ; ask for the name of the macro    
-     (name-last-kbd-macro name)            ; use this name for the macro    
-     (find-file user-init-file)            ; open ~/.emacs or other user init file 
+     (interactive "SName of the macro :")  ; ask for the name of the macro
+     (name-last-kbd-macro name)            ; use this name for the macro
+     (find-file user-init-file)            ; open ~/.emacs or other user init file
      (goto-char (point-max))               ; go to the end of the .emacs
      (newline)                             ; insert a newline
-     (insert-kbd-macro name)               ; copy the macro 
+     (insert-kbd-macro name)               ; copy the macro
      (newline)                             ; insert a newline
      (switch-to-buffer nil))               ; return to the initial buffer
 
@@ -394,7 +263,7 @@ region\) apply comment-or-uncomment to the current line"
 ;; ************************************************************************
 
 ;; mu4e config
-;; (require 'laydros-mu4e)
+(require 'laydros-mu4e)
 ;; load org-mode stuff
 (require 'laydros-org)
 ;; load some custom functions
@@ -412,7 +281,10 @@ region\) apply comment-or-uncomment to the current line"
  '(make-backup-files nil)
  '(org-agenda-files (quote ("~/Dropbox/Documents/org/work.org")))
  '(org-agenda-show-all-dates t)
- '(org-tags-column -78))
+ '(org-tags-column -78)
+ '(package-selected-packages
+   (quote
+    (undo-tree monokai-theme magit jinja2-mode iedit helm git-gutter-fringe fill-column-indicator elpy autopair))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

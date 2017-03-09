@@ -30,8 +30,10 @@
  '(calendar-week-start-day 0)
  '(case-fold-search t)
  '(make-backup-files nil)
- '(org-agenda-files (quote ("~/Dropbox/Documents/org/organizer.org"
-                            "~/Dropbox/Documents/org/work.org")))
+; '(org-agenda-files (quote ("~/Dropbox/Documents/org/organizer.org"
+;                           "~/Dropbox/Documents/org/work.org")))
+ '(org-agenda-files (quote ("~/data/Dropbox/Documents/org/organizer.org"
+                            "~/data/Dropbox/Documents/org/work.org")))
  '(org-agenda-show-all-dates t)
  '(org-tags-column -78))
 

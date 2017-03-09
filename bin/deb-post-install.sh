@@ -6,19 +6,19 @@ SOURCES_LIST=""
 LIST=""
 
 # firmware (must have non-free enabled)
-LIST=$LIST" intel-microcode firmware-linux"
+#LIST=$LIST" intel-microcode firmware-linux"
 
 # media players
 LIST=$LIST" vlc spotify-client"
 
 # media codecs
-LIST=$LIST" gstreamer0.10-plugins-good gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly libavcodec-extra "
+#LIST=$LIST" gstreamer0.10-plugins-good gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly libavcodec-extra "
 
 # browser plugins
 #LIST=$LIST" flashplugin-nonfree"
 
 # cli utils
-LIST=$LIST" curl wget git vim ncdu rdesktop"
+LIST=$LIST" curl wget git vim ncdu freerdp-x11"
 
 # common dev tools
 LIST=$LIST" geany gitk xbindkeys diffuse autokey-gtk build-essential"
@@ -27,13 +27,13 @@ LIST=$LIST" geany gitk xbindkeys diffuse autokey-gtk build-essential"
 LIST=$LIST" python-pip python-rope python-dev"
 
 # shell stuff
-LIST=$LIST" rxvt-unicode zsh tmux"
+LIST=$LIST" rxvt-unicode-256color zsh tmux"
 
 # archive
 LIST=$LIST" p7zip unace-nonfree unrar unzip zip cifs-utils"
 
 # allow debian to install ppas
-LIST=$LIST" software-properties-common python-software-properties "
+#LIST=$LIST" software-properties-common python-software-properties "
 
 # keyboard
 LIST=$LIST" xbindkeys"
@@ -48,7 +48,7 @@ LIST=$LIST" ttf-bitstream-vera ttf-dejavu ttf-freefont ttf-mscorefonts-installer
 #LIST=$LIST" diodon diodon-plugins"
 
 # Parcellite clibboard manager
-LIST=$LIST" parcellite"
+#LIST=$LIST" parcellite"
 
 # libre office style - need to set with Tools->Options->LibreOffice->View
 # select sifr under "Icon size and style"
@@ -69,8 +69,19 @@ LIST=$LIST" galculator "
 # add spotify to sources.list
 echo "Adding Spotify repo and key"
 echo ""
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys D2C19886
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
 echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+
+
+# add enpass to sources.list
+echo "Adding Enpass repo and key"
+echo ""
+wget -O - https://dl.sinew.in/keys/enpass-linux.key | apt-key add -
+echo "deb http://repo.sinew.in/ stable main" > \
+      /etc/apt/sources.list.d/enpass.list
+
+
+
 apt-get update
 
 clear
@@ -91,8 +102,8 @@ echo "$LIST"
 apt-get install $LIST
 echo ""
 
-echo "Now that zsh and curl are installed, grabbing oh-my-zsh"
-sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+#echo "Now that zsh and curl are installed, grabbing oh-my-zsh"
+#sh -c "$(curl -fsSL https://raw.github.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 
 echo "Go install source code pro: https://github.com/adobe-fonts/source-code-pro"
 echo "mkdir -p ~/.fonts"
