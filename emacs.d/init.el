@@ -74,9 +74,10 @@
 ;; * - Elpy -
 ;; ************************************************************************
 ;; (jwh-add-missing-package 'elpy)
-(use-package 'elpy
-              (elpy-enable)
-              (elpy-use-ipython))
+(use-package elpy
+  :config
+  (elpy-enable)
+  (elpy-use-ipython))
 
 ;; use nXML for XML, XHTML, and XSL.
 ;; 2015-07-01 +jwh+
