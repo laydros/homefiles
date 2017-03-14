@@ -1,2 +1,2 @@
 #! /bin/bash
-rdesktop -P -x 80 -a 16 -z -u jasonh -k en-us -K -g 820x620 -c "C:\Documents and Settings\jasonh\Desktop" -s "C:\Program Files\Microsoft Office\Office\MSACCESS WBS_App" -T "WycomDB" connect.wycomsystems.com:3389
+xfreerdp -P -x 80 -a 16 -z -u jasonh -k en-us -K -g 820x620 -c "C:\Documents and Settings\jasonh\Desktop" -s "C:\Program Files\Microsoft Office\Office\MSACCESS WBS_App" -T "WycomDB" connect.wycomsystems.com:3389
