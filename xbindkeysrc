@@ -39,7 +39,7 @@
 
 # Examples of commands:
 
-"xbindkeys_show" 
+"xbindkeys_show"
   control+shift + q
 
 # set directly keycode (here control + f with my keyboard)
@@ -77,6 +77,9 @@ XF86AudioRaiseVolume
 #"amixer -D pulse sset Master toggle"
 "amixer set Master toggle"
 XF86AudioMute
+
+"/home/laydros/.screenlayout/lvds-only.sh"
+XF86Display
 
 # Spotify friendly media controls
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
