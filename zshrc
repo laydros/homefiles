@@ -7,10 +7,53 @@ export CVSROOT=:pserver:jasonh@dagr:/home/cvsroot/wycom
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-ZSH_THEME="kphoen"
+ZSH_THEME="robbyrussell"
+#ZSH_THEME="kphoen"
 #ZSH_THEME="bira"
 #ZSH_THEME="af-magic"
+
+# == PROMPT - taken from chneukirchen.
+
+# gitpwd - print %~, limited to $NDIR segments, with inline git branch
+NDIRS=2
+gitpwd() {
+  local -a segs splitprefix; local prefix branch
+  segs=("${(Oas:/:)${(D)PWD}}")
+  segs=("${(@)segs/(#b)(?(#c10))??*(?(#c5))/${(j:\u2026:)match}}")
+
+  if gitprefix=$(git rev-parse --show-prefix 2>/dev/null); then
+    splitprefix=("${(s:/:)gitprefix}")
+    if ! branch=$(git symbolic-ref -q --short HEAD); then
+      branch=$(git name-rev --name-only HEAD 2>/dev/null)
+      [[ $branch = *\~* ]] || branch+="~0"    # distinguish detached HEAD
+    fi
+    if (( $#splitprefix > NDIRS )); then
+      print -n "${segs[$#splitprefix]}@$branch "
+    else
+      segs[$#splitprefix]+=@$branch
+    fi
+  fi
+
+  (( $#segs == NDIRS+1 )) && [[ $segs[-1] == "" ]] && print -n /
+  print "${(j:/:)${(@Oa)segs[1,NDIRS]}}"
+}
+
+cnprompt6() {
+  case "$TERM" in
+    xterm*|rxvt*)
+      precmd() { [[ -t 1 ]] && print -Pn "\e]0;%m: %~\a" }
+      preexec() { [[ -t 1 ]] && print -n "\e]0;$HOST: ${(q)1//(#m)[$'\000-\037\177-']/${(q)MATCH}}\a" }
+  esac
+  setopt PROMPT_SUBST
+  nbsp=$'\u00A0'
+  PS1='%B%m%(?.. %??)%(1j. %j&.)%b $(gitpwd)%B%(!.%F{red}.%F{yellow})%#${SSH_CONNECTION:+%#}$nbsp%b%f'
+  RPROMPT=''
+}
+
+#cnprompt6
+
+#PS1='%B%m%(?.. %??)%(1j. %j&.)%b $(gitpwd)%B%(!.%F{red}.%F{yellow})%#${SSH_CONNECTION:+%#}$nbsp%b%f'
+#export PS1
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -76,11 +119,11 @@ source $ZSH/oh-my-zsh.sh
 # fi
 
 export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+# eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 # enable shims and autocompletion for pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+# if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # set emacs as default editor
 export EDITOR='vim'
@@ -160,4 +203,4 @@ bindkey '^N' history-search-forward
 export LPASS_HOME=~/.config/lpass
 export XDG_CONFIG_HOME=~/.config
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
