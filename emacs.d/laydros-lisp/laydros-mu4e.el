@@ -52,6 +52,15 @@
 ;; fastmail and gmail automatically add sent messages, turn off saving
 (setq mu4e-sent-messages-behavior 'delete)
 
+;; I want my format=flowed thank you very much
+;; mu4e sets up visual-line-mode and also fill (M-q) to do the right thing
+;; each paragraph is a single long line; at sending, emacs will add the
+;; special line continuation characters.
+(setq mu4e-compose-format-flowed t)
+
+;; every new email composition gets its own frame! (window)
+(setq mu4e-compose-in-new-frame t)
+
 ;; without this, "symbol's value as variable is void: mml2014-use" when signing
 ;; then found http://www.gnu.org/software/emacs/manual/html_node/gnus/Security.html
 ;; so set to epg and all was good!

@@ -26,12 +26,12 @@
 ;; (jwh-add-missing-package 'company)
 ;; (require-soft 'company
 ;;               (setq company-tooltip-flip-when-above 1)
-;;               (setq company-idle-delay 0.3)
 ;;               (setq company-minimum-prefix-length 2)
 ;;               (global-company-mode 1))
 (use-package company
   :config
-  (add-hook 'after-init-hook 'global-company-mode))
+  (add-hook 'after-init-hook 'global-company-mode)
+  (setq company-idle-delay 0.3))
 
 (use-package dashboard
   :config
