@@ -47,3 +47,20 @@ au FocusLost * :wa
 set ignorecase
 set smartcase
 
+
+" it's a .vimrc file that makes you look like a ninja. it's the absolute
+" minimal setup. no colors, no highlights, no messages, no status bar,
+" nothing. just text.
+
+"ninja vimrc http://xero.nu
+"set nocompatible
+"set modelines=0
+"set shortmess+=I
+"set noshowmode
+"set noshowcmd
+"set hidden
+"set lazyredraw
+"set noruler
+"set laststatus=0
+"syntax off
+"filetype off
