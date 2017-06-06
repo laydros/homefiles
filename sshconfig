@@ -1,3 +1,19 @@
+# personal
+
+Host devio.us
+    HostName devio.us
+    User laydros
+
+Host linode
+    HostName 45.56.114.14
+    User laydros
+
+Host marshall
+    User laydros
+    HostName laydros.org
+
+# work
+
 Host smoke
     HostName 206.212.236.45
     User root
@@ -14,6 +30,16 @@ Host burn3
     User root
     IdentityFile ~/.ssh/old_id_rsa
 
+Host charon
+    HostName 10.0.0.1
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
+
+Host styx
+    HostName 10.1.0.254
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
+    
 Host eburn2
     HostName 216.215.220.226
     User root
@@ -36,13 +62,6 @@ Host momus
     Port 22
     IdentityFile ~/.ssh/old_id_rsa
 
-
-Host styx
-    HostName 10.1.0.254
-    User root
-    Port 22
-    IdentityFile ~/.ssh/old_id_rsa
-
 Host nott
     HostName 10.1.0.242
     User root
@@ -53,31 +72,21 @@ Host iris
     User root
     IdentityFile ~/.ssh/old_id_rsa
 
+Host shivado
+    HostName wycomsystems.com
+    IdentityFile ~/.ssh/old_id_rsa
+    User root
+
 Host odoo
     Hostname 10.1.0.74
     user laydros
     
-Host marshall
-    User laydros
-    HostName laydros.org
-
 Host ibanez
     User laydros
     Hostname 10.1.0.70
     Port 22
     IdentityFile ~/.ssh/id_rsa
 
-Host devio.us
-    HostName devio.us
-    User laydros
-
-Host linode
-#HostName 45.56.114.14
-    HostName 45.33.96.123
-    User laydros
-
-
-Host shivado
-    HostName wycomsystems.com
+Host connectr
     IdentityFile ~/.ssh/old_id_rsa
     User root
