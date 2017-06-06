@@ -127,6 +127,10 @@ control + Mod4 + f
 "emacs"
 control + Mod4 + e
 
+"/home/laydros/.screenlayout/lvds-only.sh"
+XF86Display
+
+
 "exo-open --launch WebBrowser"
 control + Mod4 + w
 

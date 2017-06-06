@@ -39,7 +39,7 @@
 
 # Examples of commands:
 
-"xbindkeys_show"
+"xbindkeys_show" 
   control+shift + q
 
 # set directly keycode (here control + f with my keyboard)
@@ -78,9 +78,6 @@ XF86AudioRaiseVolume
 "amixer set Master toggle"
 XF86AudioMute
 
-"/home/laydros/.screenlayout/lvds-only.sh"
-XF86Display
-
 # Spotify friendly media controls
 "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 XF86AudioPlay
@@ -111,8 +108,8 @@ XF86AudioPrev
 # "mpc prev"
 # XF86AudioPrev
 
-"i3lock"
-Mod4 + l
+"i3lock -c 111111"
+control + Mod4 + l
 
 #"terminator"
 #Mod4 + t
@@ -135,6 +132,9 @@ control + Mod4 + e
 
 "exo-open --launch WebBrowser"
 control + Mod4 + w
+
+"/home/laydros/.screenlayout/lvds-only.sh"
+XF86Display
 
 "xfce4-popup-whiskermenu"
 Mod4

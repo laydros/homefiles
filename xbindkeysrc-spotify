@@ -108,8 +108,8 @@ XF86AudioPrev
 # "mpc prev"
 # XF86AudioPrev
 
-"i3lock"
-Mod4 + l
+"i3lock -c 111111"
+control + Mod4 + l
 
 #"terminator"
 #Mod4 + t
@@ -129,6 +129,9 @@ control + Mod4 + f
 
 "emacs"
 control + Mod4 + e
+
+"/home/laydros/.screenlayout/lvds-only.sh"
+XF86Display
 
 "exo-open --launch WebBrowser"
 control + Mod4 + w

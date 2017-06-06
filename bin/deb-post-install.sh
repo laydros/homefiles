@@ -69,16 +69,16 @@ LIST=$LIST" galculator "
 # add spotify to sources.list
 echo "Adding Spotify repo and key"
 echo ""
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
-echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
+#apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
+#echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 
 
 # add enpass to sources.list
-echo "Adding Enpass repo and key"
-echo ""
-wget -O - https://dl.sinew.in/keys/enpass-linux.key | apt-key add -
-echo "deb http://repo.sinew.in/ stable main" > \
-      /etc/apt/sources.list.d/enpass.list
+#echo "Adding Enpass repo and key"
+#echo ""
+#wget -O - https://dl.sinew.in/keys/enpass-linux.key | apt-key add -
+#echo "deb http://repo.sinew.in/ stable main" > \
+#      /etc/apt/sources.list.d/enpass.list
 
 
 
