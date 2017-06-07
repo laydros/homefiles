@@ -193,6 +193,10 @@ export TERM=xterm
 # for tmux: export 256color
 #[ -n "$TMUX" ] && export TERM=screen-256color
 
+if [ $TERMINIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
 # use vi style incremental search
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
