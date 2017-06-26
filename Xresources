@@ -13,7 +13,8 @@ Rxvt*scrollBar: False
 !URxvt*font: -xos4-terminus-*-r-*-*-14-*-*-*-*-*-iso10646-*
 !URxvt.font: xft:DejaVu Sans Mono:pixelsize=11:style=Book:antialias=true:hinting=medium
 ! URxvt.font: 7x14
-URxvt.font: 6x13
+!URxvt.font: 6x13
+URxvt*font: -*-tewi-medium-*-normal-*-11-*-*-*-*-*-*-*
 ! xterm*faceName: Dejavu Sans Mono:style=Book:antialias=true:hinting=medium
 ! xterm*faceSize: 10
 
