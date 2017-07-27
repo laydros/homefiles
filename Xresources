@@ -3,8 +3,8 @@
 !emacs.font:	Deja Vu Sans Mono-9
 Rxvt*scrollBar: False
 !urxvt.font:	xft:inconsolata:pixelsize=12
-URxvt.font: xft:Sauce Code Pro-10:antialias=true
-!URxvt.font: xft:Hack-9:antialias=true
+!URxvt.font: xft:Sauce Code Pro-10:antialias=true
+URxvt.font: xft:Hack-8:antialias=true
 !URxvt.font: xft:Iosevka Term-10:antialias=true
 !URxvt.font:   -misc-fixed-medium-r-semicondensed--0-0-75-75-c-0-iso10646-1
 ! URxvt.font: xft:Terminus:pixelsize=16:antialias=true
@@ -46,7 +46,7 @@ URxvt.keysym.Control-t:         perl:tabbedex:new_tab
 URxvt.keysym.Control-Tab:       perl:tabbedex:next_tab
 URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
 
-!! Some color theme I've used a long time. Might be Monokai or related, but
+!! Some color theme I have used a long time. Might be Monokai or related, but
 !! seems to be consistently readable.
 
 *foreground: #DDCCBB
@@ -78,7 +78,7 @@ URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
 !white
 *color7:     #E7E8E9
 *color15:    #F3F3F4
-!! End random theme I've used a long time and I'm not sure of the name
+!! End random theme I have used a long time and not sure of the name
 
 ! Fade terminal by 20% when it loses focus
 URxvt*fading: 20
