@@ -1,7 +1,7 @@
 #!/bin/bash
 
 $HOME/bin/caps-to-ctrl.sh
-xrdb -merge $HOME/.Xresources
+xrdb -load $HOME/.Xresources
 killall sxhkd
 sxhkd &
 #xbindkeys_autostart
