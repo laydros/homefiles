@@ -6,7 +6,7 @@ SOURCES_LIST=""
 LIST=""
 
 # firmware (must have non-free enabled)
-#LIST=$LIST" intel-microcode firmware-linux"
+LIST=$LIST" intel-microcode firmware-linux"
 
 # media players
 LIST=$LIST" vlc spotify-client"
@@ -38,8 +38,14 @@ LIST=$LIST" p7zip unace-nonfree unrar unzip zip cifs-utils"
 # keyboard
 LIST=$LIST" xbindkeys"
 
+# dropbox
+#LIST=$LIST" dropbox"
+
+# enpass
+LIST=$LIST" enpass"
+
 # graphics
-#LIST=$LIST" gimp gtk2-engines-murrine"
+LIST=$LIST" gimp gtk2-engines-murrine"
 
 # fonts
 LIST=$LIST" ttf-bitstream-vera ttf-dejavu ttf-freefont ttf-mscorefonts-installer ttf-liberation xfonts-terminus"
@@ -67,8 +73,8 @@ LIST=$LIST" galculator "
 #gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
 
 # add spotify to sources.list
-echo "Adding Spotify repo and key"
-echo ""
+#echo "Adding Spotify repo and key"
+#echo ""
 #apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys BBEBDCB318AD50EC6865090613B00F1FD2C19886
 #echo deb http://repository.spotify.com stable non-free | sudo tee /etc/apt/sources.list.d/spotify.list
 
