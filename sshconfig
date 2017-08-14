@@ -5,8 +5,9 @@ Host devio.us
     User laydros
 
 Host linode
-    HostName 45.56.114.14
+    HostName 45.79.218.175
     User laydros
+    IdentityFile ~/.ssh/id_rsa
 
 Host marshall
     User laydros

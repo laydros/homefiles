@@ -3,17 +3,16 @@
 !emacs.font:	Deja Vu Sans Mono-9
 Rxvt*scrollBar: False
 !urxvt.font:	xft:inconsolata:pixelsize=12
-!URxvt.font: xft:Source Code Pro-10:antialias=true
-!URxvt.font: xft:Hack-9:antialias=true
+!URxvt.font: xft:Sauce Code Pro-10:antialias=true
+URxvt.font: xft:Hack-8:antialias=true
 !URxvt.font: xft:Iosevka Term-10:antialias=true
 !URxvt.font:   -misc-fixed-medium-r-semicondensed--0-0-75-75-c-0-iso10646-1
-!URxvt.font:   -misc-fixed-medium-r-semicondensed-*-13-*-*-*-*-*-*-*
 ! URxvt.font: xft:Terminus:pixelsize=16:antialias=true
 !URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-u
-!URxvt*font: -xos4-terminus-*-r-*-*-14-*-*-*-*-*-iso10646-*
 !URxvt.font: xft:DejaVu Sans Mono:pixelsize=11:style=Book:antialias=true:hinting=medium
-URxvt.font: 7x14
-
+! URxvt.font: 7x14
+!URxvt.font: 6x13
+!URxvt*font: -*-tewi-medium-*-normal-*-11-*-*-*-*-*-*-*
 ! xterm*faceName: Dejavu Sans Mono:style=Book:antialias=true:hinting=medium
 ! xterm*faceSize: 10
 
@@ -23,9 +22,6 @@ Xft.dpi:            96
 ! Xft.hintstyle:      hintfull
 Xft.rgba:           rgb
 
-!urxvt.background: 	#151E13
-!urxvt.foreground:	white
-!urxvt.foreground:	#aaaaaa
 URxvt*geometry:		90x27
 
 URxvt*saveLines:        50000
@@ -50,95 +46,14 @@ URxvt.keysym.Control-t:         perl:tabbedex:new_tab
 URxvt.keysym.Control-Tab:       perl:tabbedex:next_tab
 URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
 
-!! drop in Solarized colorscheme for Xresources/Xdefaults
-
-!!SOLARIZED HEX     16/8 TERMCOL  XTERM/HEX   L*A*B      RGB         HSB
-!!--------- ------- ---- -------  ----------- ---------- ----------- -----------
-!!base03    #002b36  8/4 brblack  234 #1c1c1c 15 -12 -12   0  43  54 193 100  21
-!!base02    #073642  0/4 black    235 #262626 20 -12 -12   7  54  66 192  90  26
-!!base01    #586e75 10/7 brgreen  240 #585858 45 -07 -07  88 110 117 194  25  46
-!!base00    #657b83 11/7 bryellow 241 #626262 50 -07 -07 101 123 131 195  23  51
-!!base0     #839496 12/6 brblue   244 #808080 60 -06 -03 131 148 150 186  13  59
-!!base1     #93a1a1 14/4 brcyan   245 #8a8a8a 65 -05 -02 147 161 161 180   9  63
-!!base2     #eee8d5  7/7 white    254 #e4e4e4 92 -00  10 238 232 213  44  11  93
-!!base3     #fdf6e3 15/7 brwhite  230 #ffffd7 97  00  10 253 246 227  44  10  99
-!!yellow    #b58900  3/3 yellow   136 #af8700 60  10  65 181 137   0  45 100  71
-!!orange    #cb4b16  9/3 brred    166 #d75f00 50  50  55 203  75  22  18  89  80
-!!red       #dc322f  1/1 red      160 #d70000 50  65  45 220  50  47   1  79  86
-!!magenta   #d33682  5/5 magenta  125 #af005f 50  65 -05 211  54 130 331  74  83
-!!violet    #6c71c4 13/5 brmagenta 61 #5f5faf 50  15 -45 108 113 196 237  45  77
-!!blue      #268bd2  4/4 blue      33 #0087ff 55 -10 -45  38 139 210 205  82  82
-!!cyan      #2aa198  6/6 cyan      37 #00afaf 60 -35 -05  42 161 152 175  74  63
-!!green     #859900  2/2 green     64 #5f8700 60 -20  65 133 153   0  68 100  60
-
-#define S_base03        #002b36
-#define S_base02        #073642
-#define S_base01        #586e75
-#define S_base00        #657b83
-#define S_base0         #839496
-#define S_base1         #93a1a1
-#define S_base2         #eee8d5
-#define S_base3         #fdf6e3
-#define S_yellow        #b58900
-#define S_orange        #cb4b16
-#define S_red           #dc322f
-#define S_magenta       #d33682
-#define S_violet        #6c71c4
-#define S_blue          #268bd2
-#define S_cyan          #2aa198
-#define S_green         #859900
-
-! *background:            S_base03
-! *foreground:            S_base00
-! *fading:                40
-! *fadeColor:             S_base03
-! *cursorColor:           S_base1
-! *pointerColorBackground:S_base01
-! *pointerColorForeground:S_base1
-
-! !! black dark/light
-! *color0:                S_base02
-! *color8:                S_base03
-
-! !! red dark/light
-! *color1:                S_red
-! *color9:                S_orange
-
-! !! green dark/light
-! *color2:                S_green
-! *color10:               S_base01
-
-! !! yellow dark/light
-! *color3:                S_yellow
-! *color11:               S_base00
-
-! !! blue dark/light
-! *color4:                S_blue
-! *color12:               S_base0
-
-! !! magenta dark/light
-! *color5:                S_magenta
-! *color13:               S_violet
-
-! !! cyan dark/light
-! *color6:                S_cyan
-! *color14:               S_base1
-
-! !! white dark/light
-! *color7:                S_base2
-! *color15:               S_base3
-
-
+!! Some color theme I have used a long time. Might be Monokai or related, but
+!! seems to be consistently readable.
 
 *foreground: #DDCCBB
 
-! Brown BG
-!*background: #30251D
-
 ! Grey BG
 *background: #151515
-!
-!
+
 !black
 *color0:     #393939
 *color8:     #AF875F
@@ -163,32 +78,7 @@ URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
 !white
 *color7:     #E7E8E9
 *color15:    #F3F3F4
+!! End random theme I have used a long time and not sure of the name
 
-
-!black
-!*.color0:                       #333333
-!*.color8:                       #444444
-!red
-!*.color1:       #d45e68
-!*.color9:       #ed6975
-!green
-!*.color2:         #a4d45e
-!*.color10:        #b8ed69
-!yellow
-!*.color3:         #d4c95e
-!*.color11:        #ede169
-!blue
-!*.color4:         #2ea4e4
-!*.color12:        #69b8ed
-!magenta
-!*.color5:       #d45ea4
-!*.color13:      #ed69b8
-!cyan
-!*.color6:       #5ed4c9
-!*.color14:      #69ede1
-!white
-!*.color7:       #AAAAAA
-!*.color15:      #cccccc
-
-! Fade terminal by 40% when it loses focus
+! Fade terminal by 20% when it loses focus
 URxvt*fading: 20

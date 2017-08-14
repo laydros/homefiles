@@ -97,7 +97,7 @@ cnprompt6() {
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(brew colorize osx sublime zsh-syntax-highlighting colored-man git)
+plugins=(colorize osx sublime zsh-syntax-highlighting colored-man git)
 
 # User configuration
 
