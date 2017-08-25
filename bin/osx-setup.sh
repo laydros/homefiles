@@ -25,6 +25,42 @@ echo_ok "Install starting. You may be asked for your password (for sudo)."
 # requires xcode and tools!
 xcode-select -p || exit "XCode must be installed! (use the app store)"
 
+echo_warn "Enabling developer menu and inspector in Safari."
+defaults write com.apple.Safari IncludeInternalDebugMenu -bool true && \
+defaults write com.apple.Safari IncludeDevelopMenu -bool true && \
+defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true && \
+defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled -bool true && \
+defaults write -g WebKitDeveloperExtras -bool true
+
+echo_warn "Finder: show statusbar, pathbar, and user library folder."
+# Show full pathbar in finder
+defaults write com.apple.finder ShowPathbar -bool true
+
+# Unhide user library folder
+chflags nohidden ~/Library
+
+# Show status bar
+defaults write com.apple.finder ShowStatusBar -bool true
+
+# disable metadata files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
+
+# disable creation of metadata on USB drives
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool true
+
+# disable keyboard autocorrect
+defaults write -g NSAutomaticSpellingCorrectionEnabled -bool false
+
+# enable tab in modal dialogs
+defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
+
+# enable remote SSH login
+sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
+
+# Set default Finder location to home folder (~/)
+defaults write com.apple.finder NewWindowTarget -string "PfLo" && \
+defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}"
+
 # requirements
 cd ~
 mkdir -p tmp

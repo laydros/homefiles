@@ -41,6 +41,14 @@
 ;; (tooltip-mode -1)
 ;; (setq tooltip-use-echo-area t)
 
+;; Make eww rename buffers automatically, so it will open a new one when calling eww again
+(when (fboundp 'eww)
+  (progn
+    (defun xah-rename-eww-hook ()
+      "Rename eww browser's buffer so sites open in new page."
+      (rename-buffer "eww" t))
+    (add-hook 'eww-mode-hook 'xah-rename-eww-hook)))
+
 (use-package company-mode
   :ensure t)
 
@@ -60,6 +68,10 @@
 ;; simply use M-o to switch windows, since this is done so often. Could also
 ;; use (windmove-default-keybindings) to make S-up, S-dn, etc. move.
 (global-set-key (kbd "M-o") 'other-window)
+;; not sure why the site I found this on had a # in the middle, but here is a
+;; note in case it's needed later
+;; (global-set-key (kbd "C-;") #'comment-line)
+(global-set-key (kbd "C-;") 'comment-line)
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
