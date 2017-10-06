@@ -13,16 +13,8 @@
 [color "interactive"]
     prompt = bold normal
     help = black
-#[push]
-#    default = simple
 [status]
     relativePaths = false
-[diff]
-#    external=$HOME/bin/git-meld.sh
-[merge]
-#    external=$HOME/bin/git-meld.sh
-#    log = true
-#	tool = Kaleidoscope
 [alias]
     st = status -s -uno
     ix = diff --cached
@@ -37,18 +29,16 @@
     st = status -sb
 [push]
 	default = simple
-[mergetool "Kaleidoscope"]
-    #cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-    #trustexitcode = true
 [difftool "Kaleidoscope"]
-    #cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[diff]
+	tool = Kaleidoscope
 [difftool]
 	prompt = false
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
 [mergetool]
 	prompt = false
-[difftool "sourcetree"]
-	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
-[mergetool "sourcetree"]
-	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.0.5.7/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-	trustExitCode = true
+[merge]
+	tool = Kaleidoscope
