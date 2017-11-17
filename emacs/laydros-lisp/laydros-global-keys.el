@@ -3,10 +3,13 @@
 ;(global-set-key (kbd "[SHORTCUT]") '[FUNCTION])
 
 ; don't ask which buffer to kill (from graphine)
-(global-set-key (kbd "C-x k") 'kill-default-buffer)
+; (global-set-key (kbd "C-x k") 'kill-default-buffer)
 
 ; kill the default buffer and close its window (from graphine)
 (global-set-key (kbd "C-x C-k") 'kill-buffer-and-window)
+
+(global-set-key (kbd "<f8>") 'ibuffer)
+(global-set-key (kbd "<f7>") 'magit-status)
 
 ;; ;; buffer-menu stuff from chris n
 ;; (jason2-define-key "<f6>" 'buffer-menu)
@@ -16,7 +19,7 @@
 ;; pressing M- combinations translate back to the proper M- keys. Most of the
 ;; keys work except for B, E, I, N, U and `
 
-(define-key key-translation-map [?\C-h] [?\C-?]) ; Unmask 'delete' as backspace
+;; (define-key key-translation-map [?\C-h] [?\C-?]) ; Unmask 'delete' as backspace
 
 (let ((translations '( 229 [?\M-a]  nil [?\M-b]   231 [?\M-c]  8706 [?\M-d]   nil [?\M-e]
                        402 [?\M-f]  169 [?\M-g]   729 [?\M-h]   nil [?\M-i]  8710 [?\M-j]

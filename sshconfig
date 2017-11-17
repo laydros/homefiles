@@ -89,5 +89,13 @@ Host ibanez
     IdentityFile ~/.ssh/id_rsa
 
 Host connectr
+    Hostname 10.1.0.130
     IdentityFile ~/.ssh/old_id_rsa
     User root
+
+Host wchat
+    HostName 104.131.44.156
+    User root
+    IdentityFile ~/.ssh/id_rsa
+    User root
+

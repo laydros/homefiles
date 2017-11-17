@@ -42,7 +42,7 @@
 /bin/scrots
 /bin/scrotu
 /bin/youtube-dl
-**/.DS_Store
+.DS_Store
 
 
 # Byte-compiled / optimized / DLL files
@@ -89,3 +89,7 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+.DS_Store
+._.DS_Store
+**/.DS_Store
+**/._.DS_Store

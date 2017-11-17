@@ -25,5 +25,10 @@
 (setq confirm-kill-emacs         'y-or-n-p
       inhibit-startup-message    t)
 
+(electric-pair-mode 1)                  ; auto insert closing bracket
+(show-paren-mode 1)                     ; highlight matching bracket
+;; make cursor movement stop in camelCase words
+(global-subword-mode 1)
+
 (provide 'laydros-base)
 ;; base ends here

@@ -4,15 +4,21 @@
   (require 'package)
   (add-to-list
    'package-archives
-   '("melpa" . "http://melpa.org/packages/")
-   t)
-    (package-initialize))
+   '("melpa" . "http://melpa.org/packages/"))
+  (add-to-list
+   'package-archives
+   '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+  (package-initialize))
 
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/laydros-lisp"))
 
+;; not supported until sept 2017 emacs 26 beta
+(when (version<= "26.0.50" emacs-version )
+  (global-display-line-numbers-mode))
+
 (require 'laydros-base)
 
-(set-default-font "Iosevka Nerd Font-12")
+;; (set-default-font "Menlo-12")
 
 ;; bootstrap use-package
 (unless (package-installed-p 'use-package)
@@ -21,7 +27,7 @@
 (require 'use-package)
 
 (setq tramp-default-method "ssh")
-(load-theme 'solarized-dark t)
+(load-theme 'monokai t)
 
 ;; UTF-8
 (set-charset-priority 'unicode)
@@ -36,7 +42,9 @@
       mouse-yank-at-point                 t
       inhibit-startup-echo-area-message   t)
 
-;; by default tooltips open in seperate frame. to force emacs to use the echo
+(global-auto-revert-mode 1)
+
+;; By default tooltips open in seperate frame. to force emacs to use the echo
 ;; area exclusively uncomment the following
 ;; (tooltip-mode -1)
 ;; (setq tooltip-use-echo-area t)
@@ -65,6 +73,18 @@
 ;; may want to get rid of this
 (setq ido-everywhere t)
 
+(pdf-tools-install)
+
+(use-package elpy
+  :ensure t
+  :commands elpy-enable
+  :init (with-eval-after-load 'python (elpy-enable))
+
+  :config
+  (elpy-use-ipython))
+
+(require 'laydros-global-keys)
+
 ;; simply use M-o to switch windows, since this is done so often. Could also
 ;; use (windmove-default-keybindings) to make S-up, S-dn, etc. move.
 (global-set-key (kbd "M-o") 'other-window)
@@ -75,6 +95,8 @@
 
 (defalias 'yes-or-no-p 'y-or-n-p)
 
+(defalias 'list-buffers 'ibuffer)       ; make ibuffer default
+
 ;; use the system trash
 (setq delete-by-moving-to-trash t)
 (custom-set-variables
@@ -82,7 +104,9 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages (quote (markdown-mode use-package solarized-theme company))))
+ '(package-selected-packages
+   (quote
+    (pdf-tools elpy magit monokai-theme markdown-mode use-package solarized-theme company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
