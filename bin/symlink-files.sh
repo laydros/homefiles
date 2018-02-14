@@ -37,10 +37,10 @@ symlink_file $BIN_DIR ~/src/homefiles/bin
 symlink_file $NANORC ~/src/homefiles/nanorc
 symlink_file $GITCONFIG ~/src/homefiles/gitconfig
 symlink_file $GITIGNORE ~/src/homefiles/gitignore_global
-#symlink_file $I3STATUS ~/code/homefiles/i3status.conf
-#symlink_file $I3DIR ~/code/homefiles/i3 
-#symlink_file $MUTTDIR ~/code/homefiles/mutt
-#symlink_file $OFFLINEIMAPRC ~/code/homefiles/offlineimaprc
+symlink_file $I3STATUS ~/code/homefiles/i3status.conf
+symlink_file $I3DIR ~/code/homefiles/i3 
+symlink_file $MUTTDIR ~/code/homefiles/mutt
+symlink_file $OFFLINEIMAPRC ~/code/homefiles/offlineimaprc
 symlink_file $VIMRC ~/src/homefiles/vimrc
 symlink_file $XRESOURCES ~/src/homefiles/Xresources
 symlink_file $ZSHRC ~/src/homefiles/zshrc
