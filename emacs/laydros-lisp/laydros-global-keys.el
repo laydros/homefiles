@@ -11,6 +11,24 @@
 (global-set-key (kbd "<f8>") 'ibuffer)
 (global-set-key (kbd "<f7>") 'magit-status)
 
+;; set up hyper key on caps lock
+;; (when (eq window-system 'x)
+  ;; (shell-command "xmodmap -e 'remove Mod4 = Hyper_L' -e 'add Mod3 = Hyper_L'")
+  ;; (shell-command "xmodmap -e 'clear Lock' -e 'keycode 66 = Hyper_L'"))
+
+;; keybindings for the hyper key
+;; (global-set-key (kbd "H-k") 'kill-this-buffer)
+;; (global-set-key (kbd "H-f") 'find-file)
+;; (global-set-key (kbd "H-h") 'hyperspec-lookup)
+;; (global-set-key (kbd "H-3") 'split-window-right)
+;; (global-set-key (kbd "H-2") 'split-window-below)
+;; (global-set-key (kbd "H-1") 'delete-other-windows)
+;; (global-set-key (kbd "H-0") 'delete-window)
+;; (global-set-key (kbd "H-s") 'save-buffer)
+;; (global-set-key (kbd "H-a") 'mark-whole-buffer)
+;; (global-set-key (kbd "H-r") 'raise-sexp)
+;; (global-set-key (kbd "H-c") 'slime-selector)
+
 ;; ;; buffer-menu stuff from chris n
 ;; (jason2-define-key "<f6>" 'buffer-menu)
 ;; (jason2-define-key "<S-f6>" #'(lambda () (interactive) (dired "~")))

@@ -21,6 +21,24 @@ Host smoke
     Port 15000
     IdentityFile ~/.ssh/old_id_rsa
 
+
+Host frigg
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
+
+Host ve
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
+
+Host vili
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
+
+Host gitlab-test
+    HostName 10.1.0.170
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
+
 Host connect1
     HostName 10.0.0.127
     User root
@@ -41,6 +59,11 @@ Host styx
     User root
     IdentityFile ~/.ssh/old_id_rsa
     
+Host hermes
+    HostName 10.1.0.241
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
+
 Host eburn2
     HostName 216.215.220.226
     User root
@@ -92,10 +115,3 @@ Host connectr
     Hostname 10.1.0.130
     IdentityFile ~/.ssh/old_id_rsa
     User root
-
-Host wchat
-    HostName 104.131.44.156
-    User root
-    IdentityFile ~/.ssh/id_rsa
-    User root
-

@@ -11,54 +11,6 @@ export ZSH=$HOME/.oh-my-zsh
 #ZSH_THEME="kphoen"
 ZSH_THEME="jreese"
 #ZSH_THEME="bira"
-<<<<<<< Updated upstream
-=======
-ZSH_THEME="jreese"
-#ZSH_THEME="af-magic"
-
-# == PROMPT - taken from chneukirchen.
-
-# gitpwd - print %~, limited to $NDIR segments, with inline git branch
-NDIRS=2
-gitpwd() {
-  local -a segs splitprefix; local prefix branch
-  segs=("${(Oas:/:)${(D)PWD}}")
-  segs=("${(@)segs/(#b)(?(#c10))??*(?(#c5))/${(j:\u2026:)match}}")
-
-  if gitprefix=$(git rev-parse --show-prefix 2>/dev/null); then
-    splitprefix=("${(s:/:)gitprefix}")
-    if ! branch=$(git symbolic-ref -q --short HEAD); then
-      branch=$(git name-rev --name-only HEAD 2>/dev/null)
-      [[ $branch = *\~* ]] || branch+="~0"    # distinguish detached HEAD
-    fi
-    if (( $#splitprefix > NDIRS )); then
-      print -n "${segs[$#splitprefix]}@$branch "
-    else
-      segs[$#splitprefix]+=@$branch
-    fi
-  fi
-
-  (( $#segs == NDIRS+1 )) && [[ $segs[-1] == "" ]] && print -n /
-  print "${(j:/:)${(@Oa)segs[1,NDIRS]}}"
-}
-
-cnprompt6() {
-  case "$TERM" in
-    xterm*|rxvt*)
-      precmd() { [[ -t 1 ]] && print -Pn "\e]0;%m: %~\a" }
-      preexec() { [[ -t 1 ]] && print -n "\e]0;$HOST: ${(q)1//(#m)[$'\000-\037\177-']/${(q)MATCH}}\a" }
-  esac
-  setopt PROMPT_SUBST
-  nbsp=$'\u00A0'
-  PS1='%B%m%(?.. %??)%(1j. %j&.)%b $(gitpwd)%B%(!.%F{red}.%F{yellow})%#${SSH_CONNECTION:+%#}$nbsp%b%f'
-  RPROMPT=''
-}
-
-#cnprompt6
-
-#PS1='%B%m%(?.. %??)%(1j. %j&.)%b $(gitpwd)%B%(!.%F{red}.%F{yellow})%#${SSH_CONNECTION:+%#}$nbsp%b%f'
-#export PS1
->>>>>>> Stashed changes
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -102,7 +54,7 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(colorize osx sublime brew zsh-syntax-highlighting pip emacs colored-man git)
+plugins=(colorize osx sublime zsh-syntax-highlighting pip colored-man git)
 
 # User configuration
 
@@ -114,6 +66,13 @@ source $ZSH/oh-my-zsh.sh
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
 export PATH="$HOME/.pyenv/bin:$PATH"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
@@ -123,6 +82,14 @@ export PATH="$HOME/.pyenv/bin:$PATH"
 
 # always use emacs style keybindings with zle
 bindkey -e
+
+# set emacs as default editor
+export EDITOR='vim'
+#bindkey -v
+
+# set Sublime Text as default editor
+#export EDITOR='subl'
+#bindkey -v
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -180,8 +147,18 @@ export TERM=xterm
 # for tmux: export 256color
 #[ -n "$TMUX" ] && export TERM=screen-256color
 
+if [ $TERMINIX_ID ] || [ $VTE_VERSION ]; then
+        source /etc/profile.d/vte.sh
+fi
+
 # use vi style incremental search
 bindkey '^R' history-incremental-search-backward
 bindkey '^S' history-incremental-search-forward
 bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
+
+<<<<<<< Updated upstream
+=======
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+>>>>>>> Stashed changes
