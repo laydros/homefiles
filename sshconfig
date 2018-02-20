@@ -15,6 +15,16 @@ Host marshall
 
 # work
 
+
+# Example for vagrant virtual machines
+# this is a way to avoid host key checking and always use
+# root over a group of ip or names
+Host 192.168.33.* *.myapp.dev
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+  User root
+  LogLevel ERROR
+
 Host smoke
     HostName 206.212.236.45
     User root
