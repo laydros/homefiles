@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>417</string>
+	<string>444.4</string>
 	<key>AMApplicationVersion</key>
-	<string>2.6</string>
+	<string>2.8</string>
 	<key>AMDocumentVersion</key>
 	<string>2</string>
 	<key>actions</key>
@@ -58,7 +58,7 @@
 							<key>kind</key>
 							<string>server</string>
 							<key>name</key>
-							<string>smb://10.1.0.242/m3db</string>
+							<string>smb://ral/m3db</string>
 						</dict>
 					</array>
 				</dict>
@@ -107,7 +107,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>309.000000:259.000000</string>
+				<string>280.000000:259.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Specified Servers.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -184,14 +184,12 @@
 				</array>
 				<key>arguments</key>
 				<dict/>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 			</dict>
 		</dict>
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>293BFE12-2293-4EBA-9A54-165BA082E853</key>
+		<key>B383B9A0-BE43-4139-9FBE-0F6D3188CA3C</key>
 		<dict>
 			<key>from</key>
 			<string>41C3BE1D-A198-461C-9C72-1804A5035BCC - 41C3BE1D-A198-461C-9C72-1804A5035BCC</string>

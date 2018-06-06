@@ -71,6 +71,8 @@ Host styx
 Host hermes
     HostName 10.1.0.241
     User root
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
     IdentityFile ~/.ssh/old_id_rsa
 
 

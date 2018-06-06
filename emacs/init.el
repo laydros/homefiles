@@ -84,7 +84,7 @@
   (elpy-use-ipython))
 
 (require 'laydros-global-keys)
-
+(require 'cust-func)
 ;; simply use M-o to switch windows, since this is done so often. Could also
 ;; use (windmove-default-keybindings) to make S-up, S-dn, etc. move.
 (global-set-key (kbd "M-o") 'other-window)

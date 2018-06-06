@@ -44,6 +44,8 @@
 /bin/youtube-dl
 .DS_Store
 
+.vscode/*
+
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -89,6 +91,7 @@ coverage.xml
 
 # Sphinx documentation
 docs/_build/
+
 .DS_Store
 ._.DS_Store
 **/.DS_Store
