@@ -25,6 +25,12 @@ Host 192.168.33.* *.myapp.dev
   User root
   LogLevel ERROR
 
+
+Host erpndo
+    HostName 159.89.238.197
+    User root
+    IdentityFile ~/.ssh/id_rsa
+
 Host smoke
     HostName 206.212.236.45
     User root
