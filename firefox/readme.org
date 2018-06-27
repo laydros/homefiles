@@ -1,0 +1,18 @@
+* Setting up Firefox stable on Debian Stable
+most of this will require root permissions
+
+** Install firefox and updater
+#+BEGIN_SRC shell
+sudo mkdir /opt/firefox
+sudo cp firefox-updater to /usr/local/bin
+sudo chmod +x /usr/local/bin/firefox-updater
+sudo firefox-updater
+sudo ln -s /opt/firefox/firefox /usr/local/bin
+sudo cp firefox.desktop /usr/share/applications/
+#+END_SRC
+
+** setup update alternatives
+#+BEGIN_SRC shell
+sudo update-alternatives --install /usr/bin/x-www-browser x-www-browser /opt/firefox/firefox 200
+sudo update-alternatives --set x-www-browser /opt/firefox/firefox
+#+END_SRC
