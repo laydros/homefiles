@@ -1,5 +1,7 @@
 * Setting up Firefox stable on Debian Stable
-most of this will require root permissions
+I may have forgotten some part. This is my desired setup allowing a global (/opt) install, based on the following sources as of 2018-06-28:
+- https://www.addictivetips.com/ubuntu-linux-tips/get-firefox-quantum-on-debian-stable/
+- https://wiki.debian.org/Firefox
 
 ** Install firefox and updater
 #+BEGIN_SRC shell
