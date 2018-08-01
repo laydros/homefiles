@@ -81,7 +81,8 @@
   :init (with-eval-after-load 'python (elpy-enable))
 
   :config
-  (elpy-use-ipython))
+  (setq python-shell-interpreter "ipython"
+        python-shell-interpreter "-i --simple-prompt"))
 
 (require 'laydros-global-keys)
 (require 'cust-func)
@@ -106,7 +107,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (pdf-tools elpy magit monokai-theme markdown-mode use-package solarized-theme company))))
+    (htmlize magit monokai-theme markdown-mode solarized-theme))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

@@ -58,7 +58,7 @@ plugins=(colorize osx sublime zsh-syntax-highlighting pip colored-man git)
 
 # User configuration
 
-export PATH="$HOME/bin:$HOME/code/venvs/bin:/usr/local/opt/python/libexec/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/m3db/data/linux/bin:$HOME/.local/bin:/usr/local/texlive/2017basic/bin/x86_64-darwin"
+export PATH="$HOME/bin:$HOME/code/venvs/bin:$HOME/.local/bin:/usr/local/opt/python/libexec/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/m3db/data/linux/bin:$HOME/.local/bin:/usr/local/texlive/2017basic/bin/x86_64-darwin:/Users/laydros/Library/Python/3.6/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh

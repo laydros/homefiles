@@ -25,10 +25,19 @@ Host 192.168.33.* *.myapp.dev
   User root
   LogLevel ERROR
 
+Host erpnu
+    HostName 206.189.178.131
+    User root
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+    IdentityFile ~/.ssh/id_rsa
+
 
 Host erpndo
-    HostName 159.89.238.197
+    HostName 159.89.191.71
     User root
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
     IdentityFile ~/.ssh/id_rsa
 
 Host smoke
