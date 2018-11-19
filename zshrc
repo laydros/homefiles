@@ -9,8 +9,10 @@ export ZSH=$HOME/.oh-my-zsh
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="kphoen"
-ZSH_THEME="jreese"
+#ZSH_THEME="jreese"
+ZSH_THEME="dracula"
 #ZSH_THEME="bira"
+#ZSH_THEME="arrow"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -158,4 +160,3 @@ bindkey '^P' history-search-backward
 bindkey '^N' history-search-forward
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-

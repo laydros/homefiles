@@ -10,7 +10,8 @@
 
 (global-set-key (kbd "<f8>") 'ibuffer)
 (global-set-key (kbd "<f7>") 'magit-status)
-(global-set-key (kbd "<f6>") 'next-multiframe-window)
+
+(global-set-key (kbd))
 
 ;; set up hyper key on caps lock
 ;; (when (eq window-system 'x)

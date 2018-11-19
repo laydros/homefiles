@@ -1,20 +1,24 @@
+# -*- mode: ssh-config -*-
+
+Host *
+RemoteForward 52698 localhost:52698
+
 # personal
 
 Host devio.us
-    HostName devio.us
-    User laydros
+  HostName devio.us
+  User laydros
 
 Host linode
-    HostName 45.56.96.86
-    User laydros
-    IdentityFile ~/.ssh/id_rsa
+  HostName 45.56.96.86
+  User laydros
+  IdentityFile ~/.ssh/id_rsa
 
 Host marshall
-    User laydros
-    HostName laydros.org
+  User laydros
+  HostName laydros.org
 
 # work
-
 
 # Example for vagrant virtual machines
 # this is a way to avoid host key checking and always use
@@ -26,130 +30,136 @@ Host 192.168.33.* *.myapp.dev
   LogLevel ERROR
 
 Host erpnu
-    HostName 206.189.178.131
-    User root
+  HostName 206.189.178.131
+  User root
   StrictHostKeyChecking no
   UserKnownHostsFile=/dev/null
-    IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_rsa
 
+Host vmerpn
+  HostName vmerpn
+  User frappe
+  StrictHostKeyChecking no
+  IdentityFile ~/.ssh/id_rsa
 
 Host erpndo
-    HostName 159.89.191.71
-    User root
+  HostName 159.65.45.103
+  HostName dorkystuff4some.bid
+  User root
   StrictHostKeyChecking no
   UserKnownHostsFile=/dev/null
-    IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/id_rsa
 
 Host smoke
-    HostName 206.212.236.45
-    User root
-    Port 15000
-    IdentityFile ~/.ssh/old_id_rsa
+  HostName 206.212.236.45
+  User root
+  Port 15000
+  IdentityFile ~/.ssh/old_id_rsa
 
 Host frigg
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
+  User root
+  IdentityFile ~/.ssh/old_id_rsa
 
 Host ve
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
+  User root
+  IdentityFile ~/.ssh/old_id_rsa
 
 Host vili
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
+  User root
+  IdentityFile ~/.ssh/old_id_rsa
 
 Host gitlab-test
-    HostName 10.1.0.170
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
+  HostName 10.1.0.170
+  User root
+  IdentityFile ~/.ssh/old_id_rsa
 
 Host connect1
-    HostName 10.0.0.127
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
+  HostName 10.0.0.127
+  User root
+  IdentityFile ~/.ssh/old_id_rsa
 
 Host burn3
-    HostName 10.0.0.125
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
+  HostName 10.0.0.125
+  User root
+  IdentityFile ~/.ssh/old_id_rsa
 
 Host charon
-    HostName 10.0.0.1
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
+  HostName 10.0.0.1
+  User root
+  IdentityFile ~/.ssh/old_id_rsa
 
 Host styx
-    HostName 10.1.0.254
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
-    
+  HostName 10.1.0.254
+  User root
+  IdentityFile ~/.ssh/old_id_rsa
+
 Host hermes
-    HostName 10.1.0.241
-    User root
+  HostName 10.1.0.241
+  User root
   StrictHostKeyChecking no
   UserKnownHostsFile=/dev/null
-    IdentityFile ~/.ssh/old_id_rsa
+  IdentityFile ~/.ssh/old_id_rsa
 
 
 Host hermes-vm
-    HostName 10.1.0.172
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
+  HostName 10.1.0.172
+  User root
+  IdentityFile ~/.ssh/old_id_rsa
 
 Host eburn2
-    HostName 216.215.220.226
-    User root
-    Port 15000
-    IdentityFile ~/.ssh/id_rsa
+  HostName 216.215.220.226
+  User root
+  Port 15000
+  IdentityFile ~/.ssh/id_rsa
 
 Host ibanez
-    HostName 10.1.0.70
-    User laydros
-    Port 22
+  HostName 10.1.0.70
+  User laydros
+  Port 22
 
 Host fyre
-    HostName 10.1.0.159
-    User root
-    Port 22
+  HostName 10.1.0.159
+  User root
+  Port 22
 
 Host momus
-    HostName 10.1.0.244
-    User root
-    Port 22
-    IdentityFile ~/.ssh/old_id_rsa
+  HostName 10.1.0.244
+  User root
+  Port 22
+  IdentityFile ~/.ssh/old_id_rsa
 
 Host modi
-    HostName 10.1.0.235
-    User root
-    Port 22
-    IdentityFile ~/.ssh/old_id_rsa
+  HostName 10.1.0.235
+  User root
+  Port 22
+  IdentityFile ~/.ssh/old_id_rsa
 
 Host nott
-    HostName 10.1.0.242
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
+  HostName 10.1.0.242
+  User root
+  IdentityFile ~/.ssh/old_id_rsa
 
 Host iris
-    HostName 10.1.0.240
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
+  HostName 10.1.0.240
+  User root
+  IdentityFile ~/.ssh/old_id_rsa
 
 Host shivado
-    HostName wycomsystems.com
-    IdentityFile ~/.ssh/old_id_rsa
-    User root
+  HostName wycomsystems.com
+  IdentityFile ~/.ssh/old_id_rsa
+  User root
 
 Host odoo
-    Hostname 10.1.0.74
-    user laydros
-    
+  Hostname 10.1.0.74
+  user laydros
+
 Host ibanez
-    User laydros
-    Hostname 10.1.0.70
-    Port 22
-    IdentityFile ~/.ssh/id_rsa
+  User laydros
+  Hostname 10.1.0.70
+  Port 22
+  IdentityFile ~/.ssh/id_rsa
 
 Host connectr
-    Hostname 10.1.0.130
-    IdentityFile ~/.ssh/old_id_rsa
-    User root
+  Hostname 10.1.0.130
+  IdentityFile ~/.ssh/old_id_rsa
+  User root
