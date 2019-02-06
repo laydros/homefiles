@@ -1,6 +1,10 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
+PLAN9=/usr/local/plan9 export PLAN9
+PATH=$PATH:$PLAN9/bin export PATH
+
+
 #export CVSROOT=:pserver:jasonh@dagr:/home/cvsroot/wycom
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
