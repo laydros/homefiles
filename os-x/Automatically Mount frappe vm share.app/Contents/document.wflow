@@ -105,7 +105,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>280.000000:307.000000</string>
+				<string>272.500000:307.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Specified Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -158,7 +158,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>appPath</key>
-					<string>/Applications/Textastic.app</string>
+					<string>/Applications/Sublime Text.app</string>
 				</dict>
 				<key>BundleIdentifier</key>
 				<string>com.apple.Automator.OpenFinderItems</string>
@@ -209,7 +209,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>280.000000:410.000000</string>
+				<string>272.500000:410.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Open Finder Items.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -381,7 +381,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>280.000000:606.000000</string>
+				<string>272.500000:606.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Ask for Confirmation.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -487,7 +487,7 @@
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>280.000000:794.000000</string>
+				<string>272.500000:794.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Get Specified Servers.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
@@ -569,33 +569,33 @@
 	</array>
 	<key>connectors</key>
 	<dict>
-		<key>34CAC045-E4CC-44C9-A217-53CB885A5D08</key>
+		<key>3A17BA4F-838D-47A1-B2C6-71A9470437A2</key>
+		<dict>
+			<key>from</key>
+			<string>41C3BE1D-A198-461C-9C72-1804A5035BCC - 41C3BE1D-A198-461C-9C72-1804A5035BCC</string>
+			<key>to</key>
+			<string>7C1FB7F8-53D1-4F35-8053-0EC709F5B3B2 - 7C1FB7F8-53D1-4F35-8053-0EC709F5B3B2</string>
+		</dict>
+		<key>8449D682-A5FD-4CC4-81CF-69A7F68C5115</key>
 		<dict>
 			<key>from</key>
 			<string>8CE06470-D51C-45F7-B159-C76C7DE9E347 - 8CE06470-D51C-45F7-B159-C76C7DE9E347</string>
 			<key>to</key>
 			<string>AC42E91C-4ACC-41AF-BC0E-A893F41C3F1E - AC42E91C-4ACC-41AF-BC0E-A893F41C3F1E</string>
 		</dict>
-		<key>96327A0E-EBC5-4182-A752-BF12B8B29D68</key>
+		<key>BBD83A47-D1AA-4F3B-BF9A-4514942897F3</key>
 		<dict>
 			<key>from</key>
 			<string>AE904173-D789-421F-B348-4E520CE2BE94 - AE904173-D789-421F-B348-4E520CE2BE94</string>
 			<key>to</key>
 			<string>8CE06470-D51C-45F7-B159-C76C7DE9E347 - 8CE06470-D51C-45F7-B159-C76C7DE9E347</string>
 		</dict>
-		<key>D23A5286-78DF-4AF0-9481-1C2E78F4B3DF</key>
+		<key>E4F33B25-F680-4702-8D25-DFB4BC562532</key>
 		<dict>
 			<key>from</key>
 			<string>AC42E91C-4ACC-41AF-BC0E-A893F41C3F1E - AC42E91C-4ACC-41AF-BC0E-A893F41C3F1E</string>
 			<key>to</key>
 			<string>41C3BE1D-A198-461C-9C72-1804A5035BCC - 41C3BE1D-A198-461C-9C72-1804A5035BCC</string>
-		</dict>
-		<key>E9D46FC9-BCB6-471C-BABB-9D010F6D93D0</key>
-		<dict>
-			<key>from</key>
-			<string>41C3BE1D-A198-461C-9C72-1804A5035BCC - 41C3BE1D-A198-461C-9C72-1804A5035BCC</string>
-			<key>to</key>
-			<string>7C1FB7F8-53D1-4F35-8053-0EC709F5B3B2 - 7C1FB7F8-53D1-4F35-8053-0EC709F5B3B2</string>
 		</dict>
 	</dict>
 	<key>workflowMetaData</key>
