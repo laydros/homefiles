@@ -4,11 +4,12 @@
 Rxvt*scrollBar: False
 !urxvt.font:	xft:inconsolata:pixelsize=12
 !URxvt.font: xft:Sauce Code Pro-10:antialias=true
-URxvt.font: xft:Deja Vu Sans Mono-9:antialias=true
+!URxvt.font: xft:Deja Vu Sans Mono-9:antialias=true
+!URxvt.font: -misc-spleen-medium-r-normal--16-160-72-72-c-80-iso10646-1
 !URxvt.font: xft:Iosevka Term-10:antialias=true
 !URxvt.font:   -misc-fixed-medium-r-semicondensed--0-0-75-75-c-0-iso10646-1
 ! URxvt.font: xft:Terminus:pixelsize=16:antialias=true
-!URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-u
+URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-u
 !URxvt.font: xft:DejaVu Sans Mono:pixelsize=11:style=Book:antialias=true:hinting=medium
 ! URxvt.font: 7x14
 !URxvt.font: 6x13
