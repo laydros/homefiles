@@ -1,120 +1,196 @@
-;; A very basic emacs config. Might try to use on servers I often use.
+;; Whatever, nuke it all. 2018-09-21 - JWH
+
+;; TODO: I need emacs to support sdate and fdate
 
 (when (>= emacs-major-version 24)
   (require 'package)
-  (add-to-list
-   'package-archives
-   '("melpa" . "http://melpa.org/packages/"))
-  (add-to-list
-   'package-archives
-   '("elpy" . "https://jorgenschaefer.github.io/packages/"))
+  (setq package-enable-at-startup nil)
+  ;; (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+  (add-to-list 'package-archives '("melpa-mirror" . "http://www.mirrorservice.org/sites/melpa.org/packages/"))
   (package-initialize))
-
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/laydros-lisp"))
-
-;; not supported until sept 2017 emacs 26 beta
-(when (version<= "26.0.50" emacs-version )
-  (global-display-line-numbers-mode))
-
-(require 'laydros-base)
-
-;; (set-default-font "Menlo-12")
 
 ;; bootstrap use-package
 (unless (package-installed-p 'use-package)
   (package-refresh-contents)
   (package-install 'use-package))
-(require 'use-package)
+(eval-when-compile
+  (require 'use-package))
 
-(setq tramp-default-method "ssh")
-;(load-theme 'monokai t)
-(load-theme 'dracula t)
+(setq multi-term-program "~/bin/ansi-term.sh")
 
-;; UTF-8
-(set-charset-priority 'unicode)
-(setq locale-coding-system   'utf-8)
-(set-terminal-coding-system  'utf-8)
-(set-keyboard-coding-system  'utf-8)
-(set-selection-coding-system 'utf-8)
-(prefer-coding-system        'utf-8)
+;; don't need to say ensure when using use-package
+(setq use-package-always-ensure t)
 
-;; some interface niceties
-(setq confirm-nonexistent-file-or-buffer  t
-      mouse-yank-at-point                 t
-      inhibit-startup-echo-area-message   t)
+(setq user-full-name "Jason Hamilton")
+(setq user-mail-address "jwh@laydros.net")
 
-(global-auto-revert-mode 1)
+;;
+;; interface
+;;
 
-;; By default tooltips open in seperate frame. to force emacs to use the echo
-;; area exclusively uncomment the following
-;; (tooltip-mode -1)
-;; (setq tooltip-use-echo-area t)
-
-;; Make eww rename buffers automatically, so it will open a new one when calling eww again
-(when (fboundp 'eww)
-  (progn
-    (defun xah-rename-eww-hook ()
-      "Rename eww browser's buffer so sites open in new page."
-      (rename-buffer "eww" t))
-    (add-hook 'eww-mode-hook 'xah-rename-eww-hook)))
-
-;; (use-package company-mode
-  ;; :ensure t)
-
-;; helps to actually look at the documentation. Use M-n and M-p to select,
-;; <return> to complete or <tab> to complete the common part. Search through
-;; completions with C-s, C-r and C-o. Press M-(digit) to quickly complete with
-;; one of the first 10 candidates. When completion candidates are shown, press
-;; <f1> to display the documentation for the selected candidate, or C-w to see
-;; it's source.
-(add-hook 'after-init-hook 'global-company-mode)
+(line-number-mode 1)
+(column-number-mode 1)
+(fset 'yes-or-no-p 'y-or-n-p)
+(display-time)
+(electric-pair-mode t)
+(show-paren-mode t)
+(tool-bar-mode  -1)
+(defalias 'yes-or-no-p 'y-or-n-p)
+(defalias 'list-buffers 'ibuffer)
+(setq-default fill-column 80)
+(setq
+ inhibit-startup-message t
+ inhibit-startup-screen t
+ confirm-kill-emacs 'y-or-n-p
+ ;; select help window so it's easy to quit it with 'q'
+ help-window-select t)
 
 (ido-mode 1)
+(setq ido-everywhere 1)
 (setq ido-enable-flex-matching t)
-;; may want to get rid of this
-(setq ido-everywhere t)
 
-;; (pdf-tools-install)
+;;
+;; files
+;;
 
-(use-package toggle-quotes)
-(global-set-key (kbd "C-'") 'toggle-quotes)
+(global-auto-revert-mode t)
 
-(use-package elpy
-  :ensure t
-  :commands elpy-enable
-  :init (with-eval-after-load 'python (elpy-enable))
+;; Always use utf-8
+(set-charset-priority 'unicode)
+(setq locale-coding-system 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-keyboard-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
 
-  :config
-  (setq python-shell-interpreter "ipython"
-        python-shell-interpreter-args "-i --simple-prompt"))
+(add-hook 'before-save-hook 'delete-trailing-whitespace)
+(setq
+ make-backup-files nil
+ require-final-newline t)
 
-(require 'laydros-global-keys)
-(require 'cust-func)
-;; simply use M-o to switch windows, since this is done so often. Could also
-;; use (windmove-default-keybindings) to make S-up, S-dn, etc. move.
+;; built in python.el
+;; try using C-j instead of return
+;; set to use ipython
+(setq python-shell-interpreter "ipython"
+      python-shell-interpreter-args "-i")
+
+;;
+;; editing and movement
+;;
+
+;; cursor movement stops in camelCase words
+(global-subword-mode t)
+;; indention
+(setq-default indent-tabs-mode nil)
+(setq-default c-basic-offset 4)
+(setq tab-width 2)
+
+;;
+;; keybinding
+;;
+
 (global-set-key (kbd "M-o") 'other-window)
-;; not sure why the site I found this on had a # in the middle, but here is a
-;; note in case it's needed later
-;; (global-set-key (kbd "C-;") #'comment-line)
 (global-set-key (kbd "C-;") 'comment-line)
 
-(defalias 'yes-or-no-p 'y-or-n-p)
+;;
+;; packages
+;;
 
-(defalias 'list-buffers 'ibuffer)       ; make ibuffer default
+(require 'helm-config)
 
-;; use the system trash
-(setq delete-by-moving-to-trash t)
+(use-package magit
+  :ensure t
+  :init (bind-key "C-x g" 'magit-status))
+
+;;; Get help as you go
+(use-package which-key
+  :ensure t
+  :config
+  (which-key-mode))
+
+;;; Distinguished parenthesis
+(use-package rainbow-delimiters
+  :ensure t
+  :config
+  (add-hook 'lisp-mode-hook (lambda () (rainbow-delimiters-mode)))
+  (add-hook 'emacs-lisp-mode-hook (lambda () (rainbow-delimiters-mode))))
+
+(use-package company
+  :ensure t
+  :init
+  ;; https://emacs.stackexchange.com/a/10838
+  (setq company-dabbrev-downcase nil)
+  :config
+  (global-company-mode))
+
+;;; Mode line
+(use-package spaceline
+  :ensure t
+  :config
+  (require 'spaceline-config)
+  (setq powerline-default-separator 'slant)
+  (spaceline-spacemacs-theme))
+
+;; spot4e config
+;; (add-to-list 'load-path "/Users/laydros/src/projects/spot4e")
+;; (require 'spot4e)
+
+;; (setq spot4e-refresh-token "AQBDW0sdhgZc9puwe6GoF1l8EhZ7jebok8B5nEktyPUM0TLt1byTOdC5ihvAPY2hY75Vus2zVpstEDcYDTgGLsJV4JYbMdU0Gg1VhhPcjcaodoPGaeD9VWl-X8Uxoo9-q-A22A")
+
+;; (run-with-timer 0 (* 60 59) 'spot4e-refresh)
+
+;; what TODO
+;; ido stuff, should be smoother when using C-x C-f
+
+;; maybe do the literate programming thing for this so I have notes in it
+;; possibly a new dotfiles repo?
+
+;;;;;;;;;;;;;;
+;; org-mode ;;
+;;;;;;;;;;;;;;
+
+;; <s <TAB> will insert the code block header
+
+;; numbers on headers off by default for org export. can be changed on a file basis
+;; add #+OPTIONS: num:t in a file to turn on
+(setq org-export-with-section-numbers nil)
+
+;; install htmlize for org to output more complicated stuff to html. may be useful for other cases
+(use-package htmlize
+  :ensure t)
+
+;;; Fancy visuals for org-mode
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+(setq tramp-default-method "ssh")
+
+;; TODO - I don't remember what this means
+;; (global-font-lock-mode 1)
+;; This might be on by default now.
+;; I know I want this but I don't quite remember what it does.
+;; (transient-mark-mode t)
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(custom-safe-themes
+   (quote
+    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "c968804189e0fc963c641f5c9ad64bca431d41af2fb7e1d01a2a6666376f819c" "6515fcc302292f29a94f6ac0c5795c57a396127d5ea31f37fc5f9f0308bbe19f" "5a45c8bf60607dfa077b3e23edfb8df0f37c4759356682adf7ab762ba6b10600" "aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" default)))
+ '(erc-autojoin-channels-alist (quote (("Freenode" "#emacs" "#devious" "#next-browser"))))
+ '(erc-server "irc.freenode.net")
  '(package-selected-packages
    (quote
-    (dracula-theme ssh-config-mode toggle-quotes json-reformat htmlize company magit monokai-theme markdown-mode solarized-theme))))
+    (spaceline solarized-theme atom-dark-theme atom-one-dark-theme base16-theme doom-themes molokai-theme monokai-theme nofrils-acme-theme htmlize magit multi-term helm dracula-theme use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+(load-theme 'dracula)
