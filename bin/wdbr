@@ -1,2 +1,2 @@
 #! /bin/bash
-xfreerdp -P -x 80 -a 16 -z -u jasonh -k en-us -K -g 810x610 -c "C:\Documents and Settings\jasonh\Desktop" -s "C:\Program Files\Microsoft Office\Office\MSACCESS WBS_App" -T "WycomDB" connect.wycomsystems.com:3389
+xfreerdp -P /network broadband /bpp:16 /compression /u:jasonh /kbd:en-us -grab-keyboard /size810x610 /shell-dir:"C:\Documents and Settings\jasonh\Desktop" /shell:"C:\Program Files\Microsoft Office\Office\MSACCESS WBS_App" /title:"WycomDB" connect.wycomsystems.com:3389

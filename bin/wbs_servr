@@ -1,2 +1,2 @@
 #! /bin/bash
-xfreerdp -P -x 80 -a 16 -z -k en-us -u administrator -K -g 1920x1080 -T "WycomDB" connect.wycomsystems.com:3389
+xfreerdp -P -x 80 /bpp:16 -z -k en-us /u:administrator -grab-keyboard /size:1920x1080 /title:"WycomDB" /v:connect.wycomsystems.com:3389
