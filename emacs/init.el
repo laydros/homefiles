@@ -2,6 +2,8 @@
 
 ;; TODO: I need emacs to support sdate and fdate
 
+(add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
+
 (when (>= emacs-major-version 24)
   (require 'package)
   (setq package-enable-at-startup nil)
@@ -32,7 +34,8 @@
 (display-time)
 (electric-pair-mode t)
 (show-paren-mode t)
-(tool-bar-mode  -1)
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode  -1))
 (defalias 'yes-or-no-p 'y-or-n-p)
 (defalias 'list-buffers 'ibuffer)
 (setq-default fill-column 80)
@@ -42,6 +45,12 @@
  confirm-kill-emacs 'y-or-n-p
  ;; select help window so it's easy to quit it with 'q'
  help-window-select t)
+
+(setq
+ select-enable-primary t
+ save-interprogram-paste-before-kill t
+ apropos-do-all t
+ mouse-yank-at-point t)
 
 (ido-mode 1)
 (setq ido-everywhere 1)
@@ -64,6 +73,7 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (setq
  make-backup-files nil
+ create-lockfiles nil
  require-final-newline t)
 
 ;; built in python.el
@@ -114,7 +124,8 @@
   :ensure t
   :config
   (add-hook 'lisp-mode-hook (lambda () (rainbow-delimiters-mode)))
-  (add-hook 'emacs-lisp-mode-hook (lambda () (rainbow-delimiters-mode))))
+  (add-hook 'emacs-lisp-mode-hook (lambda () (rainbow-delimiters-mode)))
+  (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package company
   :ensure t
@@ -131,6 +142,17 @@
   (require 'spaceline-config)
   (setq powerline-default-separator 'slant)
   (spaceline-spacemacs-theme))
+
+;;; fix for macOS where there isn't a login shell
+(use-package exec-path-from-shell
+  :config
+  (when (memq window-system '(mac ns x))
+    (exec-path-from-shell-initialize)))
+
+(use-package golden-ratio
+  :config
+  (golden-ratio-mode 1)
+  (setq golden-ratio-auto-scale t))
 
 ;; spot4e config
 ;; (add-to-list 'load-path "/Users/laydros/src/projects/spot4e")
@@ -173,6 +195,9 @@
 ;; This might be on by default now.
 ;; I know I want this but I don't quite remember what it does.
 ;; (transient-mark-mode t)
+
+
+(provide 'init)
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -180,7 +205,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (org-bullets htmlize spaceline company rainbow-delimiters which-key magit helm use-package))))
+    (golden-ratio exec-path-from-shell which-key use-package spaceline rainbow-delimiters org-bullets magit htmlize helm company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
