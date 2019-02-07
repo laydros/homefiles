@@ -16,8 +16,6 @@
 (eval-when-compile
   (require 'use-package))
 
-(setq multi-term-program "~/bin/ansi-term.sh")
-
 ;; don't need to say ensure when using use-package
 (setq use-package-always-ensure t)
 
@@ -96,7 +94,10 @@
 ;; packages
 ;;
 
-(require 'helm-config)
+(use-package helm
+  :ensure t
+  :config
+  (require 'helm-config))
 
 (use-package magit
   :ensure t
@@ -172,25 +173,17 @@
 ;; This might be on by default now.
 ;; I know I want this but I don't quite remember what it does.
 ;; (transient-mark-mode t)
-
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-safe-themes
-   (quote
-    ("d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "a8245b7cc985a0610d71f9852e9f2767ad1b852c2bdea6f4aadc12cce9c4d6d0" "8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "c968804189e0fc963c641f5c9ad64bca431d41af2fb7e1d01a2a6666376f819c" "6515fcc302292f29a94f6ac0c5795c57a396127d5ea31f37fc5f9f0308bbe19f" "5a45c8bf60607dfa077b3e23edfb8df0f37c4759356682adf7ab762ba6b10600" "aaffceb9b0f539b6ad6becb8e96a04f2140c8faa1de8039a343a4f1e009174fb" default)))
- '(erc-autojoin-channels-alist (quote (("Freenode" "#emacs" "#devious" "#next-browser"))))
- '(erc-server "irc.freenode.net")
  '(package-selected-packages
    (quote
-    (spaceline solarized-theme atom-dark-theme atom-one-dark-theme base16-theme doom-themes molokai-theme monokai-theme nofrils-acme-theme htmlize magit multi-term helm dracula-theme use-package))))
+    (org-bullets htmlize spaceline company rainbow-delimiters which-key magit helm use-package))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
-
-(load-theme 'dracula)
