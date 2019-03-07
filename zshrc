@@ -1,11 +1,11 @@
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
-PLAN9=/usr/local/plan9 export PLAN9
-PATH=$PATH:$PLAN9/bin export PATH
 
+PLAN9=/usr/local/plan9
+export PLAN9
+PATH=$PATH:$PLAN9/bin
 
-#export CVSROOT=:pserver:jasonh@dagr:/home/cvsroot/wycom
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
@@ -64,7 +64,10 @@ plugins=(colorize osx sublime zsh-syntax-highlighting pip colored-man git)
 
 # User configuration
 
-export PATH="$HOME/bin:$HOME/code/venvs/bin:$HOME/.local/bin:/usr/local/opt/python/libexec/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/m3db/data/linux/bin:$HOME/.local/bin:/usr/local/texlive/2017basic/bin/x86_64-darwin:/Users/laydros/Library/Python/3.6/bin"
+# support snap bin folder
+PATH=$PATH:/snap:bin
+
+PATH=$HOME/bin:$HOME/code/venvs/bin:$HOME/.local/bin:/usr/local/opt/python/libexec/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/m3db/data/linux/bin:$HOME/.local/bin:/usr/local/texlive/2017basic/bin/x86_64-darwin:/Users/laydros/Library/Python/3.6/bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -79,6 +82,7 @@ source $ZSH/oh-my-zsh.sh
 #   export EDITOR='mvim'
 # fi
 
+# pyenv stuff
 export PATH="$HOME/.pyenv/bin:$PATH"
 # eval "$(pyenv init -)"
 # eval "$(pyenv virtualenv-init -)"
@@ -114,6 +118,9 @@ alias ..="cd .."
 alias ...="cd ..."
 # the "kp" alias ("que pasa")
 alias kp="ps auxwww"
+alias cp='cp -i'
+alias rm='rm -i'
+alias mv='mv -i'
 #alias dt="cd ~/Desktop/"
 #alias e=emacsclient -t
 #alias ec=emacsclient -c

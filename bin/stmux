@@ -1,0 +1,8 @@
+#!/bin/sh
+usage() { >&2 echo "usage: ${0##*/} window path command"; exit 1; }
+[ -z "$1" ] && usage
+[ -z "$2" ] && usage
+[ -z "$3" ] && usage
+
+tmux select-window -t "$1" 2>/dev/null ||
+tmux new-window -n "$1" -c "$HOME/$2" "$3"

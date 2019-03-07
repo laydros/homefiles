@@ -3,17 +3,13 @@
 !emacs.font:	Deja Vu Sans Mono-9
 Rxvt*scrollBar: False
 !urxvt.font:	xft:inconsolata:pixelsize=12
-!URxvt.font: xft:Sauce Code Pro-10:antialias=true
 !URxvt.font: xft:Deja Vu Sans Mono-9:antialias=true
 !URxvt.font: -misc-spleen-medium-r-normal--16-160-72-72-c-80-iso10646-1
-!URxvt.font: xft:Iosevka Term-10:antialias=true
 !URxvt.font:   -misc-fixed-medium-r-semicondensed--0-0-75-75-c-0-iso10646-1
-! URxvt.font: xft:Terminus:pixelsize=16:antialias=true
-URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-u
+!URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*-u
 !URxvt.font: xft:DejaVu Sans Mono:pixelsize=11:style=Book:antialias=true:hinting=medium
 ! URxvt.font: 7x14
-!URxvt.font: 6x13
-!URxvt*font: -*-tewi-medium-*-normal-*-11-*-*-*-*-*-*-*
+URxvt.font: 6x13
 ! xterm*faceName: Dejavu Sans Mono:style=Book:antialias=true:hinting=medium
 ! xterm*faceSize: 10
 
@@ -37,15 +33,24 @@ URxvt.tabbed.tabbar-bg: 8
 URxvt.tabbed.tab-fg: 8
 URxvt.tabbed.tab-bg: 7
 
+URxvt*metaSendsEscape:	true
+xterm*metaSendsEscape:	true
+
 URxvt.perl-ext-common:  default,matcher,tabbedex
 URxvt.url-launcher:     /usr/bin/x-www-browser
 URxvt.colorUL:          #4682B4
 URxvt.matcher.button:   1
-URxvt.tabbed.reopen-on-close: yes
+! URxvt.tabbed.reopen-on-close: yes
 
-URxvt.keysym.Control-t:         perl:tabbedex:new_tab
-URxvt.keysym.Control-Tab:       perl:tabbedex:next_tab
-URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
+!URxvt.keysym.Control-t:         perl:tabbedex:new_tab
+!URxvt.keysym.Control-Tab:       perl:tabbedex:next_tab
+!URxvt.keysym.Control-Shift-Tab: perl:tabbedex:prev_tab
+
+! URxvt.keysym.Control-Left:	\33[1;5D
+! URxvt.keysym.Control-Right:	\33[1;5C
+
+! URxvt.tabbed.no-tabbedex-keys:	true
+
 
 !! Some color theme I have used a long time. Might be Monokai or related, but
 !! seems to be consistently readable.

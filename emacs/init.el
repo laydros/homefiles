@@ -1,6 +1,6 @@
 ;; Whatever, nuke it all. 2018-09-21 - JWH
 
-;; TODO: I need emacs to support sdate and fdate
+;; TODO: I need emacs to support sdate and fdate - maybe yasnippit?
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
@@ -23,6 +23,9 @@
 
 (setq user-full-name "Jason Hamilton")
 (setq user-mail-address "jwh@laydros.net")
+
+(add-to-list 'default-frame-alist
+             '(font . "DejaVu Sans Mono-10"))
 
 ;;
 ;; interface
@@ -91,7 +94,7 @@
 ;; indention
 (setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
-(setq tab-width 2)
+(setq-default tab-width 2)
 
 ;;
 ;; keybinding
@@ -149,10 +152,6 @@
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
 
-(use-package golden-ratio
-  :config
-  (golden-ratio-mode 1)
-  (setq golden-ratio-auto-scale t))
 
 ;; spot4e config
 ;; (add-to-list 'load-path "/Users/laydros/src/projects/spot4e")
@@ -205,7 +204,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (golden-ratio exec-path-from-shell which-key use-package spaceline rainbow-delimiters org-bullets magit htmlize helm company))))
+    (exec-path-from-shell which-key use-package spaceline rainbow-delimiters org-bullets magit htmlize helm company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
