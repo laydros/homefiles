@@ -72,6 +72,7 @@
 (set-keyboard-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
+(set-language-environment "UTF-8")
 
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (setq
@@ -176,6 +177,15 @@
 ;; numbers on headers off by default for org export. can be changed on a file basis
 ;; add #+OPTIONS: num:t in a file to turn on
 (setq org-export-with-section-numbers nil)
+
+;; org-mode keys
+(global-set-key "\C-cl" 'org-store-link)
+(global-set-key "\C-ca" 'org-agenda)
+(global-set-key "\C-cc" 'org-capture)
+(global-set-key "\C-cb" 'org-switchb)
+
+;; lets you start new entry when cursor is in the middle of the line (I think)
+(setq org-M-RET-may-split-line nil)
 
 ;; install htmlize for org to output more complicated stuff to html. may be useful for other cases
 (use-package htmlize
