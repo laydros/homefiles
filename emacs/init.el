@@ -117,6 +117,11 @@
   :ensure t
   :init (bind-key "C-x g" 'magit-status))
 
+(use-package beacon
+  :ensure t
+  :config
+  (beacon-mode 1))
+
 ;;; Get help as you go
 (use-package which-key
   :ensure t
@@ -187,6 +192,27 @@
 ;; lets you start new entry when cursor is in the middle of the line (I think)
 (setq org-M-RET-may-split-line nil)
 
+(setq org-directory "~/Dropbox/org/")
+(setq org-default-notes-file "~/Dropbox/org/tasks.org")
+(setq org-capture-templates
+      '(
+        ("t" "Todo" entry (file+headline "inbox.org" "Tasks")
+         "* TODO %?\n  %i\n  %u\n  %a")
+        ("n" "Note/Data" entry (file+headline "inbox.org" "Notes/Data")
+         "* %?   \n  %i\n  %u\n  %a")
+        ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org")
+         "* %?\nEntered on %U\n %i\n %a")
+        ("J" "Work-Journal" entry (file+datetree "~/Dropbox/org/wjournal.org")
+         "* %?\nEntered on %U\n %i\n %a")
+        ))
+(setq org-irc-link-to-logs t)
+
+
+(setq org-todo-keywords
+      '((sequence "TODO(t!)" "NEXT(n!)" "IN-PROGRESS" "WAIT(w@/!)" "|" "DONE" "CANCELED"))
+)
+
+
 ;; install htmlize for org to output more complicated stuff to html. may be useful for other cases
 (use-package htmlize
   :ensure t)
@@ -199,7 +225,8 @@
 
 (setq tramp-default-method "ssh")
 
-;; TODO - I don't remember what this means
+
+;; These are both default now. Going to do a commit with this, and then remove them
 ;; (global-font-lock-mode 1)
 ;; This might be on by default now.
 ;; I know I want this but I don't quite remember what it does.
@@ -214,7 +241,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (exec-path-from-shell which-key use-package spaceline rainbow-delimiters org-bullets magit htmlize helm company))))
+    (beacon exec-path-from-shell which-key use-package spaceline rainbow-delimiters org-bullets magit htmlize helm company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
