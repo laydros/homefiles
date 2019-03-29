@@ -128,6 +128,12 @@
   :config
   (which-key-mode))
 
+;;; Mickey P from Mastering Emacs discover.el
+(use-package discover
+  :ensure t
+  :config
+  (global-discover-mode 1))
+
 ;;; Distinguished parenthesis
 (use-package rainbow-delimiters
   :ensure t
@@ -135,6 +141,12 @@
   (add-hook 'lisp-mode-hook (lambda () (rainbow-delimiters-mode)))
   (add-hook 'emacs-lisp-mode-hook (lambda () (rainbow-delimiters-mode)))
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
+
+(use-package mastodon
+  :ensure t
+  :config
+  (setq mastodon-instance-url "https://mastodon.sdf.org")
+  (mastodon-discover))
 
 (use-package company
   :ensure t
@@ -241,7 +253,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (beacon exec-path-from-shell which-key use-package spaceline rainbow-delimiters org-bullets magit htmlize helm company))))
+    (discover mastodon beacon exec-path-from-shell which-key use-package spaceline rainbow-delimiters org-bullets magit htmlize helm company))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

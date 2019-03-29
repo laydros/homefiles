@@ -6,6 +6,6 @@
 # [diff]
 # external = /home/bdill/bin/git-meld.sh
 
-#diffuse -E $2 $5
+diffuse -E $2 $5
 #visdiff $2 $5 --wait
-meld $2 $5
+# meld $2 $5
