@@ -237,6 +237,8 @@
 
 (setq tramp-default-method "ssh")
 
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
 
 ;; These are both default now. Going to do a commit with this, and then remove them
 ;; (global-font-lock-mode 1)
@@ -246,17 +248,3 @@
 
 
 (provide 'init)
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   (quote
-    (discover mastodon beacon exec-path-from-shell which-key use-package spaceline rainbow-delimiters org-bullets magit htmlize helm company))))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
