@@ -13,8 +13,8 @@ PATH=$PATH:$PLAN9/bin
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="kphoen"
-#ZSH_THEME="jreese"
-ZSH_THEME="dracula"
+ZSH_THEME="jreese"
+#ZSH_THEME="dracula"
 #ZSH_THEME="bira"
 #ZSH_THEME="arrow"
 
