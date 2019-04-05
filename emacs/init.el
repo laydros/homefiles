@@ -34,13 +34,12 @@
 (line-number-mode 1)
 (column-number-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
+(global-linum-mode t)
 (display-time)
 (electric-pair-mode t)
-(show-paren-mode t)
 (when (fboundp 'tool-bar-mode)
   (tool-bar-mode  -1))
 (defalias 'yes-or-no-p 'y-or-n-p)
-(defalias 'list-buffers 'ibuffer)
 (setq-default fill-column 80)
 (setq
  inhibit-startup-message t
@@ -54,6 +53,8 @@
  save-interprogram-paste-before-kill t
  apropos-do-all t
  mouse-yank-at-point t)
+
+(setq dired-dwim-target t)
 
 (ido-mode 1)
 (setq ido-everywhere 1)
@@ -77,8 +78,7 @@
 (add-hook 'before-save-hook 'delete-trailing-whitespace)
 (setq
  make-backup-files nil
- create-lockfiles nil
- require-final-newline t)
+ create-lockfiles nil)
 
 ;; built in python.el
 ;; try using C-j instead of return
@@ -116,6 +116,14 @@
 (use-package magit
   :ensure t
   :init (bind-key "C-x g" 'magit-status))
+
+(use-package better-defaults
+  :ensure t
+  ;; :config
+  ;; (menu-bar-mode 1)
+  ;; (scroll-bar-mode 1)
+  ;; (horizontal-scroll-bar-mode 1)
+  )
 
 (use-package beacon
   :ensure t
