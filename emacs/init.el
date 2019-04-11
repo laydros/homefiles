@@ -34,7 +34,6 @@
 (line-number-mode 1)
 (column-number-mode 1)
 (fset 'yes-or-no-p 'y-or-n-p)
-(global-linum-mode t)
 (display-time)
 (electric-pair-mode t)
 (when (fboundp 'tool-bar-mode)
@@ -93,7 +92,6 @@
 ;; cursor movement stops in camelCase words
 (global-subword-mode t)
 ;; indention
-(setq-default indent-tabs-mode nil)
 (setq-default c-basic-offset 4)
 (setq-default tab-width 2)
 
@@ -119,11 +117,9 @@
 
 (use-package better-defaults
   :ensure t
-  ;; :config
-  ;; (menu-bar-mode 1)
-  ;; (scroll-bar-mode 1)
-  ;; (horizontal-scroll-bar-mode 1)
-  )
+  :config
+  (menu-bar-mode 1)
+  (scroll-bar-mode 1))
 
 (use-package beacon
   :ensure t
@@ -177,6 +173,24 @@
   :config
   (when (memq window-system '(mac ns x))
     (exec-path-from-shell-initialize)))
+
+;;; elpy - let's try this again
+(use-package elpy
+  :ensure t
+  :init
+  (elpy-enable)
+  )
+
+;; I haven't yet figured out the right way to do this with use-package
+(add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
+
+(use-package flycheck
+  :ensure t
+  :config
+  (when (require 'flycheck nil t)
+    (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
+    (add-hook 'elpy-mode-hook 'flycheck-mode)))
+
 
 
 ;; spot4e config
@@ -247,12 +261,6 @@
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
-
-;; These are both default now. Going to do a commit with this, and then remove them
-;; (global-font-lock-mode 1)
-;; This might be on by default now.
-;; I know I want this but I don't quite remember what it does.
-;; (transient-mark-mode t)
 
 
 (provide 'init)
