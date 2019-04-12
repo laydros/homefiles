@@ -25,7 +25,7 @@
 (setq user-mail-address "jwh@laydros.net")
 
 (add-to-list 'default-frame-alist
-             '(font . "DejaVu Sans Mono-10"))
+             '(font . "Inconsolata-12"))
 
 ;;
 ;; interface
@@ -160,6 +160,10 @@
   :config
   (global-company-mode))
 
+(use-package spacemacs-theme
+  :defer t
+  :init (load-theme 'spacemacs-dark t))
+
 ;;; Mode line
 (use-package spaceline
   :ensure t
@@ -167,6 +171,7 @@
   (require 'spaceline-config)
   (setq powerline-default-separator 'slant)
   (spaceline-spacemacs-theme))
+
 
 ;;; fix for macOS where there isn't a login shell
 (use-package exec-path-from-shell
