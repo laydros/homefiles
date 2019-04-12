@@ -17,6 +17,8 @@ Host linode
 Host marshall
   User laydros
   HostName laydros.org
+  Port 2222
+  IdentityFile ~/.ssh/id_rsa
 
 # work
 
