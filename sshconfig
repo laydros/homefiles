@@ -1,8 +1,5 @@
 # -*- mode: ssh-config -*-
 
-Host *
-RemoteForward 52698 localhost:52698
-
 # personal
 
 Host devio.us
@@ -66,11 +63,6 @@ Host freya
     User root
     IdentityFile ~/.ssh/old_id_rsa
 
-Host dbase
-    HostName 10.1.0.79
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
-
 Host frigg
   User root
   IdentityFile ~/.ssh/old_id_rsa
@@ -93,14 +85,8 @@ Host hermes-vm
     User root
     IdentityFile ~/.ssh/old_id_rsa
 
-
 Host connect1
   HostName 10.0.0.127
-  User root
-  IdentityFile ~/.ssh/old_id_rsa
-
-Host burn3
-  HostName 10.0.0.125
   User root
   IdentityFile ~/.ssh/old_id_rsa
 
@@ -121,7 +107,6 @@ Host hermes
   UserKnownHostsFile=/dev/null
   IdentityFile ~/.ssh/old_id_rsa
 
-
 Host hermes-vm
   HostName 10.1.0.172
   User root
@@ -136,11 +121,6 @@ Host eburn2
 Host ibanez
   HostName 10.1.0.70
   User laydros
-  Port 22
-
-Host fyre
-  HostName 10.1.0.159
-  User root
   Port 22
 
 Host momus
@@ -169,10 +149,6 @@ Host shivado
   HostName wycomsystems.com
   IdentityFile ~/.ssh/old_id_rsa
   User root
-
-Host odoo
-  Hostname 10.1.0.74
-  user laydros
 
 Host ibanez
   User laydros
