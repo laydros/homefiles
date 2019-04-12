@@ -58,6 +58,19 @@ Host smoke
   Port 15000
   IdentityFile ~/.ssh/old_id_rsa
 
+Host connectvm1
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
+
+Host freya
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
+
+Host dbase
+    HostName 10.1.0.79
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
+
 Host frigg
   User root
   IdentityFile ~/.ssh/old_id_rsa
@@ -70,10 +83,16 @@ Host vili
   User root
   IdentityFile ~/.ssh/old_id_rsa
 
-Host gitlab-test
-  HostName 10.1.0.170
-  User root
-  IdentityFile ~/.ssh/old_id_rsa
+Host modi
+    HostName 10.1.0.235
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
+
+Host hermes-vm
+    HostName 10.1.0.172
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
+
 
 Host connect1
   HostName 10.0.0.127
