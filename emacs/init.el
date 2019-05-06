@@ -101,6 +101,8 @@
 
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "C-;") 'comment-line)
+;; I never use this, it's still available at C-x C-z
+(global-unset-key (kbd "C-z"))
 
 ;;
 ;; packages
