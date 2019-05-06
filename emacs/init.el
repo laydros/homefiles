@@ -25,7 +25,7 @@
 (setq user-mail-address "jwh@laydros.net")
 
 (add-to-list 'default-frame-alist
-             '(font . "Inconsolata-12"))
+             '(font . "Inconsolata-11"))
 
 ;;
 ;; interface
