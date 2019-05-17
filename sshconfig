@@ -41,6 +41,13 @@ Host vmerpn
   StrictHostKeyChecking no
   IdentityFile ~/.ssh/id_rsa
 
+Host ds4
+  HostName dorkystuff4some.bid
+  User frappe
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+  IdentityFile ~/.ssh/id_rsa
+
 Host erpndo
   HostName 159.65.45.103
   HostName dorkystuff4some.bid

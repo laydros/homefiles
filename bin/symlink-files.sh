@@ -1,22 +1,28 @@
 #!/bin/bash
 
-EMACS_INIT=~/.emacs.d/init.el
-LAYDROS_LISP=~/.emacs.d/laydros-lisp
-BIN_DIR=~/bin
-GITCONFIG=~/.gitconfig
-GITIGNORE=~/.gitignore_global
-VIMRC=~/.vimrc
-OFFLINEIMAPRC=~/.offlineimaprc
-I3DIR=~/.i3
-I3STATUS=~/.i3status
-MUTTDIR=~/.mutt
-AUTOKEYDIR=~/.config/autokey
-NANORC=~/.nanorc
-XRESOURCES=~/.Xresources
-ZSHRC=~/.zshrc
+CONFIG_DIR=$HOME/.config
+HOMEFILES=$HOME/src/homefiles
+
+EMACS_INIT=$HOME/.emacs.d/init.el
+LAYDROS_LISP=$HOME/.emacs.d/laydros-lisp
+# XDG
+GITCONFIG=$CONFIG_DIR/git/config
+GITIGNORE=$CONFIG_DIR/git/ignore
+I3CONFIG=$CONFIG_DIR/i3/config
+I3STATUS=$CONFIG_DIR/i3status/config
+NANORC=$CONFIG_DIR/nano/nanorc
+VIMRC=$CONFIG_DIR/nvim/init.vim
+# dump in $HOME - :-(
 XBINDRC=~/.xbindkeysrc
 XBINDMPD=~/.xbindkeysrc-mpd
 XBINDSPOT=~/.xbindkeysrc-spotify
+XRESOURCES=~/.Xresources
+ZSHRC=~/.zshrc
+OFFLINEIMAPRC=~/.offlineimaprc
+# Directories
+AUTOKEYDIR=$CONFIG_DIR/autokey
+BIN_DIR=$HOME/bin
+MUTTDIR=$CONFIG_DIR/neomutt
 
 function symlink_file () {
     if [ -e $1 ]; then
@@ -27,26 +33,37 @@ function symlink_file () {
     fi
 }
 
-echo "Create a couple of directories if they don't exist"
+echo "Config dir is $CONFIG_DIR and homefiles source is $HOMEFILES"
+echo "Create a few directories if they don't exist"
 #mkdir -p ~/Maildir
 mkdir -p ~/.emacs.d
+touch $HOME/emacs.d/custom.el
+mkdir -p $CONFIG_DIR/nvim
+mkdir -p $CONFIG_DIR/i3
+mkdir -p $CONFIG_DIR/i3status
+mkdir -p $CONFIG_DIR/git
+mkdir -p $CONFIG_DIR/nano
 echo "Creating symlinks for dotfiles:"
-symlink_file $LAYDROS_LISP ~/src/homefiles/emacs.d/laydros-lisp
-symlink_file $EMACS_INIT ~/src/homefiles/emacs.d/init.el
-symlink_file $BIN_DIR ~/src/homefiles/bin
-symlink_file $NANORC ~/src/homefiles/nanorc
-symlink_file $GITCONFIG ~/src/homefiles/gitconfig
-symlink_file $GITIGNORE ~/src/homefiles/gitignore_global
-symlink_file $I3STATUS ~/code/homefiles/i3status.conf
-symlink_file $I3DIR ~/code/homefiles/i3 
-symlink_file $MUTTDIR ~/code/homefiles/mutt
-symlink_file $OFFLINEIMAPRC ~/code/homefiles/offlineimaprc
-symlink_file $VIMRC ~/src/homefiles/vimrc
-symlink_file $XRESOURCES ~/src/homefiles/Xresources
-symlink_file $ZSHRC ~/src/homefiles/zshrc
-symlink_file $XBINDRC ~/src/homefiles/xbindkeysrc 
-symlink_file $XBINDMPD ~/src/homefiles/xbindkeysrc-mpd 
-symlink_file $XBINDSPOT ~/src/homefiles/xbindkeysrc-spotify 
-symlink_file $AUTOKEYDIR ~/.config/autokey
+symlink_file $EMACS_INIT $HOMEFILES/emacs/init.el
+symlink_file $LAYDROS_LISP $HOMEFILES/emacs/laydros-lisp
+# XDG
+symlink_file $GITCONFIG $HOMEFILES/config/gitconfig
+symlink_file $GITIGNORE $HOMEFILES/config/gitignore
+symlink_file $I3CONFIG $HOMEFILES/config/i3config
+symlink_file $I3STATUS $HOMEFILES/config/i3status.conf
+symlink_file $NANORC $HOMEFILES/config/nanorc
+symlink_file $VIMRC $HOMEFILES/config/init.vim
+
+symlink_file $XBINDRC $HOMEFILES/xbindkeysrc
+symlink_file $XBINDMPD $HOMEFILES/xbindkeysrc-mpd
+symlink_file $XBINDSPOT $HOMEFILES/xbindkeysrc-spotify
+symlink_file $XRESOURCES $HOMEFILES/config/Xresources
+symlink_file $ZSHRC $HOMEFILES/config/zshrc
+#symlink_file $OFFLINEIMAPRC ~/code/homefiles/offlineimaprc
+
+# directories
+symlink_file $AUTOKEYDIR $HOMEFILES/autokey
+symlink_file $BIN_DIR $HOMEFILES/bin
+symlink_file $MUTTDIR $HOMEFILES/config/neomutt
 
 echo "you may want to run bin/lappy.sh to setup fstab"

@@ -1,5 +1,5 @@
 #! /bin/bash
-xfreerdp -P /network:broadband /bpp:16 /compression /u:jasonh -grab-keyboard /size:810x610 \
+xfreerdp /network:broadband-high /bpp:16 /compression /u:jasonh -grab-keyboard /size:810x610 \
 /shell-dir:"C:\Documents and Settings\jasonh\Desktop" /clipboard \
 /title:"WycomDB" /v:connect.wycomsystems.com:3389 \
 #/shell:"C:\Program Files\Microsoft Office\Office\WBS_App.mdb"
