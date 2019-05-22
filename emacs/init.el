@@ -117,6 +117,9 @@
   :ensure t
   :init (bind-key "C-x g" 'magit-status))
 
+(use-package undo-propose
+  :ensure t)
+
 (use-package better-defaults
   :ensure t
   :config
