@@ -25,7 +25,7 @@
 (setq user-mail-address "jwh@laydros.net")
 
 (add-to-list 'default-frame-alist
-             '(font . "Inconsolata-12"))
+             '(font . "Inconsolata-11"))
 
 ;;
 ;; interface
@@ -101,6 +101,8 @@
 
 (global-set-key (kbd "M-o") 'other-window)
 (global-set-key (kbd "C-;") 'comment-line)
+;; I never use this, it's still available at C-x C-z
+(global-unset-key (kbd "C-z"))
 
 ;;
 ;; packages
@@ -114,6 +116,9 @@
 (use-package magit
   :ensure t
   :init (bind-key "C-x g" 'magit-status))
+
+(use-package undo-propose
+  :ensure t)
 
 (use-package better-defaults
   :ensure t

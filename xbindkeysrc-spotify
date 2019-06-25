@@ -39,8 +39,8 @@
 
 # Examples of commands:
 
-"xbindkeys_show" 
-  control+shift + q
+"xbindkeys_show"
+control+shift + q
 
 # set directly keycode (here control + f with my keyboard)
 #"xterm"
@@ -136,11 +136,11 @@ XF86Display
 "exo-open --launch WebBrowser"
 control + Mod4 + w
 
-"xfce4-popup-whiskermenu"
-Mod4
+# "xfce4-popup-whiskermenu"
+# Mod4
 
 "dmenu_run"
-Mod4 + d
+control + Mod4 + d
 
 
 ##################################
