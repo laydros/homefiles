@@ -1,5 +1,10 @@
 # -*- mode: ssh-config -*-
 
+# for macos 10.12.2 and later
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+
 # personal
 
 Host devio.us
