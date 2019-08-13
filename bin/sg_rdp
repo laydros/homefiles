@@ -1,2 +1,2 @@
 #! /bin/bash
-xfreerdp -P -x 80 /bpp:16 -z -k en-us /u:"Jason Hamilton" -grab-keyboard /size:1920x1080 /title:"WycomDB" /clipboard /v:10.1.0.71:3389
+xfreerdp /network:lan /bpp:16 /compression /u:"Jason Hamilton" -grab-keyboard /size:1920x1080 /title:"SG" /clipboard /v:10.1.0.71:3389
