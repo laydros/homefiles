@@ -253,7 +253,7 @@
 
 
 (setq org-todo-keywords
-      '((sequence "TODO(t!)" "NEXT(n!)" "IN-PROGRESS" "WAIT(w@/!)" "|" "DONE" "CANCELED"))
+      '((sequence "TODO(t)" "NEXT(n)" "IN-PROGRESS" "WAIT(w@/!)" "|" "DONE" "CANCELED"))
 )
 
 
