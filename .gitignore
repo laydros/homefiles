@@ -7,6 +7,7 @@
 
 autokey.pid
 autokey.log.[0-9]
+autokey.log
 .config/chromium/
 .config/banshee-1/
 .config/xfce4/

@@ -21,14 +21,14 @@ LIST=$LIST" vlc mpv"
 LIST=$LIST" curl wget git vim ncdu mg freerdp2-x11"
 
 # common dev tools
-LIST=$LIST" geany gitk xbindkeys diffuse autokey-gtk build-essential debian-keyring"
+LIST=$LIST" geany gitk diffuse autokey-gtk build-essential debian-keyring"
 LIST=$LIST" gdb automake autoconf ctags gnu-standards"
 
 # python
 LIST=$LIST" python-pip python-rope python-dev"
 
 # shell stuff
-LIST=$LIST" rxvt-unicode-256color zsh tmux"
+LIST=$LIST" rxvt-unicode-256color zsh tmux htop"
 
 # archive
 LIST=$LIST" p7zip unace-nonfree unrar unzip zip cifs-utils"
@@ -40,7 +40,7 @@ LIST=$LIST" software-properties-common"
 LIST=$LIST" xbindkeys"
 
 # dropbox
-LIST=$LIST" thunar-dropbox-plugin"
+# LIST=$LIST" thunar-dropbox-plugin"
 
 # graphics
 LIST=$LIST" gimp"
