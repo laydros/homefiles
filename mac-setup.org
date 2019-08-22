@@ -2,6 +2,8 @@
 
 A simple list of instructions to make setting up your Apple computer.
 
+Largely based on [[https://github.com/taniarascia/mac][taniarasica's page]]
+
 ** Preferences
 
 - *Keyboard > Text >* Disable "Correct spelling automatically".
@@ -49,13 +51,13 @@ Check [[https://brew.sh][Homebrew site]] for updated command
 #+END_SRC
 
 *** Mac App Store
-
+Not really needed now, bundle file will handle
 #+BEGIN_SRC shell
 brew install mas
 #+END_SRC
 
 **** Sign in
-
+Not needed if you sign in via App first
 #+BEGIN_SRC shell
 mas signin email@email.com
 #+END_SRC
@@ -66,30 +68,82 @@ mas signin email@email.com
 touch Brewfile
 #+END_SRC
 
-
 #+BEGIN_SRC shell
-tap 'caskroom/cask'
-
 brew 'git'
-brew 'npm'
+brew 'ssh-copy-id'
+brew 'cowsay'
+brew 'curl'
+brew 'mas'
+brew 'wget'
+brew 'tree'
+brew 'youtube-dl'
+brew 'handbrake'
+brew 'htop-osx'
+brew 'neofetch'
+brew 'slashem'
+brew 'tldr'
+brew 'tmux'
 
-cask 'visual-studio-code'
+tap 'neovim/neovim'
+brew 'neovim'
+
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-drivers'
+tap 'homebrew/bundle'
+tap 'railwaycat/emacsmacport'
+
+cask 'alfred'
+#cask 'bartender'
+cask 'bettertouchtool'
+cask 'chronosync'
+#cask 'dropbox'
+cask 'daisydisk'
 cask 'firefox'
 cask 'gimp'
 cask 'google-chrome'
-cask 'opera'
-cask 'spectacle'
-cask 'sequel-pro'
-cask 'utorrent'
+cask 'handbrake'
+cask 'hazel'
+cask 'iterm2'
+cask 'nvalt'
+cask 'openemu'
+cask 'openinterminal'
+cask 'plex-media-server'
+cask "qlcolorcode"
+cask "qlimagesize"
+cask "qlmarkdown"
+cask "qlstephen"
+cask 'quicklook-csv'
+cask 'quicklook-json'
+cask 'spotify'
+cask 'steam'
+cask 'sublime-text'
+cask 'telegram'
+cask 'the-unarchiver'
+cask 'transmit'
+cask 'tunnelblick'
 cask 'vlc'
-cask 'macdown'
 
-mas 'Slack', id: 803453959
-mas 'Sip', id: 507257563
-mas 'Simplenote', id: 692867256
-mas 'Todoist', id: 585829637
+# fonts
+cask 'font-source-code-pro'
+cask 'font-source-sans-pro'
+cask 'font-fira-code'
+cask 'font-inconsolata-for-powerline'
+cask 'font-roboto'
+
+mas 'Amphetamine', id: 937984704
+mas 'Fantastical 2', id: 975937182
+mas '1Password 7', id: 1333542190
+mas 'Geekbench 4', id:1175706108
+mas 'Kaleidoscope', id: 587512244
+mas 'Deliveries', id: 924726344
+#mas 'Pixelmator', id: 407963104
+mas 'Microsoft Remote Desktop 10', id: 1295203466
 #+END_SRC
 
+*** Install via Brewfile
+#+BEGIN_SRC shell
+brew bundle
+#+END_SRC
 ** GitHub
 
 *** Config - =~/.gitconfig=
