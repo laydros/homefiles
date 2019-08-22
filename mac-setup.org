@@ -1,0 +1,161 @@
+* macOS Mojave v. 10.14 Setup
+
+A simple list of instructions to make setting up your Apple computer.
+
+** Preferences
+
+- **Keyboard > Text >** Disable "Correct spelling automatically".
+- **Security and Privacy > Firewall >** On
+- **Security and Privacy > General >** App Store and identified developers
+- **File Sharing >** Off
+- **Users & Groups > Login Items >** Spectacle
+
+*** Show Library folder
+
+#+BEGIN_SRC shell
+chflags nohidden ~/Library
+#+END_SRC
+
+*** Show hidden files
+
+This can also be done by pressing `command` + `shift` + `.`.
+
+#+BEGIN_SRC shell
+defaults write com.apple.finder AppleShowAllFiles YES
+#+END_SRC
+
+*** Show path bar
+#+BEGIN_SRC shell
+defaults write com.apple.finder ShowPathbar -bool true
+#+END_SRC
+
+*** Show status bar
+#+BEGIN_SRC
+defaults write com.apple.finder ShowStatusBar -bool true
+#+END_SRC
+
+*** Disable unidentified developer warnings
+
+#+BEGIN_SRC shell
+sudo spctl --master-disable
+#+END_SRC
+
+** Homebrew
+
+#+BEGIN_SRC
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+#+END_SRC
+
+*** Mac App Store
+
+#+BEGIN_SRC shell
+brew install mas
+#+END_SRC
+
+**** Sign in
+
+#+BEGIN_SRC shell
+mas signin email@email.com
+#+END_SRC
+
+*** Brewfile
+
+#+BEGIN_SRC shell
+touch Brewfile
+#+END_SRC
+
+
+#+BEGIN_SRC shell
+tap 'caskroom/cask'
+
+brew 'git'
+brew 'npm'
+
+cask 'visual-studio-code'
+cask 'firefox'
+cask 'gimp'
+cask 'google-chrome'
+cask 'opera'
+cask 'spectacle'
+cask 'sequel-pro'
+cask 'utorrent'
+cask 'vlc'
+cask 'macdown'
+
+mas 'Slack', id: 803453959
+mas 'Sip', id: 507257563
+mas 'Simplenote', id: 692867256
+mas 'Todoist', id: 585829637
+#+END_SRC
+
+** GitHub
+
+*** Config - `~/.gitconfig`
+
+
+#+BEGIN_SRC shell
+[user]
+  name   = Firstname Lastname
+  email  = you@example.com
+[github]
+  user   = hunter2
+[alias]
+  a      = add
+  ca     = commit -a
+  cam    = commit -am
+  cm     = commit -m
+  s      = status
+  pom    = push origin master
+  pog    = push origin gh-pages
+  puom   = pull origin master
+  puog   = pull origin gh-pages
+  cob    = checkout -b
+  co     = checkout
+  l      = log --oneline --decorate --graph
+  lall   = log --oneline --decorate --graph --all
+  ls     = log --oneline --decorate --graph --stat
+  lt     = log --graph --decorate --pretty=format:'%C(yellow)%h%Creset%C(auto)%d%Creset %s %Cgreen(%cr) %C(bold blue)%an%Creset'
+[credential]
+  helper = osxkeychain
+#+END_SRC
+
+
+** SSH
+
+*** Config - `~./ssh/config`
+
+#+BEGIN_SRC shell
+Host example
+    HostName example.com
+    User example-user
+    IdentityFile key.pem
+#+END_SRC
+
+*** Generate SSH key
+
+#+BEGIN_SRC shell
+ssh-keygen -t rsa -b 4096 -C "you@example.com"
+eval "$(ssh-agent -s)"
+ssh-add -K ~/.ssh/id_rsa
+#+END_SRC
+
+** Bash
+
+*** Config - `~/.bash_profile`
+
+#+BEGIN_SRC shell
+# Update and clean homebrow in one command
+alias brewup='brew update; brew upgrade; brew prune; brew cleanup; brew doctor'
+
+# Add colors to Terminal
+export CLICOLOR=1
+export LSCOLORS=ExFxBxDxCxegedabagacad
+
+# Get Git branch
+parse_git_branch() {
+  git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+
+# Format to user@host:/path/to/directory (branch-name)
+export PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\$(parse_git_branch)\[\033[m\]\$ "
+#+END_SRC
