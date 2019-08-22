@@ -4,11 +4,11 @@ A simple list of instructions to make setting up your Apple computer.
 
 ** Preferences
 
-- **Keyboard > Text >** Disable "Correct spelling automatically".
-- **Security and Privacy > Firewall >** On
-- **Security and Privacy > General >** App Store and identified developers
-- **File Sharing >** Off
-- **Users & Groups > Login Items >** Spectacle
+- *Keyboard > Text >* Disable "Correct spelling automatically".
+- *Security and Privacy > Firewall >* On
+- *Security and Privacy > General >* App Store and identified developers
+- *File Sharing >* Off
+- *Users & Groups > Login Items >* Spectacle
 
 *** Show Library folder
 
@@ -18,7 +18,7 @@ chflags nohidden ~/Library
 
 *** Show hidden files
 
-This can also be done by pressing `command` + `shift` + `.`.
+This can also be done by pressing ~command~ + ~shift~ + ~.~.
 
 #+BEGIN_SRC shell
 defaults write com.apple.finder AppleShowAllFiles YES
@@ -41,6 +41,8 @@ sudo spctl --master-disable
 #+END_SRC
 
 ** Homebrew
+
+Check [[https://brew.sh][Homebrew site]] for updated command
 
 #+BEGIN_SRC
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -90,7 +92,7 @@ mas 'Todoist', id: 585829637
 
 ** GitHub
 
-*** Config - `~/.gitconfig`
+*** Config - =~/.gitconfig=
 
 
 #+BEGIN_SRC shell
@@ -122,7 +124,7 @@ mas 'Todoist', id: 585829637
 
 ** SSH
 
-*** Config - `~./ssh/config`
+*** Config - =~./ssh/config=
 
 #+BEGIN_SRC shell
 Host example
@@ -141,7 +143,7 @@ ssh-add -K ~/.ssh/id_rsa
 
 ** Bash
 
-*** Config - `~/.bash_profile`
+*** Config - =~/.bash_profile=
 
 #+BEGIN_SRC shell
 # Update and clean homebrow in one command
