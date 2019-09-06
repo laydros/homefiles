@@ -41,6 +41,7 @@
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq-default fill-column 80)
 (setq
+ scroll-conservatively 80       ;; only move the screen a little when scrolling to the end of the view
  inhibit-startup-message t
  inhibit-startup-screen t
  confirm-kill-emacs 'y-or-n-p
@@ -236,17 +237,22 @@
 ;; lets you start new entry when cursor is in the middle of the line (I think)
 (setq org-M-RET-may-split-line nil)
 
-(setq org-directory "~/Dropbox/org/")
-(setq org-default-notes-file "~/Dropbox/org/tasks.org")
+;; auto save org files
+(add-hook 'auto-save-hook 'org-save-all-org-buffers)
+
+;; org directory stuff
+(setq org-agenda-files (quote("~/org")))
+(setq org-directory "~/org/")
+(setq org-default-notes-file "~/org/tasks.org")
 (setq org-capture-templates
       '(
         ("t" "Todo" entry (file+headline "inbox.org" "Tasks")
          "* TODO %?\n  %i\n  %u\n  %a")
         ("n" "Note/Data" entry (file+headline "inbox.org" "Notes/Data")
          "* %?   \n  %i\n  %u\n  %a")
-        ("j" "Journal" entry (file+datetree "~/Dropbox/org/journal.org")
+        ("j" "Journal" entry (file+datetree "~/org/journal.org")
          "* %?\nEntered on %U\n %i\n %a")
-        ("J" "Work-Journal" entry (file+datetree "~/Dropbox/org/wjournal.org")
+        ("J" "Work-Journal" entry (file+datetree "~/org/wjournal.org")
          "* %?\nEntered on %U\n %i\n %a")
         ))
 (setq org-irc-link-to-logs t)
