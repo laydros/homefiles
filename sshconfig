@@ -33,6 +33,10 @@ Host 192.168.33.* *.myapp.dev
   User root
   LogLevel ERROR
 
+Host terp
+  HostName 10.1.0.205
+  User frappe-user
+
 Host erpnu
   HostName 206.189.178.131
   User root
@@ -109,6 +113,7 @@ Host charon
 
 Host styx
   HostName 10.1.0.254
+  StrictHostKeyChecking no
   User root
   IdentityFile ~/.ssh/old_id_rsa
 
