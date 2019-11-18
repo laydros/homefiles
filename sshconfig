@@ -1,9 +1,6 @@
 # -*- mode: ssh-config -*-
 
-# for macos 10.12.2 and later
-#Host *
-#  AddKeysToAgent yes
-#  UseKeychain yes
+Include system_config
 
 # personal
 
