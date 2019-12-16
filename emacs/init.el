@@ -66,6 +66,9 @@
 
 (global-auto-revert-mode t)
 
+;; warn when opening files bigger than 100MB instead of 10MB
+(setq large-file-warning-threshold 100000000)
+
 ;; Always use utf-8
 (set-charset-priority 'unicode)
 (setq locale-coding-system 'utf-8)
