@@ -27,6 +27,9 @@
 (add-to-list 'default-frame-alist
              '(font . "Inconsolata-12"))
 
+;; (setq mac-allow-anti-aliasing nil)
+;; (set-frame-font "-apple-Dina-medium-normal-normal--16--*-*-m-0-iso10646-1")
+
 ;;
 ;; interface
 ;;
@@ -98,6 +101,7 @@
 ;; indention
 (setq-default c-basic-offset 4)
 (setq-default tab-width 2)
+(setq-default css-indent-offset 2)
 
 ;;
 ;; keybinding
@@ -271,12 +275,43 @@
   :ensure t)
 
 ;;; Fancy visuals for org-mode
-(use-package org-bullets
-  :ensure t
-  :config
-  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+;; (use-package org-bullets
+;;   :ensure t
+;;   :config
+;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+
+;; turns out orgs built in indent mode does what I like about bullets
+(add-hook 'org-mode-hook 'org-indent-mode)
 
 (setq tramp-default-method "ssh")
+
+;; mu4e setup
+(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
+(require 'mu4e)
+
+(setq
+ mu4e-headers-skip-duplicates t
+ mu4e-view-show-images t
+ mu4e-view-show-addresses t
+ mu4e-compose-format-flowed nil
+ mu4e-date-format "%y-%m-%d"
+ mu4e-headers-date-format "%Y-%m-%d"
+ mu4e-change-filenames-when-moving t
+ mu4e-attachment-dir "~/Downloads"
+
+ mu4e-maildir "~/Maildir"    ;; top-level Maildir
+ ;; note that these folders below must start with /
+ ;; the paths are relative to the maildir root
+ mu4e-refile-folder "/Archive"
+ mu4e-sent-folder   "/Sent"
+ mu4e-drafts-folder "/Drafts"
+ mu4e-trash-folder  "/Trash")
+
+;; this allows to re-sync and re-index maildir
+;; by pressing U
+(setq mu4e-get-mail-command "mbsync -a")
+
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
