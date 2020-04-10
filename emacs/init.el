@@ -26,8 +26,11 @@
 (setq user-full-name "Jason Hamilton")
 (setq user-mail-address "jwh@laydros.net")
 
+;; (add-to-list 'default-frame-alist
+;;              '(font . "Inconsolata-12"))
+
 (add-to-list 'default-frame-alist
-             '(font . "Inconsolata-12"))
+             '(font . "Hack-12"))
 
 ;; (setq mac-allow-anti-aliasing nil)
 ;; (set-frame-font "-apple-Dina-medium-normal-normal--16--*-*-m-0-iso10646-1")
@@ -118,6 +121,12 @@
 ;; packages
 ;;
 
+
+(use-package yasnippet
+  :ensure t
+  :config
+  (yas-global-mode 1))
+
 (use-package helm
   :ensure t
   :config
@@ -175,9 +184,13 @@
   :config
   (global-company-mode))
 
-(use-package spacemacs-theme
+;; (use-package spacemacs-theme
+;;   :defer t
+;;   :init (load-theme 'spacemacs-dark t))
+
+(use-package modus-operandi-theme
   :defer t
-  :init (load-theme 'spacemacs-dark t))
+  :init (load-theme 'modus-operandi t))
 
 ;;; Mode line
 (use-package spaceline
