@@ -4,11 +4,13 @@
 
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 
+(setq gnutls-algorithm-priority "NORMAL:-VERS-TLS1.3")
+
 (when (>= emacs-major-version 24)
   (require 'package)
   (setq package-enable-at-startup nil)
-  ;; (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-  (add-to-list 'package-archives '("melpa-mirror" . "http://www.mirrorservice.org/sites/melpa.org/packages/"))
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+  ;; (add-to-list 'package-archives '("melpa-mirror" . "http://www.mirrorservice.org/sites/melpa.org/packages/"))
   (package-initialize))
 
 ;; bootstrap use-package

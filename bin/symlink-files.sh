@@ -34,16 +34,16 @@ function symlink_file () {
 }
 
 function linux_specific () {
-    mkdir -p $CONFIG_DIR/i3
-    mkdir -p $CONFIG_DIR/i3status
+#    mkdir -p $CONFIG_DIR/i3
+#    mkdir -p $CONFIG_DIR/i3status
 
-    symlink_file $I3CONFIG $HOMEFILES/config/i3config
-    symlink_file $I3STATUS $HOMEFILES/config/i3status.conf
+#    symlink_file $I3CONFIG $HOMEFILES/config/i3config
+#    symlink_file $I3STATUS $HOMEFILES/config/i3status.conf
 
-    symlink_file $XBINDRC $HOMEFILES/xbindkeysrc
-    symlink_file $XBINDMPD $HOMEFILES/xbindkeysrc-mpd
-    symlink_file $XBINDSPOT $HOMEFILES/xbindkeysrc-spotify
-    symlink_file $XRESOURCES $HOMEFILES/config/Xresources
+#    symlink_file $XBINDRC $HOMEFILES/xbindkeysrc
+#    symlink_file $XBINDMPD $HOMEFILES/xbindkeysrc-mpd
+#    symlink_file $XBINDSPOT $HOMEFILES/xbindkeysrc-spotify
+#    symlink_file $XRESOURCES $HOMEFILES/config/Xresources
     symlink_file $AUTOKEYDIR $HOMEFILES/autokey
 }
 
@@ -55,16 +55,16 @@ touch $HOME/emacs.d/custom.el
 mkdir -p $CONFIG_DIR
 mkdir -p $CONFIG_DIR/nvim
 mkdir -p $CONFIG_DIR/git
-mkdir -p $CONFIG_DIR/nano
+#mkdir -p $CONFIG_DIR/nano
 echo "Creating symlinks for dotfiles:"
 symlink_file $EMACS_INIT $HOMEFILES/emacs/init.el
 symlink_file $LAYDROS_LISP $HOMEFILES/emacs/laydros-lisp
 # XDG
 symlink_file $GITCONFIG $HOMEFILES/config/gitconfig
 symlink_file $GITIGNORE $HOMEFILES/config/gitignore
-symlink_file $NANORC $HOMEFILES/config/nanorc
+#symlink_file $NANORC $HOMEFILES/config/nanorc
 symlink_file $VIMRC $HOMEFILES/config/init.vim
-symlink_file $ZSHRC $HOMEFILES/config/zshrc
+#symlink_file $ZSHRC $HOMEFILES/config/zshrc
 #symlink_file $OFFLINEIMAPRC ~/code/homefiles/offlineimaprc
 
 # directories
