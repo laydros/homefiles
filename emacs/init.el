@@ -302,7 +302,10 @@
 (setq tramp-default-method "ssh")
 
 ;; mu4e setup
+;; path for macOS
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
+;; path for ubuntu
+(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
 (require 'mu4e)
 
 (setq

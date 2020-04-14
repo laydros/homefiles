@@ -19,6 +19,12 @@ Host marshall
   Port 2222
   IdentityFile ~/.ssh/id_rsa
 
+Host blurst
+  User laydros
+  Hostname 45.33.100.175
+  Port 2222
+  IdentityFile ~/.ssh/id_rsa
+
 # work
 
 # Example for vagrant virtual machines
