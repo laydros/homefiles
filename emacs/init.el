@@ -29,11 +29,46 @@
 ;; (add-to-list 'default-frame-alist
 ;;              '(font . "Inconsolata-12"))
 
-(add-to-list 'default-frame-alist
-             '(font . "Hack-12"))
-
 ;; (setq mac-allow-anti-aliasing nil)
 ;; (set-frame-font "-apple-Dina-medium-normal-normal--16--*-*-m-0-iso10646-1")
+
+;; Check if system is Darwin/macOS
+(defun my-system-type-is-darwin ()
+  "Return true if system is darwin-based (Mac OS X)"
+  (string-equal system-type "darwin")
+  )
+
+;; Check if system is GNU/Linux
+(defun my-system-type-is-gnu ()
+  "Return true if system is GNU/Linux-based"
+  (string-equal system-type "gnu/linux")
+  )
+
+;; Check if the hostname is mynotebook
+(defun my-system-is-mynotebook ()
+  "Return true if the system we are running on is mynotebook"
+  (or
+    (string-equal system-name "mynotebook")
+    (string-equal system-name "mynotebook.lan")
+    )
+  )
+
+;; (when (my-system-is-gnu)
+;;   (add-to-list 'default-frame-alist
+;;                '(font . "Hack-10")))
+
+;; (when (my-system-is-darwin)
+;;   (add-to-list 'default-frame-alist
+;;                '(font . "Hack-12")))
+
+(cond ((eq system-type 'gnu/linux)
+       (add-to-list 'default-frame-alist
+		    '(font . "Hack-10"))
+       )
+      ((eq system-type 'darwin)
+       (add-to-list 'default-frame-alist
+		    '(font . "Hack-12"))
+       ))
 
 ;;
 ;; interface
@@ -325,6 +360,8 @@
  mu4e-sent-folder   "/Sent"
  mu4e-drafts-folder "/Drafts"
  mu4e-trash-folder  "/Trash")
+
+
 
 ;; this allows to re-sync and re-index maildir
 ;; by pressing U
