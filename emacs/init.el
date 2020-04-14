@@ -223,9 +223,21 @@
 ;;   :defer t
 ;;   :init (load-theme 'spacemacs-dark t))
 
+;; (cond ((display-graphic-p)
+;;        )
+;;       ;; graphical code goes here
+;;       (use-package modus-operandi-theme
+;;         :defer t
+;;         :init (load-theme 'modus-operandi t))
+;;       (t
+;;        ;; Console-specific code
+
+;;        ))
+
 (use-package modus-operandi-theme
   :defer t
   :init (load-theme 'modus-operandi t))
+
 
 ;;; Mode line
 (use-package spaceline
@@ -234,7 +246,6 @@
   (require 'spaceline-config)
   (setq powerline-default-separator 'slant)
   (spaceline-spacemacs-theme))
-
 
 ;;; fix for macOS where there isn't a login shell
 (use-package exec-path-from-shell
