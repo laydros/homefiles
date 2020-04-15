@@ -22,8 +22,9 @@ LIST=$LIST" mg freerdp2-x11"
 LIST=$LIST" curl wget git neovim ncdu"
 
 # common dev tools
-LIST=$LIST" geany gitk diffuse autokey-gtk build-essential debian-keyring"
-LIST=$LIST" gdb automake autoconf ctags gnu-standards"
+# LIST=$LIST" geany diffuse autokey-gtk"
+LIST=$LIST" gitk meld build-essential debian-keyring"
+LIST=$LIST" gdb automake autoconf gnu-standards"
 
 # python
 # LIST=$LIST" python-pip python-rope python-dev"
