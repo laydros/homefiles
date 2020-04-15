@@ -6,41 +6,44 @@ SOURCES_LIST=""
 LIST=""
 
 # firmware (must have non-free enabled)
-LIST=$LIST" intel-microcode firmware-linux"
+#LIST=$LIST" intel-microcode firmware-linux"
+
+
 
 # media players
-LIST=$LIST" vlc mpv"
-
-# spotify
-#LIST=$LIST" spotify-client"
+# LIST=$LIST" vlc mpv"
+LIST=$LIST" mpv"
 
 # media codecs
 #LIST=$LIST" gstreamer0.10-plugins-good gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly libavcodec-extra "
 
 # cli utils
-LIST=$LIST" curl wget git vim ncdu mg freerdp2-x11"
+LIST=$LIST" mg freerdp2-x11"
+LIST=$LIST" curl wget git neovim ncdu"
 
 # common dev tools
 LIST=$LIST" geany gitk diffuse autokey-gtk build-essential debian-keyring"
 LIST=$LIST" gdb automake autoconf ctags gnu-standards"
 
 # python
-LIST=$LIST" python-pip python-rope python-dev"
+# LIST=$LIST" python-pip python-rope python-dev"
 
 # shell stuff
-LIST=$LIST" rxvt-unicode-256color zsh tmux htop"
+# LIST=$LIST" rxvt-unicode-256color"
+LIST=$LIST" zsh tmux htop"
 
 # archive
-LIST=$LIST" p7zip unace-nonfree unrar unzip zip cifs-utils"
+# LIST=$LIST" p7zip unace-nonfree unrar unzip zip cifs-utils"
 
 # allow debian to install ppas
-LIST=$LIST" software-properties-common"
+# LIST=$LIST" software-properties-common"
 
 # keyboard
-LIST=$LIST" xbindkeys"
+# LIST=$LIST" xbindkeys"
 
 # dropbox
 # LIST=$LIST" thunar-dropbox-plugin"
+LIST=$LIST" nautilus-dropbox"
 
 # graphics
 LIST=$LIST" gimp"
@@ -50,7 +53,9 @@ LIST=$LIST" fonts-powerline fonts-dejavu ttf-mscorefonts-installer xfonts-termin
 LIST=$LIST" fonts-firacode fonts-glasstty fonts-go fonts-hack fonts-ibm-plex"
 LIST=$LIST" fonts-inconsolata fonts-roboto"
 # ubuntu only
-#LIST=$LIST" unity-tweak-tool ubuntu-restricted-extras gnome-sushi "
+#LIST=$LIST" ubuntu-restricted-extras"
+# gnome only
+LIST=$LIST" gnome-tweaks gnome-sushi "
 
 # awesome
 LIST=$LIST" galculator "
