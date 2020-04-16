@@ -87,13 +87,14 @@ gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4
 gsettings set org.gnome.desktop.wm.keybindings unmaximize "['<Primary><Super>Down']"
 gsettings set org.gnome.desktop.wm.keybindings maximize "['<Primary><Super>Up']"
 
-gsettings get org.gnome.mutter.keybindings toggle-tiled-left "['<Primary><Super>Left']"
-gsettings get org.gnome.mutter.keybindings toggle-tiled-right  "['<Primary><Super>Right']"
+gsettings set org.gnome.mutter.keybindings toggle-tiled-left "['<Primary><Super>Left']"
+gsettings set org.gnome.mutter.keybindings toggle-tiled-right  "['<Primary><Super>Right']"
 
 echo "Set some gnome launch shortcuts to regolith style"
-gsettings get org.gnome.settings-daemon.plugins.media-keys control-center "['<Super>c']"
-gsettings get org.gnome.settings-daemon.plugins.media-keys terminal "['<Super>Return']"
-gsettings get org.gnome.settings-daemon.plugins.media-keys www "['<Super><Shift>Return']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys control-center "['<Super>c']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Super>Return']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys www "['<Super><Shift>Return']"
+gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super><Shift>n']"
 
 # apt-get update
 
