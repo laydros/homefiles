@@ -64,21 +64,39 @@ LIST=$LIST" galculator "
 #----------------------
 
 # for gnome and unity, allow resize with right button
-#echo "Allow gnome resize with right mouse button"
-#gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
+echo "Allow gnome resize with right mouse button"
+gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true
+gsettings set org.gnome.desktop.wm.preferences mouse-button-modifier '<Alt>'
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Control><Shift><Alt>j', '<Super><Shift>Down']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Control><Shift><Alt>k', '<Super><Shift>Up']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-down "['<Super>Down']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-up "['<Super>Up']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Super><Shift>1']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Super><Shift>2']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Super><Shift>3']"
+gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Super><Shift>4']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Super>2']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Super>3']"
+gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4']"
+gsettings set org.gnome.desktop.wm.keybindings unmaximize "['<Primary><Super>Down']"
+gsettings set org.gnome.desktop.wm.keybindings maximize "['<Primary><Super>Up']"
+gsettings set org.gnome.desktop.interface gtk-key-theme 'Emacs'
+gsettings get org.gnome.mutter.keybindings toggle-tiled-left "['<Primary><Super>Left']"
+gsettings get org.gnome.mutter.keybindings toggle-tiled-right  "['<Primary><Super>Right']"
 
 
-apt-get update
+# apt-get update
 
 clear
 
 echo "Upgrading existing packages before install..."
 echo ""
-apt-get -y upgrade
+#apt-get -y upgrade
 echo ""
 sleep 2s
 echo ""
-apt-get dist-upgrade
+#apt-get dist-upgrade
 echo ""
 sleep 2s
 #---------------------
