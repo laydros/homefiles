@@ -20,6 +20,7 @@ LIST=$LIST" mpv"
 # cli utils
 LIST=$LIST" mg freerdp2-x11"
 LIST=$LIST" curl wget git neovim ncdu"
+LIST=$LIST" stress s-tui"
 
 # common dev tools
 # LIST=$LIST" geany diffuse autokey-gtk"
