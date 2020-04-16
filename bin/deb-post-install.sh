@@ -71,6 +71,9 @@ gsettings set org.gnome.desktop.wm.preferences mouse-button-modifier '<Alt>'
 echo "Set gnome to use emacs style keybindings"
 gsettings set org.gnome.desktop.interface gtk-key-theme 'Emacs'
 
+echo 'Enable hot corner for overview'
+gsettings set org.gnome.desktop.interface enable-hot-corners true
+
 echo "Set gnome workspace and window management to a mix of pop-os and regolith style"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-down "['<Control><Shift><Alt>j', '<Super><Shift>Down']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-up "['<Control><Shift><Alt>k', '<Super><Shift>Up']"
