@@ -3,3 +3,18 @@
 ## This file is best viewed with GNU Emacs Org-mode: http://orgmode.org/
 
 Config files
+
+Currently putting random mess in here as I change the readme to be org-mode.
+
+: I didn't know that just by putting a bunch of : in front of stuff
+: in org mode it would show up like this.
+:
+: this is handy for showing the contents of a file.
+
+
+* Local Variables                                                  :noexport:
+# Local Variables:
+# mode: auto-fill
+# mode: flyspell
+# eval: (ispell-change-dictionary "en_US")
+# End:
