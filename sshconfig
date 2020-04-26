@@ -13,6 +13,10 @@ Host linode
   User laydros
   IdentityFile ~/.ssh/id_rsa
 
+Host sdf
+  HostName freeshell.org
+  User laydros
+
 Host marshall
   User laydros
   HostName laydros.org
