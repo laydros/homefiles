@@ -24,6 +24,13 @@ AUTOKEYDIR=$CONFIG_DIR/autokey
 BIN_DIR=$HOME/bin
 MUTTDIR=$CONFIG_DIR/neomutt
 
+# Remove default directories
+# rm -rf ~/Documents
+# rm -rf ~/Pictures
+# rm -rf ~/Public
+# rm -rf ~/Templates
+# rm -rf ~/Videos
+
 function symlink_file () {
     if [ -e $1 ]; then
         echo "file/dir $1 already exists, skipping..."

@@ -62,7 +62,33 @@ LIST=$LIST" gnome-tweaks gnome-sushi "
 # awesome
 LIST=$LIST" galculator "
 
+LIST=$LIST" torbrowser-launcher calibre"
+
 #----------------------
+
+# add-apt-repository ppa:papirus/papirus # Papirus icon theme repo
+
+# Get DEB files
+# wget https://prerelease.keybase.io/keybase_amd64.deb
+# wget https://atom.io/download/deb/atom-amd64.deb
+# wget https://launcher.mojang.com/download/Minecraft.deb
+
+# apt install adapta-gtk-theme -y
+# apt install papirus-icon-theme -y
+# apt install python3-pip -y
+
+# Install snap packages
+snap install spotify
+
+# Install DEB files
+# dpkg -i keybase_amd64.deb
+# dpkg -i Minecraft.deb
+# apt --fix-broken install -y # Fix Minecraft dependency issue.
+
+# Clean up DEB files
+# rm -f keybase_amd64.deb
+# rm -f Minecraft.deb
+# rm -f atom-amd64.deb
 
 #############
 # These don't work when using sudo. Must be run as user
@@ -104,13 +130,13 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys terminal "['<Super>Re
 gsettings set org.gnome.settings-daemon.plugins.media-keys www "['<Super><Shift>Return']"
 gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super><Shift>n']"
 
-# apt-get update
+apt-get update
 
 clear
 
 echo "Upgrading existing packages before install..."
 echo ""
-#apt-get -y upgrade
+apt-get -y upgrade
 echo ""
 sleep 2s
 echo ""
