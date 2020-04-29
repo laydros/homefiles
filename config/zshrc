@@ -122,7 +122,10 @@ alias rm='rm -i'
 alias mv='mv -i'
 #alias dt="cd ~/Desktop/"
 #alias e=emacsclient -t
-#alias ec=emacsclient -c
+alias ec=emacsclient -c
+# hide snaps from df
+alias df='df -x"squashfs"'
+
 
 #alias todo="emacs -batch -l ~/.emacs.d/init.el -eval '(org-batch-agenda \"t\")' 2> /dev/null "
 #alias today="emacs -batch -l ~/.emacs.d/init.el -eval '(org-batch-agenda \"a\")' 2> /dev/null "
