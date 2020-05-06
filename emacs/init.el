@@ -308,6 +308,9 @@
 ;; auto save org files
 (add-hook 'auto-save-hook 'org-save-all-org-buffers)
 
+;; invisible edits - tweaks when headers are folded
+(setq org-catch-invisible-edits 'show-and-error)
+
 ;; org directory stuff
 (setq org-agenda-files (quote("~/org")))
 (setq org-directory "~/org/")

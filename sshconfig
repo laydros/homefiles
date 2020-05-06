@@ -17,10 +17,16 @@ Host sdf
   HostName freeshell.org
   User laydros
 
+Host local-marshall
+  User laydros
+  HostName 192.168.4.170
+  Port 2223
+  IdentityFile ~/.ssh/id_rsa
+
 Host marshall
   User laydros
   HostName laydros.org
-  Port 2222
+  Port 2223
   IdentityFile ~/.ssh/id_rsa
 
 Host blurst
@@ -28,6 +34,9 @@ Host blurst
   Hostname 45.33.100.175
   Port 2222
   IdentityFile ~/.ssh/id_rsa
+
+Host git.laydros.org
+  Port 2223
 
 # work
 

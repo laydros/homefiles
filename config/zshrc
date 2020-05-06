@@ -125,7 +125,8 @@ alias mv='mv -i'
 alias ec=emacsclient -c
 # hide snaps from df
 alias df='df -x"squashfs"'
-
+# make tmux work with XDG
+alias tmux='TERM=xterm-256color tmux -f "$XDG_CONFIG_HOME"/tmux/tmux.conf'
 
 #alias todo="emacs -batch -l ~/.emacs.d/init.el -eval '(org-batch-agenda \"t\")' 2> /dev/null "
 #alias today="emacs -batch -l ~/.emacs.d/init.el -eval '(org-batch-agenda \"a\")' 2> /dev/null "
