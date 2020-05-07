@@ -156,6 +156,10 @@
 ;; packages
 ;;
 
+(use-package avy
+  :ensure t
+  :config
+  (global-set-key (kbd "C-'") 'avy-goto-char))
 
 (use-package yasnippet
   :ensure t
