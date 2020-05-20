@@ -103,6 +103,10 @@
 (setq ido-everywhere 1)
 (setq ido-enable-flex-matching t)
 
+;; Holy crap, this works through tmux, allows scrolling and placing the cursor
+(when (eq window-system nil)
+  (xterm-mouse-mode t))
+
 ;;
 ;; files
 ;;
