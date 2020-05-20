@@ -2,10 +2,16 @@
 
 (line-number-mode 1)
 (column-number-mode 1)
+(when (fboundp 'tool-bar-mode)
+  (tool-bar-mode  -1))
 (fset 'yes-or-no-p 'y-or-n-p)
 (electric-pair-mode t)
 
 (setq
+ scroll-conservatively 80       ;; only move the screen a little when scrolling to the end of the view
+ inhibit-startup-message t
+ inhibit-startup-screen t
+ ;; select help window so it's easy to quit it with 'q'
  help-window-select t
  make-backup-files nil)
 

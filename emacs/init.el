@@ -10,7 +10,6 @@
   (require 'package)
   (setq package-enable-at-startup nil)
   (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-  ;; (add-to-list 'package-archives '("melpa-mirror" . "http://www.mirrorservice.org/sites/melpa.org/packages/"))
   (package-initialize))
 
 ;; bootstrap use-package
@@ -33,13 +32,13 @@
 ;; (set-frame-font "-apple-Dina-medium-normal-normal--16--*-*-m-0-iso10646-1")
 
 ;; Check if system is Darwin/macOS
-(defun my-system-type-is-darwin ()
+(defun my-system-is-darwin ()
   "Return true if system is darwin-based (Mac OS X)"
   (string-equal system-type "darwin")
   )
 
 ;; Check if system is GNU/Linux
-(defun my-system-type-is-gnu ()
+(defun my-system-is-gnu ()
   "Return true if system is GNU/Linux-based"
   (string-equal system-type "gnu/linux")
   )
@@ -53,22 +52,34 @@
     )
   )
 
-;; (when (my-system-is-gnu)
-;;   (add-to-list 'default-frame-alist
-;;                '(font . "Hack-10")))
+(when (my-system-is-gnu)
+  (add-to-list 'default-frame-alist
+               '(font . "Hack-9")))
 
-;; (when (my-system-is-darwin)
-;;   (add-to-list 'default-frame-alist
-;;                '(font . "Hack-12")))
+(when (my-system-is-darwin)
+  (add-to-list 'default-frame-alist
+               '(font . "Hack-12")))
 
-(cond ((eq system-type 'gnu/linux)
-       (add-to-list 'default-frame-alist
-		    '(font . "Hack-10"))
-       )
-      ((eq system-type 'darwin)
-       (add-to-list 'default-frame-alist
-		    '(font . "Hack-12"))
-       ))
+;; (cond ((eq system-type 'gnu/linux)
+;;        (add-to-list 'default-frame-alist
+;; 		    '(font . "Hack-9"))
+;;        )
+;;       ((eq system-type 'darwin)
+;;        (add-to-list 'default-frame-alist
+;; 		    '(font . "Hack-12"))
+;;        ))
+
+;;
+;; desktop
+;; - options to save open desktop
+(setq desktop-dirname  "~/.emacs.d/desktop/"
+      ;; desktop-files-not-to-save  "^$"  ; <- stackoverflow comment said "reload tramp paths"
+      ;; desktop-files-not-to-save  ".*magit$"
+      desktop-base-file-name     "emacs.desktop"
+      desktop-base-lock-name     "emacs.lock"
+      desktop-restore-eager      20
+      desktop-path               (list desktop-dirname))
+(desktop-save-mode t)
 
 ;;
 ;; interface
@@ -155,6 +166,12 @@
 (global-set-key (kbd "C-;") 'comment-line)
 ;; I never use this, it's still available at C-x C-z
 (global-unset-key (kbd "C-z"))
+
+
+(defun insert-sdate () (interactive)
+       (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
+(defun insert-fdate () (interactive)
+       (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d_%H-%M-%S)")))
 
 ;;
 ;; packages
