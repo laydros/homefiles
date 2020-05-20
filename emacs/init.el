@@ -167,7 +167,6 @@
 ;; I never use this, it's still available at C-x C-z
 (global-unset-key (kbd "C-z"))
 
-
 (defun insert-sdate () (interactive)
        (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
 (defun insert-fdate () (interactive)
@@ -178,66 +177,54 @@
 ;;
 
 (use-package avy
-  :ensure t
   :config
   (global-set-key (kbd "C-'") 'avy-goto-char))
 
 (use-package yasnippet
-  :ensure t
   :config
   (yas-global-mode 1))
 
 (use-package helm
-  :ensure t
   :config
   (require 'helm-config))
 
 (use-package magit
-  :ensure t
   :init (bind-key "C-x g" 'magit-status))
 
-(use-package undo-propose
-  :ensure t)
+(use-package undo-propose)
 
 (use-package better-defaults
-  :ensure t
   :config
   (menu-bar-mode 1)
   (scroll-bar-mode 1))
 
 (use-package beacon
-  :ensure t
   :config
   (beacon-mode 1))
 
 ;;; Get help as you go
 (use-package which-key
-  :ensure t
   :config
   (which-key-mode))
 
 ;;; Mickey P from Mastering Emacs discover.el
 (use-package discover
-  :ensure t
   :config
   (global-discover-mode 1))
 
 ;;; Distinguished parenthesis
 (use-package rainbow-delimiters
-  :ensure t
   :config
   (add-hook 'lisp-mode-hook (lambda () (rainbow-delimiters-mode)))
   (add-hook 'emacs-lisp-mode-hook (lambda () (rainbow-delimiters-mode)))
   (add-hook 'prog-mode-hook #'rainbow-delimiters-mode))
 
 (use-package mastodon
-  :ensure t
   :config
   (setq mastodon-instance-url "https://mastodon.sdf.org")
   (mastodon-discover))
 
 (use-package company
-  :ensure t
   :init
   ;; https://emacs.stackexchange.com/a/10838
   (setq company-dabbrev-downcase nil)
@@ -263,10 +250,8 @@
   :defer t
   :init (load-theme 'modus-operandi t))
 
-
 ;;; Mode line
 (use-package spaceline
-  :ensure t
   :config
   (require 'spaceline-config)
   (setq powerline-default-separator 'slant)
@@ -280,7 +265,6 @@
 
 ;;; elpy - let's try this again
 (use-package elpy
-  :ensure t
   :init
   (elpy-enable)
   )
@@ -289,7 +273,6 @@
 (add-hook 'elpy-mode-hook (lambda () (highlight-indentation-mode -1)))
 
 (use-package flycheck
-  :ensure t
   :config
   (when (require 'flycheck nil t)
     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
@@ -360,15 +343,7 @@
 
 
 ;; install htmlize for org to output more complicated stuff to html. may be useful for other cases
-(use-package htmlize
-  :ensure t)
-
-;;; Fancy visuals for org-mode
-;; (use-package org-bullets
-;;   :ensure t
-;;   :config
-;;   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
-
+(use-package htmlize)
 
 ;; turns out orgs built in indent mode does what I like about bullets
 (add-hook 'org-mode-hook 'org-indent-mode)
