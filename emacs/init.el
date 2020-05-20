@@ -72,6 +72,7 @@
 ;;
 ;; desktop
 ;; - options to save open desktop
+
 (setq desktop-dirname  "~/.emacs.d/desktop/"
       ;; desktop-files-not-to-save  "^$"  ; <- stackoverflow comment said "reload tramp paths"
       ;; desktop-files-not-to-save  ".*magit$"
@@ -230,6 +231,13 @@
   (setq company-dabbrev-downcase nil)
   :config
   (global-company-mode))
+
+(use-package emms
+  :config
+  (emms-all)
+  ;; (emms-default-players)
+  (setq emms-player-list '(emms-player-mpv emms-player-mpg321 emms-player-ogg123 emms-player-mplayer-playlist emms-player-mplayer emms-player-vlc emms-player-vlc-playlist))
+  (setq emms-source-file-default-directory "~/Dropbox/music/"))
 
 ;; (use-package spacemacs-theme
 ;;   :defer t
