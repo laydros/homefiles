@@ -383,8 +383,6 @@
  mu4e-date-format "%y-%m-%d"
  mu4e-headers-date-format "%Y-%m-%d"
  mu4e-change-filenames-when-moving t
- mu4e-attachment-dir "~/Downloads"
-
  mu4e-maildir "~/var/Maildir"    ;; top-level Maildir
  ;; note that these folders below must start with /
  ;; the paths are relative to the maildir root
@@ -392,6 +390,11 @@
  mu4e-sent-folder   "/Sent"
  mu4e-drafts-folder "/Drafts"
  mu4e-trash-folder  "/Trash")
+
+(when (my-system-is-darwin)
+  (setq mu4e-attachment-dir "~/Downloads"))
+(when (my-system-is-gnu)
+  (setq mu4e-attachment-dir "~/dl"))
 
 ;; this allows to re-sync and re-index maildir
 ;; by pressing U
