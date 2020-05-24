@@ -358,6 +358,16 @@
 
 (setq tramp-default-method "ssh")
 
+;;
+;; mail
+;;
+
+;; smtpmail
+(setq
+ message-send-mail-function   'smtpmail-send-it
+ smtpmail-default-smtp-server "smtp.fastmail.com"
+ smtpmail-smtp-server         "smtp.fastmail.com")
+
 ;; mu4e setup
 ;; path for macOS
 (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
@@ -375,15 +385,13 @@
  mu4e-change-filenames-when-moving t
  mu4e-attachment-dir "~/Downloads"
 
- mu4e-maildir "~/Maildir"    ;; top-level Maildir
+ mu4e-maildir "~/var/Maildir"    ;; top-level Maildir
  ;; note that these folders below must start with /
  ;; the paths are relative to the maildir root
  mu4e-refile-folder "/Archive"
  mu4e-sent-folder   "/Sent"
  mu4e-drafts-folder "/Drafts"
  mu4e-trash-folder  "/Trash")
-
-
 
 ;; this allows to re-sync and re-index maildir
 ;; by pressing U
