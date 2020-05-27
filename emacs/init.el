@@ -286,8 +286,6 @@
     (setq elpy-modules (delq 'elpy-module-flymake elpy-modules))
     (add-hook 'elpy-mode-hook 'flycheck-mode)))
 
-
-
 ;; spot4e config
 ;; (add-to-list 'load-path "/Users/laydros/src/projects/spot4e")
 ;; (require 'spot4e)
@@ -344,11 +342,9 @@
         ))
 (setq org-irc-link-to-logs t)
 
-
 (setq org-todo-keywords
       '((sequence "TODO(t)" "NEXT(n)" "IN-PROGRESS" "WAIT(w@/!)" "|" "DONE" "CANCELED"))
 )
-
 
 ;; install htmlize for org to output more complicated stuff to html. may be useful for other cases
 (use-package htmlize)
@@ -382,14 +378,14 @@
  mu4e-compose-format-flowed nil
  mu4e-date-format "%y-%m-%d"
  mu4e-headers-date-format "%Y-%m-%d"
- mu4e-change-filenames-when-moving t
+ mu4e-change-filenames-when-moving t   ;; without this mu4e will duplicate UIDs
  mu4e-maildir "~/var/Maildir"    ;; top-level Maildir
  ;; note that these folders below must start with /
  ;; the paths are relative to the maildir root
- mu4e-refile-folder "/Archive"
- mu4e-sent-folder   "/Sent"
- mu4e-drafts-folder "/Drafts"
- mu4e-trash-folder  "/Trash")
+ mu4e-refile-folder "/fastmail/Archive"
+ mu4e-sent-folder   "/fastmail/Sent"
+ mu4e-drafts-folder "/fastmail/Drafts"
+ mu4e-trash-folder  "/fastmail/Trash")
 
 (when (my-system-is-darwin)
   (setq mu4e-attachment-dir "~/Downloads"))
@@ -400,9 +396,7 @@
 ;; by pressing U
 (setq mu4e-get-mail-command "mbsync -a")
 
-
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
-
 
 (provide 'init)
