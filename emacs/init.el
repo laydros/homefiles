@@ -346,6 +346,10 @@
       '((sequence "TODO(t)" "NEXT(n)" "IN-PROGRESS" "WAIT(w@/!)" "|" "DONE" "CANCELED"))
 )
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((python . t)))
+
 ;; install htmlize for org to output more complicated stuff to html. may be useful for other cases
 (use-package htmlize)
 
@@ -371,6 +375,39 @@
 (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
 (require 'mu4e)
 
+
+;; note that these folders below must start with /
+;; the paths are relative to the maildir root
+(setq mu4e-contexts
+      `( ,(make-mu4e-context
+           :name "fastmail"
+           :match-func (lambda (msg)
+                         (when msg (string-prefix-p "/fastmail" (mu4e-message-field msg :maildir))))
+           :vars '(
+                   (mu4e-trash-folder . "/fastmail/Trash")
+                   (mu4e-drafts-folder . "/fastmail/Drafts")
+                   (mu4e-sent-folder . "/fastmail/Sent Items")
+                   (mu4e-refile-folder . "/fastmail/Archive")
+                   ))
+         ,(make-mu4e-context
+           :name "factor500"
+           :match-func (lambda (msg)
+                         (when msg (string-prefix-p "/factor500" (mu4e-message-field msg :maildir))))
+           :vars '(
+                   (mu4e-trash-folder . "/factor500/[Gmail].Trash")
+                   (mu4e-refile-folder . "/factor500/[Gmail].All Mail")
+                   ))
+         ,(make-mu4e-context
+           :name "wycomsystems"
+           :match-func (lambda (msg)
+                         (when msg (string-prefix-p "/wycomsystems" (mu4e-message-field msg :maildir))))
+           :vars '(
+                   (mu4e-trash-folder . "/wycomsystems/[Gmail].Trash")
+                   (mu4e-refile-folder . "/wycomsystems/[Gmail].All Mail")
+                   ))
+         )
+      )
+
 (setq
  mu4e-headers-skip-duplicates t
  mu4e-view-show-images t
@@ -379,13 +416,7 @@
  mu4e-date-format "%y-%m-%d"
  mu4e-headers-date-format "%Y-%m-%d"
  mu4e-change-filenames-when-moving t   ;; without this mu4e will duplicate UIDs
- mu4e-maildir "~/var/Maildir"    ;; top-level Maildir
- ;; note that these folders below must start with /
- ;; the paths are relative to the maildir root
- mu4e-refile-folder "/fastmail/Archive"
- mu4e-sent-folder   "/fastmail/Sent"
- mu4e-drafts-folder "/fastmail/Drafts"
- mu4e-trash-folder  "/fastmail/Trash")
+ mu4e-maildir "~/var/Maildir")    ;; top-level Maildir
 
 (when (my-system-is-darwin)
   (setq mu4e-attachment-dir "~/Downloads"))

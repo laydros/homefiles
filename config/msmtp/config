@@ -1,0 +1,49 @@
+# -*- mode: conf-unix-*-
+# msmtprc - outgoing mail settings
+# msmtp support $XDG_CONFIG_HOME/msmtp/config as of 1.8.6
+
+# echo -e "password\n" | gpg --encrypt -o .msmtp-gmail.gpg # enter id (email...)
+# user config must be explicitly readable/writable by its owner or msmtp will fail:
+# $ chmod 600 ~/.config/msmtp/config
+
+# based on:
+# - https://www.ict4g.net/adolfo/notes/emacs/reading-imap-mail-with-emacs.html#step-4-sending-email-with-msmtp
+# - https://wiki.archlinux.org/index.php/Msmtp
+
+
+# Default values for all accounts
+defaults
+auth            on
+# auto_from       on # this is breaking fastmail at CLI
+tls             on
+tls_certcheck   on
+tls_trust_file  /etc/ssl/certs/ca-certificates.crt
+syslog          LOG_MAIL
+
+account fastmail
+host            smtp.fastmail.com
+from            jwh@laydros.net
+user            jhamilton@fastmail.com
+# password       password
+passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.msmtp-gmail.gpg"
+port            465
+tls_starttls    off
+
+account factor500
+host            smtp.gmail.com
+from            jasonh@factor500.com
+user            jasonh@factor500.com
+# password       password
+passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.msmtp-gmail.gpg"
+port            587
+
+account wycomsystems
+host            smtp.gmail.com
+from            jasonh@wycomsystems.com
+user            jasonh@wycomsystems.com
+# password       password
+passwordeval    "gpg --quiet --for-your-eyes-only --no-tty --decrypt ~/.msmtp-gmail.gpg"
+port            587
+
+# to set a default account:
+# account default : fastmail
