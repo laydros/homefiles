@@ -1,0 +1,35 @@
+# zshenv for $XDG_CONFIG_HOME
+# for zsh-specific settings for non-interactive and interactive sessions
+
+setopt braceexpand
+
+export XDG_CONFIG_HOME=$HOME/.config
+export XDG_CACHE_HOME=$HOME/.cache
+export XDG_DATA_HOME=$HOME/.local/share
+
+# set some programs to use XDG
+# gnupg
+export GNUPGHOME=${XDG_CONFIG_HOME}/gnupg
+
+#  less
+export LESSHISTFILE="${XDG_CONFIG_HOME}/less/history"
+export LESSKEY="${XDG_CONFIG_HOME}/less/keys"
+
+# mplayer
+export MPLAYER_HOME=$XDG_CONFIG_HOME/mplayer
+export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
+export GOPATH="$XDG_DATA_HOME"/go
+
+export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
+export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
+export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss
+
+export NOTMUCH_CONFIG="$XDG_CONFIG_HOME"/notmuch/notmuchrc
+export NMBGIT="$XDG_DATA_HOME"/notmuch/nmbug
+
+export PASSWORD_STORE_DIR="$XDG_DATA_HOME"/pass
+
+export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
+
+# since I don't have any options set, this breaks
+# export WGETRC="$XDG_CONFIG_HOME/wgetrc"

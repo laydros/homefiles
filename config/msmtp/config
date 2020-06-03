@@ -10,7 +10,6 @@
 # - https://www.ict4g.net/adolfo/notes/emacs/reading-imap-mail-with-emacs.html#step-4-sending-email-with-msmtp
 # - https://wiki.archlinux.org/index.php/Msmtp
 
-
 # Default values for all accounts
 defaults
 auth            on

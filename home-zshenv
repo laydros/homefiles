@@ -1,0 +1,6 @@
+# $HOME/.zshenv - set zsh to read the rest of
+# config from $HOME/.config/zsh which should
+# be $XDG_CONFIG_HOME - jwh 2020-06-03
+
+ZDOTDIR=$HOME/.config/zsh
+. $ZDOTDIR/.zshenv
