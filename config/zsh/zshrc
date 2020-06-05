@@ -33,7 +33,7 @@ setopt EXTENDED_HISTORY  # add timestamps to history
 # setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
 # setopt HIST_REDUCE_BLANKS
 
-# == Prompt
+# == PROMPT
 
 PS1='%B%m%(?.. %??)%(1j. %j&.)%b %2~%B%#%b '
 
@@ -65,7 +65,6 @@ setopt NO_CORRECT
 setopt NO_ALWAYS_LAST_PROMPT
 setopt NO_FLOW_CONTROL
 
-
 # Figure out the SHORT hostname
 if [[ "$OSTYPE" = darwin* ]]; then
   # macOS's $HOST changes with dhcp, etc. Use ComputerName if possible.
@@ -74,7 +73,7 @@ else
   SHORT_HOST=${HOST/.*/}
 fi
 
-# == aliases
+# == ALIASES
 
 # if [-x /usr/bin/dircolors ]; then
 #     alias ls='ls --color=auto'
@@ -96,11 +95,14 @@ alias ls='ls -FG'
 # == Aliases for XDG
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
+alias irssi="irssi --config=$XDG_CONFIG_HOME/irssi/config --home=$XDG_DATA_HOME/irssi"
+alias gpg2="gpg2 --homedir $XDG_DATA_HOME/gnupg"
+alias dosbox=dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf
+alias sqlite3="sqlite3 -init $XDG_CONFIG_HOME/sqlite3/sqliterc"
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'    ')"'
-
 
 # == To try from leahneukirchen.org
 
