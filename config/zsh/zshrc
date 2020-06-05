@@ -1,0 +1,159 @@
+
+# Lines configured by zsh-newuser-install
+# HISTFILE=~/.config/zsh/histfile
+
+# Lots borrowed from https://leahneukirchen.org/dotfiles/.zshrc
+
+unsetopt autocd
+bindkey -e
+# End of lines configured by zsh-newuser-install
+# The following lines were added by compinstall
+zstyle :compinstall filename '/home/laydros/.config/zsh/.zshrc'
+
+autoload -Uz compinit
+compinit
+# End of lines added by compinstall
+
+export PATH=$PATH:$HOME/.local/bin:$HOME/bin
+
+# == HISTORY
+
+HISTSIZE=9000
+SAVEHIST=9000
+
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY SHARE_HISTORY
+setopt HIST_VERIFY
+setopt SHARE_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
+setopt INC_APPEND_HISTORY
+setopt EXTENDED_HISTORY  # add timestamps to history
+
+# setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
+# setopt HIST_REDUCE_BLANKS
+
+# == Prompt
+
+PS1='%B%m%(?.. %??)%(1j. %j&.)%b %2~%B%#%b '
+
+# options to look into
+setopt NO_BG_NICE # don't nice background tasks
+setopt NO_HUP
+# setopt NO_LIST_BEEP
+# setopt LOCAL_OPTIONS # allow functions to have local options
+# setopt LOCAL_TRAPS # allow functions to have local traps
+setopt PROMPT_SUBST
+# setopt CORRECT
+# setopt COMPLETE_IN_WORD
+# setopt IGNORE_EOF
+
+setopt C_BASES
+setopt OCTAL_ZEROES
+setopt PRINT_EIGHT_BIT
+setopt SH_NULLCMD
+setopt AUTO_CONTINUE
+setopt PATH_DIRS
+setopt NO_NOMATCH
+setopt EXTENDED_GLOB
+disable -p '^'
+
+setopt LIST_PACKED
+setopt BASH_AUTO_LIST
+setopt NO_AUTO_MENU
+setopt NO_CORRECT
+setopt NO_ALWAYS_LAST_PROMPT
+setopt NO_FLOW_CONTROL
+
+
+# Figure out the SHORT hostname
+if [[ "$OSTYPE" = darwin* ]]; then
+  # macOS's $HOST changes with dhcp, etc. Use ComputerName if possible.
+  SHORT_HOST=$(scutil --get ComputerName 2>/dev/null) || SHORT_HOST=${HOST/.*/}
+else
+  SHORT_HOST=${HOST/.*/}
+fi
+
+# == aliases
+
+# if [-x /usr/bin/dircolors ]; then
+#     alias ls='ls --color=auto'
+
+#     alias grep='grep --color=auto'
+#     alias fgrep='fgrep --color=auto'
+#     alias egrep='egrep --color=auto'
+# fi
+
+alias df='df -x"squashfs"'
+alias sort='LC_ALL=C sort'
+# alias em='emacsclient -n'
+alias dotf='ls .[a-zA-Z0-9_]*'
+alias qr='qrencode -t UTF8'
+
+# alias ls='LC_COLLATE=C ls -FG'
+alias ls='ls -FG'
+
+# == Aliases for XDG
+alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
+alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'    ')"'
+
+
+# == To try from leahneukirchen.org
+
+# keep - poor man's version control, make freshly numbered copies
+keep() {
+  local f v
+  [[ $# = 0 ]] && return 255
+  for f; do
+    f=$f:A
+    v=($f.<->(nOnN[1]))
+    if [[ -n "$v" ]] && cmp $v $f >/dev/null 2>&1; then
+      print -u2 $v not modified
+    else
+      cp -va $f $f.$((${${v:-.0}##*.} + 1))
+    fi
+  done
+}
+
+# 0x0 FILE - paste to 0x0.st
+# 16dec2015  +chris+
+0x0() { curl -F "file=@${1:--}" https://0x0.st/ }
+
+# ixio FILE - paste to ix.io
+# 02apr2018  +leah+
+ixio() { curl -F "f:1=@${1:--}" http://ix.io/ }
+
+# zpass - generate random password
+# 01nov2014  +chris+
+# 10mar2017  +leah+  default to length 12
+zpass() {
+  LC_ALL=C tr -dc '0-9A-Za-z_@#%*,.:?!~' </dev/urandom | head -c${1:-12}
+  echo
+}
+
+# cde - cd to working directory of current emacs buffer
+# 11nov2014  +chris+
+# 13dec2017  +leah+  print when not on a tty
+# 26nov2019  +leah+  append $1
+cde() {
+  local op=print
+  [[ -t 1 ]] && op=cd
+  $op ${(A):-${(Q)~$(emacsclient -e '(with-current-buffer
+                                       (window-buffer (selected-window))
+                                       default-directory) ')}${1:-/.}}
+}
+
+# ecat - print current emacs buffer
+# 15aug2016  +chris+
+ecat() {
+  () {
+    emacsclient -e '(with-current-buffer (window-buffer (selected-window))
+                      (write-region (point-min) (point-max) "'$1'" nil :quiet))
+                   ' >/dev/null &&
+    cat $1
+  } =(:)
+}

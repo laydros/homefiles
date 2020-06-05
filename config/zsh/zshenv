@@ -1,3 +1,5 @@
+## -*- mode: conf-unix-*-
+## -*- coding: utf-8 -*-
 # zshenv for $XDG_CONFIG_HOME
 # for zsh-specific settings for non-interactive and interactive sessions
 
@@ -21,7 +23,8 @@ export MPLAYER_HOME=$XDG_CONFIG_HOME/mplayer
 export ELINKS_CONFDIR="$XDG_CONFIG_HOME"/elinks
 export GOPATH="$XDG_DATA_HOME"/go
 
-export IPYTHONDIR="$XDG_CONFIG_HOME"/jupyter
+export PYLINTHOME="$XDG_CONFIG_HOME"/pylint
+export IPYTHONDIR="$XDG_CONFIG_HOME"/ipython
 export JUPYTER_CONFIG_DIR="$XDG_CONFIG_HOME"/jupyter
 export DVDCSS_CACHE="$XDG_DATA_HOME"/dvdcss
 
@@ -34,3 +37,18 @@ export WEECHAT_HOME="$XDG_CONFIG_HOME"/weechat
 
 # since I don't have any options set, this breaks
 # export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+
+
+# Unix means English and 24h clock.  But do use UTF8!  And sort like a machine.
+export LANG=en_US.UTF-8
+export LC_CTYPE=$LANG
+export LC_COLLATE=C
+export LC_TIME=C
+
+# less: use UTF-8
+export LESSCHARSET=UTF-8
+
+
+# == SITE LOCAL CONFIG
+
+# [[ -e ~/.zshenv.local ]] && . ~/.zshenv.local || :
