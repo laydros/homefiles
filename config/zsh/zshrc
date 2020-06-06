@@ -1,6 +1,5 @@
 
 # Lines configured by zsh-newuser-install
-# HISTFILE=~/.config/zsh/histfile
 
 # Lots borrowed from https://leahneukirchen.org/dotfiles/.zshrc
 
@@ -18,6 +17,7 @@ export PATH=$PATH:$HOME/.local/bin:$HOME/bin
 
 # == HISTORY
 
+HISTFILE=$XDG_CONFIG_HOME/zsh/histfile
 HISTSIZE=9000
 SAVEHIST=9000
 

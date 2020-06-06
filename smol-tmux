@@ -1,0 +1,11 @@
+
+
+new-session
+set -g history-limit 30000
+set -g mouse on
+
+set -g prefix C-z
+unbind C-b
+
+bind C-z send-prefix
+
