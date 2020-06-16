@@ -34,14 +34,16 @@
 ;; Check if system is Darwin/macOS
 (defun my-system-is-darwin ()
   "Return true if system is darwin-based (Mac OS X)"
-  (string-equal system-type "darwin")
-  )
+  (string-equal system-type "darwin"))
 
 ;; Check if system is GNU/Linux
 (defun my-system-is-gnu ()
   "Return true if system is GNU/Linux-based"
-  (string-equal system-type "gnu/linux")
-  )
+  (string-equal system-type "gnu/linux"))
+
+(defun my-system-is-bsd()
+  "Return true if system is BSD based"
+  (string-equal system-type "berkeley-unix"))
 
 ;; Check if the hostname is mynotebook
 (defun my-system-is-mynotebook ()
@@ -232,12 +234,12 @@
   :config
   (global-company-mode))
 
-(use-package emms
-  :config
-  (emms-all)
-  ;; (emms-default-players)
-  (setq emms-player-list '(emms-player-mpv emms-player-mpg321 emms-player-ogg123 emms-player-mplayer-playlist emms-player-mplayer emms-player-vlc emms-player-vlc-playlist))
-  (setq emms-source-file-default-directory "~/Dropbox/music/"))
+;; (use-package emms
+;;   :config
+;;   (emms-all)
+;;   ;; (emms-default-players)
+;;   (setq emms-player-list '(emms-player-mpv emms-player-mpg321 emms-player-ogg123 emms-player-mplayer-playlist emms-player-mplayer emms-player-vlc emms-player-vlc-playlist))
+;;   (setq emms-source-file-default-directory "~/Dropbox/music/"))
 
 ;; (use-package spacemacs-theme
 ;;   :defer t
@@ -369,12 +371,17 @@
  smtpmail-smtp-server         "smtp.fastmail.com")
 
 ;; mu4e setup
-;; path for macOS
-(add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
-;; path for ubuntu
-(add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
-(require 'mu4e)
+(when (my-system-is-gnu)
+  (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e/")
+  (require 'mu4e))
 
+(when (my-system-is-darwin)
+  (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu/mu4e")
+  (require 'mu4e))
+
+(when (my-system-is-bsd)
+  (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
+  (require 'mu4e))
 
 ;; note that these folders below must start with /
 ;; the paths are relative to the maildir root
@@ -404,9 +411,10 @@
            :vars '(
                    (mu4e-trash-folder . "/wycomsystems/[Gmail].Trash")
                    (mu4e-refile-folder . "/wycomsystems/[Gmail].All Mail")
-                   ))
+                   )
+           )
          )
-      )
+)
 
 (setq
  mu4e-headers-skip-duplicates t
