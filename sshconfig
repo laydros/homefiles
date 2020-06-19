@@ -61,7 +61,7 @@ Host erpnu
   IdentityFile ~/.ssh/id_rsa
 
 Host vmerpn
-  HostName vmerpn
+  HostName 192.168.122.37
   User frappe
   StrictHostKeyChecking no
   IdentityFile ~/.ssh/id_rsa
