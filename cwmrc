@@ -1,32 +1,41 @@
-command term /usr/bin/urxvt
-command lock "xscreensaver-command --lock"
+# .cwmrc
 
-borderwidth 2
+# reverse mouse bindings
+bind-mouse M-2          window-lower
+bind-mouse M-3          window-resize
 
-color activeborder blue
-color inactiveborder grey50
+command term            /usr/bin/urxvt
+command lock            "xscreensaver-command --lock"
+
+borderwidth             2
+
+color activeborder      blue
+color inactiveborder    grey50
+
+snapdist                20
+sticky                  yes
 
 # 180 px gap on right for clock
 gap 0 0 0 180
 
 # reload config
-bind CM-r reload
+#bind CM-r reload
 
-autogroup 0 Cclock
-autogroup 0 XLoad
-autogroup 0 Wmsmixer
+#autogroup 0 Cclock
+#autogroup 0 XLoad
+#autogroup 0 Wmsmixer
 
-autogroup 1 URxvt
-autogroup 2 Emacs
-autogroup 3 Firefox
-autogroup 3 Chrome
-autogroup 4 Pidgin
+#autogroup 1 URxvt
+#autogroup 2 Emacs
+#autogroup 3 Firefox
+#autogroup 3 Chrome
+#autogroup 4 Pidgin
 
-command urxvt /usr/bin/urxvt
-command emacs /usr/bin/emacs
-command firefox /home/jwh/bin/firefox
+#command urxvt          urxvt
+command xterm           xterm
+command emacs           emacs
+command firefox         /home/jwh/bin/firefox
 command '' 'true'
-command pidgin /usr/bin/pidgin
-command xpdf /usr/local/bin/xpdf
-command OOo /usr/local/bin/soffice
-command dmenu /usr/bin/dmenu_run
+command pdf             zathura
+command OOo             /usr/local/bin/soffice
+command dmenu           /usr/bin/dmenu_run
