@@ -27,6 +27,10 @@
 (setq-default tab-width 2)
 (setq-default css-indent-offset 2)
 
+;; allows scrolling and placing the cursor
+(when (eq window-system nil)
+  (xterm-mouse-mode t))
+
 ;;
 ;; keybinding
 ;;
