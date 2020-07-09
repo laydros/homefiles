@@ -66,7 +66,17 @@ plugins=(colorize osx pip colored-man-pages git)
 # support snap bin folder
 PATH=$PATH:/snap:bin
 
-PATH=$HOME/bin:$HOME/code/venvs/bin:$HOME/.local/bin:/usr/local/opt/python/libexec/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/m3db/data/linux/bin:$HOME/.local/bin:/usr/local/texlive/2017basic/bin/x86_64-darwin:/Users/laydros/Library/Python/3.7/bin:$PATH
+PATH=$HOME/bin:$HOME/code/venvs/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:$PATH
+
+# For Factor500
+PATH=$PATH:/home/m3db/data/linux/bin
+
+# python bin folder in macos
+PATH=$PATH:/Users/laydros/Library/Python/3.7/bin
+
+# I think this isn't used anymore, replaced by above
+# PATH=$PATH:/usr/local/opt/python/libexec/bin
+
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
