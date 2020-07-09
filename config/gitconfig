@@ -44,3 +44,5 @@
 	tool = Kaleidoscope
 [pull]
 	rebase = false
+[http]
+	postBuffer = 100000000

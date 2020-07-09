@@ -175,6 +175,12 @@
 (defun insert-fdate () (interactive)
        (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d_%H-%M-%S)")))
 
+;; paste in term without using C-c C-j to switch to line mode and C-c C-k to
+;; switch back. the default is S-<insert> but my Apple keyboard doesn't have an
+;; insert key.
+(eval-after-load "term"
+  '(define-key term-raw-map (kbd "C-c C-y") 'term-paste))
+
 ;;
 ;; packages
 ;;
