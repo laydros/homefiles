@@ -72,7 +72,7 @@ PATH=$HOME/bin:$HOME/code/venvs/bin:$HOME/.local/bin:/usr/local/sbin:/usr/local/
 PATH=$PATH:/home/m3db/data/linux/bin
 
 # python bin folder in macos
-PATH=$PATH:/Users/laydros/Library/Python/3.7/bin
+PATH=$PATH:/Users/laydros/Library/Python/3.8/bin
 
 # I think this isn't used anymore, replaced by above
 # PATH=$PATH:/usr/local/opt/python/libexec/bin
