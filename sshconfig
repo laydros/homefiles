@@ -17,27 +17,6 @@ Host sdf
   HostName freeshell.org
   User laydros
 
-Host local-marshall
-  User laydros
-  HostName 192.168.4.170
-  Port 2223
-  IdentityFile ~/.ssh/id_rsa
-
-Host marshall
-  User laydros
-  HostName laydros.org
-  Port 2223
-  IdentityFile ~/.ssh/id_rsa
-
-Host blurst
-  User laydros
-  Hostname 45.33.100.175
-  Port 2222
-  IdentityFile ~/.ssh/id_rsa
-
-Host git.laydros.org
-  Port 2223
-
 # work
 
 # Example for vagrant virtual machines
@@ -80,6 +59,12 @@ Host sds4
   UserKnownHostsFile=/dev/null
   IdentityFile ~/.ssh/id_rsa
 
+Host eds4
+  HostName e.dorkystuff4some.bid
+  User devu
+  StrictHostKeyChecking no
+  UserKnownHostsFile=/dev/null
+  IdentityFile ~/.ssh/id_rsa
 
 Host erpndo
   HostName 159.65.45.103
