@@ -262,6 +262,9 @@
 
 ;;        ))
 
+(use-package markdown-mode
+  :commands (markdown-mode gfm-mode))
+
 (use-package modus-operandi-theme
   :defer t
   :init (load-theme 'modus-operandi t))
@@ -389,38 +392,74 @@
   (add-to-list 'load-path "/usr/local/share/emacs/site-lisp/mu4e/")
   (require 'mu4e))
 
+;; I want my format=flowed thank you very much
+;; mu4e sets up visual-line-mode and also fill (M-q) to do the right thing
+;; each paragraph is a single long line; at sending, emacs will add the
+;; special line continuation characters.
+(setq mu4e-compose-format-flowed t)
+
+;; every new email composition gets its own frame! (window)
+(setq mu4e-compose-in-new-frame t)
+
+;; give me ISO(ish) format date-time stamps in the header list
+(setq mu4e-headers-date-format "%Y-%m-%d %H:%M")
+
+;; show full addresses in view message (instead of just names)
+;; toggle per name with M-RET
+(setq mu4e-view-show-addresses 't)
+
+;; the headers to show in the headers list -- a pair of a field
+;; and its width, with `nil' meaning 'unlimited'
+;; (better only use that for the last field.
+;; These are the defaults:
+(setq mu4e-headers-fields
+    '( (:date          .  26)    ;; alternatively, use :human-date
+       (:flags         .   6)
+       (:from          .  22)
+       (:subject       .  nil))) ;; alternatively, use :thread-subject
+
+;; the maildirs you use frequently; access them with 'j' ('jump')
+(setq   mu4e-maildir-shortcuts
+    '(("/fastmail/INBOX"     . ?i)
+      ("/factor500/INBOX"    . ?5)
+      ("/wycomsystems/INBOX" . ?s)))
+
 ;; note that these folders below must start with /
 ;; the paths are relative to the maildir root
 (setq mu4e-contexts
       `( ,(make-mu4e-context
-           :name "fastmail"
+           :name "personal"
+           :enter-func (lambda () (mu4e-message "Entering Personal context"))
+           :leave-func (lambda () (mu4e-message "Leaving Personal context"))
            :match-func (lambda (msg)
-                         (when msg (string-prefix-p "/fastmail" (mu4e-message-field msg :maildir))))
+                         (when msg
+                           (string-match-p "^/fastmail" (mu4e-message-field msg :maildir))))
            :vars '(
-                   (mu4e-trash-folder . "/fastmail/Trash")
+                   (user-mail-address  . "jwh@laydros.net")
+                   (mu4e-trash-folder  . "/fastmail/Trash")
                    (mu4e-drafts-folder . "/fastmail/Drafts")
-                   (mu4e-sent-folder . "/fastmail/Sent Items")
+                   (mu4e-sent-folder   . "/fastmail/Sent Items")
                    (mu4e-refile-folder . "/fastmail/Archive")
                    ))
          ,(make-mu4e-context
            :name "factor500"
+           :enter-func (lambda () (mu4e-message "Entering Factor500 context"))
+           :leave-func (lambda () (mu4e-message "Leaving Factor500 context"))
            :match-func (lambda (msg)
                          (when msg (string-prefix-p "/factor500" (mu4e-message-field msg :maildir))))
            :vars '(
-                   (mu4e-trash-folder . "/factor500/[Gmail].Trash")
+                   (mu4e-trash-folder  . "/factor500/[Gmail].Trash")
                    (mu4e-refile-folder . "/factor500/[Gmail].All Mail")
                    ))
          ,(make-mu4e-context
            :name "wycomsystems"
+           :enter-func (lambda () (mu4e-message "Entering Wycom context"))
+           :leave-func (lambda () (mu4e-message "Leaving Wycom context"))
            :match-func (lambda (msg)
                          (when msg (string-prefix-p "/wycomsystems" (mu4e-message-field msg :maildir))))
            :vars '(
-                   (mu4e-trash-folder . "/wycomsystems/[Gmail].Trash")
-                   (mu4e-refile-folder . "/wycomsystems/[Gmail].All Mail")
-                   )
-           )
-         )
-)
+                   (mu4e-trash-folder  . "/wycomsystems/[Gmail].Trash")
+                   (mu4e-refile-folder . "/wycomsystems/[Gmail].All Mail")))))
 
 (setq
  mu4e-headers-skip-duplicates t
@@ -439,7 +478,7 @@
 
 ;; this allows to re-sync and re-index maildir
 ;; by pressing U
-(setq mu4e-get-mail-command "mbsync -a")
+(setq mu4e-get-mail-command "mbsync -a -c /home/laydros/.config/isync/mbsyncrc")
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
