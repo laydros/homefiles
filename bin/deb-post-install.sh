@@ -1,5 +1,7 @@
 #! /bin/sh
 
+# TODO - create toggle for minimal or desktop install
+
 SOURCES_LIST=""
 
 # List of packages to install
@@ -9,23 +11,26 @@ LIST=""
 #LIST=$LIST" intel-microcode firmware-linux"
 
 
-
-# media players
-# LIST=$LIST" vlc mpv"
-LIST=$LIST" mpv"
+# media 
+LIST=$LIST" mpv ffmpeg"
+# bigger install
+LIST=$LIST" vlc picard lollypop audacity soundconverter"
 
 # media codecs
 #LIST=$LIST" gstreamer0.10-plugins-good gstreamer0.10-plugins-bad gstreamer0.10-plugins-ugly libavcodec-extra "
 
 # cli utils
-LIST=$LIST" mg freerdp2-x11"
+LIST=$LIST" mg"
 LIST=$LIST" curl wget git neovim ncdu"
-LIST=$LIST" stress s-tui"
+# bigger install
+LIST=$LIST" freerdp2-xll neovim stress s-tui"
+
 
 # common dev tools
 # LIST=$LIST" geany diffuse autokey-gtk"
-LIST=$LIST" gitk meld build-essential debian-keyring"
-LIST=$LIST" gdb automake autoconf gnu-standards"
+LIST=$LIST" build-essential debian-keyring automake autoconf"
+# bigger install
+LIST=$LIST" gitk meld gdb gnu-standards"
 
 # python
 # LIST=$LIST" python-pip python-rope python-dev"
@@ -45,10 +50,16 @@ LIST=$LIST" zsh tmux htop"
 
 # dropbox
 # LIST=$LIST" thunar-dropbox-plugin"
-LIST=$LIST" nautilus-dropbox"
+#LIST=$LIST" nautilus-dropbox"
+LIST=$LIST " nautilus-nextcloud"
 
 # graphics
-LIST=$LIST" gimp"
+LIST=$LIST" feh"
+# bigger install
+LIST=$LIST" gimp imagemagick flameshot"
+
+# PDF
+LIST=$LIST" pdfarranger mupdf"
 
 # fonts
 LIST=$LIST" fonts-powerline fonts-dejavu ttf-mscorefonts-installer xfonts-terminus"
@@ -62,7 +73,7 @@ LIST=$LIST" gnome-tweaks gnome-sushi "
 # awesome
 LIST=$LIST" galculator "
 
-LIST=$LIST" torbrowser-launcher calibre"
+LIST=$LIST" torbrowser-launcher calibre clipit"
 
 #----------------------
 
