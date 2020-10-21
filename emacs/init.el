@@ -185,6 +185,10 @@
 ;; packages
 ;;
 
+(use-package modus-operandi-theme
+  :defer t
+  :init (load-theme 'modus-operandi t))
+
 (use-package avy
   :config
   (global-set-key (kbd "C-'") 'avy-goto-char))
@@ -193,9 +197,9 @@
   :config
   (yas-global-mode 1))
 
-(use-package helm
-  :config
-  (require 'helm-config))
+;; (use-package helm
+;;   :config
+;;   (require 'helm-config))
 
 (use-package magit
   :init (bind-key "C-x g" 'magit-status))
@@ -233,6 +237,17 @@
   (setq mastodon-instance-url "https://mastodon.sdf.org")
   (mastodon-discover))
 
+(use-package expand-region
+  :bind (("C-=" . er/expand-region)
+         ("C-+" . er/contract-region)))
+
+(use-package counsel
+  :init
+  (global-set-key (kbd "C-s") 'swiper-isearch)
+  (global-set-key (kbd "M-x") 'counsel-M-x)
+  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+  (global-set-key (kbd "M-y") 'counsel-yank-pop))
+
 (use-package company
   :init
   ;; https://emacs.stackexchange.com/a/10838
@@ -264,10 +279,6 @@
 
 (use-package markdown-mode
   :commands (markdown-mode gfm-mode))
-
-(use-package modus-operandi-theme
-  :defer t
-  :init (load-theme 'modus-operandi t))
 
 ;;; Mode line
 (use-package spaceline

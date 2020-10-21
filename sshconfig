@@ -28,6 +28,10 @@ Host 192.168.33.* *.myapp.dev
   User root
   LogLevel ERROR
 
+Host test.wycomsystems.com
+  HostName test.wycomsystems.com
+  User jasonh
+
 Host terp
   HostName 10.1.0.205
   User frappe-user
