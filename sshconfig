@@ -32,6 +32,10 @@ Host test.wycomsystems.com
   HostName test.wycomsystems.com
   User jasonh
 
+Host dist.wycomsystems.com
+  HostName dist.wycomsystems.com
+  User root
+
 Host terp
   HostName 10.1.0.205
   User frappe-user
@@ -176,7 +180,7 @@ Host iris
   IdentityFile ~/.ssh/old_id_rsa
 
 Host shivado
-  HostName wycomsystems.com
+  HostName www2.wycomsystems.com
   IdentityFile ~/.ssh/old_id_rsa
   User root
 

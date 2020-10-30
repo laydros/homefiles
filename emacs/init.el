@@ -241,12 +241,19 @@
   :bind (("C-=" . er/expand-region)
          ("C-+" . er/contract-region)))
 
+(use-package ivy
+  :config
+  (ivy-mode 1)
+  (setq ivy-use-virtual-buffers t)
+  (setq ivy-count-format "(%d/%d) "))
+
 (use-package counsel
-  :init
-  (global-set-key (kbd "C-s") 'swiper-isearch)
-  (global-set-key (kbd "M-x") 'counsel-M-x)
-  (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-  (global-set-key (kbd "M-y") 'counsel-yank-pop))
+  :config (counsel-mode 1)
+  :bind (("C-s" . swiper-isearch)
+         ("M-x" . counsel-M-x)
+         ("C-x C-f" . counsel-find-file)
+         ("M-y" . counsel-yank-pop)
+         ))
 
 (use-package company
   :init
