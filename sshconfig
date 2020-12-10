@@ -4,13 +4,9 @@ Include system_config
 
 # personal
 
-Host devio.us
-  HostName devio.us
-  User laydros
-
-Host linode
-  HostName 45.56.96.86
-  User laydros
+Host byred
+  HostName byred.xyz
+  User root
   IdentityFile ~/.ssh/id_rsa
 
 Host sdf
@@ -27,6 +23,10 @@ Host 192.168.33.* *.myapp.dev
   UserKnownHostsFile=/dev/null
   User root
   LogLevel ERROR
+
+Host wycomsystems.com
+  HostName wycomsystems.com
+  User jasonh
 
 Host test.wycomsystems.com
   HostName test.wycomsystems.com
@@ -78,24 +78,6 @@ Host eds4
   StrictHostKeyChecking no
   UserKnownHostsFile=/dev/null
   IdentityFile ~/.ssh/id_rsa
-
-Host erpndo
-  HostName 159.65.45.103
-  HostName dorkystuff4some.bid
-  User root
-  StrictHostKeyChecking no
-  UserKnownHostsFile=/dev/null
-  IdentityFile ~/.ssh/id_rsa
-
-Host smoke
-  HostName 206.212.236.45
-  User root
-  Port 15000
-  IdentityFile ~/.ssh/old_id_rsa
-
-Host connectvm1
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
 
 Host freya
     User root
