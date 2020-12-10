@@ -38,7 +38,7 @@ Host dist.wycomsystems.com
   IdentityFile ~/.ssh/jasonh_f5_ed25519
 
 Host olddist
-  HostName 161.35.48.131
+  HostName 161.35.122.173
   User root
 
 Host terp
