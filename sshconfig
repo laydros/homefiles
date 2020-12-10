@@ -35,6 +35,11 @@ Host test.wycomsystems.com
 Host dist.wycomsystems.com
   HostName dist.wycomsystems.com
   User root
+  IdentityFile ~/.ssh/jasonh_f5_ed25519
+
+Host olddist
+  HostName 161.35.48.131
+  User root
 
 Host terp
   HostName 10.1.0.205
@@ -69,7 +74,7 @@ Host sds4
 
 Host eds4
   HostName e.dorkystuff4some.bid
-  User devu
+  User root
   StrictHostKeyChecking no
   UserKnownHostsFile=/dev/null
   IdentityFile ~/.ssh/id_rsa
