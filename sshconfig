@@ -37,27 +37,6 @@ Host dist.wycomsystems.com
   User root
   IdentityFile ~/.ssh/jasonh_f5_ed25519
 
-Host olddist
-  HostName 161.35.122.173
-  User root
-
-Host terp
-  HostName 10.1.0.205
-  User frappe-user
-
-Host erpnu
-  HostName 206.189.178.131
-  User root
-  StrictHostKeyChecking no
-  UserKnownHostsFile=/dev/null
-  IdentityFile ~/.ssh/id_rsa
-
-Host vmerpn
-  HostName 192.168.122.37
-  User frappe
-  StrictHostKeyChecking no
-  IdentityFile ~/.ssh/id_rsa
-
 Host ds4
   HostName dorkystuff4some.bid
   User frappe
@@ -74,10 +53,10 @@ Host sds4
 
 Host eds4
   HostName e.dorkystuff4some.bid
-  User root
+  User devu
   StrictHostKeyChecking no
   UserKnownHostsFile=/dev/null
-  IdentityFile ~/.ssh/id_rsa
+  IdentityFile ~/.ssh/jh_f5_rsa4096
 
 Host freya
     User root
@@ -97,6 +76,11 @@ Host vili
 
 Host modi
     HostName 10.1.0.235
+    User root
+    IdentityFile ~/.ssh/old_id_rsa
+
+Host hermes
+    HostName 10.1.0.241
     User root
     IdentityFile ~/.ssh/old_id_rsa
 
@@ -121,27 +105,10 @@ Host styx
   User root
   IdentityFile ~/.ssh/old_id_rsa
 
-Host hermes
-  HostName 10.1.0.241
-  User root
-  StrictHostKeyChecking no
-  UserKnownHostsFile=/dev/null
-  IdentityFile ~/.ssh/old_id_rsa
-
-Host hermes-vm
-  HostName 10.1.0.172
-  User root
-  IdentityFile ~/.ssh/old_id_rsa
-
-Host eburn2
-  HostName 216.215.220.226
-  User root
-  Port 15000
-  IdentityFile ~/.ssh/id_rsa
-
 Host ibanez
   HostName 10.1.0.70
   User laydros
+  IdentityFile ~/.ssh/jh_f5_rsa4096
   Port 22
 
 Host momus
@@ -168,16 +135,5 @@ Host iris
 
 Host shivado
   HostName www2.wycomsystems.com
-  IdentityFile ~/.ssh/old_id_rsa
-  User root
-
-Host ibanez
-  User laydros
-  Hostname 10.1.0.70
-  Port 22
-  IdentityFile ~/.ssh/id_rsa
-
-Host connectr
-  Hostname 10.1.0.130
   IdentityFile ~/.ssh/old_id_rsa
   User root
