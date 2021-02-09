@@ -93,8 +93,8 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 (display-time)
 (electric-pair-mode t)
-(when (fboundp 'tool-bar-mode)
-  (tool-bar-mode  -1))
+;; (when (fboundp 'tool-bar-mode)
+  ;; (tool-bar-mode  -1))
 (defalias 'yes-or-no-p 'y-or-n-p)
 (setq-default fill-column 80)
 (setq
@@ -162,6 +162,21 @@
 (setq-default css-indent-offset 2)
 
 ;;
+;; move lines around with M-up and M-down
+;;
+
+(defun move-line-up ()
+  (interactive)
+  (transpose-lines 1)
+  (forward-line -2))
+
+(defun move-line-down ()
+  (interactive)
+  (forward-line 1)
+  (transpose-lines 1)
+  (forward-line -1))
+
+;;
 ;; keybinding
 ;;
 
@@ -169,6 +184,8 @@
 (global-set-key (kbd "C-;") 'comment-line)
 ;; I never use this, it's still available at C-x C-z
 (global-unset-key (kbd "C-z"))
+(global-set-key (kbd "M-<up>") 'move-line-up)
+(global-set-key (kbd "M-<down>") 'move-line-down)
 
 (defun insert-sdate () (interactive)
        (insert (shell-command-to-string "echo -n $(date +%Y-%m-%d)")))
@@ -209,7 +226,8 @@
 (use-package better-defaults
   :config
   (menu-bar-mode 1)
-  (scroll-bar-mode 1))
+  (scroll-bar-mode 1)
+  (tool-bar-mode 1))
 
 (use-package beacon
   :config
