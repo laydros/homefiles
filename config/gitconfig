@@ -1,9 +1,33 @@
 [user]
-	name = Jason Hamilton
-	email = jwh@laydros.net
+    name = Jason Hamilton
+    email = git@laydros.net
 [core]
-	excludesfile = $HOME/.gitignore_global
-	editor = /usr/bin/vim
+    excludesfile = $HOME/.gitignore_global
+    editor = /usr/bin/vim
+[status]
+    relativePaths = false
+[push]
+    default = simple
+[pull]
+    rebase = false
+[http]
+    postBuffer = 100000000
+[alias]
+    co = checkout
+    st = status -s -uno
+    ix = diff --cached
+    tree = log --oneline --decorate --graph
+    news = log -p @{1}..
+    lg = log --date=short --pretty='%cd %h%d %s'
+    d  = diff
+    dc = diff --cached
+    lc = log ORIG_HEAD.. --stat --no-merges
+    gl = log --oneline --decorate --stat --graph
+    st = status -sb
+    # show verbose output
+    tags = tags -l
+    branches = branches -a
+    hist = log --graph --pretty=format:'%Cred%h%Creset %s%C(yellow)%d%Creset %Cgreen(%cr)%Creset [%an]' --abbrev-commit --date=relative
 [color]
     ui = false
     interactive = auto
@@ -13,36 +37,16 @@
 [color "interactive"]
     prompt = bold normal
     help = black
-[status]
-    relativePaths = false
-[alias]
-    st = status -s -uno
-    ix = diff --cached
-    tree = log --oneline --decorate --graph
-    news = log -p @{1}..
-    lg = log --date=short --pretty='%cd %h%d %s'
-    co = checkout
-    d  = diff
-    dc = diff --cached
-    lc = log ORIG_HEAD.. --stat --no-merges
-    gl = log --oneline --decorate --stat --graph
-    st = status -sb
-[push]
-	default = simple
 [difftool "Kaleidoscope"]
 	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[mergetool "Kaleidoscope"]
+	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+	trustExitCode = true
 [diff]
 	tool = Kaleidoscope
 [difftool]
 	prompt = false
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
-[mergetool]
-	prompt = false
 [merge]
 	tool = Kaleidoscope
-[pull]
-	rebase = false
-[http]
-	postBuffer = 100000000
+[mergetool]
+	prompt = false

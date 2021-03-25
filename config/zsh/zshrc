@@ -12,7 +12,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-export PATH=/opt/homebrew/bin:/usr/local/opt/python/libexec/bin:$PATH:$HOME/.local/bin:$HOME/bin:$HOME/var/platform-tools
+export PATH=/opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/opt/python/libexec/bin:$PATH:$HOME/.local/bin:$HOME/bin:$HOME/var/platform-tools
 
 # == HISTORY
 
@@ -159,3 +159,6 @@ ecat() {
     cat $1
   } =(:)
 }
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
