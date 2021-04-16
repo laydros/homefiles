@@ -12,7 +12,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-export PATH=/opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/opt/python/libexec/bin:$PATH:$HOME/.local/bin:$HOME/bin:$HOME/var/platform-tools
+export PATH=/opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/opt/python/libexec/bin:/opt/homebrew/opt/python@3.9/libexec/bin:$PATH:$HOME/.local/bin:$HOME/bin:$HOME/var/platform-tools
 
 # == HISTORY
 
@@ -21,12 +21,11 @@ HISTSIZE=9000
 SAVEHIST=9000
 
 setopt APPEND_HISTORY
-setopt INC_APPEND_HISTORY SHARE_HISTORY
+setopt SHARE_HISTORY
 setopt HIST_VERIFY
 setopt SHARE_HISTORY
 setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
-setopt INC_APPEND_HISTORY
 setopt EXTENDED_HISTORY  # add timestamps to history
 
 # setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
