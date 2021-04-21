@@ -2,6 +2,11 @@
 
 # Lots borrowed from https://leahneukirchen.org/dotfiles/.zshrc
 
+## completion for homebrew: https://docs.brew.sh/Shell-Completion
+if type brew &>/dev/null; then
+	FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
+
 unsetopt autocd
 bindkey -e
 # End of lines configured by zsh-newuser-install
