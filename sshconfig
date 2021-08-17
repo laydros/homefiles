@@ -28,14 +28,19 @@ Host wycomsystems.com
   HostName wycomsystems.com
   User jasonh
 
-Host test.wycomsystems.com
-  HostName test.wycomsystems.com
-  User jasonh
-
 Host dist.wycomsystems.com
   HostName dist.wycomsystems.com
   User root
   IdentityFile ~/.ssh/jasonh_f5_ed25519
+
+Host dwolla
+  HostName 64.227.23.243
+  User freebsd
+  IdentityFile ~/.ssh/jasonh_f5_ed25519
+	
+Host zeus
+  HostName 10.1.0.236
+  User root
 
 Host ds4
   HostName dorkystuff4some.bid
@@ -94,6 +99,11 @@ Host connect1
   User root
   IdentityFile ~/.ssh/old_id_rsa
 
+Host connectr
+  #HostName 10.0.0.127
+  User root
+  IdentityFile ~/.ssh/old_id_rsa
+
 Host charon
   HostName 10.0.0.1
   User root
@@ -123,6 +133,11 @@ Host modi
   Port 22
   IdentityFile ~/.ssh/old_id_rsa
 
+Host odin
+  HostName 10.1.0.249
+  User root
+  IdentityFile ~/.ssh/old_id_rsa
+
 Host nott
   HostName 10.1.0.242
   User root
@@ -132,8 +147,3 @@ Host iris
   HostName 10.1.0.240
   User root
   IdentityFile ~/.ssh/old_id_rsa
-
-Host shivado
-  HostName www2.wycomsystems.com
-  IdentityFile ~/.ssh/old_id_rsa
-  User root
