@@ -60,7 +60,7 @@
 
 (when (my-system-is-darwin)
   (add-to-list 'default-frame-alist
-               '(font . "Hack-12")))
+               '(font . "Hack Nerd Font Mono-12")))
 
 ;; (cond ((eq system-type 'gnu/linux)
 ;;        (add-to-list 'default-frame-alist
@@ -202,7 +202,7 @@
 ;; packages
 ;;
 
-(use-package modus-operandi-theme
+(use-package modus-themes
   :defer t
   :init (load-theme 'modus-operandi t))
 
