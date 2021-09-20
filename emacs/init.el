@@ -373,16 +373,17 @@
 (setq org-catch-invisible-edits 'show-and-error)
 
 ;; org directory stuff
-(setq org-agenda-files (quote("~/org")))
-(setq org-directory "~/org/")
-(setq org-default-notes-file "~/org/tasks.org")
+(setq org-agenda-files (quote("~/var/stdoc")))
+(setq org-directory "~/var/stdoc/")
+(setq org-default-notes-file "~/var/stdoc/tasks.org")
 (setq org-capture-templates
       '(
         ("t" "Todo" entry (file+headline "inbox.org" "Tasks")
          "* TODO %?\n  %i\n  %u\n  %a")
         ("n" "Note/Data" entry (file+headline "inbox.org" "Notes/Data")
          "* %?   \n  %i\n  %u\n  %a")
-        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+        ("j" "Journal Entry"
+         entry (file+datetree "~/var/stdoc/journal.org")
          "* %?\nEntered on %U\n %i\n %a")
         ("J" "Work-Journal" entry (file+datetree "~/org/wjournal.org")
          "* %?\nEntered on %U\n %i\n %a")
