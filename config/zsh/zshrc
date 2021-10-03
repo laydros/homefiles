@@ -1,3 +1,4 @@
+# -*- conf-unix -*-
 # Lines configured by zsh-newuser-install
 
 # Lots borrowed from https://leahneukirchen.org/dotfiles/.zshrc
@@ -17,7 +18,7 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-export PATH=/opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/opt/python/libexec/bin:/opt/homebrew/opt/python@3.9/libexec/bin:$PATH:$HOME/.local/bin:$HOME/bin:$HOME/var/platform-tools
+export PATH=$HOME/bin:$HOME/.emacs.d/bin:$HOME/.local/bin:/opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/opt/python/libexec/bin:/opt/homebrew/opt/python@3.9/libexec/bin:$PATH:$HOME/var/platform-tools
 
 # == HISTORY
 
@@ -36,9 +37,46 @@ setopt EXTENDED_HISTORY  # add timestamps to history
 # setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
 # setopt HIST_REDUCE_BLANKS
 
+# == THEMING
+
+## These are already done by zsh-newuser-install with
+## slightly different option flags
+#autoload -U compinit colors zcalc
+#compinit -d
+
+autoload -U colors zcalc
+colors
+
+# Color man pages
+export LESS_TERMCAP_mb=$'\E[01;32m'
+export LESS_TERMCAP_md=$'\E[01;32m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;47;34m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;36m'
+export LESS=-R
+
+
 # == PROMPT
 
-PS1='%B%m%(?.. %??)%(1j. %j&.)%b %2~%B%#%b '
+PS1='%B%m%(?.. %??)%(1j. %j&.)%b %2~ %B%#%b '
+
+## Test some manjaro zsh stuff
+
+# enable substitution for prompt
+setopt prompt_subst
+# Maia prompt
+#PROMPT="%B%{$fg[cyan]%}%(4~|%-1~/.../%2~|%~)%u%b >%{$fg[cyan]%}>%B%(?.%{$fg[cyan]%}.%{$fg[red]%})>%{$reset_color%}%b "
+#RPROMPT="%{$fg[red]%} %(?..[%?])"
+
+# Print a greeting message when shell is started
+if [[ "$OSTYPE" = darwin* ]]; then
+   echo $USER@$HOST  $(uname -srm)
+else
+   echo $USER@$HOST  $(uname -srm) $(lsb_release -rcs)
+fi
+
 
 # options to look into
 setopt NO_BG_NICE # don't nice background tasks
@@ -47,7 +85,7 @@ setopt NO_HUP
 # setopt LOCAL_OPTIONS # allow functions to have local options
 # setopt LOCAL_TRAPS # allow functions to have local traps
 setopt PROMPT_SUBST
-# setopt CORRECT
+# setopt CORRECT               # auto correct mistakes
 # setopt COMPLETE_IN_WORD
 # setopt IGNORE_EOF
 
@@ -75,6 +113,7 @@ if [[ "$OSTYPE" = darwin* ]]; then
 else
   SHORT_HOST=${HOST/.*/}
 fi
+
 
 # == ALIASES
 
@@ -114,6 +153,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+# == calculator
+c() { printf "%s\n" "$@" | bc -l }
 
 # == To try from leahneukirchen.org
 
@@ -172,4 +213,3 @@ ecat() {
 }
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
