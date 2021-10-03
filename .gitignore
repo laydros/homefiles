@@ -20,5 +20,16 @@ autokey.log
 .emacs.d/auto-save-list
 .emacs.d/projectile-bookmarks.eld
 .emacs.d/ac-comphist.dat
+.emacs.d/custom.el
+.emacs.d/desktop/
+.emacs.d/elpa/
+.emacs.d/recentf
+
+emacs/custom.el
+emacs/desktop/
+emacs/elpa/
+emacs/recentf
+emacs/places
+emacs/transient/
 
 .DS_Store
