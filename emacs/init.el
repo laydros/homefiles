@@ -202,10 +202,13 @@
 ;;
 ;; packages
 ;;
+;; (use-package doom-themes
+;;   :defer t
+;;   :init (load-theme 'doom-one t))
 
-(use-package modus-themes
-  :defer t
-  :init (load-theme 'modus-operandi t))
+;; (use-package modus-themes
+;;   :defer t
+;;   :init (load-theme 'modus-operandi t))
 
 (use-package avy
   :config
@@ -348,6 +351,23 @@
 ;; maybe do the literate programming thing for this so I have notes in it
 ;; possibly a new dotfiles repo?
 
+;; settings for ibuffer to sort by type
+(setq ibuffer-saved-filter-groups
+	    (quote (("default"
+		           ("dired" (mode . dired-mode))
+		           ("org" (mode . org-mode))
+		           ("magit" (name . "^magit"))
+		           ("planner" (or
+				                   (name . "^\\*Calendar\\*$")
+				                   (name . "^\\*Org Agenda\\*")))
+		           ("emacs" (or
+			                   (name . "^\\*scratch\\*$")
+			                   (name . "^\\*Messages\\*$")))))))
+
+(add-hook 'ibuffer-mode-hook
+	        (lambda ()
+	          (ibuffer-switch-to-saved-filter-groups "default")))
+
 ;;;;;;;;;;;;;;
 ;; org-mode ;;
 ;;;;;;;;;;;;;;
@@ -369,6 +389,20 @@
 
 ;; auto save org files
 (add-hook 'auto-save-hook 'org-save-all-org-buffers)
+
+(defun +org/opened-buffer-files ()
+  "Return the list of files currently opened in emacs"
+  (delq nil
+        (mapcar (lambda (x)
+                  (if (and (buffer-file-name x)
+                           (string-match "\\.org$"
+                                         (buffer-file-name x)))
+                      (buffer-file-name x)))
+                (buffer-list))))
+
+;; use +org/opened-bugger-files for org-refile-targets
+(setq org-refile-targets '((+org/opened-buffer-files :maxlevel . 9)))
+
 
 ;; invisible edits - tweaks when headers are folded
 (setq org-catch-invisible-edits 'show-and-error)

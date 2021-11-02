@@ -57,7 +57,6 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;36m'
 export LESS=-R
 
-
 # == PROMPT
 
 PS1='%B%m%(?.. %??)%(1j. %j&.)%b %2~ %B%#%b '
@@ -77,6 +76,12 @@ else
    echo $USER@$HOST  $(uname -srm) $(lsb_release -rcs)
 fi
 
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
+zstyle ':completion:*' rehash true                              # automatically find new executables in path
+# Speed up completions
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path $XDG_CONFIG_HOME/zsh/cache
 
 # options to look into
 setopt NO_BG_NICE # don't nice background tasks
@@ -125,11 +130,12 @@ fi
 #     alias egrep='egrep --color=auto'
 # fi
 
-alias df='df -x"squashfs"'
+alias df='df -h -x"squashfs"'
 alias sort='LC_ALL=C sort'
 # alias em='emacsclient -n'
 alias dotf='ls .[a-zA-Z0-9_]*'
 alias qr='qrencode -t UTF8'
+alias cp="cp -i"                    # confirm before overwriting
 
 # alias ls='LC_COLLATE=C ls -FG'
 alias ls='ls -FG'
@@ -139,7 +145,7 @@ alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
 alias irssi="irssi --config=$XDG_CONFIG_HOME/irssi/config --home=$XDG_DATA_HOME/irssi"
 alias gpg2="gpg2 --homedir $XDG_DATA_HOME/gnupg"
-alias dosbox=dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf
+alias dosbox="dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf"
 alias sqlite3="sqlite3 -init $XDG_CONFIG_HOME/sqlite3/sqliterc"
 alias mocp="mocp -M $XDG_CONFIG_HOME/moc"
 
