@@ -10,28 +10,34 @@ set undolevels=800
 
 set encoding=utf-8
 
+" broader command line completion
 set wildmenu
-set ruler
 
+" UI
+set report=0                    " always report # of lines changed for command
+
+set ruler
+set scrolloff=3
+set sidescroll=3
 set splitbelow
 set splitright
 set showmode
 set showcmd
 set number
 
-set showmatch		" show matching brackets
-set hlsearch		" highlight searched phrases
-set incsearch		" highlight as you type
+set laststatus=2                " always show the status bar on the last window
 
-set report=0		" always report number of lines changed
+set showmatch                   " show matching brackets
+set hlsearch                    " highlight searched phrases
+set incsearch                   " highlight as you type
 
-" Indentation
+" INDENTATION
 set autoindent
 set smartindent
 set softtabstop=4
 set shiftwidth=4
 set tabstop=4
-set shiftround
+set shiftround                  " round indent to multiple of shiftwidth
 set smarttab
 set copyindent
 set expandtab
@@ -44,9 +50,15 @@ filetype indent on
 au FocusLost * :wa
 
 " case search
-set ignorecase
-set smartcase
+set ignorecase                  " ignore case for searching
+set smartcase                   " but look for case if I search with it
 
+
+" ensure xterm-256color
+set t_Co=256
+
+" ABBREVIATIONS
+abbr _lia <li><a href=""></a></li>
 
 " it's a .vimrc file that makes you look like a ninja. it's the absolute
 " minimal setup. no colors, no highlights, no messages, no status bar,

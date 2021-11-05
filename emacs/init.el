@@ -360,7 +360,14 @@
 		           ("planner" (or
 				                   (name . "^\\*Calendar\\*$")
 				                   (name . "^\\*Org Agenda\\*")))
+               ("help" (or (name . "\*Help\*")
+                           (name . "\*Apropos\*")
+                           (name . "\*info\*")))
+               ("web-dev" (or
+                           (mode . html-mode)
+                           (mode . css-mode)))
 		           ("emacs" (or
+                         (filename . "init.el")
 			                   (name . "^\\*scratch\\*$")
 			                   (name . "^\\*Messages\\*$")))))))
 
