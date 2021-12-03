@@ -38,9 +38,9 @@ Host dist.wycomsystems.com
   User root
   IdentityFile ~/.ssh/jasonh_f5_ed25519
 
-Host dwolla
-  HostName 64.227.23.243
-  User freebsd
+Host send
+  HostName send.wycomsystems.com    
+  User root
   IdentityFile ~/.ssh/jasonh_f5_ed25519
 	
 Host zeus
