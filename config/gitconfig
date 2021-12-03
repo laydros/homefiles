@@ -2,7 +2,7 @@
     name = Jason Hamilton
     email = git@laydros.net
 [core]
-    excludesfile = $HOME/.gitignore_global
+    excludesfile = $HOME/.config/git/gitignore
     editor = /usr/bin/vim
 [status]
     relativePaths = false
