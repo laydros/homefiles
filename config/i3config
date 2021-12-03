@@ -43,6 +43,8 @@ bindsym $mod+d exec --no-startup-id rofi -show run
 # installed.
 bindsym $mod+Shift+d exec --no-startup-id i3-dmenu-desktop
 
+bindsym $mod+w exec snap run firefox
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -78,7 +80,7 @@ bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+w layout tabbed
+bindsym $mod+y layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
@@ -259,24 +261,24 @@ exec --no-startup-id exec ~/.screenlayout/fehbg.sh
 for_window [class="^.*"] border pixel 3
 
 # Smart Gaps
-smart_gaps on
+#smart_gaps on
 
 # Smart Borders
-smart_borders on
+#smart_borders on
 
 # Some color adjustments
 client.focused_inactive #000000 #000000 #000000 #000000 #000000
 client.unfocused        #000000 #000000 #000000 #000000 #000000
 
 # Set inner/outer gaps
-gaps inner 12
-gaps outer -2
+#gaps inner 12
+#gaps outer -2
 
 # Gaps mode
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-bindsym $mod+Shift+g mode "$mode_gaps"
+#set $mode_gaps Gaps: (o) outer, (i) inner
+#set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+#set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+#bindsym $mod+Shift+g mode "$mode_gaps"
 
 mode "$mode_gaps" {
         bindsym o      mode "$mode_gaps_outer"

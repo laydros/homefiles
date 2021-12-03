@@ -24,6 +24,11 @@ Host 192.168.33.* *.myapp.dev
   User root
   LogLevel ERROR
 
+Host smb231
+  HostName 10.1.0.231
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
 Host wycomsystems.com
   HostName wycomsystems.com
   User jasonh
