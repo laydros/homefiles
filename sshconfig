@@ -29,6 +29,12 @@ Host smb231
   User root
   IdentityFile ~/.ssh/jh_f5_rsa4096
 
+Host smbsend
+  HostName 10.1.0.76
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
+
 Host wycomsystems.com
   HostName wycomsystems.com
   User jasonh
@@ -46,6 +52,9 @@ Host send
 Host zeus
   HostName 10.1.0.236
   User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
+
 
 Host ds4
   HostName dorkystuff4some.bid
