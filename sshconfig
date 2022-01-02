@@ -13,6 +13,10 @@ Host sdf
   HostName freeshell.org
   User laydros
 
+Host marshall
+  HostName 192.168.5.100
+  User laydros
+
 # work
 
 # Example for vagrant virtual machines
@@ -53,15 +57,6 @@ Host zeus
   HostName 10.1.0.236
   User root
   IdentityFile ~/.ssh/jh_f5_rsa4096
-
-
-
-Host ds4
-  HostName dorkystuff4some.bid
-  User frappe
-  StrictHostKeyChecking no
-  UserKnownHostsFile=/dev/null
-  IdentityFile ~/.ssh/id_rsa
 
 Host sds4
   HostName s.dorkystuff4some.bid
@@ -137,12 +132,6 @@ Host ibanez
 
 Host momus
   HostName 10.1.0.244
-  User root
-  Port 22
-  IdentityFile ~/.ssh/old_id_rsa
-
-Host modi
-  HostName 10.1.0.235
   User root
   Port 22
   IdentityFile ~/.ssh/old_id_rsa
