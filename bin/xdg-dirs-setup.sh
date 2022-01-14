@@ -4,6 +4,7 @@ userdirsfile=$HOME/.config/user-dirs.dirs
 
 echo "Create new directories in $HOME"
 mkdir $HOME/doc
+mkdir $HOME/media
 mkdir $HOME/doc/desktop
 mkdir $HOME/dl
 mkdir $HOME/media/music
@@ -19,11 +20,12 @@ fi
 
 echo "writing to file"
 echo "## xdg user-dirs.dirs\n" > $userdirsfile
-echo "XDG_DOCUMENTS_DIR=$HOME/doc/doc"
-echo "XDG_DESKTOP_DIR=$HOME/doc/desktop"
-echo "XDG_DOWNLOAD_DIR=$HOME/doc/dl"
-echo "XDG_TEMPLATES_DIR=$HOME/"
-echo "XDG_PUBLICSHARE_DIR=$HOME/"
-echo "XDG_MUSIC_DIR=$HOME/doc/media/music"
-echo "XDG_PICTURES_DIR=$HOME/doc/media/img"
-echo "XDG_VIDEOS_DIR=$HOME/doc/media/video"
+echo "" >> $userdirsfile
+echo "XDG_DOCUMENTS_DIR=$HOME/doc/doc" >> $userdirsfile
+echo "XDG_DESKTOP_DIR=$HOME/doc/desktop" >> $userdirsfile
+echo "XDG_DOWNLOAD_DIR=$HOME/doc/dl" >> $userdirsfile
+echo "XDG_TEMPLATES_DIR=$HOME/" >> $userdirsfile
+echo "XDG_PUBLICSHARE_DIR=$HOME/" >> $userdirsfile
+echo "XDG_MUSIC_DIR=$HOME/doc/media/music" >> $userdirsfile
+echo "XDG_PICTURES_DIR=$HOME/doc/media/img" >> $userdirsfile
+echo "XDG_VIDEOS_DIR=$HOME/doc/media/video" >> $userdirsfile
