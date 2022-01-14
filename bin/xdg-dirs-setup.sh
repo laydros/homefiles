@@ -2,15 +2,37 @@
 
 userdirsfile=$HOME/.config/user-dirs.dirs
 
+function remove_empty_directory () {
+    if [ ! -e $1 ]; then
+        echo "file/dir $1 doesn't exist, skipping..."
+    else
+        if [ $(ls -A "$1" | wc -l) -ne 0 ]; then
+            echo "dir $1 is not empty, skipping..."
+        else
+            echo "removing directory $1"
+            rmdir $1
+        fi
+    fi
+}
+
+function create_dir () {
+    if [ -e $1 ]; then
+        echo "file/dir $1 already exists, skipping..."
+    else
+        echo "creating $1"
+        mkdir -p $1
+    fi
+}
+
 echo "Create new directories in $HOME"
-mkdir $HOME/doc
-mkdir $HOME/media
-mkdir $HOME/doc/desktop
-mkdir $HOME/dl
-mkdir $HOME/media/music
-mkdir $HOME/media/img
-mkdir $HOME/media/video
-mkdir $HOME/var
+create_dir $HOME/doc
+create_dir $HOME/media
+create_dir $HOME/doc/desktop
+create_dir $HOME/dl
+create_dir $HOME/media/music
+create_dir $HOME/media/img
+create_dir $HOME/media/video
+create_dir $HOME/var
 
 echo "backup existing xdg user-dirs.dirs"
 if [ -e $userdirfile ]; then
