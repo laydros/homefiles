@@ -33,6 +33,11 @@ Host smb231
   User root
   IdentityFile ~/.ssh/jh_f5_rsa4096
 
+Host connect-02
+  HostName 10.1.0.232
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
 Host smbsend
   HostName 10.1.0.76
   User root
