@@ -38,6 +38,11 @@ Host connect-02
   User root
   IdentityFile ~/.ssh/jh_f5_rsa4096
 
+Host drone-01
+  HostName 10.1.0.37
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
 Host smbsend
   HostName 10.1.0.76
   User root
