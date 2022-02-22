@@ -2,6 +2,8 @@
 
 userdirsfile=$HOME/.config/user-dirs.dirs
 
+echo "userdir file is $userdirsfile"
+
 function remove_empty_directory () {
     if [ ! -e $1 ]; then
         echo "file/dir $1 doesn't exist, skipping..."
@@ -24,12 +26,22 @@ function create_dir () {
     fi
 }
 
+#echo "Remove old standard directories if empty..."
+#remove_empty_directory $HOME/Music
+#remove_empty_directory $HOME/Public
+#remove_empty_directory $HOME/Templates
+#remove_empty_directory $HOME/Desktop
+#remove_empty_directory $HOME/Documents
+#remove_empty_directory $HOME/Downloads
+#remove_empty_directory $HOME/Pictures
+#remove_empty_directory $HOME/Videos
+
 echo "Create new directories in $HOME"
 create_dir $HOME/doc
 create_dir $HOME/media
 create_dir $HOME/doc/desktop
 create_dir $HOME/dl
-create_dir $HOME/media/music
+create_dir $HOME/music
 create_dir $HOME/media/img
 create_dir $HOME/media/video
 create_dir $HOME/var
@@ -40,7 +52,7 @@ if [ -e $userdirfile ]; then
 fi
 
 
-echo "writing to file"
+echo "writing to file $userdirsfile"
 echo "## xdg user-dirs.dirs\n" > $userdirsfile
 echo "" >> $userdirsfile
 echo "XDG_DOCUMENTS_DIR=$HOME/doc/doc" >> $userdirsfile
