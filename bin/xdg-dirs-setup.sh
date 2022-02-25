@@ -55,11 +55,11 @@ fi
 echo "writing to file $userdirsfile"
 echo "## xdg user-dirs.dirs\n" > $userdirsfile
 echo "" >> $userdirsfile
-echo "XDG_DOCUMENTS_DIR=$HOME/doc/doc" >> $userdirsfile
+echo "XDG_DOCUMENTS_DIR=$HOME/doc" >> $userdirsfile
 echo "XDG_DESKTOP_DIR=$HOME/doc/desktop" >> $userdirsfile
-echo "XDG_DOWNLOAD_DIR=$HOME/doc/dl" >> $userdirsfile
+echo "XDG_DOWNLOAD_DIR=$HOME/dl" >> $userdirsfile
 echo "XDG_TEMPLATES_DIR=$HOME/" >> $userdirsfile
 echo "XDG_PUBLICSHARE_DIR=$HOME/" >> $userdirsfile
-echo "XDG_MUSIC_DIR=$HOME/doc/media/music" >> $userdirsfile
-echo "XDG_PICTURES_DIR=$HOME/doc/media/img" >> $userdirsfile
-echo "XDG_VIDEOS_DIR=$HOME/doc/media/video" >> $userdirsfile
+echo "XDG_MUSIC_DIR=$HOME/music" >> $userdirsfile
+echo "XDG_PICTURES_DIR=$HOME/media/img" >> $userdirsfile
+echo "XDG_VIDEOS_DIR=$HOME/media/video" >> $userdirsfile
