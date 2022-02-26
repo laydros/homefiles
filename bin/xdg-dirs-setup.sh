@@ -27,14 +27,14 @@ function create_dir () {
 }
 
 #echo "Remove old standard directories if empty..."
-#remove_empty_directory $HOME/Music
-#remove_empty_directory $HOME/Public
-#remove_empty_directory $HOME/Templates
-#remove_empty_directory $HOME/Desktop
-#remove_empty_directory $HOME/Documents
+remove_empty_directory $HOME/Music
+remove_empty_directory $HOME/Public
+remove_empty_directory $HOME/Templates
+remove_empty_directory $HOME/Desktop
+remove_empty_directory $HOME/Documents
 #remove_empty_directory $HOME/Downloads
-#remove_empty_directory $HOME/Pictures
-#remove_empty_directory $HOME/Videos
+remove_empty_directory $HOME/Pictures
+remove_empty_directory $HOME/Videos
 
 echo "Create new directories in $HOME"
 create_dir $HOME/doc
