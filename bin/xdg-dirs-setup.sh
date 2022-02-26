@@ -27,14 +27,14 @@ function create_dir () {
 }
 
 #echo "Remove old standard directories if empty..."
-#remove_empty_directory $HOME/Music
-#remove_empty_directory $HOME/Public
-#remove_empty_directory $HOME/Templates
-#remove_empty_directory $HOME/Desktop
-#remove_empty_directory $HOME/Documents
+remove_empty_directory $HOME/Music
+remove_empty_directory $HOME/Public
+remove_empty_directory $HOME/Templates
+remove_empty_directory $HOME/Desktop
+remove_empty_directory $HOME/Documents
 #remove_empty_directory $HOME/Downloads
-#remove_empty_directory $HOME/Pictures
-#remove_empty_directory $HOME/Videos
+remove_empty_directory $HOME/Pictures
+remove_empty_directory $HOME/Videos
 
 echo "Create new directories in $HOME"
 create_dir $HOME/doc
@@ -55,11 +55,11 @@ fi
 echo "writing to file $userdirsfile"
 echo "## xdg user-dirs.dirs\n" > $userdirsfile
 echo "" >> $userdirsfile
-echo "XDG_DOCUMENTS_DIR=$HOME/doc/doc" >> $userdirsfile
+echo "XDG_DOCUMENTS_DIR=$HOME/doc" >> $userdirsfile
 echo "XDG_DESKTOP_DIR=$HOME/doc/desktop" >> $userdirsfile
-echo "XDG_DOWNLOAD_DIR=$HOME/doc/dl" >> $userdirsfile
+echo "XDG_DOWNLOAD_DIR=$HOME/dl" >> $userdirsfile
 echo "XDG_TEMPLATES_DIR=$HOME/" >> $userdirsfile
 echo "XDG_PUBLICSHARE_DIR=$HOME/" >> $userdirsfile
-echo "XDG_MUSIC_DIR=$HOME/doc/media/music" >> $userdirsfile
-echo "XDG_PICTURES_DIR=$HOME/doc/media/img" >> $userdirsfile
-echo "XDG_VIDEOS_DIR=$HOME/doc/media/video" >> $userdirsfile
+echo "XDG_MUSIC_DIR=$HOME/music" >> $userdirsfile
+echo "XDG_PICTURES_DIR=$HOME/media/img" >> $userdirsfile
+echo "XDG_VIDEOS_DIR=$HOME/media/video" >> $userdirsfile
