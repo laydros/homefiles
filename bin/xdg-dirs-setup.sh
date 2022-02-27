@@ -26,40 +26,32 @@ function create_dir () {
     fi
 }
 
-#echo "Remove old standard directories if empty..."
+echo "Remove old standard directories if empty..."
 remove_empty_directory $HOME/Music
 remove_empty_directory $HOME/Public
 remove_empty_directory $HOME/Templates
 remove_empty_directory $HOME/Desktop
 remove_empty_directory $HOME/Documents
-#remove_empty_directory $HOME/Downloads
+remove_empty_directory $HOME/Downloads
 remove_empty_directory $HOME/Pictures
 remove_empty_directory $HOME/Videos
 
-echo "Create new directories in $HOME"
-create_dir $HOME/doc
-create_dir $HOME/media
-create_dir $HOME/doc/desktop
-create_dir $HOME/dl
-create_dir $HOME/music
-create_dir $HOME/media/img
-create_dir $HOME/media/video
+echo "Create new var and media directories in $HOME"
 create_dir $HOME/var
+create_dir $HOME/media
 
 echo "backup existing xdg user-dirs.dirs"
 if [ -e $userdirfile ]; then
     mv -v $userdirsfile $userdirsfile.bak
 fi
 
+echo "use xdg-user-dirs-update command to create directories"
+xdg-user-dirs-update --set DOWNLOAD $HOME/dl
+xdg-user-dirs-update --set DOCUMENTS $HOME/doc
+xdg-user-dirs-update --set PICTURES $HOME/var/img
+xdg-user-dirs-update --set VIDEOS $HOME/var/video
+xdg-user-dirs-update --set DESKTOP $HOME/doc/desktop
+xdg-user-dirs-update --set MUSIC $HOME/music
+xdg-user-dirs-update --set PUBLIC $HOME/
+xdg-user-dirs-update --set TEMPLATES $HOME/
 
-echo "writing to file $userdirsfile"
-echo "## xdg user-dirs.dirs\n" > $userdirsfile
-echo "" >> $userdirsfile
-echo "XDG_DOCUMENTS_DIR=$HOME/doc" >> $userdirsfile
-echo "XDG_DESKTOP_DIR=$HOME/doc/desktop" >> $userdirsfile
-echo "XDG_DOWNLOAD_DIR=$HOME/dl" >> $userdirsfile
-echo "XDG_TEMPLATES_DIR=$HOME/" >> $userdirsfile
-echo "XDG_PUBLICSHARE_DIR=$HOME/" >> $userdirsfile
-echo "XDG_MUSIC_DIR=$HOME/music" >> $userdirsfile
-echo "XDG_PICTURES_DIR=$HOME/media/img" >> $userdirsfile
-echo "XDG_VIDEOS_DIR=$HOME/media/video" >> $userdirsfile
