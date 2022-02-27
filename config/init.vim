@@ -24,6 +24,14 @@ set splitright
 set showmode
 set showcmd
 set number
+"set relativenumber
+
+" number when in insert or focus is lost. relative in command mode
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
+  autocmd BufLeave,FocusLost,InsertEnter,WinLeave   * if &nu                  | set nornu | endif
+augroup END
 
 set laststatus=2                " always show the status bar on the last window
 
@@ -45,6 +53,14 @@ set cindent
 
 filetype plugin on
 filetype indent on
+
+" VIM-PLUG
+call plug#begin('~/.vim/plugged')
+
+Plug 'wellle/context.vim'
+call plug#end()
+
+colorscheme nord
 
 " save when losing focus
 au FocusLost * :wa
