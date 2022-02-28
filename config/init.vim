@@ -17,7 +17,7 @@ set wildmenu
 set report=0                    " always report # of lines changed for command
 
 set ruler
-set scrolloff=3
+set scrolloff=1
 set sidescroll=3
 set splitbelow
 set splitright
@@ -58,9 +58,14 @@ filetype indent on
 call plug#begin('~/.vim/plugged')
 
 Plug 'wellle/context.vim'
+Plug 'sheerun/vim-polyglot'
+Plug 'jeffkreeftmeijer/vim-dim'
 call plug#end()
 
-colorscheme nord
+"colorscheme nord
+"in theory dim allows the terminals colors to work
+
+colorscheme dim
 
 " save when losing focus
 au FocusLost * :wa
