@@ -27,6 +27,7 @@ set number
 "set relativenumber
 
 " number when in insert or focus is lost. relative in command mode
+" could instead use Plug 'jeffkreeftmeijer/vim-numbertoggle'
 augroup numbertoggle
   autocmd!
   autocmd BufEnter,FocusGained,InsertLeave,WinEnter * if &nu && mode() != "i" | set rnu   | endif
