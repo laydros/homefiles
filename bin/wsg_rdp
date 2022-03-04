@@ -1,0 +1,2 @@
+#! /bin/bash
+wlfreerdp /network:broadband /bpp:16 /compression /u:"Jason Hamilton" -grab-keyboard /size:1300x920 /title:"SG" /clipboard /v:10.1.0.71:3389
