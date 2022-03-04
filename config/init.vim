@@ -63,8 +63,9 @@ Plug 'sheerun/vim-polyglot'
 Plug 'jeffkreeftmeijer/vim-dim'
 call plug#end()
 
-"colorscheme nord
-"in theory dim allows the terminals colors to work
+" colorscheme nord
+" in theory dim allows the terminals colors to work
+" use colorscheme grim for greyscale
 
 colorscheme dim
 
