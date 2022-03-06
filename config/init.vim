@@ -4,9 +4,11 @@ set nocompatible
 if has('autocmd')
   filetype plugin indent on
 endif
-if has('syntax') && !exist('g:syntax_on')
-  syntax enable
-endif
+
+"if has('syntax') && !exist('g:syntax_on')
+"  syntax enable
+"endif
+syntax enable
 
 set autoindent
 set autoread
