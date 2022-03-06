@@ -24,6 +24,7 @@ set langnoremap
 set laststatus=2                " always show the status bar on the last window
 set listchars=tab:>\ ,trail:-,nbsp:+
 set mouse=a
+set modelines=5                 " number of lines to check for modeline
 set nrformats=hex,bin           " what number formats to consider when using C-A C-X
 set sessionoptions-=options     " for :mksession command
 set smarttab
@@ -41,7 +42,7 @@ endif
 
 "
 " start my options
-set hidden
+set hidden                      " abandon hidden buffers
 set undolevels=800
 
 " UI
