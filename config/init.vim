@@ -1,3 +1,21 @@
+" init.vim - 2022-03-07 - jwh
+
+
+" plug.vim install and run from https://github.com/jeffkreeftmeijer/.vim/
+" Download plug.vim if it doesn't exist yet
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+
+" Run PlugInstall if there are missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source ~/.vimrc
+\| endif
+
+" Always use the system clipboard
+set clipboard+=unnamedplus
+
 set nocompatible
 
 " defaults for vim to match neovim
@@ -44,6 +62,8 @@ endif
 " start my options
 set hidden                      " abandon hidden buffers
 set undolevels=800
+" seems to cause issue with abbrv starting with _
+"set iskeyword-=_                " treat '_' as word separator
 
 " UI
 set report=0                    " always report # of lines changed for command
