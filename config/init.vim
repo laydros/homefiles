@@ -98,6 +98,9 @@ set copyindent
 set expandtab
 set cindent
 
+" MARKDOWN FOLDING
+let g:markdown_folding = 1
+
 " VIM-PLUG
 call plug#begin('~/.vim/plugged')
 
