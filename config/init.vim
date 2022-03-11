@@ -76,6 +76,7 @@ set showmode
 set showmatch                   " show matching brackets
 set showcmd
 
+
 " LINE NUMBERING
 set number
 "set relativenumber
@@ -124,6 +125,10 @@ set smartcase                   " but look for case if I search with it
 
 " ensure xterm-256color
 set t_Co=256
+
+" KEYS
+set pastetoggle=<C-p>			" for vim, nvim handles automatically
+inoremap jk <Esc>				" use kj for esc in while in insert mode
 
 " ABBREVIATIONS
 abbr _lia <li><a href=""></a></li>
