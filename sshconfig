@@ -156,6 +156,11 @@ Host nott
   User root
   IdentityFile ~/.ssh/old_id_rsa
 
+Host iris-01
+  HostName 10.1.0.248
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
 Host iris
   HostName 10.1.0.240
   User root
