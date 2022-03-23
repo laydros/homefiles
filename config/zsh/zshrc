@@ -1,5 +1,8 @@
 # -*- conf-unix -*-
-# Lines configured by zsh-newuser-install
+
+# =========
+#   INIT
+# =========
 
 # Lots borrowed from https://leahneukirchen.org/dotfiles/.zshrc
 
@@ -18,7 +21,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-export PATH=$HOME/bin:$HOME/.emacs.d/bin:$HOME/.local/bin:/opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/opt/python/libexec/bin:/opt/homebrew/opt/python@3.9/libexec/bin:$PATH:$HOME/var/platform-tools
 
 # == HISTORY
 
@@ -46,6 +48,16 @@ setopt EXTENDED_HISTORY  # add timestamps to history
 
 autoload -U colors zcalc
 colors
+
+# =============
+#   EXPORT
+# =============
+
+
+export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+# for brew
+export PATH=/opt/homebrew/sbin:/opt/homebrew/bin:/opt/homebrew/opt/python@3.9/libexec/bin:$PATH
+
 
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
@@ -119,8 +131,9 @@ else
   SHORT_HOST=${HOST/.*/}
 fi
 
-
-# == ALIASES
+# ===========
+#   ALIASES
+# ===========
 
 # if [-x /usr/bin/dircolors ]; then
 #     alias ls='ls --color=auto'
@@ -136,6 +149,7 @@ alias sort='LC_ALL=C sort'
 alias dotf='ls .[a-zA-Z0-9_]*'
 alias qr='qrencode -t UTF8'
 alias cp="cp -i"                    # confirm before overwriting
+alias cat="bat -p"
 
 # alias ls='LC_COLLATE=C ls -FG'
 alias ls='ls -FG'
@@ -219,3 +233,6 @@ ecat() {
 }
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# source zsh functions
+fpath+=${ZDOTDIR:-~}/.zsh_functions
