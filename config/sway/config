@@ -17,7 +17,7 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-#set $term foot
+set $term2 foot
 set $term alacritty
 
 # Your preferred application launcher
@@ -93,6 +93,7 @@ input * {
 #
     # Start a terminal
     bindsym $mod+Return exec $term
+    bindsym $mod+Shift+Return exec $term2
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -156,8 +157,8 @@ bindsym XF86AudioPrev exec playerctl previous
 
     # familiar keybindings to switch workspaces
 # TODO
-    bindsym $mod+Ctrl+Left exec prev-workspace
-    bindsym $mod+Ctrl+Right exec next-workspace
+    bindsym $mod+Ctrl+Left workspace prev
+    bindsym $mod+Ctrl+Right workspace next
 
 #
 # Workspaces:
