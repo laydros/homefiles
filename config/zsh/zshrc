@@ -143,7 +143,7 @@ fi
 #     alias egrep='egrep --color=auto'
 # fi
 
-alias df='df -h -x"squashfs"'
+#alias df='df -h -x"squashfs"'
 alias sort='LC_ALL=C sort'
 # alias em='emacsclient -n'
 alias dotf='ls .[a-zA-Z0-9_]*'
