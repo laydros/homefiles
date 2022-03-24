@@ -116,6 +116,10 @@ input * {
 
     # Hibernate
     bindsym $mod+Shift+z exec swaynag -t warning -m 'Sleepy time?!?!' -b 'ZzZz...' 'systemctl hibernate'
+
+    # mako
+    bindsym $mod+n exec makoctl dismiss
+    bindsym $mod+Shift+n exec makoctl dismiss -a
 #
 # Media Keys
 #
@@ -156,9 +160,9 @@ bindsym XF86AudioPrev exec playerctl previous
     bindsym $mod+Shift+Right move right
 
     # familiar keybindings to switch workspaces
-# TODO
     bindsym $mod+Ctrl+Left workspace prev
     bindsym $mod+Ctrl+Right workspace next
+    # TODO : look into libinput-gestures to use with trackpad
 
 #
 # Workspaces:
@@ -221,7 +225,6 @@ bindsym XF86AudioPrev exec playerctl previous
 #
 # Window:
 #
-
     # Floating Windows
     for_window [window_role = "pop-up"] floating enable
     for_window [window_role = "bubble"] floating enable
@@ -244,7 +247,6 @@ bindsym XF86AudioPrev exec playerctl previous
 
     # Tag xwayland windows with [X]
     for_window [shell="xwayland"] title_format "[X] %title"
-
 
 #
 # Scratchpad:
@@ -322,3 +324,4 @@ exec protonmail-bridge
 exec mako
 
 include /etc/sway/config.d/*
+# include ~/.config/sway/`hostname`/*
