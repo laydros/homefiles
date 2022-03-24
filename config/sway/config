@@ -15,9 +15,11 @@ set $left h
 set $down j
 set $up k
 set $right l
+
 # Your preferred terminal emulator
 #set $term foot
 set $term alacritty
+
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -74,6 +76,7 @@ input "2:7:SynPS/2_Synaptics_TouchPad" {
 }
 
 input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
+    click_method clickfinger
     tap enabled
     middle_emulation enabled
 # tap_button_map lrm
@@ -82,7 +85,7 @@ input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
 
 input * {
     xkb_options "ctrl:nocaps"
-    }
+}
 
 ### Key bindings
 #
@@ -110,6 +113,8 @@ input * {
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
+    # Hibernate
+    bindsym $mod+Shift+z exec swaynag -t warning -m 'Sleepy time?!?!' -b 'ZzZz...' 'systemctl hibernate'
 #
 # Media Keys
 #
@@ -148,6 +153,12 @@ bindsym XF86AudioPrev exec playerctl previous
     bindsym $mod+Shift+Down move down
     bindsym $mod+Shift+Up move up
     bindsym $mod+Shift+Right move right
+
+    # familiar keybindings to switch workspaces
+# TODO
+    bindsym $mod+Ctrl+Left exec prev-workspace
+    bindsym $mod+Ctrl+Right exec next-workspace
+
 #
 # Workspaces:
 #
@@ -175,6 +186,11 @@ bindsym XF86AudioPrev exec playerctl previous
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
+
+    # Default workspaces for some things
+#assign [class="^Thunderbird$"] $ws2
+#assign [app_id="thunderbird"] $ws2
+    assign [app_id="thunderbird"] workspace number 2
 #
 # Layout stuff:
 #
@@ -200,6 +216,35 @@ bindsym XF86AudioPrev exec playerctl previous
 
     # Move focus to the parent container
     bindsym $mod+a focus parent
+
+#
+# Window:
+#
+
+    # Floating Windows
+    for_window [window_role = "pop-up"] floating enable
+    for_window [window_role = "bubble"] floating enable
+    for_window [window_role = "dialog"] floating enable
+    for_window [window_type = "dialog"] floating enable
+    for_window [class = "dialog"] floating enable
+    for_window [window_role = "task_dialog"] floating enable
+    for_window [window_type = "menu"] floating enable
+    for_window [window_role = "About"] floating enable
+    for_window [app_id = "floating"] floating enable
+    for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
+
+    for_window [title = "Picture-in-Picture"] floating enable
+    for_window [title = "Emulator"] floating enable
+
+	for_window [title = "Password Required - Mozilla Thunderbird"] floating enable
+
+	for_window [title = "Audacious Settings"] floating enable
+	for_window [title = "ALSA Output Settings"] floating enable
+
+    # Tag xwayland windows with [X]
+    for_window [shell="xwayland"] title_format "[X] %title"
+
+
 #
 # Scratchpad:
 #
@@ -237,6 +282,15 @@ mode "resize" {
 }
 bindsym $mod+r mode "resize"
 
+
+#set $gnome-schema org.gnome.desktop.interface
+#exec_always {
+#    gsettings set $gnome-schema gtk-theme 'theme name'
+#    gsettings set $gnome-schema icon-theme 'icon theme name'
+#    gsettings set $gnome-schema cursor-theme 'cursor theme name'
+#    gsettings set $gnome-schema font-name 'Sans 10'
+#}
+
 #
 # Status Bar:
 #
@@ -258,5 +312,12 @@ bar {
 #        inactive_workspace #32323200 #32323200 #5c5c5c
 #    }
 #}
+
+#
+# Startup
+#
+exec nm-applet --indicator
+exec protonmail-bridge
+exec mako
 
 include /etc/sway/config.d/*
