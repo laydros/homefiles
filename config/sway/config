@@ -1,7 +1,5 @@
 # Default config for sway
 #
-# Copy this to ~/.config/sway/config and edit it to your liking.
-#
 # Read `man 5 sway` for a complete reference.
 
 gaps inner 10
@@ -40,7 +38,7 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1920x1080.png fill
 set $laptop eDP-1
 bindswitch --reload --locked lid:on output $laptop disable
 bindswitch --reload --locked lid:off output $laptop enabled
-output eDP-1 scale 1.5
+output eDP-1 scale 1.3
 
 ### Idle configuration
 #
@@ -112,7 +110,7 @@ input * {
     bindsym $mod+Shift+c reload
 
     # Exit sway (logs you out of your Wayland session)
-    bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
+    bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
     # Hibernate
     bindsym $mod+Shift+z exec swaynag -t warning -m 'Sleepy time?!?!' -b 'ZzZz...' 'systemctl hibernate'
@@ -123,16 +121,40 @@ input * {
 #
 # Media Keys
 #
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -20%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +20%
+bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioNext exec playerctl next
+
+# Framework Laptop F7: XF86MonBrightnessDown
+# The --min-value option is important to prevent the complete darkness.
+#bindsym XF86MonBrightnessDown exec "brightnessctl --device intel_backlight --min-value=5 set 5%-"
+# Framework Laptop F8: XF86MonBrightnessUp
+#bindsym XF86MonBrightnessUp exec "brightnessctl --device intel_backlight set 5%+"
 
 bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
 bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+# Framework Laptop F9: Super_L + p
+# TODO: Assign this multiple screen key with the toggle multiple screens when using it.
+# https://fedoramagazine.org/using-i3-with-multiple-monitors/
+#bindsym $mod+p exec firefox https://fedoramagazine.org/using-i3-with-multiple-monitors/
+# Framework Laptop F10: XF86RFKill (already available)
+# $ rfkill list all
+# $ nmcli radio all
+# Framework Laptop F11: Print
+# https://github.com/swaywm/sway/wiki#taking-screenshots
+# Use grimshot.
+#bindsym Print exec grimshot save area
+#bindsym Shift+Print exec grimshot save screen
+#bindsym $mod2+Print exec grimshot save active
+# Framework Laptop F12: XF86AudioMedia
+bindsym XF86AudioMedia exec firefox https://community.frame.work/
+#bindsym Shift+XF86AudioMedia exec firefox https://en.wikipedia.org/wiki/Framework_Computer
 
 #
 # Moving around:
@@ -286,13 +308,14 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-#set $gnome-schema org.gnome.desktop.interface
-#exec_always {
-#    gsettings set $gnome-schema gtk-theme 'theme name'
-#    gsettings set $gnome-schema icon-theme 'icon theme name'
-#    gsettings set $gnome-schema cursor-theme 'cursor theme name'
+set $gnome-schema org.gnome.desktop.interface
+exec_always {
+    gsettings set $gnome-schema gtk-theme 'Yaru Dark'
+    gsettings set $gnome-schema icon-theme 'Yaru'
+    gsettings set $gnome-schema cursor-theme 'DMZ-White'
 #    gsettings set $gnome-schema font-name 'Sans 10'
-#}
+    gsettings set $gnome-schema cursor-size 50
+}
 
 #
 # Status Bar:
