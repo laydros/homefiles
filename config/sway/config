@@ -308,14 +308,14 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-set $gnome-schema org.gnome.desktop.interface
-exec_always {
-    gsettings set $gnome-schema gtk-theme 'Yaru Dark'
-    gsettings set $gnome-schema icon-theme 'Yaru'
-    gsettings set $gnome-schema cursor-theme 'DMZ-White'
-#    gsettings set $gnome-schema font-name 'Sans 10'
-    gsettings set $gnome-schema cursor-size 50
-}
+#set $gnome-schema org.gnome.desktop.interface
+#exec_always {
+#    gsettings set $gnome-schema gtk-theme 'Yaru Dark'
+#    gsettings set $gnome-schema icon-theme 'Yaru'
+#    gsettings set $gnome-schema cursor-theme 'DMZ-White'
+##    gsettings set $gnome-schema font-name 'Sans 10'
+#    gsettings set $gnome-schema cursor-size 50
+#}
 
 #
 # Status Bar:
