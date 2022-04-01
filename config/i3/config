@@ -8,18 +8,17 @@
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 
-# from airbenders config
-
-#set $ws1  "1:  "
-#set $ws2  "2:  "
-#set $ws3  "3:  "
-#set $ws4  "4:  "
-#set $ws5  "5:  "
-#set $ws6  "6:  "
-#set $ws7  "7:  "
-#set $ws8  "8:  "
-#set $ws9  "9:  "
-#set $ws10 "10:  "
+# Workspace names
+set $ws1 "1: main"
+set $ws2 "2: mail"
+set $ws3 "3: web"
+set $ws4 "4: comm"
+set $ws5 "5: media"
+set $ws6 "6: rdc"
+set $ws7 "7: vm"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
 
 # Home row direction keys, like vim
 set $left h
@@ -35,7 +34,6 @@ set $term alacritty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
-#set $menu wofi --show=drun --lines=5 --prompt=""
 set $menu rofi -show run
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -119,12 +117,39 @@ bindsym $mod+mod1+l exec i3lock -d
 #
 # Media Keys
 #
-set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+    set $refresh_i3status killall -SIGUSR1 i3status
+    bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+    bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+    bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+    bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+    bindsym XF86AudioPrev exec playerctl previous
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioNext exec playerctl next
 
+    # Media keys
+    # bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
+    # bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -- -5%
+    # bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
+    # bindsym XF86AudioPlay exec ncmpcpp toggle
+    # bindsym XF86AudioPrev exec ncmpcpp prev
+    # bindsym XF86AudioNext exec ncmpcpp next
+    
+    # Framework Laptop F9: Super_L + p
+    # TODO: Assign this multiple screen key with the toggle multiple screens when using it.
+    # https://fedoramagazine.org/using-i3-with-multiple-monitors/
+    #bindsym $mod+p exec firefox https://fedoramagazine.org/using-i3-with-multiple-monitors/
+    # Framework Laptop F10: XF86RFKill (already available)
+    # $ rfkill list all
+    # $ nmcli radio all
+    # Framework Laptop F11: Print
+    # https://github.com/swaywm/sway/wiki#taking-screenshots
+    # Use grimshot.
+    #bindsym Print exec grimshot save area
+    #bindsym Shift+Print exec grimshot save screen
+    #bindsym $mod2+Print exec grimshot save active
+    # Framework Laptop F12: XF86AudioMedia
+        bindsym XF86AudioMedia exec firefox https://community.frame.work/
+    #bindsym Shift+XF86AudioMedia exec firefox https://en.wikipedia.org/wiki/Framework_Computer
 
 #
 # Moving around:
@@ -159,44 +184,36 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 #
 # Workspaces:
 #
-# Define names for default workspaces for which we configure key bindings later on.
-# We use variables to avoid repeating the names in multiple places.
-set $ws1 "1: main"
-set $ws2 "2: mail"
-set $ws3 "3: web"
-set $ws4 "4: comm"
-set $ws5 "5: media"
-set $ws6 "6: rdc"
-set $ws7 "7: vm"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
+    # Switch to workspace
+    bindsym $mod+1 workspace number $ws1
+    bindsym $mod+2 workspace number $ws2
+    bindsym $mod+3 workspace number $ws3
+    bindsym $mod+4 workspace number $ws4
+    bindsym $mod+5 workspace number $ws5
+    bindsym $mod+6 workspace number $ws6
+    bindsym $mod+7 workspace number $ws7
+    bindsym $mod+8 workspace number $ws8
+    bindsym $mod+9 workspace number $ws9
+    bindsym $mod+0 workspace number $ws10
+    bindsym $mod+Tab workspace back_and_forth
+    # Move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace number $ws1
+    bindsym $mod+Shift+2 move container to workspace number $ws2
+    bindsym $mod+Shift+3 move container to workspace number $ws3
+    bindsym $mod+Shift+4 move container to workspace number $ws4
+    bindsym $mod+Shift+5 move container to workspace number $ws5
+    bindsym $mod+Shift+6 move container to workspace number $ws6
+    bindsym $mod+Shift+7 move container to workspace number $ws7
+    bindsym $mod+Shift+8 move container to workspace number $ws8
+    bindsym $mod+Shift+9 move container to workspace number $ws9
+    bindsym $mod+Shift+0 move container to workspace number $ws10
 
-# switch to workspace
-bindsym $mod+1 workspace number $ws1
-bindsym $mod+2 workspace number $ws2
-bindsym $mod+3 workspace number $ws3
-bindsym $mod+4 workspace number $ws4
-bindsym $mod+5 workspace number $ws5
-bindsym $mod+6 workspace number $ws6
-bindsym $mod+7 workspace number $ws7
-bindsym $mod+8 workspace number $ws8
-bindsym $mod+9 workspace number $ws9
-bindsym $mod+0 workspace number $ws10
+    # Note: workspaces can have any name you want, not just numbers.
+    # We just use 1-10 as the default.
 
-bindsym $mod+Tab workspace back_and_forth
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number $ws1
-bindsym $mod+Shift+2 move container to workspace number $ws2
-bindsym $mod+Shift+3 move container to workspace number $ws3
-bindsym $mod+Shift+4 move container to workspace number $ws4
-bindsym $mod+Shift+5 move container to workspace number $ws5
-bindsym $mod+Shift+6 move container to workspace number $ws6
-bindsym $mod+Shift+7 move container to workspace number $ws7
-bindsym $mod+Shift+8 move container to workspace number $ws8
-bindsym $mod+Shift+9 move container to workspace number $ws9
-bindsym $mod+Shift+0 move container to workspace number $ws10
+    # Toggle movement
+    #bindsym $mod+a workspace back_and_forth
+    #bindsym $mod+Shift+a move container to workspace back_and_forth
 #
 # Layout stuff:
 #
@@ -227,28 +244,36 @@ bindsym $mod+Shift+0 move container to workspace number $ws10
     # focus the child container
     #bindsym $mod+d focus child
 
+#
+# Window:
+#
+    # Floating Windows
+    for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
+    for_window [window_role = "pop-up"] floating enable
+    for_window [window_role = "bubble"] floating enable
+    for_window [window_role = "dialog"] floating enable
+    for_window [window_type = "dialog"] floating enable
+    for_window [class = "dialog"] floating enable
+    for_window [window_role = "task_dialog"] floating enable
+    for_window [window_type = "menu"] floating enable
+    for_window [window_role = "About"] floating enable
+    for_window [app_id = "floating"] floating enable
+    for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
 
+    for_window [title = "Picture-in-Picture"] floating enable
+    for_window [title = "Emulator"] floating enable
 
-# Media keys
-# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +5%
-# bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -- -5%
-# bindsym XF86AudioMute exec pactl set-sink-mute 0 toggle
-# bindsym XF86AudioPlay exec ncmpcpp toggle
-# bindsym XF86AudioStop exec ncmpcpp stop
-# bindsym XF86AudioPrev exec ncmpcpp prev
-# bindsym XF86AudioNext exec ncmpcpp next
+    for_window [title = "Password Required - Mozilla Thunderbird"] floating enable
 
-# Window decorations
-#new_window pixel 5
-#new_float pixel 1
-#new_window none
-#hide_edge_borders both
-# class border backgr indicator
-#client.focused #9fbc00 #9fbc00 #111111
-#client.unfocused #444444 #444444 #315858
-#client.focused_inactive #444444 #444444 #2c2c2f
-#client.urgent #383a3b #383a3b #ee0000
+    for_window [title = "Audacious Settings"] floating enable
+    for_window [title = "ALSA Output Settings"] floating enable
 
+    # Default workspaces for some things
+    #assign [class="^Thunderbird$"] $ws2
+    #assign [app_id="thunderbird"] $ws2
+    assign [app_id="thunderbird"] workspace number $ws2
+    #assign [class="Thunderbird"]           $ws2
+    assign [class="Spotify"]                $ws5
 #
 # Scratchpad:
 #
@@ -288,14 +313,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 
-# Toggle movement
-#bindsym $mod+a workspace back_and_forth
-#bindsym $mod+Shift+a move container to workspace back_and_forth
-#bindsym $mod+n workspace next
-#bindsym $mod+p workspace prev
-#bindsym Control+Mod1+Right workspace next
-#bindsym Control+Mod1+Left workspace prev
 
+#
+# Status Bar:
+#
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
@@ -314,97 +335,13 @@ bar {
 #    }
 #}
 
-# auto enable floating mode
-# class is usually 1st letter Cap and all else lowercase
-# use 'xprop' or 'xwininfo' to get window information
-#for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
-# shutdown menu
-#bindsym $mod+Shift+p exec xfce4-session-logout
-# xfce settings
-#bindsym $mod+Shift+s exec xfce4-settings-manager
-
-# assign program to specific workspace
-assign [class="Thunderbird"]           $ws9
-assign [class="Pidgin"]                $ws5
-assign [class="Spotify"]               $ws7
-#assign [class="Vmplayer"] 8: vm
-
 
 #
 # Startup
 #
 exec --no-startup-id xsetroot -solid '#000'
-#exec --no-startup-id exec mopidy
-#exec --no-startup-id exec diodon
 exec --no-startup-id exec thunderbird
-##exec --no-startup-id exec emacs --daemon
-#exec --no-startup-id exec vmplayer
-#exec --no-startup-id exec firefox
-# exec --no-startup-id exec st -e tmux
-#exec --no-startup-id exec urxvt
 #exec --no-startup-id exec sxhkd
 #exec --no-startup-id exec ~/.screenlayout/single-office.sh
 #exec --no-startup-id exec dunst
-#exec --no-startup-id exec dropbox start
-#exec --no-startup-id exec ~/.screenlayout/fehbg.sh
-#exec --no-startup-id exec pidgin
-#exec --no-startup-id exec ~/.screenlayout/desk-dual-right-is-vertical.sh
-#exec --no-startup-id polybar example
 
-### i3-gaps stuff ###
-
-# Necessary for i3-gaps to work properly (pixel can be any value)
-#for_window [class="^.*"] border pixel 3
-
-# Smart Gaps
-#smart_gaps on
-
-# Smart Borders
-#smart_borders on
-
-# Some color adjustments
-#client.focused_inactive #000000 #000000 #000000 #000000 #000000
-#client.unfocused        #000000 #000000 #000000 #000000 #000000
-
-# Set inner/outer gaps
-#gaps inner 12
-#gaps outer -2
-
-# Gaps mode
-#set $mode_gaps Gaps: (o) outer, (i) inner
-#set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-#set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-#bindsym $mod+Shift+g mode "$mode_gaps"
-
-#mode "$mode_gaps" {
-#        bindsym o      mode "$mode_gaps_outer"
-#        bindsym i      mode "$mode_gaps_inner"
-#        bindsym Return mode "default"
-#        bindsym Escape mode "default"
-#}
-#
-#mode "$mode_gaps_inner" {
-#        bindsym plus  gaps inner current plus 5
-#        bindsym minus gaps inner current minus 5
-#        bindsym 0     gaps inner current set 0
-#
-#        bindsym Shift+plus  gaps inner all plus 5
-#        bindsym Shift+minus gaps inner all minus 5
-#        bindsym Shift+0     gaps inner all set 0
-#
-#        bindsym Return mode "default"
-#        bindsym Escape mode "default"
-#}
-#
-#mode "$mode_gaps_outer" {
-#        bindsym plus  gaps outer current plus 5
-#        bindsym minus gaps outer current minus 5
-#        bindsym 0     gaps outer current set 0
-#
-#        bindsym Shift+plus  gaps outer all plus 5
-#        bindsym Shift+minus gaps outer all minus 5
-#        bindsym Shift+0     gaps outer all set 0
-#
-#        bindsym Return mode "default"
-#        bindsym Escape mode "default"
-#}

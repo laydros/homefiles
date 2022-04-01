@@ -9,6 +9,18 @@ gaps inner 10
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 
+# Workspace names
+set $ws1 "1: main"
+set $ws2 "2: mail"
+set $ws3 "3: web"
+set $ws4 "4: comm"
+set $ws5 "5: media"
+set $ws6 "6: rdc"
+set $ws7 "7: vm"
+set $ws8 "8"
+set $ws9 "9"
+set $ws10 "10"
+
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -124,40 +136,42 @@ input * {
 #
 # Media Keys
 #
-bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
-bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -20%
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +20%
-bindsym XF86AudioPrev exec playerctl previous
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
+    set $refresh_i3status killall -SIGUSR1 i3status
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+    bindsym Shift+XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -20%
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+    bindsym Shift+XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +20%
+    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+    bindsym XF86AudioPrev exec playerctl previous
+    bindsym XF86AudioPlay exec playerctl play-pause
+    bindsym XF86AudioNext exec playerctl next
 
-# Framework Laptop F7: XF86MonBrightnessDown
-# The --min-value option is important to prevent the complete darkness.
-#bindsym XF86MonBrightnessDown exec "brightnessctl --device intel_backlight --min-value=5 set 5%-"
-# Framework Laptop F8: XF86MonBrightnessUp
-#bindsym XF86MonBrightnessUp exec "brightnessctl --device intel_backlight set 5%+"
+    # Framework Laptop F7: XF86MonBrightnessDown
+    # The --min-value option is important to prevent the complete darkness.
+    #bindsym XF86MonBrightnessDown exec "brightnessctl --device intel_backlight --min-value=5 set 5%-"
+    # Framework Laptop F8: XF86MonBrightnessUp
+    #bindsym XF86MonBrightnessUp exec "brightnessctl --device intel_backlight set 5%+"
 
-bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
-bindsym XF86MonBrightnessUp exec brightnessctl set +5%
-bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
-# Framework Laptop F9: Super_L + p
-# TODO: Assign this multiple screen key with the toggle multiple screens when using it.
-# https://fedoramagazine.org/using-i3-with-multiple-monitors/
-#bindsym $mod+p exec firefox https://fedoramagazine.org/using-i3-with-multiple-monitors/
-# Framework Laptop F10: XF86RFKill (already available)
-# $ rfkill list all
-# $ nmcli radio all
-# Framework Laptop F11: Print
-# https://github.com/swaywm/sway/wiki#taking-screenshots
-# Use grimshot.
-#bindsym Print exec grimshot save area
-#bindsym Shift+Print exec grimshot save screen
-#bindsym $mod2+Print exec grimshot save active
-# Framework Laptop F12: XF86AudioMedia
-bindsym XF86AudioMedia exec firefox https://community.frame.work/
-#bindsym Shift+XF86AudioMedia exec firefox https://en.wikipedia.org/wiki/Framework_Computer
+    bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
+    bindsym XF86MonBrightnessUp exec brightnessctl set +5%
+
+    # Framework Laptop F9: Super_L + p
+    # TODO: Assign this multiple screen key with the toggle multiple screens when using it.
+    # https://fedoramagazine.org/using-i3-with-multiple-monitors/
+    #bindsym $mod+p exec firefox https://fedoramagazine.org/using-i3-with-multiple-monitors/
+    # Framework Laptop F10: XF86RFKill (already available)
+    # $ rfkill list all
+    # $ nmcli radio all
+    # Framework Laptop F11: Print
+    # https://github.com/swaywm/sway/wiki#taking-screenshots
+    # Use grimshot.
+    #bindsym Print exec grimshot save area
+    #bindsym Shift+Print exec grimshot save screen
+    #bindsym $mod2+Print exec grimshot save active
+    # Framework Laptop F12: XF86AudioMedia
+        bindsym XF86AudioMedia exec firefox https://community.frame.work/
+    #bindsym Shift+XF86AudioMedia exec firefox https://en.wikipedia.org/wiki/Framework_Computer
 
 #
 # Moving around:
@@ -193,34 +207,32 @@ bindsym XF86AudioMedia exec firefox https://community.frame.work/
 # Workspaces:
 #
     # Switch to workspace
-    bindsym $mod+1 workspace number 1
-    bindsym $mod+2 workspace number 2
-    bindsym $mod+3 workspace number 3
-    bindsym $mod+4 workspace number 4
-    bindsym $mod+5 workspace number 5
-    bindsym $mod+6 workspace number 6
-    bindsym $mod+7 workspace number 7
-    bindsym $mod+8 workspace number 8
-    bindsym $mod+9 workspace number 9
-    bindsym $mod+0 workspace number 10
+    bindsym $mod+1 workspace number $ws1
+    bindsym $mod+2 workspace number $ws2
+    bindsym $mod+3 workspace number $ws3
+    bindsym $mod+4 workspace number $ws4
+    bindsym $mod+5 workspace number $ws5
+    bindsym $mod+6 workspace number $ws6
+    bindsym $mod+7 workspace number $ws7
+    bindsym $mod+8 workspace number $ws8
+    bindsym $mod+9 workspace number $ws9
+    bindsym $mod+0 workspace number $ws10
+    bindsym $mod+Tab workspace back_and_forth
     # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number 1
-    bindsym $mod+Shift+2 move container to workspace number 2
-    bindsym $mod+Shift+3 move container to workspace number 3
-    bindsym $mod+Shift+4 move container to workspace number 4
-    bindsym $mod+Shift+5 move container to workspace number 5
-    bindsym $mod+Shift+6 move container to workspace number 6
-    bindsym $mod+Shift+7 move container to workspace number 7
-    bindsym $mod+Shift+8 move container to workspace number 8
-    bindsym $mod+Shift+9 move container to workspace number 9
-    bindsym $mod+Shift+0 move container to workspace number 10
+    bindsym $mod+Shift+1 move container to workspace number $ws1
+    bindsym $mod+Shift+2 move container to workspace number $ws2
+    bindsym $mod+Shift+3 move container to workspace number $ws3
+    bindsym $mod+Shift+4 move container to workspace number $ws4
+    bindsym $mod+Shift+5 move container to workspace number $ws5
+    bindsym $mod+Shift+6 move container to workspace number $ws6
+    bindsym $mod+Shift+7 move container to workspace number $ws7
+    bindsym $mod+Shift+8 move container to workspace number $ws8
+    bindsym $mod+Shift+9 move container to workspace number $ws9
+    bindsym $mod+Shift+0 move container to workspace number $ws10
+
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 
-    # Default workspaces for some things
-#assign [class="^Thunderbird$"] $ws2
-#assign [app_id="thunderbird"] $ws2
-    assign [app_id="thunderbird"] workspace number 2
 #
 # Layout stuff:
 #
@@ -247,10 +259,14 @@ bindsym XF86AudioMedia exec firefox https://community.frame.work/
     # Move focus to the parent container
     bindsym $mod+a focus parent
 
+    # focus the child container
+    #bindsym $mod+d focus child
+
 #
 # Window:
 #
     # Floating Windows
+    for_window [class="Xfce4-notifyd"] floating enable;border none; focus mode_toggle
     for_window [window_role = "pop-up"] floating enable
     for_window [window_role = "bubble"] floating enable
     for_window [window_role = "dialog"] floating enable
@@ -265,14 +281,20 @@ bindsym XF86AudioMedia exec firefox https://community.frame.work/
     for_window [title = "Picture-in-Picture"] floating enable
     for_window [title = "Emulator"] floating enable
 
-	for_window [title = "Password Required - Mozilla Thunderbird"] floating enable
+    for_window [title = "Password Required - Mozilla Thunderbird"] floating enable
 
-	for_window [title = "Audacious Settings"] floating enable
-	for_window [title = "ALSA Output Settings"] floating enable
+    for_window [title = "Audacious Settings"] floating enable
+    for_window [title = "ALSA Output Settings"] floating enable
 
     # Tag xwayland windows with [X]
     for_window [shell="xwayland"] title_format "[X] %title"
 
+    # Default workspaces for some things
+    #assign [class="^Thunderbird$"] $ws2
+    #assign [app_id="thunderbird"] $ws2
+    assign [app_id="thunderbird"] workspace number $ws2
+    #assign [class="Thunderbird"]           $ws2
+    assign [class="Spotify"]                $ws5
 #
 # Scratchpad:
 #
