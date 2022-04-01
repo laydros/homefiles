@@ -8,6 +8,7 @@ gaps inner 10
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -108,8 +109,10 @@ input * {
 
     # Reload the configuration file
     bindsym $mod+Shift+c reload
+    # restart sway/i3 inplace (preserves your layout/session, can be used to upgrade i3)
+    bindsym $mod+Shift+r restart
 
-    # Exit sway (logs you out of your Wayland session)
+    # Exit sway/i3 (logs you out of your Wayland/X session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
     # Hibernate
@@ -304,6 +307,7 @@ mode "resize" {
     # Return to default mode
     bindsym Return mode "default"
     bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 bindsym $mod+r mode "resize"
 
