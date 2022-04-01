@@ -93,7 +93,8 @@ bindsym $mod+mod1+l exec i3lock -d
     # Despite the name, also works for non-floating windows.
     # Change normal to inverse to use left mouse button for resizing and right
     # mouse button for dragging.
-    floating_modifier $mod normal
+    #floating_modifier $mod normal
+    floating_modifier $mod
 
     # start dmenu (a program launcher)
     #bindsym $mod+d exec --no-startup-id dmenu_run
@@ -257,8 +258,8 @@ bindsym $mod+mod1+l exec i3lock -d
     for_window [window_role = "task_dialog"] floating enable
     for_window [window_type = "menu"] floating enable
     for_window [window_role = "About"] floating enable
-    for_window [app_id = "floating"] floating enable
-    for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
+    #for_window [app_id = "floating"] floating enable
+    #for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
 
     for_window [title = "Picture-in-Picture"] floating enable
     for_window [title = "Emulator"] floating enable
@@ -271,8 +272,8 @@ bindsym $mod+mod1+l exec i3lock -d
     # Default workspaces for some things
     #assign [class="^Thunderbird$"] $ws2
     #assign [app_id="thunderbird"] $ws2
-    assign [app_id="thunderbird"] workspace number $ws2
-    #assign [class="Thunderbird"]           $ws2
+    #assign [app_id="thunderbird"] workspace number $ws2
+    assign [class="Thunderbird"]           $ws2
     assign [class="Spotify"]                $ws5
 #
 # Scratchpad:
