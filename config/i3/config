@@ -27,7 +27,7 @@ set $up k
 set $right l
 
 # Your preferred terminal emulator
-set $term2 urxvt
+set $term2 st
 set $term alacritty
 
 # Your preferred application launcher
