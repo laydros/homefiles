@@ -1,0 +1,55 @@
+#compdef zathura
+
+local -a all_opts
+all_opts=(
+  '(-c --config-dir)'{-c,--config-dir=}'[specify path to config directory]:config directory:_files -/'
+  '(-d --data-dir)'{-d,--data-dir=}'[specify path to data directory]:data directory:_files -/'
+  '--cache-dir=[specify path to cache directory]:cache directory:_files -/'
+  '(-p --plugins-dir)'{-p,--plugins-dir=}'[specify path to plugins directory]:plugins directory:_files -/'
+  '(-e --reparent)'{-e,--reparent=}'[reparent to window specified by XID (X11)]: :_x_window'
+  '(-w --password)'{-w,--password=}'[specify a password for the document]:password'
+  '(-P --page)'{-p,--page=}'[open the document at the given page number]:page number'
+  '(-l --log-level)'{-l,--log-level=}'[set log level]:level:(error warning info debug)'
+  '(-x --synctex-editor-command)'{-x,--synctex-editor-command=}'[specify synctex editor (forwarded to the synctex command)]:command'
+  '--synctex-forward=[move to the given position]:position'
+  '--synctex-pid=[highlight position in given process]:pid:_pids'
+  '--mode[start in a non-default mode]:mode:(presentation fullscreen)'
+  '--fork[fork into the background]'
+  '(- :)'{-h,--help}'[show help message]'
+  '(- :)'{-v,--version}'[print version information]'
+  '*:file:->files'
+)
+
+local curcontext="$curcontext" state state_descr line ret=1
+typeset -A opt_args
+_arguments -C -s -S "$all_opts[@]" && ret=0
+
+local PLUGIN
+local -a exts
+for PLUGIN in /usr/lib/x86_64-linux-gnu/zathura/lib*.so; do
+  case ${PLUGIN##*/} in
+    libpdf-poppler.so)
+      exts+=( pdf PDF )
+      ;;
+    libpdf-mupdf.so)
+      exts+=( pdf PDF epub oxps )
+      ;;
+    libps.so)
+      exts+=( ps eps epsi epsf )
+      ;;
+    libdjvu.so)
+      exts+=( djvu djv )
+      ;;
+    libcb.so)
+      exts+=( cb7 cbr cbz cbt rar zip 7z tar )
+      ;;
+  esac
+done
+
+case $state in
+  (files)
+    _wanted files expl file _files -g "*.(${(j:|:)exts:-pdf})(-.)" && ret=0
+    ;;
+esac
+
+return ret
