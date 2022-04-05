@@ -48,6 +48,10 @@ Host smbsend
   User root
   IdentityFile ~/.ssh/jh_f5_rsa4096
 
+Host balder
+  HostName 10.1.0.35
+  User devu
+  IdentityFile ~/.ssh/jh_f5_rsa4096
 
 Host wycomsystems.com
   HostName wycomsystems.com
