@@ -133,6 +133,21 @@ inoremap jk <Esc>				" use kj for esc in while in insert mode
 " ABBREVIATIONS
 abbr _lia <li><a href=""></a></li>
 
+" FUNCTIONS
+" to insert md code block. need to setup keymap
+function! s:CodeSnippet(...)
+  let out = '```'
+  if a:0 == 1
+    let out = out . a:1
+  endif
+  "      ↓ makes it easier to %s OPENING set of code fences
+  put = ' '.out
+  "   ↓ outputs clipboard
+  put +
+  put ='```'
+endfunction
+
+
 " it's a .vimrc file that makes you look like a ninja. it's the absolute
 " minimal setup. no colors, no highlights, no messages, no status bar,
 " nothing. just text.

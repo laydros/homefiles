@@ -54,9 +54,13 @@ colors
 # =============
 
 
-export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+PATH=$HOME/bin:$HOME/.local/bin:$PATH
+# for rust
+PATH=$HOME/.local/share/cargo/bin:$PATH
 # for brew
-export PATH=/opt/homebrew/sbin:/opt/homebrew/bin:/opt/homebrew/opt/python@3.9/libexec/bin:$PATH
+PATH=/opt/homebrew/sbin:/opt/homebrew/bin:/opt/homebrew/opt/python@3.9/libexec/bin:$PATH
+
+export PATH
 
 
 # Color man pages
@@ -152,7 +156,7 @@ alias cp="cp -i"                    # confirm before overwriting
 alias cat="bat -p"
 
 # alias ls='LC_COLLATE=C ls -FG'
-alias ls='ls -FG'
+alias ls='ls -F'
 
 # == Aliases for XDG
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"

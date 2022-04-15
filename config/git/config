@@ -4,6 +4,7 @@
 [core]
     excludesfile = $HOME/.config/git/gitignore
     editor = /usr/bin/vim
+    pager = delta
 [status]
     relativePaths = false
 [push]
@@ -28,6 +29,8 @@
     tags = tags -l
     branches = branches -a
     hist = log --graph --pretty=format:'%Cred%h%Creset %s%C(yellow)%d%Creset %Cgreen(%cr)%Creset [%an]' --abbrev-commit --date=relative
+[interactive]
+    diffFilter = delta --color-only
 [color]
     ui = false
     interactive = auto
@@ -44,12 +47,20 @@
 	trustExitCode = true
 [difftool "meld"]
     cmd = meld "$LOCAL" "$REMOTE"
+[delta]
+    navigate = true # use n and N to move between diff sections
+    side-by-side = true
+    line-numbers = true
 [diff]
+    colorMoved = default
     tool = meld
 #	tool = Kaleidoscope
 [difftool]
 	prompt = false
 [merge]
 	tool = Kaleidoscope
+	conflictstyle = diff3
 [mergetool]
 	prompt = false
+[init]
+	defaultBranch = main
