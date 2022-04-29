@@ -130,6 +130,10 @@ set t_Co=256
 set pastetoggle=<C-p>			" for vim, nvim handles automatically
 inoremap jk <Esc>				" use kj for esc in while in insert mode
 
+nnoremap <F5> "=strftime("%Y-%m-%d_%X")<CR>P
+inoremap <F5> <C-R>=strftime("%Y-%m-%d_%X")<CR>
+iab <expr> sdate strftime("%Y-%m-%d_%X")
+
 " ABBREVIATIONS
 abbr _lia <li><a href=""></a></li>
 

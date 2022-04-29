@@ -9,3 +9,5 @@ unbind C-b
 
 bind C-z send-prefix
 
+set -g status-fg black
+set -g status-bg cyan
