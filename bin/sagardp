@@ -1,3 +1,0 @@
-#! /bin/bash
-# rdesktop -P -x 0x80 -a 24 -z -u jasonh -k en-us -K -g 1280x768 -T "Saga" 10.0.0.129
-xfreerdp /compression /size:1280x768 /bpp:16 +clipboard /t:"Saga" /u:jasonh /v:10.0.0.129

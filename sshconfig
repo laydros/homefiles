@@ -13,6 +13,10 @@ Host sdf
   HostName freeshell.org
   User laydros
 
+Host marshall
+  HostName 192.168.5.100
+  User laydros
+
 # work
 
 # Example for vagrant virtual machines
@@ -24,12 +28,33 @@ Host 192.168.33.* *.myapp.dev
   User root
   LogLevel ERROR
 
+Host smb231
+  HostName 10.1.0.231
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
+Host connect-02
+  HostName 10.1.0.232
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
+Host drone-01
+  HostName 10.1.0.37
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
+Host smbsend
+  HostName 10.1.0.76
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
+Host balder
+  HostName 10.1.0.35
+  User devu
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
 Host wycomsystems.com
   HostName wycomsystems.com
-  User jasonh
-
-Host test.wycomsystems.com
-  HostName test.wycomsystems.com
   User jasonh
 
 Host dist.wycomsystems.com
@@ -37,12 +62,15 @@ Host dist.wycomsystems.com
   User root
   IdentityFile ~/.ssh/jasonh_f5_ed25519
 
-Host ds4
-  HostName dorkystuff4some.bid
-  User frappe
-  StrictHostKeyChecking no
-  UserKnownHostsFile=/dev/null
-  IdentityFile ~/.ssh/id_rsa
+Host send
+  HostName send.wycomsystems.com    
+  User root
+  IdentityFile ~/.ssh/jasonh_f5_ed25519
+	
+Host zeus
+  HostName 10.1.0.236
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
 
 Host sds4
   HostName s.dorkystuff4some.bid
@@ -94,6 +122,11 @@ Host connect1
   User root
   IdentityFile ~/.ssh/old_id_rsa
 
+Host connectr
+  #HostName 10.0.0.127
+  User root
+  IdentityFile ~/.ssh/old_id_rsa
+
 Host charon
   HostName 10.0.0.1
   User root
@@ -117,10 +150,9 @@ Host momus
   Port 22
   IdentityFile ~/.ssh/old_id_rsa
 
-Host modi
-  HostName 10.1.0.235
+Host odin
+  HostName 10.1.0.249
   User root
-  Port 22
   IdentityFile ~/.ssh/old_id_rsa
 
 Host nott
@@ -128,12 +160,12 @@ Host nott
   User root
   IdentityFile ~/.ssh/old_id_rsa
 
+Host iris-01
+  HostName 10.1.0.248
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
 Host iris
   HostName 10.1.0.240
   User root
   IdentityFile ~/.ssh/old_id_rsa
-
-Host shivado
-  HostName www2.wycomsystems.com
-  IdentityFile ~/.ssh/old_id_rsa
-  User root

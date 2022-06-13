@@ -1,6 +1,15 @@
-# Lines configured by zsh-newuser-install
+# -*- conf-unix -*-
+
+# =========
+#   INIT
+# =========
 
 # Lots borrowed from https://leahneukirchen.org/dotfiles/.zshrc
+
+## completion for homebrew: https://docs.brew.sh/Shell-Completion
+if type brew &>/dev/null; then
+	FPATH=$(brew --prefix)/share/zsh/site-functions:$FPATH
+fi
 
 unsetopt autocd
 bindkey -e
@@ -12,7 +21,6 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-export PATH=/opt/homebrew/sbin:/opt/homebrew/bin:/usr/local/opt/python/libexec/bin:/opt/homebrew/opt/python@3.9/libexec/bin:$PATH:$HOME/.local/bin:$HOME/bin:$HOME/var/platform-tools
 
 # == HISTORY
 
@@ -31,9 +39,65 @@ setopt EXTENDED_HISTORY  # add timestamps to history
 # setopt HIST_IGNORE_ALL_DUPS  # don't record dupes in history
 # setopt HIST_REDUCE_BLANKS
 
+# == THEMING
+
+## These are already done by zsh-newuser-install with
+## slightly different option flags
+#autoload -U compinit colors zcalc
+#compinit -d
+
+autoload -U colors zcalc
+colors
+
+# =============
+#   EXPORT
+# =============
+
+
+PATH=$HOME/bin:$HOME/.local/bin:$PATH
+# for rust
+PATH=$HOME/.local/share/cargo/bin:$PATH
+# for brew
+PATH=/opt/homebrew/sbin:/opt/homebrew/bin:/opt/homebrew/opt/python@3.9/libexec/bin:$PATH
+
+export PATH
+
+
+# Color man pages
+export LESS_TERMCAP_mb=$'\E[01;32m'
+export LESS_TERMCAP_md=$'\E[01;32m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;47;34m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;36m'
+export LESS=-R
+
 # == PROMPT
 
-PS1='%B%m%(?.. %??)%(1j. %j&.)%b %2~%B%#%b '
+PS1='%B%m%(?.. %??)%(1j. %j&.)%b %2~ %B%#%b '
+
+## Test some manjaro zsh stuff
+
+# enable substitution for prompt
+setopt prompt_subst
+# Maia prompt
+#PROMPT="%B%{$fg[cyan]%}%(4~|%-1~/.../%2~|%~)%u%b >%{$fg[cyan]%}>%B%(?.%{$fg[cyan]%}.%{$fg[red]%})>%{$reset_color%}%b "
+#RPROMPT="%{$fg[red]%} %(?..[%?])"
+
+# Print a greeting message when shell is started
+if [[ "$OSTYPE" = darwin* ]]; then
+   echo $USER@$HOST  $(uname -srm)
+else
+   echo $USER@$HOST  $(uname -srm) $(lsb_release -rcs)
+fi
+
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"         # Colored completion (different colors for dirs/files/etc)
+zstyle ':completion:*' rehash true                              # automatically find new executables in path
+# Speed up completions
+zstyle ':completion:*' accept-exact '*(N)'
+zstyle ':completion:*' use-cache on
+zstyle ':completion:*' cache-path $XDG_CONFIG_HOME/zsh/cache
 
 # options to look into
 setopt NO_BG_NICE # don't nice background tasks
@@ -42,7 +106,7 @@ setopt NO_HUP
 # setopt LOCAL_OPTIONS # allow functions to have local options
 # setopt LOCAL_TRAPS # allow functions to have local traps
 setopt PROMPT_SUBST
-# setopt CORRECT
+# setopt CORRECT               # auto correct mistakes
 # setopt COMPLETE_IN_WORD
 # setopt IGNORE_EOF
 
@@ -71,7 +135,9 @@ else
   SHORT_HOST=${HOST/.*/}
 fi
 
-# == ALIASES
+# ===========
+#   ALIASES
+# ===========
 
 # if [-x /usr/bin/dircolors ]; then
 #     alias ls='ls --color=auto'
@@ -81,21 +147,23 @@ fi
 #     alias egrep='egrep --color=auto'
 # fi
 
-alias df='df -x"squashfs"'
+#alias df='df -h -x"squashfs"'
 alias sort='LC_ALL=C sort'
 # alias em='emacsclient -n'
 alias dotf='ls .[a-zA-Z0-9_]*'
 alias qr='qrencode -t UTF8'
+alias cp="cp -i"                    # confirm before overwriting
+alias cat="bat -p"
 
 # alias ls='LC_COLLATE=C ls -FG'
-alias ls='ls -FG'
+alias ls='ls -F'
 
 # == Aliases for XDG
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
 alias mbsync="mbsync -c $XDG_CONFIG_HOME/isync/mbsyncrc"
 alias irssi="irssi --config=$XDG_CONFIG_HOME/irssi/config --home=$XDG_DATA_HOME/irssi"
 alias gpg2="gpg2 --homedir $XDG_DATA_HOME/gnupg"
-alias dosbox=dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf
+alias dosbox="dosbox -conf $XDG_CONFIG_HOME/dosbox/dosbox.conf"
 alias sqlite3="sqlite3 -init $XDG_CONFIG_HOME/sqlite3/sqliterc"
 alias mocp="mocp -M $XDG_CONFIG_HOME/moc"
 
@@ -109,6 +177,8 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "/usr/local/opt/nvm/nvm.sh" ] && . "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
 [ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && . "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
 
+# == calculator
+c() { printf "%s\n" "$@" | bc -l }
 
 # == To try from leahneukirchen.org
 
@@ -168,4 +238,7 @@ ecat() {
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# sbin for homebrew
 export PATH="/usr/local/sbin:$PATH"
+# source zsh functions
+fpath+=${ZDOTDIR:-~}/.zsh_functions

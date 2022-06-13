@@ -1,7 +1,8 @@
-
-
+# tmux config for remote servers. - JWH 2020-09-03
+# allows `mosh user@server -- tmux a` to connect 
+# use C-z prefix and mouse scrolling works
 new-session
-set -g history-limit 30000
+set -g history-limit 60000
 set -g mouse on
 
 set -g prefix C-z
@@ -9,3 +10,5 @@ unbind C-b
 
 bind C-z send-prefix
 
+set -g status-fg black
+set -g status-bg cyan

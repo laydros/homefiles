@@ -60,7 +60,7 @@
 
 (when (my-system-is-darwin)
   (add-to-list 'default-frame-alist
-               '(font . "Hack-12")))
+               '(font . "Hack Nerd Font Mono-12")))
 
 ;; (cond ((eq system-type 'gnu/linux)
 ;;        (add-to-list 'default-frame-alist
@@ -85,7 +85,7 @@
 (desktop-save-mode t)
 
 ;;
-;; interface
+;; interface and behavior
 ;;
 
 (line-number-mode 1)
@@ -106,6 +106,7 @@
  help-window-select t)
 
 (setq
+ delete-by-moving-to-trash t
  select-enable-primary t
  save-interprogram-paste-before-kill t
  apropos-do-all t
@@ -201,10 +202,13 @@
 ;;
 ;; packages
 ;;
+;; (use-package doom-themes
+;;   :defer t
+;;   :init (load-theme 'doom-one t))
 
-(use-package modus-operandi-theme
-  :defer t
-  :init (load-theme 'modus-operandi t))
+;; (use-package modus-themes
+;;   :defer t
+;;   :init (load-theme 'modus-operandi t))
 
 (use-package avy
   :config
@@ -347,6 +351,30 @@
 ;; maybe do the literate programming thing for this so I have notes in it
 ;; possibly a new dotfiles repo?
 
+;; settings for ibuffer to sort by type
+(setq ibuffer-saved-filter-groups
+	    (quote (("default"
+		           ("dired" (mode . dired-mode))
+		           ("org" (mode . org-mode))
+		           ("magit" (name . "^magit"))
+		           ("planner" (or
+				                   (name . "^\\*Calendar\\*$")
+				                   (name . "^\\*Org Agenda\\*")))
+               ("help" (or (name . "\*Help\*")
+                           (name . "\*Apropos\*")
+                           (name . "\*info\*")))
+               ("web-dev" (or
+                           (mode . html-mode)
+                           (mode . css-mode)))
+		           ("emacs" (or
+                         (filename . "init.el")
+			                   (name . "^\\*scratch\\*$")
+			                   (name . "^\\*Messages\\*$")))))))
+
+(add-hook 'ibuffer-mode-hook
+	        (lambda ()
+	          (ibuffer-switch-to-saved-filter-groups "default")))
+
 ;;;;;;;;;;;;;;
 ;; org-mode ;;
 ;;;;;;;;;;;;;;
@@ -369,11 +397,25 @@
 ;; auto save org files
 (add-hook 'auto-save-hook 'org-save-all-org-buffers)
 
+(defun +org/opened-buffer-files ()
+  "Return the list of files currently opened in emacs"
+  (delq nil
+        (mapcar (lambda (x)
+                  (if (and (buffer-file-name x)
+                           (string-match "\\.org$"
+                                         (buffer-file-name x)))
+                      (buffer-file-name x)))
+                (buffer-list))))
+
+;; use +org/opened-bugger-files for org-refile-targets
+(setq org-refile-targets '((+org/opened-buffer-files :maxlevel . 9)))
+
+
 ;; invisible edits - tweaks when headers are folded
 (setq org-catch-invisible-edits 'show-and-error)
 
 ;; org directory stuff
-(setq org-agenda-files (quote("~/org")))
+(setq org-agenda-files (quote("~/org/")))
 (setq org-directory "~/org/")
 (setq org-default-notes-file "~/org/tasks.org")
 (setq org-capture-templates
@@ -382,7 +424,8 @@
          "* TODO %?\n  %i\n  %u\n  %a")
         ("n" "Note/Data" entry (file+headline "inbox.org" "Notes/Data")
          "* %?   \n  %i\n  %u\n  %a")
-        ("j" "Journal" entry (file+datetree "~/org/journal.org")
+        ("j" "Journal Entry"
+         entry (file+datetree "~/org/journal.org")
          "* %?\nEntered on %U\n %i\n %a")
         ("J" "Work-Journal" entry (file+datetree "~/org/wjournal.org")
          "* %?\nEntered on %U\n %i\n %a")

@@ -14,7 +14,7 @@ Host imap.fastmail.com
 Port 993
 User jhamilton@fastmail.com
 # macOS style
-PassCmd "security find-generic-password -s mbsync-gmail-password -w"
+#PassCmd "security find-generic-password -s mbsync-gmail-password -w"
 SSLType IMAPS
 SSLVersions TLSv1.2
 
@@ -23,8 +23,8 @@ Account fastmail
 
 # fastmail - local
 MaildirStore fastmail-local
-Path ~/var/Maildir/fastmail/
-Inbox ~/var/Maildir/fastmail/INBOX
+Path ~/var/maildir/fastmail/
+Inbox ~/var/maildir/fastmail/INBOX
 # The SubFolders option allows to represent all
 # IMAP subfolders as local subfolders
 SubFolders Verbatim
@@ -48,8 +48,9 @@ User jasonh@factor500.com
 # For simplicity, this is how to read the password from another file.
 # For better security you should use GPG https://gnupg.org/
 # or perhaps password store
-PassCmd "cat ~/.mbsync"
+#PassCmd "cat ~/.mbsync"
 SSLType IMAPS
+AuthMechs PLAIN
 CertificateFile /etc/ssl/certs/ca-certificates.crt
 
 IMAPStore factor500-remote
@@ -58,8 +59,8 @@ Account factor500
 # factor500 - local
 MaildirStore factor500-local
 # local path, trailing slash is important
-Path ~/var/Maildir/factor500/
-Inbox ~/var/Maildir/factor500/INBOX
+Path ~/var/maildir/factor500/
+Inbox ~/var/maildir/factor500/INBOX
 # The SubFolders option allows to represent all
 # IMAP subfolders as local subfolders
 SubFolders Verbatim
@@ -86,8 +87,8 @@ Account wycomsystems
 
 # wycomsystems - local
 MaildirStore wycomsystems-local
-Path ~/var/Maildir/wycomsystems/
-Inbox ~/var/Maildir/wycomsystems/INBOX
+Path ~/var/maildir/wycomsystems/
+Inbox ~/var/maildir/wycomsystems/INBOX
 # The SubFolders option allows to represent all
 # IMAP subfolders as local subfolders
 SubFolders Verbatim
