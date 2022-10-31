@@ -50,6 +50,8 @@ export LC_TIME=C
 # less: use UTF-8
 export LESSCHARSET=UTF-8
 
+. "$HOME/.cargo/env"
+
 # == SITE LOCAL CONFIG
 
 # [[ -e ~/.zshenv.local ]] && . ~/.zshenv.local || :
