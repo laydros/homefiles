@@ -1,3 +1,4 @@
+#!/bin/sh
 
 # for gnome and unity, allow resize with right button
 echo "Allow gnome resize with right mouse button, set alt as modifier"
