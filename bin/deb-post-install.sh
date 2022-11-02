@@ -158,7 +158,7 @@ sleep 2s
 clear
 echo "Installing package list..."
 echo "$LIST"
-apt-get install $LIST
+apt-get install "$LIST"
 echo ""
 
 #echo "Now that zsh and curl are installed, grabbing oh-my-zsh"
