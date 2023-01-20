@@ -4,8 +4,8 @@
 bind-mouse M-2          window-lower
 bind-mouse M-3          window-resize
 
-command term            /usr/bin/urxvt
-command lock            "xscreensaver-command --lock"
+#command term            /usr/local/bin/urxvt
+#command lock            "xscreensaver-command --lock"
 
 borderwidth             2
 
@@ -34,7 +34,7 @@ gap 0 0 0 180
 #command urxvt          urxvt
 command xterm           xterm
 command emacs           emacs
-command firefox         /home/jwh/bin/firefox
+command firefox         firefox
 command '' 'true'
 command pdf             zathura
 command OOo             /usr/local/bin/soffice

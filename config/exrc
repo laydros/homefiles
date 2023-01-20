@@ -3,6 +3,7 @@
 
 set ai ru sm smd et ic sw=2 ts=2
 
+set cedit=^[
 set extended
 set magic
 
@@ -19,4 +20,4 @@ set searchincr
 
 " ABBREVIATIONS
 abbr _lia <li><a href=""></a></li>
-
+abbr _mdl []()
