@@ -1,34 +1,30 @@
 # vim:filetype=i3
+# This file is a modified version based on default i3-config-wizard config
+# source is available here:
+# https://raw.githubusercontent.com/endeavouros-team/endeavouros-i3wm-setup/master/.config/i3/config
+# Maintainer: joekamprad [joekamprad@endeavouros.com]
+# https://endeavouros.com
+#
+# iconic font icon search: https://fontawesome.com/v4.7/cheatsheet/
+#
+# --> to update this run the following command (will backup existing setup file)
+# wget --backups=1 https://raw.githubusercontent.com/endeavouros-team/endeavouros-i3wm-setup/main/.config/i3/config -P ~/.config/i3/
+#
+# Endeavouros-i3 config file
+# Source for complete framework of our i3 config and theming here: https://github.com/endeavouros-team/endeavouros-i3wm-setup
+# EndeavourOS wiki holds some Information also: https://discovery.endeavouros.com/window-tiling-managers/i3-wm/
+# Please see http://i3wm.org/docs/userguide.html for the official i3 reference!
 
-# i3 config file (v4)
-# Please see http://i3wm.org/docs/userguide.html for a complete reference!
+#######################
+# config starts here: #
+#######################
 
 ### Variables
 #
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 
-# Workspace names
-set $ws1 "1: main"
-set $ws2 "2: mail"
-set $ws3 "3: web"
-set $ws4 "4: comm"
-set $ws5 "5: media"
-set $ws6 "6: rdc"
-set $ws7 "7: vm"
-set $ws8 "8"
-set $ws9 "9"
-set $ws10 "10"
 
-# Home row direction keys, like vim
-set $left h
-set $down j
-set $up k
-set $right l
-
-# Your preferred terminal emulator
-set $term2 st
-set $term alacritty
 
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
@@ -36,15 +32,23 @@ set $term alacritty
 #set $menu dmenu_path | dmenu | xargs swaymsg exec --
 set $menu rofi -show run
 
+
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-#font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-#font pango:Hack, FontAwesome 12
-font pango:monospace 10
-
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
+font pango: Noto Sans Regular 10
+
+# preferred terminal emulator
+set $term alacritty
+set $term2 st
+
+# vim like direction keys
+set $left h
+set $down j
+set $up k
+set $right l
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -197,17 +201,17 @@ bindsym $mod+mod1+l exec i3lock -d
     bindsym $mod+9 workspace number $ws9
     bindsym $mod+0 workspace number $ws10
     bindsym $mod+Tab workspace back_and_forth
-    # Move focused container to workspace
-    bindsym $mod+Shift+1 move container to workspace number $ws1
-    bindsym $mod+Shift+2 move container to workspace number $ws2
-    bindsym $mod+Shift+3 move container to workspace number $ws3
-    bindsym $mod+Shift+4 move container to workspace number $ws4
-    bindsym $mod+Shift+5 move container to workspace number $ws5
-    bindsym $mod+Shift+6 move container to workspace number $ws6
-    bindsym $mod+Shift+7 move container to workspace number $ws7
-    bindsym $mod+Shift+8 move container to workspace number $ws8
-    bindsym $mod+Shift+9 move container to workspace number $ws9
-    bindsym $mod+Shift+0 move container to workspace number $ws10
+# move focused container to workspace
+bindsym $mod+Shift+1    move container to workspace  $ws1
+bindsym $mod+Shift+2    move container to workspace  $ws2
+bindsym $mod+Shift+3    move container to workspace  $ws3
+bindsym $mod+Shift+4    move container to workspace  $ws4
+bindsym $mod+Shift+5    move container to workspace  $ws5
+bindsym $mod+Shift+6    move container to workspace  $ws6
+bindsym $mod+Shift+7    move container to workspace  $ws7
+bindsym $mod+Shift+8    move container to workspace  $ws8
+bindsym $mod+Shift+9    move container to workspace  $ws9
+bindsym $mod+Shift+0    move container to workspace  $ws10
 
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
@@ -269,12 +273,57 @@ bindsym $mod+mod1+l exec i3lock -d
     for_window [title = "Audacious Settings"] floating enable
     for_window [title = "ALSA Output Settings"] floating enable
 
-    # Default workspaces for some things
-    #assign [class="^Thunderbird$"] $ws2
-    #assign [app_id="thunderbird"] $ws2
-    #assign [app_id="thunderbird"] workspace number $ws2
-    assign [class="Thunderbird"]           $ws2
-    assign [class="Spotify"]                $ws5
+##########################################
+# configuration for workspace behaviour: #
+##########################################
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+set $ws1 "1:"
+set $ws2 "2:"
+set $ws3 "3:"
+#set $ws4 "4:"
+set $ws4 "4:"
+set $ws5 "5:"
+set $ws6 "6:"
+set $ws7 "7:"
+set $ws8 "8:"
+set $ws9 "9:"
+set $ws10 "10:"
+
+#
+# use workspaces on different displays:
+# where you have to replace VGA-0/HDMI-0 with the names for your displays
+# you can get from xrandr command
+#workspace $ws1 output VGA-0
+#workspace $ws2 output VGA-0
+#workspace $ws3 output HDMI-0
+#workspace $ws4 output HDMI-0
+#workspace $ws5 output HDMI-0
+
+# bind program to workspace and focus to them on startup:
+assign [class="Xfce4-terminal"] $ws1
+assign [class="(?i)firefox"] $ws2
+assign [class="Thunar"] $ws3
+assign [class="thunderbird"] $ws4
+assign [class="TelegramDesktop"] $ws5
+assign [class="Signal"] $ws5
+assign [class="Brave"] $ws6
+assign [class="xfreerdp"] $ws7
+assign [class="Steam"] $ws8
+assign [class="Spotify"] $ws10
+assign [class="easyeffects"] $ws10
+
+# automatic set focus new window if it opens on another workspace than the current:
+for_window [class=Xfce4-terminal] focus
+for_window [class=(?i)firefox] focus
+for_window [class=Thunar] focus
+for_window [class=Thunderbird] focus
+for_window [class=TelegramDesktop] focus
+for_window [class=Signal] focus
+for_window [class=Brave] focus
+for_window [class=Steam] focus
+
 #
 # Scratchpad:
 #
