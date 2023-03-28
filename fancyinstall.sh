@@ -21,7 +21,7 @@ gitbase=git://github.com/laydros/homefiles.git
 tarball=http://github.com/laydros/homefiles/tarball/master
 
 function has() {
-    return $( which $1 >/dev/null )
+    return $( which "$1" >/dev/null )
 }
 
 function note() {
@@ -33,7 +33,7 @@ function warn() {
 }
 
 function die() {
-    warn $*
+    warn "$*"
 exit 1
 }
 
@@ -41,29 +41,29 @@ function link() {
     src=$1
     dest=$2
 
-    if [ -e $dest ]; then
-        if [ -L $dest ]; then
+    if [ -e "$dest" ]; then
+        if [ -L "$dest" ]; then
             # Already symlinked -- I'll assume correctly.
             return
         else
             # Rename files with a ".old" extension.
             warn "$dest file already exists, renaming to $dest.old"
             backup=$dest.old
-            if [ -e $backup ]; then
+            if [ -e "$backup" ]; then
                 die "$backup already exists. Aborting."
             fi
-            mv -v $dest $backup
+            mv -v "$dest" "$backup"
         fi
     fi
     
     # Update existing or create new symlinks.
-    $(which ln) -vsf $src $dest
+    $(which ln) -vsf "$src" "$dest"
 }
 
 function unpack_tarball() {
     note "Downloading tarball..."
-    mkdir -vp $basedir
-    cd $basedir
+    mkdir -vp "$basedir"
+    cd "$basedir"
     tempfile=TEMP.tar.gz
     if has curl; then
         curl -L $tarball >$tempfile
@@ -77,9 +77,9 @@ function unpack_tarball() {
 }
 
 
-if [ -e $basedir ]; then
+if [ -e "$basedir" ]; then
     # Basedir exists. Update it.
-    cd $basedir
+    cd "$basedir"
     if [ -e .git ]; then
         note "Updating dotfiles from git..."
         git pull --rebase origin master
@@ -91,8 +91,8 @@ else
     # git, then use tarballs.
     if has git; then
         note "Cloning from git..."
-        git clone $gitbase $basedir
-        cd $basedir
+        git clone "$gitbase" "$basedir"
+        cd "$basedir"
         git submodule init
         git submodule update
     else
@@ -113,17 +113,17 @@ for path in .* ; do
             continue
             ;;
         *)
-            link $basedir/$path $HOME/$path
+            link "$basedir"/"$path" "$HOME"/"$path"
             ;;
     esac
 done
 
 note "Installing bin/ directory..."
-mkdir -v -p $bindir
+mkdir -v -p "$bindir"
 if [ -d bin ]; then
     for path in bin/* ; do
-        relpath=$( basename $path )
-        link $basedir/$path $bindir/$relpath
+        relpath=$( basename "$path" )
+        link "$basedir"/"$path" "$bindir"/"$relpath"
     done
 fi
 
@@ -136,9 +136,9 @@ fi
 
 note "Symlinking vim configurations..."
 for rc in vim gvim; do
-    link $basedir/.vim/${rc}rc $HOME/.${rc}rc
-    if [ ! -e $HOME/.${rc}local ]; then
-        touch $HOME/.${rc}local
+    link "$basedir"/.vim/${rc}rc "$HOME"/.${rc}rc
+    if [ ! -e "$HOME"/.${rc}local ]; then
+        touch "$HOME"/.${rc}local
     fi
 done
 
@@ -151,7 +151,7 @@ fi
 note "Initializing tools..."
 if has git; then
     # Post-install scripts might customize this further.
-    cp -v $basedir/.gitconfig.base $HOME/.gitconfig
+    cp -v "$basedir"/.gitconfig.base "$HOME"/.gitconfig
 fi
 
 #note "Installing vim bundles..."
@@ -162,7 +162,7 @@ fi
 
 note "Running post-install script, if any..."
 postinstall=$HOME/.postinstall
-if [ -e $postinstall ]; then
+if [ -e "$postinstall" ]; then
     # A post-install script can the use functions defined above.
     . $postinstall
 fi

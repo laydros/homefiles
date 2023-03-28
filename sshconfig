@@ -1,6 +1,6 @@
 # -*- mode: ssh-config -*-
 
-Include system_config
+Include ~/.ssh/config.d/*
 
 # personal
 
@@ -17,6 +17,18 @@ Host marshall
   HostName 192.168.5.100
   User laydros
 
+Host *.sr.ht
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+  PreferredAuthentications publickey
+
+Host glinet
+    HostName 192.168.8.1
+    User root
+    #IdentityFile ~/.ssh/file.pem
+    #IdentitiesOnly yes
+    PubkeyAcceptedAlgorithms +ssh-rsa
+    HostkeyAlgorithms +ssh-rsa
+
 # work
 
 # Example for vagrant virtual machines
@@ -28,8 +40,18 @@ Host 192.168.33.* *.myapp.dev
   User root
   LogLevel ERROR
 
-Host smb231
+Host odin-01
   HostName 10.1.0.231
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
+Host dagr
+  HostName 10.1.0.246
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
+Host chat-01
+  HostName 10.1.0.34
   User root
   IdentityFile ~/.ssh/jh_f5_rsa4096
 
@@ -40,6 +62,16 @@ Host connect-02
 
 Host drone-01
   HostName 10.1.0.37
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
+Host git-01
+  HostName 10.1.0.32
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
+Host jd2pdf-01
+  HostName 10.1.0.89
   User root
   IdentityFile ~/.ssh/jh_f5_rsa4096
 
@@ -60,7 +92,7 @@ Host wycomsystems.com
 Host dist.wycomsystems.com
   HostName dist.wycomsystems.com
   User root
-  IdentityFile ~/.ssh/jasonh_f5_ed25519
+  IdentityFile ~/.ssh/jh_f5_rsa4096
 
 Host send
   HostName send.wycomsystems.com    
@@ -69,6 +101,11 @@ Host send
 	
 Host zeus
   HostName 10.1.0.236
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
+
+Host zeus-02
+  HostName 10.1.0.252
   User root
   IdentityFile ~/.ssh/jh_f5_rsa4096
 
@@ -87,20 +124,22 @@ Host eds4
   IdentityFile ~/.ssh/jh_f5_rsa4096
 
 Host freya
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
+  User root
+  IdentityFile ~/.ssh/jh_f5_rsa4096
 
 Host frigg
   User root
-  IdentityFile ~/.ssh/old_id_rsa
+  IdentityFile ~/.ssh/jh_f5_rsa4096
 
 Host ve
   User root
-  IdentityFile ~/.ssh/old_id_rsa
+  #IdentityFile ~/.ssh/old_id_rsa
+  IdentityFile ~/.ssh/jh_f5_rsa4096
 
 Host vili
   User root
-  IdentityFile ~/.ssh/old_id_rsa
+  #IdentityFile ~/.ssh/old_id_rsa
+  IdentityFile ~/.ssh/jh_f5_rsa4096
 
 Host modi
     HostName 10.1.0.235
@@ -108,35 +147,28 @@ Host modi
     IdentityFile ~/.ssh/old_id_rsa
 
 Host hermes
-    HostName 10.1.0.241
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
-
-Host hermes-vm
-    HostName 10.1.0.172
-    User root
-    IdentityFile ~/.ssh/old_id_rsa
+  HostName 10.1.0.241
+  User root
+  #IdentityFile ~/.ssh/old_id_rsa
+  IdentityFile ~/.ssh/jh_f5_rsa4096
 
 Host connect1
   HostName 10.0.0.127
   User root
-  IdentityFile ~/.ssh/old_id_rsa
-
-Host connectr
-  #HostName 10.0.0.127
-  User root
-  IdentityFile ~/.ssh/old_id_rsa
+  IdentityFile ~/.ssh/jh_f5_rsa4096
 
 Host charon
   HostName 10.0.0.1
   User root
-  IdentityFile ~/.ssh/old_id_rsa
+  IdentityFile ~/.ssh/jh_f5_rsa4096
 
 Host styx
   HostName 10.1.0.254
   StrictHostKeyChecking no
   User root
   IdentityFile ~/.ssh/old_id_rsa
+  #IdentityFile ~/.ssh/jh_f5_rsa4096
+
 
 Host ibanez
   HostName 10.1.0.70
@@ -150,22 +182,18 @@ Host momus
   Port 22
   IdentityFile ~/.ssh/old_id_rsa
 
-Host odin
-  HostName 10.1.0.249
-  User root
-  IdentityFile ~/.ssh/old_id_rsa
-
 Host nott
   HostName 10.1.0.242
   User root
   IdentityFile ~/.ssh/old_id_rsa
 
 Host iris-01
-  HostName 10.1.0.248
+  HostName 10.1.0.240
   User root
   IdentityFile ~/.ssh/jh_f5_rsa4096
 
 Host iris
-  HostName 10.1.0.240
+  HostName 10.1.0.244
   User root
   IdentityFile ~/.ssh/old_id_rsa
+  HostKeyAlgorithms=+ssh-dss

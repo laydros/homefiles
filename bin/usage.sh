@@ -39,7 +39,7 @@ for point in ${filesystems}; do
   usage_percent=$(echo "$line" | awk '{print $5;}' | sed 's/%//')
 
   echo " ${line}"|tail -n1
-  printbar $usage_percent
+  printbar "$usage_percent"
 done
 
 # memory bars
@@ -49,8 +49,8 @@ printf "\n"
 function memory () {
 
   local free_info=$(free -m | grep $1)
-  local mem_total=$(echo $free_info | awk '{print $2;}')
-  local mem_used=$(echo $free_info | awk '{print $3;}')
+  local mem_total=$(echo "$free_info" | awk '{print $2;}')
+  local mem_used=$(echo "$free_info" | awk '{print $3;}')
   printf "%-21s%31s\n" " $2" "$mem_used / $mem_total"
   printbar $(($mem_used*100/$mem_total))
 }

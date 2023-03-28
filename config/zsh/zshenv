@@ -5,6 +5,8 @@
 
 # setopt braceexpand
 
+export LFS=/mnt/lfs
+
 #export XDG_CONFIG_HOME=${$XDG_CONFIG_HOME:=${HOME}/.config}
 export XDG_CONFIG_HOME=$HOME/.config
 export XDG_CACHE_HOME=$HOME/.cache
@@ -17,6 +19,14 @@ export XDG_DATA_DIRS=${XDG_DATA_DIRS}:var/lib/flatpak/exports/share:${XDG_DATA_H
 #  less
 export LESSHISTFILE="${XDG_CONFIG_HOME}/less/history"
 export LESSKEY="${XDG_CONFIG_HOME}/less/keys"
+
+# R    Display colours escape chars as-is (so they're displayed).
+# i    Ignore case unless pattern has upper case chars.
+# M    Display line numbers and position.
+# Q    Never ring terminal bell.
+# X    Don't clear the screen on exit.
+# L    Ignore LESSOPEN – some Linux distros set this to broken defaults (*cough* Fedora *cough*).
+export LESS="RiMQXL"
 
 export GNUPGHOME=${XDG_CONFIG_HOME}/gnupg
 export MPLAYER_HOME=$XDG_CONFIG_HOME/mplayer
@@ -47,6 +57,8 @@ export LC_TIME=C
 
 # less: use UTF-8
 export LESSCHARSET=UTF-8
+
+. "$HOME/.cargo/env"
 
 # == SITE LOCAL CONFIG
 

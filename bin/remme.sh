@@ -7,7 +7,7 @@ message="${@:2}"
 
 if [[ "${1:0:1}" == "@" ]]
 then
-    echo "notify-send --icon=dialog-information \"$title\" \"$message\"" | at ${1:1}
+    echo "notify-send --icon=dialog-information \"$title\" \"$message\"" | at "${1:1}"
 else
-    sleep $1 && notify-send --icon=dialog-information "$title" "$message" &
+    sleep "$1" && notify-send --icon=dialog-information "$title" "$message" &
 fi

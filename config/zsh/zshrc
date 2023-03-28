@@ -21,18 +21,20 @@ autoload -Uz compinit
 compinit
 # End of lines added by compinstall
 
-
 # == HISTORY
 
 HISTFILE=$XDG_CONFIG_HOME/zsh/histfile
-HISTSIZE=9000
-SAVEHIST=9000
+HISTSIZE=11000              # Max entries to keep in memory
+SAVEHIST=10000              # Max entries to save to file
 
-setopt APPEND_HISTORY
+setopt APPEND_HISTORY       # Append to history, rather than overwriting
+setopt SHARE_HISTORY        # 
+setopt inc_append_history   # append immediately rather than only at exit
+setopt HIST_VERIFY          # ask for confirmation every time you bang (!) a command
 setopt SHARE_HISTORY
-setopt HIST_VERIFY
-setopt SHARE_HISTORY
-setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_DUPS     # Don't add to history if it's the same as previous event
+setopt hist_ignore_all_dups # Remove older event if new event is duplicate.
+setopt hist_save_no_dups    # older commands that duplicate newer ones are omitted.
 setopt HIST_IGNORE_SPACE
 setopt EXTENDED_HISTORY  # add timestamps to history
 
@@ -54,9 +56,13 @@ colors
 # =============
 
 
-export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+PATH=$HOME/bin:$HOME/.local/bin:$PATH
+# for rust
+PATH=$HOME/.local/share/cargo/bin:$PATH
 # for brew
-export PATH=/opt/homebrew/sbin:/opt/homebrew/bin:/opt/homebrew/opt/python@3.9/libexec/bin:$PATH
+PATH=/opt/homebrew/sbin:/opt/homebrew/bin:/opt/homebrew/opt/python@3.9/libexec/bin:$PATH
+
+export PATH
 
 
 # Color man pages
@@ -71,7 +77,12 @@ export LESS=-R
 
 # == PROMPT
 
-PS1='%B%m%(?.. %??)%(1j. %j&.)%b %2~ %B%#%b '
+# %B (%b) - turn on and off bold
+# %F{red} (%f) - turn on and off red
+# the chunk of %(?.. %??)%(1j. %j&.) seems to show last cmd error code
+
+#PS1='%B%m%F{red}%(?.. %??)%(1j. %j&.)%f%b %F{cyan}%2~ %f%B%#%b '
+PROMPT='%B%m%F{red}%(?.. %??)%(1j. %j&.)%f%b %F{cyan}%2~ %f%B%#%b '
 
 ## Test some manjaro zsh stuff
 
@@ -135,13 +146,21 @@ fi
 #   ALIASES
 # ===========
 
-# if [-x /usr/bin/dircolors ]; then
-#     alias ls='ls --color=auto'
 
-#     alias grep='grep --color=auto'
-#     alias fgrep='fgrep --color=auto'
-#     alias egrep='egrep --color=auto'
-# fi
+# enable color support of ls and also add handy aliases
+  if [ -x /usr/bin/dircolors ]; then
+      test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+      alias ls='ls -F --color=auto'
+      alias grep='grep --color=auto'
+      alias fgrep='fgrep --color=auto'
+      alias egrep='egrep --color=auto'
+  fi
+
+# some more ls aliases
+    alias ll='ls -alF'
+    alias la='ls -A'
+    alias l='ls -CF'
+
 
 #alias df='df -h -x"squashfs"'
 alias sort='LC_ALL=C sort'
@@ -152,7 +171,6 @@ alias cp="cp -i"                    # confirm before overwriting
 alias cat="bat -p"
 
 # alias ls='LC_COLLATE=C ls -FG'
-alias ls='ls -FG'
 
 # == Aliases for XDG
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
@@ -234,5 +252,7 @@ ecat() {
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+# sbin for homebrew
+export PATH="/usr/local/sbin:$PATH"
 # source zsh functions
 fpath+=${ZDOTDIR:-~}/.zsh_functions

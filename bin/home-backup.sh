@@ -5,7 +5,7 @@ BACKUP_DIR="/home/bak"
 
 ## -c indicates creating new archive, -z filters through gzip, -f is file name
 
-tar -zcvpf $BACKUP_DIR/laydros-backup-$DATE.tar.gz \
+tar -zcvpf $BACKUP_DIR/laydros-backup-"$DATE".tar.gz \
     --exclude='/home/laydros/dl/iso' \
     --exclude=.cache \
     --exclude=.debug \

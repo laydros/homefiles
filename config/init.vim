@@ -1,5 +1,4 @@
-" init.vim - 2022-03-07 - jwh
-
+" init.vim - 2022-04-14 - jwh
 
 " plug.vim install and run from https://github.com/jeffkreeftmeijer/.vim/
 " Download plug.vim if it doesn't exist yet
@@ -7,6 +6,12 @@ if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs
     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 endif
+
+" vim version
+" if empty(glob('~/.vim/autoload/plug.vim'))
+"   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+"     \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+" endif
 
 " Run PlugInstall if there are missing plugins
 autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
@@ -41,6 +46,7 @@ set incsearch                   " highlight as you type
 set langnoremap
 set laststatus=2                " always show the status bar on the last window
 set listchars=tab:>\ ,trail:-,nbsp:+
+set magic
 set mouse=a
 set modelines=5                 " number of lines to check for modeline
 set nrformats=hex,bin           " what number formats to consider when using C-A C-X
@@ -76,7 +82,6 @@ set showmode
 set showmatch                   " show matching brackets
 set showcmd
 
-
 " LINE NUMBERING
 set number
 "set relativenumber
@@ -99,12 +104,17 @@ set copyindent
 set expandtab
 set cindent
 
+autocmd FileType c setlocal noet ts=8 sw=8 tw=80
+autocmd FileType go setlocal noet ts=4 sw=4
+autocmd FileType html setlocal et ts=2 sw=2
+autocmd FileType markdown setlocal et ts=2 sw=2 tw=80
+autocmd FileType python setlocal et ts=4 sw=4
+
 " MARKDOWN FOLDING
 let g:markdown_folding = 1
 
 " VIM-PLUG
 call plug#begin('~/.vim/plugged')
-
 Plug 'wellle/context.vim'
 Plug 'sheerun/vim-polyglot'
 Plug 'jeffkreeftmeijer/vim-dim'
@@ -130,8 +140,27 @@ set t_Co=256
 set pastetoggle=<C-p>			" for vim, nvim handles automatically
 inoremap jk <Esc>				" use kj for esc in while in insert mode
 
+nnoremap <F5> "=strftime("%Y-%m-%d_%X")<CR>P
+inoremap <F5> <C-R>=strftime("%Y-%m-%d_%X")<CR>
+iab <expr> sdate strftime("%Y-%m-%d_%X")
+
 " ABBREVIATIONS
 abbr _lia <li><a href=""></a></li>
+
+" FUNCTIONS
+" to insert md code block. need to setup keymap
+function! s:CodeSnippet(...)
+  let out = '```'
+  if a:0 == 1
+    let out = out . a:1
+  endif
+  "      ↓ makes it easier to %s OPENING set of code fences
+  put = ' '.out
+  "   ↓ outputs clipboard
+  put +
+  put ='```'
+endfunction
+
 
 " it's a .vimrc file that makes you look like a ninja. it's the absolute
 " minimal setup. no colors, no highlights, no messages, no status bar,
