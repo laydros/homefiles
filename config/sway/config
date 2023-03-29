@@ -61,11 +61,12 @@ output * bg /home/laydros/sync/img/wallpaper/purple-moon-stars-buildings-city-mi
 #
 # Example configuration:
 #
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
+ exec swayidle -w \
+          timeout 600 'swaylock -f -c 000000' \
+          timeout 620 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+          before-sleep 'playerctl pause' \
+          before-sleep 'swaylock -f -c 000000'
+
 # This will lock your screen after 300 seconds of inactivity, then turn off
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
@@ -100,7 +101,7 @@ input "2362:628:PIXA3854:00_093A:0274_Touchpad" {
 }
 
 # Asus G14 (2022)
-input "1267:12699:ASUE120A:00__4F3:319B_Touchpad" {
+input "1267:12699:ASUE120A:00_4F3:319B_Touchpad" {
     click_method clickfinger
     tap enabled
     middle_emulation enabled
@@ -312,6 +313,7 @@ input * {
     assign [app_id="thunderbird"] workspace number $ws2
     #assign [class="Thunderbird"]           $ws2
     assign [class="Spotify"]                $ws5
+    assign [class="Proton Mail Bridge"]     $ws2
 #
 # Scratchpad:
 #
@@ -387,8 +389,10 @@ bar {
 #
 exec nm-applet --indicator
 #exec protonmail-bridge
-exec flatpak run ch.protonmail.protonmail-bridge
+#exec flatpak run ch.protonmail.protonmail-bridge
+exec protonmail-bridge --no-window
 exec mako
+exec ulauncher
 
 include /etc/sway/config.d/*
 # include ~/.config/sway/`hostname`/*
