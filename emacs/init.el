@@ -118,6 +118,17 @@
 (setq ido-everywhere 1)
 (setq ido-enable-flex-matching t)
 
+;; From https://idiomdrottning.org/bad-emacs-defaults
+;; don't resize to column size, allow pixel resize, good for tiling WM
+(setq frame-inhibit-implied-resize t)
+;; I think this is similar for scrolling
+(setq pixel-scroll-precision-mode t)
+;; kill up to newline if not at column zero, kill whole line and newline at 0
+(setq kill-whole-line t)
+;; I think I used to have this, not sure why I got rid of, it's usually
+;; what I want
+(setq require-final-newline t)
+
 ;; Holy crap, this works through tmux, allows scrolling and placing the cursor
 (when (eq window-system nil)
   (xterm-mouse-mode t))
