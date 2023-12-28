@@ -74,8 +74,8 @@ output * bg /home/laydros/sync/img/wallpaper/purple-moon-stars-buildings-city-mi
 # Example configuration:
 #
  exec swayidle -w \
-          timeout 600 'swaylock -f -c 000000' \
-          timeout 620 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+          timeout 900 'swaylock -f -c 000000' \
+          timeout 1220 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
           before-sleep 'playerctl pause' \
           before-sleep 'swaylock -f -c 000000'
 
@@ -159,6 +159,9 @@ input * {
 
     # ulauncher
     bindsym Mod1+Space exec ulauncher-toggle
+
+    # window picker
+    bindsym $mod+g exec swaymsg \[con_id=$(swaymsg -t get_tree | jq -r '.nodes | .[] | .nodes | . [] | select(.nodes != null) | .nodes | .[] | select(.name != null) | "\(.id?) \(.name?)"' | rofi -dmenu -i | awk '{print $1}')] focus
 
     # mako
     bindsym $mod+n exec makoctl dismiss
