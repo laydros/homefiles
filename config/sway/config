@@ -26,7 +26,6 @@ set $mod Mod4
 set $ws1 "1:"
 set $ws2 "2:"
 set $ws3 "3:"
-#set $ws4 "4:"
 set $ws4 "4:"
 set $ws5 "5:"
 set $ws6 "6:"
@@ -138,6 +137,13 @@ input * {
 
     # Start your launcher
     bindsym $mod+d exec $menu
+
+    # grimshot area
+    bindsym $mod+Shift+p exec grimshot copy area 
+
+    # lock screen
+    bindsym $mod+Alt+l exec swaylock -f -c 000000
+
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -363,6 +369,10 @@ input * {
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
     bindsym $mod+minus scratchpad show
+    # use $mod+shift+space with a scratchpad window active to toggle floating mode,
+    # which basically allows you to pull it back from the scratchpad
+
+
 #
 # Resizing containers:
 #
