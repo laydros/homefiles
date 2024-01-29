@@ -129,14 +129,15 @@ input * {
 #
     # Start a terminal
     bindsym $mod+Return exec $term
-    bindsym $mod+t exec $term
-    bindsym $mod+Shift+Return exec $term2
+    bindsym $mod+t exec $term2
+    bindsym $mod+Shift+Return exec $term
 
     # Kill focused window
     bindsym $mod+Shift+q kill
 
     # Start your launcher
     bindsym $mod+d exec $menu
+    bindsym $mod+p exec $menu
 
     # grimshot area
     bindsym $mod+Shift+p exec grimshot copy area 
