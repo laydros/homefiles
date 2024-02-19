@@ -41,7 +41,7 @@
 #import:
 #  - /path/to/alacritty.yml
 import:
-  - ~/.config/alacritty/themes/gruvbox_dark.yaml
+  - ~/.config/alacritty/themes/dracula.yml
 
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
@@ -63,8 +63,8 @@ window:
   # must be at least `2`, while using a value of `0` for columns and lines will
   # fall back to the window manager's recommended size.
   dimensions:
-    columns: 120
-    lines: 36
+    columns: 110
+    lines: 38
 
   # Window position (changes require restart)
   #
@@ -143,7 +143,7 @@ scrolling:
 # Font configuration
 font:
   # Normal (roman) font face
-  #normal:
+  normal:
     # Font family
     #
     # Default:
@@ -151,6 +151,10 @@ font:
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
     #family: monospace
+    #family: Iosevka Fixed
+    family: Hack
+      #family: FuraMono
+      #family: inconsolata
 
     # The `style` can be specified to pick a specific face.
     #style: Regular
@@ -189,7 +193,7 @@ font:
     #style: Bold Italic
 
   # Point size
-  size: 11.0
+  size: 10.0
 
   # Offset is the extra space around each character. `offset.y` can be thought
   # of as modifying the line spacing, and `offset.x` as modifying the letter
@@ -209,7 +213,7 @@ font:
   #
   # Thin strokes are suitable for retina displays, but for non-retina screens
   # it is recommended to set `use_thin_strokes` to `false`.
-  use_thin_strokes: true
+  #use_thin_strokes: true
 
   # Use built-in font for box drawing characters.
   #
@@ -467,11 +471,12 @@ cursor:
 #   - (Linux/BSD) user login shell
 #   - (Windows) powershell
 shell:
-  program: /usr/bin/zsh
+  program: zsh
   args:
     - -l
     - -c
-    - "tmux attach || tmux"
+    - "tmux"
+#    - "tmux attach || tmux"
       #    - --login
 
       #shell:
