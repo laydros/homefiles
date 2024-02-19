@@ -1,4 +1,5 @@
 # -*- conf-unix -*-
+## vim: ts=2:sw=2:et:ft=zsh
 
 # =========
 #   INIT
@@ -62,7 +63,6 @@ __git_files () {
 #   EXPORT
 # =============
 
-
 PATH=$HOME/bin:$HOME/.local/bin:$PATH
 # for rust
 PATH=$HOME/.local/share/cargo/bin:$PATH
@@ -72,7 +72,6 @@ PATH=/opt/homebrew/sbin:/opt/homebrew/bin:/opt/homebrew/opt/python@3.9/libexec/b
 PATH=$HOME/.local/share/go/bin:$PATH
 
 export PATH
-
 
 # Color man pages
 export LESS_TERMCAP_mb=$'\E[01;32m'
@@ -155,9 +154,6 @@ fi
 #   ALIASES
 # ===========
 
-# if [-x /usr/bin/dircolors ]; then
-#     alias ls='ls --color=auto'
-
 # enable color support of ls and also add handy aliases
   if [ -x /usr/bin/dircolors ]; then
       test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -171,10 +167,6 @@ fi
     alias ll='ls -alF'
     alias la='ls -A'
     alias l='ls -CF'
-    
-# if using exa
-#alias ls="exa --color=auto -a -g"
-
 
 #alias df='df -h -x"squashfs"'
 alias sort='LC_ALL=C sort'
@@ -188,7 +180,6 @@ alias ip="ip -c"
 alias feh="echo imv"
 
 # alias ls='LC_COLLATE=C ls -FG'
-alias ls='ls -F'
 
 # == Aliases for XDG
 alias wget="wget --hsts-file=$XDG_CACHE_HOME/wget-hsts"
