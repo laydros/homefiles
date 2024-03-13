@@ -321,12 +321,14 @@ input * {
     for_window [window_role = "About"] floating enable
     for_window [app_id = "floating"] floating enable
     for_window [app_id = "floating_update"] floating enable, resize set width 1000px height 600px
+    for_window [app_id = "firefox" title = "^Extension: \(Bitwarden*"] floating enable
+# for_window [app_id = "org.remmina.Remmina" title = "sg3"] 
 
     for_window [title = "Picture-in-Picture"] floating enable
     for_window [title = "Emulator"] floating enable
 
     for_window [title = "Password Required - Mozilla Thunderbird"] floating enable
-
+    for_window [title = "wdisplays"] floating enabl
     for_window [title = "Audacious Settings"] floating enable
     for_window [title = "ALSA Output Settings"] floating enable
 
@@ -334,6 +336,7 @@ input * {
     for_window [shell="xwayland"] title_format "[X] %title"
 
     # Default workspaces for some things
+    assign [ title = sg3] $ws8
     assign [class="Xfce4-terminal"] $ws1
     assign [class="(?i)firefox"] $ws2
     assign [class="Thunar"] $ws3
